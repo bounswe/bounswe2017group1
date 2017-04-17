@@ -1,1 +1,21 @@
-readme
+Build a REST API with Django
+
+REST framework requires the following:
+	PyCharm (or any other Editor)
+	Python (2.7, 3.2, 3.3, 3.4, 3.5)
+	Django (1.7+, 1.8, 1.9, 1.10) ==> pip install django==1.8
+	Django Rest Framework ==> pip install djangorestframework
+
+Steps:
+
+	create project
+	$ django-admin startproject TaskAPI
+
+	create App
+	$ python manage.py startapp TaskApp
+
+	1. Create Task Model
+	2. Create Task Serializer
+	3. Create View
+	4. Create Url Patterns
+	5. Test REST API
