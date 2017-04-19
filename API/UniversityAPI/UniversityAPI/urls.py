@@ -10,7 +10,8 @@ urlpatterns = [
     # url(r'^blog/', include('blog.urls')),
 
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^students/', views.StudentList.as_view()),
+    #url(r'^students/', views.StudentList.as_view()),
+    url(r'^api/', include('UniversityApp.urls'))
 ]
 
 urlpatterns = format_suffix_patterns(urlpatterns)
