@@ -15,7 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from CulturalHeritage.views import home_page, login_page, authanticate
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^homepage/$', home_page),
+    url(r'^login/$', login_page),
+    url(r'^auth/$', authanticate),
+
 ]
