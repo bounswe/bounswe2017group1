@@ -18,6 +18,7 @@ class TopBar extends React.Component {
         </div>) : (<div className="top-bar-right">
             <Link to="/login">Log in</Link>
             <Link to="/signup">Sign up</Link>
+            <Link to="/item">Item</Link>
         </div>)}
       </div>
   );

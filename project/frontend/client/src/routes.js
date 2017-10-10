@@ -7,6 +7,8 @@ import DashboardPage from './containers/DashboardPage.jsx';
 import Base from './components/Base.jsx';
 import HomeDash from './containers/HomeDash.jsx';
 import LogoutPage from './containers/LogoutPage.jsx';
+import HeritagePage from './containers/HeritagePage.jsx';
+
 const routes = [
     {
         path: '/',
@@ -30,6 +32,10 @@ const routes = [
     {
         path: '/logout',
         component: LogoutPage
+    },
+    {
+        path: '/item',
+        component: HeritagePage
     },
   ]
 

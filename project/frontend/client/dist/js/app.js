@@ -4411,6 +4411,11 @@ var TopBar = function (_React$Component) {
             _reactRouterDom.Link,
             { to: '/signup' },
             'Sign up'
+          ),
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: '/item' },
+            'Item'
           )
         )
       );
@@ -9752,6 +9757,10 @@ var _LogoutPage = __webpack_require__(197);
 
 var _LogoutPage2 = _interopRequireDefault(_LogoutPage);
 
+var _HeritagePage = __webpack_require__(461);
+
+var _HeritagePage2 = _interopRequireDefault(_HeritagePage);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var routes = [{
@@ -9770,6 +9779,9 @@ var routes = [{
 }, {
     path: '/logout',
     component: _LogoutPage2.default
+}, {
+    path: '/item',
+    component: _HeritagePage2.default
 }];
 
 exports.default = routes;
@@ -43088,6 +43100,125 @@ module.exports = function(module) {
 	return module;
 };
 
+
+/***/ }),
+/* 460 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = __webpack_require__(2);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Heritage = function Heritage(_ref) {
+  var denemeString = _ref.denemeString,
+      onClickItem = _ref.onClickItem;
+  return _react2.default.createElement(
+    'div',
+    null,
+    _react2.default.createElement(
+      'p',
+      null,
+      denemeString
+    ),
+    _react2.default.createElement(
+      'button',
+      { onClick: onClickItem },
+      'Click Here!'
+    )
+  );
+};
+
+Heritage.propTypes = {
+  denemeString: _propTypes2.default.string.isRequired
+};
+
+exports.default = Heritage;
+
+/***/ }),
+/* 461 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Heritage = __webpack_require__(460);
+
+var _Heritage2 = _interopRequireDefault(_Heritage);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var HeritagePage = function (_React$Component) {
+	_inherits(HeritagePage, _React$Component);
+
+	function HeritagePage(props, context) {
+		_classCallCheck(this, HeritagePage);
+
+		var _this = _possibleConstructorReturn(this, (HeritagePage.__proto__ || Object.getPrototypeOf(HeritagePage)).call(this, props, context));
+
+		_this.state = {
+
+			deneString: "denemeString123"
+		};
+
+		_this.clickButton = _this.clickButton.bind(_this);
+
+		return _this;
+	}
+
+	_createClass(HeritagePage, [{
+		key: 'clickButton',
+		value: function clickButton() {
+			this.setState({
+				deneString: "asdasd"
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			return _react2.default.createElement(
+				'div',
+				null,
+				_react2.default.createElement(_Heritage2.default, {
+					onClickItem: this.clickButton,
+					denemeString: this.state.deneString
+				})
+			);
+		}
+	}]);
+
+	return HeritagePage;
+}(_react2.default.Component);
+
+exports.default = HeritagePage;
 
 /***/ })
 /******/ ]);
