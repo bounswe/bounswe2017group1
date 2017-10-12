@@ -15,13 +15,18 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from CulturalHeritage.views import home_page, login_page, authanticate
+from CulturalHeritage.views import Login, Home, Register, Profile, Logout
+from django.views.generic import TemplateView
+#from django.contrib.auth import views as auth_views
+#from CulturalHeritage.views import saveUser
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^homepage/$', home_page),
-    url(r'^login/$', login_page),
-    url(r'^auth/$', authanticate),
-
+    url(r'^home/$', Home ,name='home'),
+    url(r'^register/$', Register ,name='register'),
+    url(r'^login/$', Login, name='login'),
+    url(r'^logout/$', Logout, name='logout'),
+    url(r'^profile/$', Profile, name='profile'),
+    #url(r'^loggedin/$', TemplateView.as_view(template_name="loggedin.html") ,name='loggedin'),
 ]
