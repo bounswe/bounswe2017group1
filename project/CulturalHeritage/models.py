@@ -9,14 +9,9 @@ from django.dispatch import receiver
 # Create your models here.
 """
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    bio = models.TextField(max_length=500, blank=True)
-    location = models.CharField(max_length=30, blank=True)
-    birth_date = models.DateField(null=True, blank=True)
-
-    #def __str__(self):
-     #   return 'user_infos = %s - %s' % (self.user, self.location)
-
+    user = models.OneToOneField(User, related_name='user', on_delete=models.CASCADE)
+    bio = models.TextField(max_length=500, default='', blank=True)
+    city = models.CharField(max_length=100, default='', blank=True)
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
@@ -28,3 +23,13 @@ def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 """
 
+
+"""
+def create_profile(sender, **kwargs):
+    user = kwargs["instance"]
+    if kwargs["created"]:
+        user_profile = UserProfile(user=user, bio='my bio')
+        user_profile.save()
+
+post_save.connect(create_profile, sender=User)
+"""
