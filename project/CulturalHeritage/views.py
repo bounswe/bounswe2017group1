@@ -27,16 +27,19 @@ from django.http import Http404
 from rest_framework.views import APIView
 from rest_framework import mixins
 from rest_framework import generics
+from rest_framework import permissions
 
 
 class UserList(generics.ListCreateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSeralizer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
-@method_decorator(login_required, name='UserDetail')
+#@method_decorator(login_required)
 class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSeralizer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly, )
 
 
 def Home(request):
@@ -85,7 +88,7 @@ def Profile(request):
     return HttpResponse("Profile {}".format(request.user.username))
 
 
-"""
+
 class UserList2(APIView):
 
     def get(self, request, format=None):
@@ -126,7 +129,7 @@ class UserDetail2(APIView):
         user.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-"""
+
 
 """
 class UserList3(mixins.ListModelMixin,
