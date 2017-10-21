@@ -9,8 +9,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 
-from api.serializer.user import UserSerializer
-from api.service import user as UserService
+from ..serializer.user import ProfileSerializer
+from ..service import user as UserService
 
 from django.views.decorators.csrf import csrf_exempt
 
@@ -24,7 +24,7 @@ def signup(request):
     if 'username' not in request.data.keys():
         request.data['username'] = email[0:email.index('@')]
 
-    serializer = UserSerializer(data=request.data)
+    serializer = ProfileSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -40,7 +40,7 @@ def signin(request):
 
     print request.data
 
-    serializer = UserSerializer(data=request.data)
+    serializer = ProfileSerializer(data=request.data)
 
     if serializer.is_valid():
 
@@ -74,5 +74,5 @@ def users(request):
     retrieve all users
     """
     users = User.objects.all()
-    serializer = UserSerializer(users, many=True)
+    serializer = ProfileSerializer(users, many=True)
     return Response(serializer.data)
