@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.template.loader import get_template
-from django.http import HttpResponse
 import datetime
-from django.shortcuts import redirect, render_to_response, render
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate
 #from django.views import generic
 #from django.views.generic import View
 #from .models import UserProfile
@@ -28,6 +25,9 @@ from rest_framework.views import APIView
 from rest_framework import mixins
 from rest_framework import generics
 from rest_framework import permissions
+from rest_framework.authtoken.models import Token
+
+import services as Services
 
 
 class UserList(generics.ListCreateAPIView):
@@ -48,35 +48,38 @@ def Home(request):
     html = t.render({'current_date': now})
     return HttpResponse(html)
 
-def Register(request):
-    username = request.GET['username']
-    password = request.GET['password']
-
-    user = User.objects.create_user(username=username, password=password)
-    user.save()
-
-    #print User.objects.all()
-    #userProfile = UserProfile.objects.create(user=user, location="Konya")
-    #userProfile.save()
-    #print UserProfile.objects.all()
-
-    return HttpResponse("register user {}".format(user.username))
+@csrf_exempt
+@api_view(['POST'])
+def SignUp(request):
+    serializer = UserSeralizer(data=request.data)
+    if serializer.is_valid():
+        serializer.save()
+        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    else:
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
 #TODO: implement login machanism here
-def Login(request):
-    username = request.GET['username']
-    password = request.GET['password']
-    user = authenticate(request, username=username, password=password)
+@csrf_exempt
+@api_view(['POST'])
+def SignIn(request):
 
-    if user is not None:
-        login(request, user)
-        print "login succesfully"
-        return HttpResponse("login as {}".format(user.username))
+    serializer = UserSeralizer(data=request.data)
+    if serializer.is_valid():
+        username = serializer.validated_data['username']
+        password = serializer.validated_data['password']
+
+        user = authenticate(request, username=username, password=password)
+        if user is None:
+            return Response({"error": "Login failed"}, status=status.HTTP_401_UNAUTHORIZED)
+
+        token = Services.refreshToken(user)
+
+        #token = Token.objects.get_or_create(user=user)
+        return Response({"token": token.key}, status=status.HTTP_200_OK)
     else:
-        # Return an 'invalid login' error message.
-        print "no such user"
-        return redirect('/home/')
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 def Logout(request):
     username = request.user.username
