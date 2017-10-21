@@ -15,5 +15,5 @@ class Profile(models.Model):
 	photo_path = models.CharField(max_length=50)
 
 	def __str__(self):
-		return self.user.name
+		return self.user.username
 
