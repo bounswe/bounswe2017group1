@@ -2,15 +2,14 @@
 from __future__ import unicode_literals
 
 import datetime
-from django.contrib.auth import authenticate
-#from django.views import generic
-#from django.views.generic import View
-#from .models import UserProfile
+from django.contrib.auth import authenticate, logout
+# from django.views import generic
+# from django.views.generic import View
+# from .models import UserProfile
 from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-
 
 from django.http import HttpResponse, JsonResponse
 from django.views.decorators.csrf import csrf_exempt
@@ -26,6 +25,7 @@ from rest_framework import mixins
 from rest_framework import generics
 from rest_framework import permissions
 from rest_framework.authtoken.models import Token
+from django.template.loader import get_template
 
 import services as Services
 
@@ -35,11 +35,12 @@ class UserList(generics.ListCreateAPIView):
     serializer_class = UserSeralizer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
-#@method_decorator(login_required)
+
+# @method_decorator(login_required)
 class UserDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = User.objects.all()
     serializer_class = UserSeralizer
-    permission_classes = (permissions.IsAuthenticatedOrReadOnly, )
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 
 def Home(request):
@@ -47,6 +48,7 @@ def Home(request):
     t = get_template('homepage.html')
     html = t.render({'current_date': now})
     return HttpResponse(html)
+
 
 @csrf_exempt
 @api_view(['POST'])
@@ -59,11 +61,10 @@ def SignUp(request):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-#TODO: implement login machanism here
+# TODO: implement login machanism here
 @csrf_exempt
 @api_view(['POST'])
 def SignIn(request):
-
     serializer = UserSeralizer(data=request.data)
     if serializer.is_valid():
         username = serializer.validated_data['username']
@@ -75,7 +76,7 @@ def SignIn(request):
 
         token = Services.refreshToken(user)
 
-        #token = Token.objects.get_or_create(user=user)
+        # token = Token.objects.get_or_create(user=user)
         return Response({"token": token.key}, status=status.HTTP_200_OK)
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
@@ -86,14 +87,13 @@ def Logout(request):
     logout(request)
     return HttpResponse("logout as {}".format(username))
 
+
 @login_required(login_url='/home/')
 def Profile(request):
     return HttpResponse("Profile {}".format(request.user.username))
 
 
-
 class UserList2(APIView):
-
     def get(self, request, format=None):
         users = User.objects.all()
         serializer = UserSeralizer(users, many=True)
@@ -106,8 +106,8 @@ class UserList2(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class UserDetail2(APIView):
 
+class UserDetail2(APIView):
     def get_object(self, pk):
         try:
             return User.objects.get(username=pk)
@@ -131,7 +131,6 @@ class UserDetail2(APIView):
         user = self.get_object(pk)
         user.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
 
 
 """

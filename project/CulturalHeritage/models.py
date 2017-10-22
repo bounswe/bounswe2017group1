@@ -42,7 +42,8 @@ class Comment(models.Model):
     text = models.TextField();
     heritage = models.ForeignKey(Heritage)
     creator = models.ForeignKey(Profile)
-    parent_comment = models.ForeignKey('self', on_delete=models.CASCADE).    date = models.DateTimeField()
+    parent_comment = models.ForeignKey('self', on_delete=models.CASCADE)
+    date = models.DateTimeField()
 
 
 class Vote(models.Model):
