@@ -6,54 +6,55 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
+
 # Create your models here.
 
 
 class Profile(models.Model):
-	user = models.OneToOneField(User, on_delete=models.CASCADE)
-	location = models.CharField(max_length=50)
-	gender = models.CharField(max_length=10)
-	photo_path = models.CharField(max_length=50)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    location = models.CharField(max_length=50)
+    gender = models.CharField(max_length=10)
+    photo_path = models.CharField(max_length=50)
 
-	def __str__(self):
-		return self.user.name
+    def __str__(self):
+        return self.user.name
 
 
 class Heritage(models.Model):
-	title = models.CharField(max_length=50)
-	description = models.TextField()
-	creator = models.ForeignKey(Profile)
-	creation_date = models.DateTimeField()
-	event_date = models.DateTimeField()
-	location = models.CharField(max_length=50)
+    title = models.CharField(max_length=50)
+    description = models.TextField()
+    creator = models.ForeignKey(Profile)
+    creation_date = models.DateTimeField()
+    event_date = models.DateTimeField()
+    location = models.CharField(max_length=50)
 
-	def __str__(self):
-		return self.title
+    def __str__(self):
+        return self.title
+
 
 class Media(models.Model):
-	type = models.CharField(max_length=10)
-	data_path = models.CharField(max_length=50)
-	heritage = models.ForeignKey(Heritage)
+    type = models.CharField(max_length=10)
+    data_path = models.CharField(max_length=50)
+    heritage = models.ForeignKey(Heritage)
+
 
 class Comment(models.Model):
-	text = models.TextField();
-	heritage = models.ForeignKey(Heritage)
-	creator = models.ForeignKey(Profile)
-	#parent = models.ForeignKey(Comment)
-	date = models.DateTimeField()
+    text = models.TextField();
+    heritage = models.ForeignKey(Heritage)
+    creator = models.ForeignKey(Profile)
+    parent_comment = models.ForeignKey('self', on_delete=models.CASCADE).    date = models.DateTimeField()
 
 
 class Vote(models.Model):
-	value = models.BooleanField()
-	user = models.ForeignKey(Profile)
-	heritage = models.ForeignKey(Heritage)
+    value = models.BooleanField()
+    user = models.ForeignKey(Profile)
+    heritage = models.ForeignKey(Heritage)
 
 
 class Tag(models.Model):
-	name = models.CharField(max_length=25)
-	category = models.CharField(max_length=25)
-	heritage = models.ManyToManyField(Heritage)
-
+    name = models.CharField(max_length=25)
+    category = models.CharField(max_length=25)
+    heritage = models.ManyToManyField(Heritage)
 
 
 """
@@ -71,7 +72,6 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 """
-
 
 """
 def create_profile(sender, **kwargs):
