@@ -9,7 +9,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 
-from ..serializer.user import ProfileSerializer
+from ..serializer.user import ProfileSerializer, UserSerializer
 from ..service import user as UserService
 
 from django.views.decorators.csrf import csrf_exempt
@@ -20,11 +20,10 @@ def signup(request):
     """
     Create user and return
     """
-    email = request.data['email']
-    if 'username' not in request.data.keys():
-        request.data['username'] = email[0:email.index('@')]
+    if ('email' in request.POST):
+        request.POST['username'] = request.POST['email']
 
-    serializer = ProfileSerializer(data=request.data)
+    serializer = UserSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -38,17 +37,20 @@ def signin(request):
     authenticate user with email and password, return token
     """
 
-    print request.data
+    #print request.data
 
-    serializer = ProfileSerializer(data=request.data)
+    serializer = UserSerializer(data=request.data)
+
+    #serializer.is_valid()
 
     if serializer.is_valid():
 
-        print serializer.validated_data['email']
-        print serializer.validated_data['password']
+        print serializer.validated_data
+        #print serializer.validated_data['password']
 
         user = authenticate(
-            username=serializer.validated_data['email'],
+            request,
+            username=serializer.validated_data['username'],
             password=serializer.validated_data['password']
         )
 
@@ -56,9 +58,9 @@ def signin(request):
             token = UserService.refreshToken(user)
             return Response({'token': token.key}, status=status.HTTP_200_OK)
 
-    return Response({}, status=status.HTTP_400_BAD_REQUEST)
+    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
+@csrf_exempt
 @api_view(['GET', 'POST'])
 def signout(request):
     """
@@ -66,6 +68,7 @@ def signout(request):
     """
     if request.user:
         UserService.deleteToken(request.user)
+        return Response(status=status.HTTP_200_OK)
     return HttpResponse(status=status.HTTP_204_NO_CONTENT)
 
 @api_view(['GET'])
@@ -74,5 +77,5 @@ def users(request):
     retrieve all users
     """
     users = User.objects.all()
-    serializer = ProfileSerializer(users, many=True)
+    serializer = UserSerializer(users, many=True)
     return Response(serializer.data)
