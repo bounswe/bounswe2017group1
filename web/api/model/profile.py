@@ -9,7 +9,8 @@ from django.dispatch import receiver
 # Create your models here.
 
 class Profile(models.Model):
-	user = models.OneToOneField(User, on_delete=models.CASCADE)
+	#user = models.OneToOneField(User, on_delete=models.CASCADE)
+	username = models.CharField(max_length=50)
 	location = models.CharField(max_length=50)
 	gender = models.CharField(max_length=10)
 	photo_path = models.CharField(max_length=50)
