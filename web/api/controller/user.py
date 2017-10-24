@@ -9,7 +9,10 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
 
-from ..serializer.user import ProfileSerializer, UserSerializer
+
+from ..serializer.user import  UserSerializer
+from ..serializer.profile import  ProfileSerializer
+
 from ..service import user as UserService
 
 from django.views.decorators.csrf import csrf_exempt
@@ -23,12 +26,19 @@ def signup(request):
     if ('email' in request.POST):
         request.POST['username'] = request.POST['email']
 
-    serializer = UserSerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
+    user_serializer = UserSerializer(data=request.data)
+    profile_serializer = ProfileSerializer(data=request.data)
+    if user_serializer.is_valid() and profile_serializer.is_valid():
+        profile_serializer.save()
+        user_serializer.save()
+        data = {
+            "user": user_serializer.data,
+            "profile": profile_serializer.data
+        }
+
+        return Response(data, status=status.HTTP_201_CREATED)
     else:
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(profile_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @csrf_exempt
 @api_view(['POST'])
@@ -79,3 +89,12 @@ def users(request):
     users = User.objects.all()
     serializer = UserSerializer(users, many=True)
     return Response(serializer.data)
+
+@api_view(['GET','POST'])
+def login_required(req):
+    if(req.user.is_authenticated()):
+        data = {
+            "username": req.user.username
+        }
+        return Response(data, status=status.HTTP_200_OK)
+    return Response(status=status.HTTP_400_BAD_REQUEST)

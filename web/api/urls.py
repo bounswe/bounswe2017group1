@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^users/signin$', user.signin),
     url(r'^users/signout$', user.signout),
     url(r'^users$', user.users),
+    url(r'^users/login_req$', user.login_required),
     #url(r'^items/$', item.heritage_post),
     #url(r'^items/(?P<pk>[0-9]+)/$', item.heritage_get),
     #url(r'^users/(?P<userId>[0-9]+)$', user.user),

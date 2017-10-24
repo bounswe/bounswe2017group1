@@ -10,30 +10,40 @@ Authorization: "Token {Token}"
 ##### POST
 Create user and return
 
-  **Request**
+    **Request**
 
-    {
-      "username": String, (required)
-      "email": String, (required)
-      "password": String, (required)
-      "location": String, (optional)
-      "gender": String, (optional)
-      "photo_path": String (optional)
-    }
+        {
+            "username": String, (required)
+            "email": String, (required)
+            "password": String, (required)
+            "location": String, (optional)
+            "gender": String, (optional)
+            "photo_path": String (optional)
+        }
 
-  **Response**
+    **Response**
 
-    200
+        200
 
-      {
-        "username": String,
-        "email": String
-      }
+        {
+            "profile": {
+                "id": 3,
+                "username": "user1",
+                "location": "Istanbul",
+                "gender": "Male",
+                "photo_path": ""
+            },
+            "user": {
+                "email": "user1@gmail.com",
+                "username": "user1"
+            }
+        }
+        
 
 
-    400 Bad Request
+        400 Bad Request
 
-    { field: [error] }
+        { field: [error] }
 
 ***
 
@@ -41,26 +51,27 @@ Create user and return
 ##### POST
 authenticate user with email and password, return token
 
-  **Request**
+    **Request**
 
-    {
-      "email": String,
-      "password": String
-    }
+        {
+            "username": String, (required)
+            "email": String, (required)
+            "password": String (required)
+        }
 
-  **Response**
+    **Response**
 
-    200
+        200
 
-      {
-        "token": Token
-      }
+        {
+            "token": Token
+        }
 
 
 
-    400 Bad Request
+        400 Bad Request
 
-      {}
+        {}
 
 ***
 
@@ -68,11 +79,15 @@ authenticate user with email and password, return token
 ##### GET
 delete user token from database
 
-  **Response**
+    **Response**
 
-    200
+        200
+        
+        
+        
+        204 NO CONTENT
 
-      { "field": [error] }
+        { "field": [error] }
 
 ***
 
@@ -80,17 +95,33 @@ delete user token from database
 ##### GET
 retrieve all users
 
-  **Response**
+    **Response**
 
-    200
+        200
 
-      [
+        [
+            {
+                "email": String,
+                "username": String
+            }
+        ]
+
+***
+
+## api/users/login_req
+##### GET, POST
+a login required url
+
+    **Response**
+
+        200
+
         {
-          "email": String,
-          "password": String,
-          "first_name" (optional): String,
-          "last_name" (optional): String
+            "username": String
         }
-      ]
+        
+        
+        
+        400 BAD REQUEST
 
 ***
