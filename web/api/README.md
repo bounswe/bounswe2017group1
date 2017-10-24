@@ -13,10 +13,12 @@ Create user and return
   **Request**
 
     {
-      "email": String,
-      "password": String,
-      "first_name"(optional): String,
-      "last_name"(optional): String
+      "username": String, (required)
+      "email": String, (required)
+      "password": String, (required)
+      "location": String, (optional)
+      "gender": String, (optional)
+      "photo_path": String (optional)
     }
 
   **Response**
@@ -24,10 +26,8 @@ Create user and return
     200
 
       {
-        "email": String,
-        "password": String,
-        "first_name"(optional): String,
-        "last_name"(optional): String
+        "username": String,
+        "email": String
       }
 
 
