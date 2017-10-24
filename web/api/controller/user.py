@@ -93,5 +93,8 @@ def users(request):
 @api_view(['GET','POST'])
 def login_required(req):
     if(req.user.is_authenticated()):
-        return Response(status=status.HTTP_200_OK)
+        data = {
+            "username": req.user.username
+        }
+        return Response(data, status=status.HTTP_200_OK)
     return Response(status=status.HTTP_400_BAD_REQUEST)
