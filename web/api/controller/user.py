@@ -31,9 +31,17 @@ def signup(request):
     if user_serializer.is_valid() and profile_serializer.is_valid():
         profile_serializer.save()
         user_serializer.save()
+        user = authenticate(
+            request,
+            username=user_serializer.validated_data['username'],
+            password=user_serializer.validated_data['password']
+        )
+        token = UserService.refreshToken(user)
+
         data = {
             "user": user_serializer.data,
-            "profile": profile_serializer.data
+            "profile": profile_serializer.data,
+            "token": token.key
         }
 
         return Response(data, status=status.HTTP_201_CREATED)
