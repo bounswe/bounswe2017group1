@@ -6,4 +6,6 @@ class HeritageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Heritage
         fields = '__all__';
+        related_object = 'profile'
+
 
