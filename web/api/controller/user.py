@@ -17,18 +17,23 @@ from ..service import user as UserService
 
 from django.views.decorators.csrf import csrf_exempt
 
+
 @csrf_exempt
 @api_view(['POST'])
 def signup(request):
     """
     Create user and return
     """
-    if ('email' in request.POST):
-        request.POST['username'] = request.POST['email']
 
+    #user_serializer = UserSerializer(data=request.data, context={'request': request})
     user_serializer = UserSerializer(data=request.data)
+
+
     profile_serializer = ProfileSerializer(data=request.data)
+    #print user_serializer
+    #print profile_serializer
     if user_serializer.is_valid() and profile_serializer.is_valid():
+        print "here we gooooo"
         profile_serializer.save()
         user_serializer.save()
         data = {
@@ -39,6 +44,7 @@ def signup(request):
         return Response(data, status=status.HTTP_201_CREATED)
     else:
         return Response(profile_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 @csrf_exempt
 @api_view(['POST'])
