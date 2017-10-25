@@ -2,14 +2,6 @@
 body {
   margin: 0;
   font-size: 16px;
-  padding-top: 54px;
-
-}
-
-@media (min-width: 992px) {
-  body {
-    padding-top: 56px;
-  }
 }
 
 a {

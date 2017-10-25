@@ -2,3 +2,4 @@
 /**/__pycache__/**
 *.pyc
 web/db.sqlite3
+web/frontend/client/dist/*
