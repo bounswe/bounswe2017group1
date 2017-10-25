@@ -63,7 +63,6 @@ def signin(request):
 
     if serializer.is_valid():
 
-        print serializer.validated_data
         #print serializer.validated_data['password']
 
         user = authenticate(

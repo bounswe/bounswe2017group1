@@ -36,8 +36,6 @@ def heritage_get_first(request):
 
 @api_view(['GET'])
 def heritage_get(request,pk):
-    print(pk)
-    print("asdasdadawdqdqd")
     try:
         heritage = Heritage.objects.get(id=pk)
         print(heritage.creator)
