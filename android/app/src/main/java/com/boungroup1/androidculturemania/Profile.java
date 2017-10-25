@@ -13,7 +13,7 @@ public class Profile {
     @SerializedName("username")
     private String username;
 
-    @SerializedName("locatin")
+    @SerializedName("location")
     private String location;
 
     @SerializedName("gender")
@@ -40,5 +40,33 @@ public class Profile {
 
     public String getPhoto_path() {
         return photo_path;
+    }
+
+    public Profile(int id, String username, String location, String gender, String photo_path) {
+        this.id = id;
+        this.username = username;
+        this.location = location;
+        this.gender = gender;
+        this.photo_path = photo_path;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public void setPhoto_path(String photo_path) {
+        this.photo_path = photo_path;
     }
 }

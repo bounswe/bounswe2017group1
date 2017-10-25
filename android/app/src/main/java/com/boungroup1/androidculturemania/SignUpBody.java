@@ -5,9 +5,9 @@ package com.boungroup1.androidculturemania;
  */
 
 public class SignUpBody {
-    final String username;
-    final String email;
-    final String password;
+    public String username;
+    public String email;
+    public String password;
 
 
     public SignUpBody(String username, String email, String password) {

@@ -9,6 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import org.json.JSONObject;
+
+import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -43,7 +46,8 @@ public class SingUpActivity extends AppCompatActivity {
 
                 if(!TextUtils.isEmpty(email_str) && !TextUtils.isEmpty(username_str) && !TextUtils.isEmpty(password_str))
                 {
-                    sendPost(email_str, username_str, password_str);
+                   // Toast.makeText(getApplicationContext(), "username: " + username_str + " email: "+ email_str + " password: " + password_str, Toast.LENGTH_SHORT).show();
+                    sendPost(username_str, email_str, password_str);
                 }
             }
         });
@@ -54,8 +58,7 @@ public class SingUpActivity extends AppCompatActivity {
         Retrofit retrofit = ApiClient.getApiClient();
 
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
-        Call<JsonResponseSignUp> call = apiInterface.signUp(new SignUpBody(email, username, password));
-
+        Call<JsonResponseSignUp> call = apiInterface.signUp(new SignUpBody(username,  email, password));
         call.enqueue(new Callback<JsonResponseSignUp>() {
             @Override
             public void onResponse(Call<JsonResponseSignUp> call, Response<JsonResponseSignUp> response) {
@@ -63,8 +66,9 @@ public class SingUpActivity extends AppCompatActivity {
                 if (response.code() == 200) {
                         Toast.makeText(getApplicationContext(), "SUCCESS", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), "Sorry for inconvince server is down" + response.code(), Toast.LENGTH_SHORT).show();
-                    Log.d("response", response.errorBody().toString());
+
+                   Toast.makeText(getApplicationContext(), "Sorry for inconvince server is down" + response.code(), Toast.LENGTH_SHORT).show();
+                   Log.d("response", response.raw().body().toString());
                 }
 
             }

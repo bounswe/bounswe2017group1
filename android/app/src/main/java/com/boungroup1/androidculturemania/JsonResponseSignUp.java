@@ -24,7 +24,7 @@ public class JsonResponseSignUp {
         return profile;
     }
 
-    public JsonResponseSignUp(User user, Profile profile) {
+    public JsonResponseSignUp(Profile profile,User user ) {
         this.user = user;
         this.profile = profile;
     }
