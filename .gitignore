@@ -1,4 +1,5 @@
 /**/.idea/**
 /**/__pycache__/**
 *.pyc
-/**/dist/**
+web/db.sqlite3
+web/frontend/client/dist/*

@@ -8,6 +8,8 @@ import Base from './components/Base.jsx';
 import HomeDash from './containers/HomeDash.jsx';
 import LogoutPage from './containers/LogoutPage.jsx';
 import HeritagePage from './containers/HeritagePage.jsx';
+import HeritageAddPage from './containers/HeritageAddPage.jsx';
+
 
 const routes = [
     {
@@ -36,6 +38,10 @@ const routes = [
     {
         path: '/item',
         component: HeritagePage
+    },
+    {
+        path: '/item/add',
+        component: HeritageAddPage
     },
   ]
 

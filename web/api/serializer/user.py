@@ -23,4 +23,3 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
         fields = ('email', 'username', 'password')
-
