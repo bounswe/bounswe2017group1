@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import retrofit2.Call;
@@ -32,6 +33,16 @@ public class SingUpActivity extends AppCompatActivity {
         final EditText password = (EditText) findViewById(R.id.input_password);
         final EditText gender = (EditText) findViewById(R.id.gender);
         final EditText location = (EditText) findViewById(R.id.location);
+        final TextView login = (TextView) findViewById(R.id.link_login);
+
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentLogin = new Intent(getApplicationContext(), LoginActivity.class);
+                finish();
+                startActivity(intentLogin);
+            }
+        });
 
         Button btn_signUp = (Button) findViewById(R.id.btn_signup);
 

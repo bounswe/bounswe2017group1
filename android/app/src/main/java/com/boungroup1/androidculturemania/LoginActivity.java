@@ -1,5 +1,8 @@
 package com.boungroup1.androidculturemania;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -53,8 +56,21 @@ public class LoginActivity extends AppCompatActivity{
 
     }
 
+    public void openMain(String token, String username, String email){
+        Intent intent = new Intent(this, MainActivity.class);
+        SharedPreferences sharedPref = getSharedPreferences("TOKENSHARED", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("TOKEN", token);
+        editor.putString("USERNAME", username);
+        editor.putString("EMAIL", email);
+        editor.commit();
 
-    public void sendPost(String username,String email, String password){
+        finish();
+        startActivity(intent);
+    }
+
+
+    public void sendPost(final String username, final String email, String password){
         Retrofit retrofit = ApiClient.getApiClient();
 
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
@@ -65,6 +81,8 @@ public class LoginActivity extends AppCompatActivity{
 
                 if (response.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "SUCCESS", Toast.LENGTH_SHORT).show();
+                    openMain(response.body().getToken(), username,
+                            email);
                 } else {
                     Toast.makeText(getApplicationContext(), "Sorry for inconvince server is down" + response.code(), Toast.LENGTH_SHORT).show();
                     Log.d("response", response.raw().body().toString());
