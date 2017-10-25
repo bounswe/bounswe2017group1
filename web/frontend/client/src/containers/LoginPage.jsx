@@ -69,6 +69,7 @@ class LoginPage extends React.Component {
         // save the token
         let token;
         response.json().then(res=>{
+          /* res.heritage */
           Auth.authenticateUser(res.token);
           this.setState({
             redirect: true

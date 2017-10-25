@@ -16,9 +16,35 @@ class HeritagePage extends React.Component {
     		location: "istanbul",
     		creator: 1
 	    };
-	}
+  }
+
+  componentDidMount(){
+    fetch('http://localhost:8000/api/items/1',{
+      method: "GET",
+      headers: {
+        "Access-Control-Allow-Origin" : "*",
+        "Content-Type": "application/json"
+      },
+      credentials: "same-origin"
+    }).then(response=>{
+      if(response.ok){
+        response.json().then(res=>{
+          this.setState(res);
+          console.log(res);
+        });
+
+      } else {
+        // failure
+        errors.summary = 'please check form';
+        this.setState({
+          errors
+        });
+      }
+    });
+  }
 
 	render() {
+    
 		return (
     <div>
       <TopBar auth={false}/>
@@ -72,7 +98,7 @@ class HeritagePage extends React.Component {
 
     </div>
     
-		)
+		);
 	}
 }
 
