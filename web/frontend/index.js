@@ -1,7 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const app = express();
+const cors = require('cors');
 
+const app = express();
+app.use(cors());
 
 
 // tell the app to look for static files in these directories

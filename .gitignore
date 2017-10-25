@@ -1,4 +1,4 @@
 /**/.idea/**
 /**/__pycache__/**
 *.pyc
-app.js
+web/frontend/client/dist/js/app.js

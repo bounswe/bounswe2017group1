@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 import { Card, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import DropDownMenu from 'material-ui/DropDownMenu';
+import MenuItem from 'material-ui/MenuItem';
 
 
 const SignUpForm = ({
@@ -11,6 +13,7 @@ const SignUpForm = ({
   onChange,
   errors,
   user,
+  handleDropDownChange
 }) => (
   <Card className="container">
     <form action="/" onSubmit={onSubmit}>
@@ -37,7 +40,28 @@ const SignUpForm = ({
           value={user.email}
         />
       </div>
-
+      <div className="field-line">
+        <TextField
+          floatingLabelText="Location"
+          name="location"
+          onChange={onChange}
+          value={user.location}
+        />
+      </div>
+      <div className="field-line">
+        <DropDownMenu
+          value={user.gender}
+          onChange={handleDropDownChange}
+          style={dropDownStyle.customWidth}
+          autoWidth={false}
+          >
+          <MenuItem value={'Empty'} primaryText=" " />
+          <MenuItem value={'Male'} primaryText="Male" />
+          <MenuItem value={'Female'} primaryText="Female" />
+          <MenuItem value={'Not'} primaryText="Not Specefied" />
+        </DropDownMenu>
+      </div>
+      
       <div className="field-line">
         <TextField
           floatingLabelText="Password"
@@ -73,6 +97,12 @@ SignUpForm.propTypes = {
   onChange: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired
+};
+
+const dropDownStyle = {
+  customWidth: {
+    width: 200,
+  },
 };
 
 export default SignUpForm;

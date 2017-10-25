@@ -19,6 +19,8 @@ class SignUpPage extends React.Component {
       user: {
         email: '',
         name: '',
+        location: '',
+        gender: 'Empty',
         password: '',
         passwordagain: ''
       },
@@ -27,6 +29,7 @@ class SignUpPage extends React.Component {
 
     this.processForm = this.processForm.bind(this);
     this.changeUser = this.changeUser.bind(this);
+    this.handleDropDownChange = this.handleDropDownChange.bind(this);
   }
 
   /**
@@ -40,45 +43,57 @@ class SignUpPage extends React.Component {
 
 
     // create a string for an HTTP body message
-    const name = encodeURIComponent(this.state.user.name);
-    const email = encodeURIComponent(this.state.user.email);
-    const password = encodeURIComponent(this.state.user.password);
-    const formData = `name=${name}&email=${email}&password=${password}`;
-
-    // create an AJAX request
-    const xhr = new XMLHttpRequest();
-    xhr.open('post', '/auth/signup');
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhr.responseType = 'json';
-    xhr.addEventListener('load', () => {
-      if (xhr.status === 200) {
+    const username = this.state.user.name;
+    const email = this.state.user.email;
+    const location = this.state.user.location;
+    const gender = this.state.user.gender;
+    const password = this.state.user.password;
+    const passwordagain = this.state.user.passwordagain;
+    if (password !== passwordagain) {
+      this.setState({
+        errors: {
+          password: 'Passwords do not match'
+        }
+      })
+      return;
+    }
+    const data = {username, email, location, gender, password};
+    fetch('http://localhost:8000/api/users/signup',{
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Access-Control-Allow-Origin" : "*",
+        "Content-Type": "application/json"
+      }
+    }).then(response=>{
+      if(response.ok){
         // success
-
-        // change the component-container state
         this.setState({
           errors: {}
         });
-
-        // set a message
-        localStorage.setItem('successMessage', xhr.response.message);
-
-        // make a redirect
-
-        //this.context.router.replace('/login');
+        localStorage.setItem('successMessage', 'You have successfully registered');
         this.setState({redirect : true})
       } else {
-        // failure
-
-        const errors = xhr.response.errors ? xhr.response.errors : {};
-        errors.summary = xhr.response.message;
-
-        this.setState({
-          errors
-        });
+        if(response.status === 401) {
+          const errors = {summary: ''}
+          errors.summary = 'This username has already been used';
+          this.setState({
+            errors
+          });
+        } else {
+          const errors = {summary: ''}
+          errors.summary = 'Please check your form';
+          this.setState({
+            errors
+          });
+        }
       }
     });
-    xhr.send(formData);
-
+  }
+  handleDropDownChange(event, index, value) {
+    const user = this.state.user;
+    user.gender = value;
+    this.setState({user});
   }
 
   /**
@@ -105,13 +120,16 @@ class SignUpPage extends React.Component {
       return <Redirect to='/login'/>
     }
     return (
-
-      <SignUpForm
-        onSubmit={this.processForm}
-        onChange={this.changeUser}
-        errors={this.state.errors}
-        user={this.state.user}
-      />
+      <div>
+        <TopBar auth={false}/>
+        <SignUpForm
+          onSubmit={this.processForm}
+          onChange={this.changeUser}
+          handleDropDownChange={this.handleDropDownChange}
+          errors={this.state.errors}
+          user={this.state.user}
+        />
+      </div>
     );
   }
 

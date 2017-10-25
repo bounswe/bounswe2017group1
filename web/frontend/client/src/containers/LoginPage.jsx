@@ -5,6 +5,7 @@ import LoginForm from '../components/LoginForm.jsx';
 import { Redirect } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 import TopBar from '../components/TopBar.jsx'
+import 'whatwg-fetch'
 
 class LoginPage extends React.Component {
 
@@ -47,47 +48,40 @@ class LoginPage extends React.Component {
     event.preventDefault();
 
     // create a string for an HTTP body message
-    const email = encodeURIComponent(this.state.user.email);
-    const password = encodeURIComponent(this.state.user.password);
-    const username = encodeURIComponent(this.state.user.name);
-    const formData = `email=${email}&password=${password}&name=${username}`;
+    const username = this.state.user.email;
+    const password = this.state.user.password;
+    const data = { username, password };
 
-    // create an AJAX request
-    const xhr = new XMLHttpRequest();
-    xhr.open('post', '/auth/login');
-    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-    xhr.responseType = 'json';
-    xhr.addEventListener('load', () => {
-      if (xhr.status === 200) {
-        // success
-
-        // change the component-container state
+    fetch('http://localhost:8000/api/users/signin',{
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Access-Control-Allow-Origin" : "*",
+        "Content-Type": "application/json"
+      },
+      credentials: "same-origin"
+    }).then(response=>{
+      if(response.ok){
+        console.log('sadasd');
         this.setState({
           errors: {}
         });
-
         // save the token
-        Auth.authenticateUser(xhr.response.token);
-
-
-        // change the current URL to /
-        //this.context.router.replace('/');
-        this.setState({
-          redirect: true
-        })
+        let token;
+        response.json().then(res=>{
+          Auth.authenticateUser(res.token);
+          this.setState({
+            redirect: true
+          })
+        });
       } else {
         // failure
-
-        // change the component state
-        const errors = xhr.response.errors ? xhr.response.errors : {};
-        errors.summary = xhr.response.message;
-
+        errors.summary = 'please check form';
         this.setState({
           errors
         });
       }
     });
-    xhr.send(formData);
   }
 
   /**
@@ -113,7 +107,7 @@ class LoginPage extends React.Component {
 
     if(redirect){
       
-      return (<Redirect to='/dashboard' push/>)
+      return (<Redirect to='/' push/>)
     }
 
     return (

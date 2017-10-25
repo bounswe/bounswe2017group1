@@ -15,6 +15,7 @@
     "browser-sync-webpack-plugin": "1.2.0",
     "busboy": "^0.2.14",
     "classnames": "^2.2.5",
+    "cors": "2.8.4",
     "express": "^4.15.2",
     "formidable": "^1.1.1",
     "isomorphic-fetch": "^2.2.1",
@@ -32,7 +33,8 @@
     "react-tap-event-plugin": "^2.0.1",
     "react-toolbox": "^2.0.0-beta.8",
     "react-xhr-uploader": "^0.3.4",
-    "validator": "^7.0.0"
+    "validator": "^7.0.0",
+    "whatwg-fetch": "2.0.3"
   },
   "devDependencies": {
     "babel-core": "^6.24.1",
