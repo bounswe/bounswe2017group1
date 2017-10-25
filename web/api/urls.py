@@ -4,6 +4,8 @@ from django.contrib import admin
 
 from api.controller import user
 from api.controller import item
+from api.controller import profile
+
 
 urlpatterns = [
     # USER ROUTES
@@ -12,10 +14,15 @@ urlpatterns = [
     url(r'^users/signout$', user.signout),
     url(r'^users$', user.users),
     url(r'^users/login_req$', user.login_required),
+
     url(r'^items/$', item.heritage_post),
+    url(r'^items/get_first$', item.heritage_get_first), #for test purposes returns one heritage item
+
     url(r'^items/(?P<pk>[0-9]+)$', item.heritage_get),
-    #url(r'^users/(?P<userId>[0-9]+)$', user.user),
-    #url(r'^users/me$', user.me),
-    #url(r'^users/me/history$', user.history),
-    #url(r'^users/me/restaurantHistory$', user.restaurantHistory),
+    url(r'^items/all$', item.heritage_get_all),
+
+    url(r'^profiles/(?P<pk>[0-9]+)$', profile.profile_get),
+    url(r'^profiles/all$', profile.profile_get_all),
+
+
 ]
