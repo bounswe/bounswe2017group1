@@ -41,29 +41,29 @@ public class SingUpActivity extends AppCompatActivity {
                 String email_str = email.getText().toString().trim();
                 String username_str = username.getText().toString().trim();
                 String password_str = password.getText().toString().trim();
-//                String gender_str = gender.getText().toString();
-//                String location_str = location.getText().toString();
+                String gender_str = gender.getText().toString();
+                String location_str = location.getText().toString();
 
                 if(!TextUtils.isEmpty(email_str) && !TextUtils.isEmpty(username_str) && !TextUtils.isEmpty(password_str))
                 {
                    // Toast.makeText(getApplicationContext(), "username: " + username_str + " email: "+ email_str + " password: " + password_str, Toast.LENGTH_SHORT).show();
-                    sendPost(username_str, email_str, password_str);
+                    sendPost(username_str, email_str, password_str,location_str, gender_str);
                 }
             }
         });
 
     }
 
-    public void sendPost(String username,String email, String password){
+    public void sendPost(String username,String email, String password, String location, String gender){
         Retrofit retrofit = ApiClient.getApiClient();
 
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
-        Call<JsonResponseSignUp> call = apiInterface.signUp(new SignUpBody(username,  email, password, "istanbul", "Male", "photo"));
+        Call<JsonResponseSignUp> call = apiInterface.signUp(new SignUpBody(username,  email, password, location, gender, "photo"));
         call.enqueue(new Callback<JsonResponseSignUp>() {
             @Override
             public void onResponse(Call<JsonResponseSignUp> call, Response<JsonResponseSignUp> response) {
 
-                if (response.code() == 200) {
+                if (response.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "SUCCESS", Toast.LENGTH_SHORT).show();
                 } else {
                    Toast.makeText(getApplicationContext(), "Sorry for inconvince server is down" + response.code(), Toast.LENGTH_SHORT).show();
