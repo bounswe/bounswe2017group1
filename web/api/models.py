@@ -6,5 +6,5 @@ from django.db import models
 # Create your models here.
 
 
-from api.model.profile import Profile
+from model.profile import Profile
 
