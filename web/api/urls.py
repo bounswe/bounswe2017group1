@@ -24,4 +24,5 @@ urlpatterns = [
     url(r'^profiles/(?P<pk>[0-9]+)$', profile.profile_get),
     url(r'^profiles/all$', profile.profile_get_all),
 
+
 ]
