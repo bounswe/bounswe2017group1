@@ -54,19 +54,18 @@ public class SingUpActivity extends AppCompatActivity {
 
     }
 
-    public void sendPost(String email, String username, String password){
+    public void sendPost(String username,String email, String password){
         Retrofit retrofit = ApiClient.getApiClient();
 
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
-        Call<JsonResponseSignUp> call = apiInterface.signUp(new SignUpBody(username,  email, password));
+        Call<JsonResponseSignUp> call = apiInterface.signUp(new SignUpBody(username,  email, password, "istanbul", "Male", "photo"));
         call.enqueue(new Callback<JsonResponseSignUp>() {
             @Override
             public void onResponse(Call<JsonResponseSignUp> call, Response<JsonResponseSignUp> response) {
 
                 if (response.code() == 200) {
-                        Toast.makeText(getApplicationContext(), "SUCCESS", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "SUCCESS", Toast.LENGTH_SHORT).show();
                 } else {
-
                    Toast.makeText(getApplicationContext(), "Sorry for inconvince server is down" + response.code(), Toast.LENGTH_SHORT).show();
                    Log.d("response", response.raw().body().toString());
                 }

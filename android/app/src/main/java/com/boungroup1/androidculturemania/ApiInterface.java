@@ -14,7 +14,7 @@ import retrofit2.http.Path;
 
 public interface ApiInterface {
 
-    @Headers( {"Content-Type: application/json" })
+    @Headers( "Content-Type: application/json" )
     @POST("/api/users/signup")
     Call<JsonResponseSignUp> signUp(@Body SignUpBody signup);
     Call<User> signIn();
