@@ -1,5 +1,8 @@
 package com.boungroup1.androidculturemania;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -50,6 +53,19 @@ public class SingUpActivity extends AppCompatActivity {
         });
 
     }
+    public void openMain(String token, String username, String email, int id){
+        Intent intent = new Intent(this, MainActivity.class);
+        SharedPreferences sharedPref = getSharedPreferences("TOKENSHARED", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("TOKEN", token);
+        editor.putString("USERNAME", username);
+        editor.putString("EMAIL", email);
+        editor.putInt("ID", id);
+        editor.commit();
+
+        finish();
+        startActivity(intent);
+    }
 
     public void sendPost(String username,String email, String password, String location, String gender){
         Retrofit retrofit = ApiClient.getApiClient();
@@ -61,7 +77,12 @@ public class SingUpActivity extends AppCompatActivity {
             public void onResponse(Call<JsonResponseSignUp> call, Response<JsonResponseSignUp> response) {
 
                 if (response.isSuccessful()) {
+
                     Toast.makeText(getApplicationContext(), "SUCCESS", Toast.LENGTH_SHORT).show();
+                    Log.d("RESPONSE", response.body().getProfile().getGender());
+                    openMain(response.body().getToken(), response.body().getProfile().getUsername(),
+                            response.body().getUser().getEmail(),
+                            response.body().getProfile().getId());
                 } else {
                    Toast.makeText(getApplicationContext(), "Sorry for inconvince server is down" + response.code(), Toast.LENGTH_SHORT).show();
                    Log.d("response", response.raw().body().toString());

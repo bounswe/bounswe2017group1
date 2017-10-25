@@ -17,4 +17,7 @@ public interface ApiInterface {
     @Headers( "Content-Type: application/json" )
     @POST("/api/users/signin")
     Call<JsonResponseSignIn> signIn(@Body SignInBody signin);
+//    @Headers( "Content-Type: application/json" )
+//    @POST("/api/users/signin")
+//    Call<JsonResponseSignIn> signIn(@Body SignInBody signin);
 }
