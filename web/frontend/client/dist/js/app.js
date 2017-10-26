@@ -10178,7 +10178,7 @@ var routes = [{
     path: '/logout',
     component: _LogoutPage2.default
 }, {
-    path: '/item',
+    path: '/item/:heritageId',
     component: _HeritagePage2.default
 }, {
     path: '/item/add',
@@ -18288,6 +18288,10 @@ var _TopBar = __webpack_require__(44);
 
 var _TopBar2 = _interopRequireDefault(_TopBar);
 
+var _propTypes = __webpack_require__(2);
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -18321,7 +18325,8 @@ var HeritagePage = function (_React$Component) {
     value: function componentDidMount() {
       var _this2 = this;
 
-      fetch('http://localhost:8000/api/items/1', {
+      console.log(this.props.match.params.heritageId);
+      fetch('http://localhost:8000/api/items/' + this.props.match.params.heritageId, {
         method: "GET",
         headers: {
           "Access-Control-Allow-Origin": "*",

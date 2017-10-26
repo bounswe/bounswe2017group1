@@ -1,5 +1,6 @@
 import React from 'react';
-import TopBar from '../components/TopBar.jsx'
+import TopBar from '../components/TopBar.jsx';
+import PropTypes from 'prop-types';
 
 class HeritagePage extends React.Component {
 
@@ -19,7 +20,8 @@ class HeritagePage extends React.Component {
   }
 
   componentDidMount(){
-    fetch('http://localhost:8000/api/items/1',{
+    console.log(this.props.match.params.heritageId);
+    fetch('http://localhost:8000/api/items/'+this.props.match.params.heritageId,{
       method: "GET",
       headers: {
         "Access-Control-Allow-Origin" : "*",

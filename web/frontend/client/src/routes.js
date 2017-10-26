@@ -36,7 +36,7 @@ const routes = [
         component: LogoutPage
     },
     {
-        path: '/item',
+        path: '/item/:heritageId',
         component: HeritagePage
     },
     {
