@@ -6884,10 +6884,13 @@ var HomePage = _react2.default.createClass({
 						_react2.default.createElement(
 							_Card.Card,
 							{ style: { backgroundColor: '#E0E0E0' } },
-							_react2.default.createElement(_Card.CardHeader, {
-								title: item.title,
-								titleStyle: { fontWeight: 'bold' }
-							}),
+							_react2.default.createElement(
+								'a',
+								{ className: 'nav-link', href: '/item/' + item.id },
+								_react2.default.createElement(_Card.CardHeader, {
+									title: item.title,
+									titleStyle: { fontWeight: 'bold' } })
+							),
 							_react2.default.createElement(
 								_Card.CardText,
 								null,
