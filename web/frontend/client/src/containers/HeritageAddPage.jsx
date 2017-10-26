@@ -48,13 +48,13 @@ class HeritageAddPage extends React.Component {
     event.preventDefault();
 
     // create a string for an HTTP body message
-    const title = encodeURIComponent(this.state.heritage.title);
-    const description = encodeURIComponent(this.state.heritage.description);
-    const location = encodeURIComponent(this.state.heritage.location);
+    const title = this.state.heritage.title;
+    const description = this.state.heritage.description;
+    const location = this.state.heritage.location;
     const creator = 1;
     //const data = `title=${title}&description=${description}&location=${location}&creator=1`;
 
-    const data = { title, description, location, creator};
+    const data = { title, description, location, creator, creation_date: new Date(2017, 11, 20, 12, 0), event_date: new Date(2017, 11, 20, 12, 0)};
 
     fetch('http://localhost:8000/api/items',{
       method: "POST",
@@ -97,8 +97,8 @@ class HeritageAddPage extends React.Component {
    */
   changeUser(event) {
     const field = event.target.name;
-    const user = this.state.heritage;
-
+    const heritage = this.state.heritage;
+    heritage[field] = event.target.value;
     this.setState({
       heritage
     });
@@ -108,13 +108,6 @@ class HeritageAddPage extends React.Component {
    * Render the component.
    */
   render() {
-    const {redirect} = this.state;
-
-    if(redirect){
-      
-      return (<Redirect to='/dashboard' push/>)
-    }
-
     return (
       <div>
         <TopBar auth={false}/>

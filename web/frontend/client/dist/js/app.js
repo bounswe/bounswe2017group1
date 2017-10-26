@@ -3355,6 +3355,15 @@ var TopBar = function (_React$Component) {
             ),
             _react2.default.createElement(
               'li',
+              { className: 'nav-item ' },
+              _react2.default.createElement(
+                'a',
+                { className: 'nav-link', href: '/itemAdd' },
+                'New Item'
+              )
+            ),
+            _react2.default.createElement(
+              'li',
               { className: 'nav-item' },
               _react2.default.createElement(
                 'a',
@@ -10225,7 +10234,7 @@ var routes = [{
     path: '/item/:heritageId',
     component: _HeritagePage2.default
 }, {
-    path: '/item/add',
+    path: '/itemAdd',
     component: _HeritageAddPage2.default
 }];
 
@@ -17901,7 +17910,7 @@ var LoginForm = function LoginForm(_ref) {
         'div',
         { className: 'field-line' },
         _react2.default.createElement(_TextField2.default, {
-          floatingLabelText: 'Email',
+          floatingLabelText: 'Username',
           name: 'email',
           errorText: errors.email,
           onChange: onChange,
@@ -18213,11 +18222,13 @@ var HeritageAddPage = function (_React$Component) {
       event.preventDefault();
 
       // create a string for an HTTP body message
-      var title = encodeURIComponent(this.state.heritage.title);
-      var description = encodeURIComponent(this.state.heritage.description);
-      var location = encodeURIComponent(this.state.heritage.location);
+      var title = this.state.heritage.title;
+      var description = this.state.heritage.description;
+      var location = this.state.heritage.location;
+      var creator = 1;
+      //const data = `title=${title}&description=${description}&location=${location}&creator=1`;
 
-      var data = { title: title, description: description, location: location };
+      var data = { title: title, description: description, location: location, creator: creator, creation_date: new Date(2017, 11, 20, 12, 0), event_date: new Date(2017, 11, 20, 12, 0) };
 
       fetch('http://localhost:8000/api/items', {
         method: "POST",
@@ -18243,6 +18254,7 @@ var HeritageAddPage = function (_React$Component) {
             });
           });
         } else {
+          console.log(_this2.state.heritage);
           // failure
           errors.summary = 'please check form';
           _this2.setState({
@@ -18262,8 +18274,8 @@ var HeritageAddPage = function (_React$Component) {
     key: 'changeUser',
     value: function changeUser(event) {
       var field = event.target.name;
-      var user = this.state.heritage;
-
+      var heritage = this.state.heritage;
+      heritage[field] = event.target.value;
       this.setState({
         heritage: heritage
       });
@@ -18276,14 +18288,6 @@ var HeritageAddPage = function (_React$Component) {
   }, {
     key: 'render',
     value: function render() {
-      var redirect = this.state.redirect;
-
-
-      if (redirect) {
-
-        return _react2.default.createElement(_reactRouterDom.Redirect, { to: '/dashboard', push: true });
-      }
-
       return _react2.default.createElement(
         'div',
         null,
