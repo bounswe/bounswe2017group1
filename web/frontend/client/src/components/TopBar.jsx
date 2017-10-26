@@ -12,6 +12,9 @@ class TopBar extends React.Component {
               <li className="nav-item ">
                 <a className="nav-link" href="/">Home</a>
               </li>
+              <li className="nav-item ">
+                <a className="nav-link" href="/itemAdd">New Item</a>
+              </li>
               <li className="nav-item">
                 <a className="nav-link" href="/logout">Logout</a>
               </li>

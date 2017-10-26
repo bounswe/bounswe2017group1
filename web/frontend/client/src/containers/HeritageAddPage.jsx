@@ -51,8 +51,10 @@ class HeritageAddPage extends React.Component {
     const title = encodeURIComponent(this.state.heritage.title);
     const description = encodeURIComponent(this.state.heritage.description);
     const location = encodeURIComponent(this.state.heritage.location);
+    const creator = 1;
+    //const data = `title=${title}&description=${description}&location=${location}&creator=1`;
 
-    const data = { title, description, location,};
+    const data = { title, description, location, creator};
 
     fetch('http://localhost:8000/api/items',{
       method: "POST",
@@ -78,6 +80,7 @@ class HeritageAddPage extends React.Component {
           })
         });
       } else {
+        console.log(this.state.heritage);
         // failure
         errors.summary = 'please check form';
         this.setState({

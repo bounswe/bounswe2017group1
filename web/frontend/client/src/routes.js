@@ -40,7 +40,7 @@ const routes = [
         component: HeritagePage
     },
     {
-        path: '/item/add',
+        path: '/itemAdd',
         component: HeritageAddPage
     },
   ]
