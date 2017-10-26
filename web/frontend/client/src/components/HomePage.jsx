@@ -3,12 +3,14 @@ import { Card, CardTitle, CardHeader, CardText } from 'material-ui/Card';
 import TopBar from './TopBar.jsx'
 import Auth from '../../modules/Auth.js'
 import { Tabs, Tab } from 'material-ui/Tabs';
+import 'whatwg-fetch'
 
 const HomePage = React.createClass ({
 	getInitialState: function() {
     return {
 			filterText: '',
-			value: 'a'
+			value: 'a',
+			items: []
     };
 	},
 	
@@ -16,8 +18,24 @@ const HomePage = React.createClass ({
     this.setState({
       value: value,
     });
-  },
-
+	},
+	componentDidMount(){
+		fetch('http://localhost:8000/api/items/all',{
+      method: "GET",
+      headers: {
+        "Access-Control-Allow-Origin" : "*",
+        "Content-Type": "application/json"
+      },
+      credentials: "same-origin"
+    }).then(response=>{
+      if(response.ok){
+        response.json().then(res=>{
+          this.setState({items: res});
+          console.log(res);
+        });
+      }
+    });
+	},
   handleUserInput: function(filterText, inStockOnly) {
     this.setState({
       filterText: filterText
@@ -48,59 +66,58 @@ const HomePage = React.createClass ({
 				inkBarStyle={{ backgroundColor: '#212121' }}
 			>
 				<Tab label="Random" value="a">
-					<div style={{marginTop: '20px'}}>
-						<Card style={{ backgroundColor: '#E0E0E0' }}>
-							<CardHeader
-								title="Izmir"
-							/>
-							<CardText>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-								Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-								Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
-							</CardText>
-						</Card>
-					</div>
+					{this.state.items.map((item, index)=>(
+						<div style={{marginTop: '20px'}}>
+							<Card style={{ backgroundColor: '#E0E0E0' }}>
+								<CardHeader
+									title={item.title}
+									titleStyle={{fontWeight: 'bold'}}
+								/>
+								<CardText>{ item.description} </CardText>
+							</Card>
+						</div>
+					))}
 				</Tab>
 				<Tab label="Best" value="b">
 				<div style={{marginTop: '20px'}}>
-					<Card style={{ backgroundColor: '#E0E0E0' }}>
-						<CardHeader
-							title="Istanbul"
-						/>
-						<CardText>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-							Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-							Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-							Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
-						</CardText>
-					</Card>
+					{this.state.items.map((item, index)=>(
+						<div style={{marginTop: '20px'}}>
+							<Card style={{ backgroundColor: '#E0E0E0' }}>
+								<CardHeader
+									title={item.title}
+									titleStyle={{fontWeight: 'bold'}}
+								/>
+								<CardText>{ item.description} </CardText>
+							</Card>
+						</div>
+					))}
 				</div>
 				</Tab>
 				<Tab label="Trended" value="c">
-					<div style={{marginTop: '20px'}}>
-						<Card style={{ backgroundColor: '#E0E0E0' }}>
-							<CardHeader
-								title="Efes"
-							/>
-							<CardText>
-								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
-								Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
-								Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
-							</CardText>
-						</Card>
-					</div>
+					{this.state.items.map((item, index)=>(
+							<div style={{marginTop: '20px'}}>
+								<Card style={{ backgroundColor: '#E0E0E0' }}>
+									<CardHeader
+										title={item.title}
+										titleStyle={{fontWeight: 'bold'}}
+									/>
+									<CardText>{ item.description} </CardText>
+								</Card>
+							</div>
+						))}
 				</Tab>
 				<Tab label="New" value="d">
-					<div>
-						<h2 style={tabStyles.headline}>Controllable Tab B</h2>
-						<p>
-							This is another example of a controllable tab. Remember, if you
-							use controllable Tabs, you need to give all of your tabs values or else
-							you wont be able to select them.
-						</p>
-					</div>
+					{this.state.items.map((item, index)=>(
+							<div style={{marginTop: '20px'}}>
+								<Card style={{ backgroundColor: '#E0E0E0' }}>
+									<CardHeader
+										title={item.title}
+										titleStyle={{fontWeight: 'bold'}}
+									/>
+									<CardText>{ item.description} </CardText>
+								</Card>
+							</div>
+						))}
 				</Tab>
 			</Tabs>
 		);

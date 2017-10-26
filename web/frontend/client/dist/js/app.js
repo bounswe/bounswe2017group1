@@ -6793,6 +6793,8 @@ var _Auth2 = _interopRequireDefault(_Auth);
 
 var _Tabs = __webpack_require__(331);
 
+__webpack_require__(487);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var HomePage = _react2.default.createClass({
@@ -6801,13 +6803,33 @@ var HomePage = _react2.default.createClass({
 	getInitialState: function getInitialState() {
 		return {
 			filterText: '',
-			value: 'a'
+			value: 'a',
+			items: []
 		};
 	},
 
 	handleChange: function handleChange(value) {
 		this.setState({
 			value: value
+		});
+	},
+	componentDidMount: function componentDidMount() {
+		var _this = this;
+
+		fetch('http://localhost:8000/api/items/all', {
+			method: "GET",
+			headers: {
+				"Access-Control-Allow-Origin": "*",
+				"Content-Type": "application/json"
+			},
+			credentials: "same-origin"
+		}).then(function (response) {
+			if (response.ok) {
+				response.json().then(function (res) {
+					_this.setState({ items: res });
+					console.log(res);
+				});
+			}
 		});
 	},
 
@@ -6846,22 +6868,26 @@ var HomePage = _react2.default.createClass({
 			_react2.default.createElement(
 				_Tabs.Tab,
 				{ label: 'Random', value: 'a' },
-				_react2.default.createElement(
-					'div',
-					{ style: { marginTop: '20px' } },
-					_react2.default.createElement(
-						_Card.Card,
-						{ style: { backgroundColor: '#E0E0E0' } },
-						_react2.default.createElement(_Card.CardHeader, {
-							title: 'Izmir'
-						}),
+				this.state.items.map(function (item, index) {
+					return _react2.default.createElement(
+						'div',
+						{ style: { marginTop: '20px' } },
 						_react2.default.createElement(
-							_Card.CardText,
-							null,
-							'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi. Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque. Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.'
+							_Card.Card,
+							{ style: { backgroundColor: '#E0E0E0' } },
+							_react2.default.createElement(_Card.CardHeader, {
+								title: item.title,
+								titleStyle: { fontWeight: 'bold' }
+							}),
+							_react2.default.createElement(
+								_Card.CardText,
+								null,
+								item.description,
+								' '
+							)
 						)
-					)
-				)
+					);
+				})
 			),
 			_react2.default.createElement(
 				_Tabs.Tab,
@@ -6869,57 +6895,75 @@ var HomePage = _react2.default.createClass({
 				_react2.default.createElement(
 					'div',
 					{ style: { marginTop: '20px' } },
-					_react2.default.createElement(
-						_Card.Card,
-						{ style: { backgroundColor: '#E0E0E0' } },
-						_react2.default.createElement(_Card.CardHeader, {
-							title: 'Istanbul'
-						}),
-						_react2.default.createElement(
-							_Card.CardText,
-							null,
-							'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi. Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque. Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.'
-						)
-					)
+					this.state.items.map(function (item, index) {
+						return _react2.default.createElement(
+							'div',
+							{ style: { marginTop: '20px' } },
+							_react2.default.createElement(
+								_Card.Card,
+								{ style: { backgroundColor: '#E0E0E0' } },
+								_react2.default.createElement(_Card.CardHeader, {
+									title: item.title,
+									titleStyle: { fontWeight: 'bold' }
+								}),
+								_react2.default.createElement(
+									_Card.CardText,
+									null,
+									item.description,
+									' '
+								)
+							)
+						);
+					})
 				)
 			),
 			_react2.default.createElement(
 				_Tabs.Tab,
 				{ label: 'Trended', value: 'c' },
-				_react2.default.createElement(
-					'div',
-					{ style: { marginTop: '20px' } },
-					_react2.default.createElement(
-						_Card.Card,
-						{ style: { backgroundColor: '#E0E0E0' } },
-						_react2.default.createElement(_Card.CardHeader, {
-							title: 'Efes'
-						}),
+				this.state.items.map(function (item, index) {
+					return _react2.default.createElement(
+						'div',
+						{ style: { marginTop: '20px' } },
 						_react2.default.createElement(
-							_Card.CardText,
-							null,
-							'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi. Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque. Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.'
+							_Card.Card,
+							{ style: { backgroundColor: '#E0E0E0' } },
+							_react2.default.createElement(_Card.CardHeader, {
+								title: item.title,
+								titleStyle: { fontWeight: 'bold' }
+							}),
+							_react2.default.createElement(
+								_Card.CardText,
+								null,
+								item.description,
+								' '
+							)
 						)
-					)
-				)
+					);
+				})
 			),
 			_react2.default.createElement(
 				_Tabs.Tab,
 				{ label: 'New', value: 'd' },
-				_react2.default.createElement(
-					'div',
-					null,
-					_react2.default.createElement(
-						'h2',
-						{ style: tabStyles.headline },
-						'Controllable Tab B'
-					),
-					_react2.default.createElement(
-						'p',
-						null,
-						'This is another example of a controllable tab. Remember, if you use controllable Tabs, you need to give all of your tabs values or else you wont be able to select them.'
-					)
-				)
+				this.state.items.map(function (item, index) {
+					return _react2.default.createElement(
+						'div',
+						{ style: { marginTop: '20px' } },
+						_react2.default.createElement(
+							_Card.Card,
+							{ style: { backgroundColor: '#E0E0E0' } },
+							_react2.default.createElement(_Card.CardHeader, {
+								title: item.title,
+								titleStyle: { fontWeight: 'bold' }
+							}),
+							_react2.default.createElement(
+								_Card.CardText,
+								null,
+								item.description,
+								' '
+							)
+						)
+					);
+				})
 			)
 		);
 	}
@@ -17715,7 +17759,7 @@ var HeritageForm = function HeritageForm(_ref) {
       onChange = _ref.onChange,
       errors = _ref.errors,
       successMessage = _ref.successMessage,
-      user = _ref.user;
+      heritage = _ref.heritage;
   return _react2.default.createElement(
     _Card.Card,
     { className: 'container' },
@@ -17745,7 +17789,7 @@ var HeritageForm = function HeritageForm(_ref) {
           name: 'title',
           errorText: errors.title,
           onChange: onChange,
-          value: user.email
+          value: heritage.title
         })
       ),
       _react2.default.createElement(
@@ -17756,7 +17800,7 @@ var HeritageForm = function HeritageForm(_ref) {
           name: 'description',
           errorText: errors.description,
           onChange: onChange,
-          value: user.email
+          value: heritage.description
         })
       ),
       _react2.default.createElement(
@@ -17767,7 +17811,7 @@ var HeritageForm = function HeritageForm(_ref) {
           name: 'location',
           errorText: errors.location,
           onChange: onChange,
-          value: user.email
+          value: heritage.location
         })
       ),
       _react2.default.createElement(
@@ -17788,7 +17832,7 @@ HeritageForm.propTypes = {
   onChange: _propTypes2.default.func.isRequired,
   errors: _propTypes2.default.object.isRequired,
   successMessage: _propTypes2.default.string.isRequired,
-  user: _propTypes2.default.object.isRequired
+  heritage: _propTypes2.default.object.isRequired
 };
 
 exports.default = HeritageForm;
@@ -18140,9 +18184,10 @@ var HeritageAddPage = function (_React$Component) {
     _this.state = {
       errors: {},
       successMessage: successMessage,
-      user: {
-        email: '',
-        password: ''
+      heritage: {
+        title: '',
+        description: '',
+        location: ''
       },
       redirect: false
     };
@@ -18168,46 +18213,43 @@ var HeritageAddPage = function (_React$Component) {
       event.preventDefault();
 
       // create a string for an HTTP body message
-      var email = encodeURIComponent(this.state.user.email);
-      var password = encodeURIComponent(this.state.user.password);
-      var username = encodeURIComponent(this.state.user.name);
-      var formData = 'email=' + email + '&password=' + password + '&name=' + username;
+      var title = encodeURIComponent(this.state.heritage.title);
+      var description = encodeURIComponent(this.state.heritage.description);
+      var location = encodeURIComponent(this.state.heritage.location);
 
-      // create an AJAX request
-      var xhr = new XMLHttpRequest();
-      xhr.open('post', '/auth/login');
-      xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-      xhr.responseType = 'json';
-      xhr.addEventListener('load', function () {
-        if (xhr.status === 200) {
-          // success
+      var data = { title: title, description: description, location: location };
 
-          // change the component-container state
+      fetch('http://localhost:8000/api/items', {
+        method: "POST",
+        body: JSON.stringify(data),
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Content-Type": "application/json"
+        },
+        credentials: "same-origin"
+      }).then(function (response) {
+        if (response.ok) {
+          console.log('sadasd');
           _this2.setState({
             errors: {}
           });
-
           // save the token
-          _Auth2.default.authenticateUser(xhr.response.token);
-
-          // change the current URL to /
-          //this.context.router.replace('/');
-          _this2.setState({
-            redirect: true
+          var token = void 0;
+          response.json().then(function (res) {
+            /* res.heritage */
+            _Auth2.default.authenticateUser(res.token);
+            _this2.setState({
+              redirect: true
+            });
           });
         } else {
           // failure
-
-          // change the component state
-          var errors = xhr.response.errors ? xhr.response.errors : {};
-          errors.summary = xhr.response.message;
-
+          errors.summary = 'please check form';
           _this2.setState({
             errors: errors
           });
         }
       });
-      xhr.send(formData);
     }
 
     /**
@@ -18220,11 +18262,10 @@ var HeritageAddPage = function (_React$Component) {
     key: 'changeUser',
     value: function changeUser(event) {
       var field = event.target.name;
-      var user = this.state.user;
-      user[field] = event.target.value;
+      var user = this.state.heritage;
 
       this.setState({
-        user: user
+        heritage: heritage
       });
     }
 
@@ -18252,7 +18293,7 @@ var HeritageAddPage = function (_React$Component) {
           onChange: this.changeUser,
           errors: this.state.errors,
           successMessage: this.state.successMessage,
-          user: this.state.user
+          heritage: this.state.heritage
         })
       );
     }
