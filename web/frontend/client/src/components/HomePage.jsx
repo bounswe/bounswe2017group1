@@ -69,11 +69,13 @@ const HomePage = React.createClass ({
 					{this.state.items.map((item, index)=>(
 						<div style={{marginTop: '20px'}}>
 							<Card style={{ backgroundColor: '#E0E0E0' }}>
+								<a className="nav-link" href={'/item/'+item.id}>
 								<CardHeader
 									title={item.title}
-									titleStyle={{fontWeight: 'bold'}}
-								/>
+									titleStyle={{fontWeight: 'bold'}}/>
+								</a>
 								<CardText>{ item.description} </CardText>
+
 							</Card>
 						</div>
 					))}
