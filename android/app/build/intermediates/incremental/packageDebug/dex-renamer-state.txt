@@ -1,0 +1,7 @@
+#Thu Oct 26 01:34:59 EEST 2017
+base.0=C\:\\mehmetsefa\\Dersler\\CMPE451\\bounswe2017group1\\android\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_159c558ae5255a0821234e058c05fba79f3f8163
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=C\:\\mehmetsefa\\Dersler\\CMPE451\\bounswe2017group1\\android\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_1b89f0a24b38d1229c7c6e21182bfc983fa37e8e\\classes.dex
+base.1=C\:\\mehmetsefa\\Dersler\\CMPE451\\bounswe2017group1\\android\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_1b89f0a24b38d1229c7c6e21182bfc983fa37e8e
+file.0=C\:\\mehmetsefa\\Dersler\\CMPE451\\bounswe2017group1\\android\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_159c558ae5255a0821234e058c05fba79f3f8163\\classes.dex
