@@ -10,7 +10,7 @@ const HeritageForm = ({
   onChange,
   errors,
   successMessage,
-  user
+  heritage
 }) => (
   <Card className="container">
     <form action="/" onSubmit={onSubmit}>
@@ -25,7 +25,7 @@ const HeritageForm = ({
           name="title"
           errorText={errors.title}
           onChange={onChange}
-          value={user.email}
+          value={heritage.title}
         />
       </div>
 
@@ -35,7 +35,7 @@ const HeritageForm = ({
           name="description"
           errorText={errors.description}
           onChange={onChange}
-          value={user.email}
+          value={heritage.description}
         />
       </div>
 
@@ -45,7 +45,7 @@ const HeritageForm = ({
           name="location"
           errorText={errors.location}
           onChange={onChange}
-          value={user.email}
+          value={heritage.location}
         />
       </div>
 
@@ -61,7 +61,7 @@ HeritageForm.propTypes = {
   onChange: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
   successMessage: PropTypes.string.isRequired,
-  user: PropTypes.object.isRequired
+  heritage: PropTypes.object.isRequired
 };
 
 export default HeritageForm;
