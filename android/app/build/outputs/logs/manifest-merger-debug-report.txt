@@ -1,0 +1,123 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:2:1-35:12
+	package
+		ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:3:5-49
+		INJECTED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:4:5-83
+	android:name
+		ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:4:22-64
+application
+ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:5:5-33:19
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\user\.android\build-cache\d5aabb1c3976a3430dc1e061adf02e32da9ab798\output\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:design:25.3.1] C:\Users\user\.android\build-cache\3bd0e1888cd861c6cfa803e831983ba297b3d732\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\user\.android\build-cache\27198d22c669526406db49e154ac1bd01ea2fb15\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\user\.android\build-cache\fde47391f545cd08dace55015ceb28b17de1675d\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\user\.android\build-cache\3c0e0c8d35ea12dfcfb1bec5b5fc6cf1e986c8fe\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:transition:25.3.1] C:\Users\user\.android\build-cache\8a5f89674e9e171ed8c4e3f307dac7cfd2b38d99\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\user\.android\build-cache\8473aaf95037d11731d9dbe68af6d97e9ff90644\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\user\.android\build-cache\fd84c537abc32d0249b4b43889cca3cdfce00029\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\user\.android\build-cache\4995aa365c21cea70a5aba8a2698ab9b4047ba3e\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\user\.android\build-cache\8b7c79f3d75f297f198c87eb2c3bfcfacc2c6e3e\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\user\.android\build-cache\2e08b41e5db84fad579b62ba79ee334bcae2ed30\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\user\.android\build-cache\a5178f586e33aeab7b1c6a34bfa2d9d4a350de35\output\AndroidManifest.xml:29:5-20
+	android:label
+		ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:8:9-41
+	android:supportsRtl
+		ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:10:9-35
+	android:roundIcon
+		ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:9:9-54
+	android:allowBackup
+		ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:6:9-35
+	android:icon
+		ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:7:9-43
+	android:theme
+		ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:11:9-40
+activity#com.boungroup1.androidculturemania.MainActivity
+ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:12:9-18:20
+	android:name
+		ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:12:19-47
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:13:13-17:29
+action#android.intent.action.MAIN
+ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:14:17-69
+	android:name
+		ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:14:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:16:17-77
+	android:name
+		ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:16:27-74
+activity#com.boungroup1.androidculturemania.LoginActivity
+ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:19:9-25:20
+	android:name
+		ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:19:19-48
+intent-filter#android.intent.action.LOGIN+android.intent.category.DEFAULT
+ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:20:13-24:29
+action#android.intent.action.LOGIN
+ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:21:17-70
+	android:name
+		ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:21:25-67
+category#android.intent.category.DEFAULT
+ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:23:17-76
+	android:name
+		ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:23:27-73
+activity#com.boungroup1.androidculturemania.SingUpActivity
+ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:26:9-32:20
+	android:name
+		ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:26:19-49
+intent-filter#android.intent.action.SIGNUP+android.intent.category.DEFAULT
+ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:27:13-31:29
+action#android.intent.action.SIGNUP
+ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:28:17-71
+	android:name
+		ADDED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml:28:25-68
+uses-sdk
+INJECTED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\user\.android\build-cache\d5aabb1c3976a3430dc1e061adf02e32da9ab798\output\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:design:25.3.1] C:\Users\user\.android\build-cache\3bd0e1888cd861c6cfa803e831983ba297b3d732\output\AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\user\.android\build-cache\27198d22c669526406db49e154ac1bd01ea2fb15\output\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\user\.android\build-cache\fde47391f545cd08dace55015ceb28b17de1675d\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\user\.android\build-cache\3c0e0c8d35ea12dfcfb1bec5b5fc6cf1e986c8fe\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:25.3.1] C:\Users\user\.android\build-cache\44328ca2b04bfa83a7b288d391ba373bd7c46f73\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:transition:25.3.1] C:\Users\user\.android\build-cache\8a5f89674e9e171ed8c4e3f307dac7cfd2b38d99\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\user\.android\build-cache\8473aaf95037d11731d9dbe68af6d97e9ff90644\output\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\user\.android\build-cache\fd84c537abc32d0249b4b43889cca3cdfce00029\output\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\user\.android\build-cache\4995aa365c21cea70a5aba8a2698ab9b4047ba3e\output\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\user\.android\build-cache\8b7c79f3d75f297f198c87eb2c3bfcfacc2c6e3e\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\user\.android\build-cache\2e08b41e5db84fad579b62ba79ee334bcae2ed30\output\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\user\.android\build-cache\a5178f586e33aeab7b1c6a34bfa2d9d4a350de35\output\AndroidManifest.xml:21:5-23:58
+	tools:overrideLibrary
+		ADDED from [com.android.support:design:25.3.1] C:\Users\user\.android\build-cache\3bd0e1888cd861c6cfa803e831983ba297b3d732\output\AndroidManifest.xml:23:9-59
+	android:targetSdkVersion
+		INJECTED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml
+		INJECTED from C:\mehmetsefa\Dersler\CMPE451\bounswe2017group1\android\app\src\main\AndroidManifest.xml
+meta-data#android.support.VERSION
+ADDED from [com.android.support:design:25.3.1] C:\Users\user\.android\build-cache\3bd0e1888cd861c6cfa803e831983ba297b3d732\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\user\.android\build-cache\27198d22c669526406db49e154ac1bd01ea2fb15\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\user\.android\build-cache\fde47391f545cd08dace55015ceb28b17de1675d\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\user\.android\build-cache\3c0e0c8d35ea12dfcfb1bec5b5fc6cf1e986c8fe\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:recyclerview-v7:25.3.1] C:\Users\user\.android\build-cache\44328ca2b04bfa83a7b288d391ba373bd7c46f73\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:transition:25.3.1] C:\Users\user\.android\build-cache\8a5f89674e9e171ed8c4e3f307dac7cfd2b38d99\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\user\.android\build-cache\8473aaf95037d11731d9dbe68af6d97e9ff90644\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\user\.android\build-cache\fd84c537abc32d0249b4b43889cca3cdfce00029\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\user\.android\build-cache\4995aa365c21cea70a5aba8a2698ab9b4047ba3e\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\user\.android\build-cache\8b7c79f3d75f297f198c87eb2c3bfcfacc2c6e3e\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\user\.android\build-cache\2e08b41e5db84fad579b62ba79ee334bcae2ed30\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\user\.android\build-cache\a5178f586e33aeab7b1c6a34bfa2d9d4a350de35\output\AndroidManifest.xml:25:5-27:34
+	android:value
+		ADDED from [com.android.support:design:25.3.1] C:\Users\user\.android\build-cache\3bd0e1888cd861c6cfa803e831983ba297b3d732\output\AndroidManifest.xml:27:9-31
+	android:name
+		ADDED from [com.android.support:design:25.3.1] C:\Users\user\.android\build-cache\3bd0e1888cd861c6cfa803e831983ba297b3d732\output\AndroidManifest.xml:26:9-47
