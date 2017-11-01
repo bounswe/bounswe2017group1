@@ -5,50 +5,48 @@
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-import json
-from rest_framework import serializers
+from api.model.profile import Profile
 
 
 
-from api.model.heritage import Heritage
-from api.serializer.heritage import HeritageSerializer
+from api.model.comment import Comment
+from api.serializer.comment import CommentSerializer
+
 
 
 @api_view(['POST'])
-def heritage_post(request):
-    serializer = HeritageSerializer(data=request.data)
+def comment_post(request):
+    username = request.user.username
+    request.data['creator'] = Profile.objects.filter(username=username).first().pk
+    serializer = CommentSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['GET'])
-def heritage_get_first(request):
-    try:
-        heritage = Heritage.objects.first()
-        print(heritage.creator)
-        serializer = HeritageSerializer(heritage)
-        return Response(serializer.data)
-    except Heritage.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-
 
 @api_view(['GET'])
-def heritage_get(request,pk):
+def comment_get(request,pk):
     try:
-        heritage = Heritage.objects.get(id=pk)
-        print(heritage.creator)
-        serializer = HeritageSerializer(heritage)
+        comment = Comment.objects.get(id=pk)
+        serializer = CommentSerializer(comment)
         return Response(serializer.data)
-    except Heritage.DoesNotExist:
+    except Comment.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
 @api_view(['GET'])
-def heritage_get_all(request):
+def comment_get_all(request):
     try:
-        serializer = HeritageSerializer(Heritage.objects.all(), many=True)
+        serializer = CommentSerializer(Comment.objects.all(), many=True)
         return Response(serializer.data)
-    except Heritage.DoesNotExist:
+    except Comment.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
+@api_view(['GET'])
+def comment_get_heritage(request,pk):
+    try:
+        serializer = CommentSerializer(Comment.objects.all().filter(heritage=pk), many=True)
+        return Response(serializer.data)
+    except Comment.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)

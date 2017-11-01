@@ -3,8 +3,8 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 from api.controller import user
-from api.controller import item
-from api.controller import profile
+from api.controller import heritage
+from api.controller import profile,comment
 
 
 urlpatterns = [
@@ -15,11 +15,17 @@ urlpatterns = [
     url(r'^users/?$', user.users),
     url(r'^users/login_req/?$', user.login_required),
 
-    url(r'^items/?$', item.heritage_post),
-    url(r'^items/get_first/?$', item.heritage_get_first), #for test purposes returns one heritage item
+    url(r'^items/?$', heritage.heritage_post),
+    url(r'^items/get_first/?$', heritage.heritage_get_first),
 
-    url(r'^items/(?P<pk>[0-9]+)/?$', item.heritage_get),
-    url(r'^items/all$', item.heritage_get_all),
+
+    url(r'^items/(?P<pk>[0-9]+)/?$', heritage.heritage_get),
+    url(r'^items/all?$', heritage.heritage_get_all),
+
+    url(r'^comments/?$', comment.comment_post),
+    url(r'^comments/(?P<pk>[0-9]+)/?$', comment.comment_get),
+    url(r'^comments/all?$', comment.comment_get_all),
+    url(r'^heritagecomments/(?P<pk>[0-9]+)/?$', comment.comment_get_heritage),
 
     url(r'^profiles/(?P<pk>[0-9]+)/?$', profile.profile_get),
     url(r'^profiles/all/?$', profile.profile_get_all),
