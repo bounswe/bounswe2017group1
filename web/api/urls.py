@@ -2,9 +2,9 @@
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from api.controller import user
-from api.controller import heritage
-from api.controller import profile,comment
+
+from api.controller import profile,comment,vote,user,heritage
+
 
 
 urlpatterns = [
@@ -26,6 +26,8 @@ urlpatterns = [
     url(r'^comments/(?P<pk>[0-9]+)/?$', comment.comment_get),
     url(r'^comments/all?$', comment.comment_get_all),
     url(r'^heritagecomments/(?P<pk>[0-9]+)/?$', comment.comment_get_heritage),
+
+    url(r'^votes/?$', vote.vote_post),
 
     url(r'^profiles/(?P<pk>[0-9]+)/?$', profile.profile_get),
     url(r'^profiles/all/?$', profile.profile_get_all),
