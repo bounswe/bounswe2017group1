@@ -23,14 +23,9 @@ def signup(request):
     """
     Create user and return
     """
-    if ('email' in request.POST):
-        request.POST['username'] = request.POST['email']
-
     user_serializer = UserSerializer(data=request.data)
-    profile_serializer = ProfileSerializer(data=request.data)
-    if user_serializer.is_valid() and profile_serializer.is_valid():
-        profile_serializer.save()
-        user_serializer.save()
+    if user_serializer.is_valid():
+        user_id = user_serializer.save().id
         user = authenticate(
             request,
             username=user_serializer.validated_data['username'],
@@ -38,15 +33,20 @@ def signup(request):
         )
         token = UserService.refreshToken(user)
 
-        data = {
-            "user": user_serializer.data,
-            "profile": profile_serializer.data,
-            "token": token.key
-        }
-
-        return Response(data, status=status.HTTP_201_CREATED)
+        request.data['user'] = user_id
+        profile_serializer = ProfileSerializer(data=request.data)
+        if profile_serializer.is_valid():
+            profile_serializer.save()
+            data = {
+                "user": user_serializer.data,
+                "profile": profile_serializer.data,
+                "token": token.key
+            }
+            return Response(data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(profile_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     else:
-        return Response(profile_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @csrf_exempt
 @api_view(['POST'])
