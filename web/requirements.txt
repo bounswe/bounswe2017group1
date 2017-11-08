@@ -1,2 +1,3 @@
 djangorestframework
 drfdocs
+django-cors-headers
