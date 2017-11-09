@@ -20,11 +20,14 @@ class HeritageSerializer(serializers.ModelSerializer):
     #When adding "tags", this function is needed.
 
     def create(self, validated_data):
+
         tags_data = validated_data.pop('tags')
-        print tags_data
+        print "\nCreate*******\n"
         heritage = Heritage.objects.create(**validated_data)
         for tag_data in tags_data:
-           Tag.objects.create(heritage=heritage, **tag_data).save()
+            #tag = Tag.objects.get(name=tag_data['name'])
+            tag, created = Tag.objects.get_or_create(name=tag_data['name'])
+            heritage.tags.add(tag)
         return heritage
 
     def get_upvote_count(self, obj):
