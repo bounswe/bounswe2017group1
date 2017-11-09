@@ -8,7 +8,7 @@ from django.db import models
 
 from model.profile import Profile
 from model.vote import Vote
-
+from model.tag import Tag
 
 
 

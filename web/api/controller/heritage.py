@@ -20,7 +20,7 @@ def heritage_post(request):
     serializer = HeritageSerializer(data=request.data)
 
     username = request.user.username
-    request.data['creator'] = Profile.objects.filter(username=username).first().pk
+    print "\n--- ",request.user," \n"
     request.data['creator'] = Profile.objects.filter(username=username).first().pk
 
 
@@ -34,7 +34,7 @@ def heritage_post(request):
 def heritage_get_first(request):
     try:
         heritage = Heritage.objects.first()
-        print(heritage.creator)
+        #print(heritage.creator)
         serializer = HeritageSerializer(heritage)
         return Response(serializer.data)
     except Heritage.DoesNotExist:
