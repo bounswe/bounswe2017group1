@@ -3,7 +3,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 
-from api.controller import profile,comment,vote,user,heritage
+from api.controller import profile,comment,vote,user,heritage,tag
 
 
 
@@ -32,5 +32,8 @@ urlpatterns = [
     url(r'^profiles/(?P<pk>[0-9]+)/?$', profile.profile_get),
     url(r'^profiles/all/?$', profile.profile_get_all),
 
+    url(r'^tags/all?$', tag.list_all_tags),
+    url(r'^tags/all_tags/(?P<pk_heritage>[0-9]+)/?$', tag.get_all_tags_of_heritage_item),
+    url(r'^tags/all_heritages/(?P<pk_tag>[0-9]+)/?$', tag.get_all_heritage_items_own_this_tag),
 
 ]

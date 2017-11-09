@@ -20,7 +20,7 @@ def heritage_post(request):
     serializer = HeritageSerializer(data=request.data)
 
     username = request.user.username
-    request.data['creator'] = Profile.objects.filter(username=username).first().pk
+    print "\n--- ",request.user," \n"
     request.data['creator'] = Profile.objects.filter(username=username).first().pk
 
 
