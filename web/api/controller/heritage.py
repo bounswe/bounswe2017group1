@@ -41,15 +41,32 @@ def heritage_get_first(request):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
 
-@api_view(['GET'])
-def heritage_get(request,pk):
+@api_view(['GET', 'PUT', 'DELETE'])
+def heritage_get_put_delete(request,pk):
     try:
         heritage = Heritage.objects.get(id=pk)
-        print(heritage.creator)
-        serializer = HeritageSerializer(heritage)
-        return Response(serializer.data)
     except Heritage.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = HeritageSerializer(heritage)
+        return Response(serializer.data)
+
+    elif request.method == 'PUT':
+        username = request.user.username
+        request.data['creator'] = Profile.objects.filter(username=username).first().pk
+
+        serializer = HeritageSerializer(instance=heritage, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'DELETE':
+        heritage.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 @api_view(['GET'])
 def heritage_get_all(request):

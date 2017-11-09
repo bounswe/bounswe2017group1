@@ -27,13 +27,30 @@ def comment_post(request):
 
 
 @api_view(['GET'])
-def comment_get(request,pk):
+def comment_get_put_delete(request,pk):
     try:
         comment = Comment.objects.get(id=pk)
-        serializer = CommentSerializer(comment)
-        return Response(serializer.data)
     except Comment.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = CommentSerializer(comment)
+        return Response(serializer.data)
+
+    elif request.method == 'PUT':
+        username = request.user.username
+        request.data['creator'] = Profile.objects.filter(username=username).first().pk
+
+        serializer = CommentSerializer(instance=comment, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'DELETE':
+        comment.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
 
 @api_view(['GET'])
 def comment_get_all(request):
