@@ -34,7 +34,7 @@ def heritage_post(request):
 def heritage_get_first(request):
     try:
         heritage = Heritage.objects.first()
-        print(heritage.creator)
+        #print(heritage.creator)
         serializer = HeritageSerializer(heritage)
         return Response(serializer.data)
     except Heritage.DoesNotExist:

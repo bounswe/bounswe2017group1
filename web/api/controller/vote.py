@@ -13,7 +13,6 @@ def vote_post(request):
     request.data['voter'] = Profile.objects.filter(username=username).first().pk
     old_vote = Vote.objects.filter(voter=request.data['voter'],
                                    heritage=request.data['heritage']).first()
-
     serializer = VoteSerializer(instance=old_vote , data=request.data)
     if serializer.is_valid():
         serializer.save()

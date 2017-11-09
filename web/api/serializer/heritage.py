@@ -9,7 +9,7 @@ class HeritageSerializer(serializers.ModelSerializer):
     downvote_count = serializers.SerializerMethodField()
     #votes = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     #Heritage item may not have a tag or have one or more than one tag.
-    tag = TagSerializer(required=False, many=True)
+    tags = TagSerializer(required=False, many=True)
 
     class Meta:
         model = Heritage
@@ -18,10 +18,13 @@ class HeritageSerializer(serializers.ModelSerializer):
 
     #When creating heritage item, you need to add tags.
     #When adding "tags", this function is needed.
+
     def create(self, validated_data):
-        tag_data = validated_data.pop('tag')
-        heritage = Tag.objects.create(**validated_data)
-        Tag.objects.create(heritage=heritage, **tag_data)
+        tags_data = validated_data.pop('tags')
+        print tags_data
+        heritage = Heritage.objects.create(**validated_data)
+        for tag_data in tags_data:
+           Tag.objects.create(heritage=heritage, **tag_data).save()
         return heritage
 
     def get_upvote_count(self, obj):
