@@ -18,7 +18,7 @@ urlpatterns = [
     # ITEM ROUTES
     url(r'^items/?$', heritage.heritage_post),
     url(r'^items/get_first/?$', heritage.heritage_get_first),
-    url(r'^items/(?P<pk>[0-9]+)/?$', heritage.heritage_get),
+    url(r'^items/(?P<pk>[0-9]+)/?$', heritage.heritage_get_put_delete),
     url(r'^items/all?$', heritage.heritage_get_all),
 
     # COMMENT ROUTES
