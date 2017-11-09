@@ -23,7 +23,7 @@ urlpatterns = [
 
     # COMMENT ROUTES
     url(r'^comments/?$', comment.comment_post),
-    url(r'^comments/(?P<pk>[0-9]+)/?$', comment.comment_get),
+    url(r'^comments/(?P<pk>[0-9]+)/?$', comment.comment_get_put_delete),
     url(r'^comments/all?$', comment.comment_get_all),
     url(r'^heritagecomments/(?P<pk>[0-9]+)/?$', comment.comment_get_heritage),
 
