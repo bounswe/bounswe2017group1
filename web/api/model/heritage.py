@@ -9,7 +9,7 @@ from tag import Tag
 class Heritage(models.Model):
     title = models.CharField(max_length=50)
     description = models.TextField(null=True, blank=True)
-    creator = models.ForeignKey(Profile)
+    creator = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
     creation_date = models.DateTimeField(auto_now_add=True, blank=True)
     event_date = models.DateTimeField(blank=True)
     location = models.CharField(max_length=50)
