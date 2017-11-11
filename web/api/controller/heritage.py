@@ -13,15 +13,17 @@ from api.model.profile import Profile
 
 from api.model.heritage import Heritage
 from api.serializer.heritage import HeritageSerializer
+from django.views.decorators.csrf import csrf_protect
 
 
 @api_view(['POST'])
+@csrf_protect
 def heritage_post(request):
-    serializer = HeritageSerializer(data=request.data)
 
     username = request.user.username
     #print "\n--- ",request.user," \n"
     request.data['creator'] = Profile.objects.filter(username=username).first().pk
+    serializer = HeritageSerializer(data=request.data)
 
 
     if serializer.is_valid():
