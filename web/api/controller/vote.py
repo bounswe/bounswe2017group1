@@ -4,9 +4,13 @@ from rest_framework.response import Response
 from api.model.profile import Profile
 from api.model.vote import Vote
 from api.serializer.vote import VoteSerializer
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+
 
 
 @api_view(['POST'])
+@permission_classes((IsAuthenticated,))
 def vote_post(request):
     username = request.user.username
     request.data['voter'] = Profile.objects.filter(username=username).first().pk

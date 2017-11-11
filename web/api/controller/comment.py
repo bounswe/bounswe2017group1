@@ -9,9 +9,12 @@ from api.model.profile import Profile
 
 from api.model.comment import Comment
 from api.serializer.comment import CommentSerializer
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
 
 
 @api_view(['POST'])
+@permission_classes((IsAuthenticated,))
 def comment_post(request):
     username = request.user.username
     request.data['creator'] = Profile.objects.filter(username=username).first().pk

@@ -6,9 +6,13 @@ from api.model.tag import Tag
 from api.model.heritage import Heritage
 from api.serializer.tag import TagSerializer
 from api.serializer.heritage import HeritageSerializer
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+
 
 
 @api_view(['POST'])
+@permission_classes((IsAuthenticated,))
 def add_tag_to_existed_heritage_item(request):
     """
     CURRENTLY NOT WORKING,

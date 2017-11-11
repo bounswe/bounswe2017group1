@@ -69,6 +69,7 @@ def signin(request):
 
 @csrf_exempt
 @api_view(['GET', 'POST'])
+@permission_classes((IsAuthenticated,))
 def signout(request):
     """
     delete user token from database

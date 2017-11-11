@@ -3,21 +3,21 @@
 """
 
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
+
 from rest_framework.response import Response
 
 from api.model.profile import Profile
-
 from api.model.heritage import Heritage
 from api.serializer.heritage import HeritageSerializer
 from django.views.decorators.csrf import csrf_protect
 
 
 @api_view(['POST'])
+@permission_classes((IsAuthenticated,))
 def heritage_post(request):
     username = request.user.username
-    if(not username):
-        return Response(status=status.HTTP_403_FORBIDDEN)
     request.data['creator'] = Profile.objects.filter(username=username).first().pk
 
     serializer = HeritageSerializer(data=request.data)
