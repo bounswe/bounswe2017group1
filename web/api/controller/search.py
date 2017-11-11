@@ -13,7 +13,7 @@ def searchItemByLocation(request, location):
     response_data = {}
 
     for item in items:
-        print item.tags.name
+        print item.title
 
     return Response(response_data, status=status.HTTP_200_OK)
 

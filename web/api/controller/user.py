@@ -52,27 +52,24 @@ def signin(request):
     authenticate user with email and password, return token
     """
 
-    #print request.data
-
-    serializer = UserSerializer(data=request.data)
-
-    #serializer.is_valid()
-
-    if serializer.is_valid():
+    if request.data['username'] and request.data['password']:
 
         #print serializer.validated_data['password']
 
         user = authenticate(
             request,
-            username=serializer.validated_data['username'],
-            password=serializer.validated_data['password']
+            username=request.data['username'],
+            password=request.data['password']
         )
 
         if user is not None:
             token = UserService.refreshToken(user)
             return Response({'token': token.key}, status=status.HTTP_200_OK)
 
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'error': 'user or password is wrong'}, status=status.HTTP_400_BAD_REQUEST)
+
+    return Response({'error' : 'username and password fields are required'},status=status.HTTP_400_BAD_REQUEST)
+
 
 @csrf_exempt
 @api_view(['GET', 'POST'])
@@ -84,6 +81,7 @@ def signout(request):
         UserService.deleteToken(request.user)
         return Response(status=status.HTTP_200_OK)
     return HttpResponse(status=status.HTTP_204_NO_CONTENT)
+
 
 @api_view(['GET'])
 def users(request):

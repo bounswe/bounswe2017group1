@@ -27,12 +27,17 @@ class HeritageAdmin(admin.ModelAdmin):
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('id', 'text', 'heritage', 'creator')
 
+class TagAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'category')
+
+class VoteAdmin(admin.ModelAdmin):
+    list_display = ('id', 'value', 'voter', 'heritage')
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 admin.site.register(Profile, ProfileAdmin)
 admin.site.register(Heritage, HeritageAdmin)
 admin.site.register(Comment, CommentAdmin)
-admin.site.register(Vote)
-admin.site.register(Tag)
+admin.site.register(Tag, TagAdmin)
+admin.site.register(Vote, VoteAdmin)
 admin.site.register(Media)
