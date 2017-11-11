@@ -6,9 +6,11 @@ Authorization: "Token {Token}"
 
 ***
 
-## api/users/signup
+## User Routes
+
+### /users/signup
 ##### POST
-Create user and return
+Create new user
 
     **Request**
 
@@ -23,7 +25,7 @@ Create user and return
 
     **Response**
 
-        200
+        201 Created
 
         {
             "profile": {
@@ -48,7 +50,7 @@ Create user and return
 
 ***
 
-## api/users/signin
+### /users/signin
 ##### POST
 authenticate user with email and password, return token
 
@@ -56,13 +58,13 @@ authenticate user with email and password, return token
 
         {
             "username": String, (required)
-            "email": String, (required)
+            "email": String, (optional)
             "password": String (required)
         }
 
     **Response**
 
-        200
+        200 OK
 
         {
             "token": Token
@@ -76,13 +78,13 @@ authenticate user with email and password, return token
 
 ***
 
-## api/users/signout
-##### GET
+## /users/signout
+##### POST
 delete user token from database
 
     **Response**
 
-        200
+        200 OK
         
         
         
@@ -92,37 +94,19 @@ delete user token from database
 
 ***
 
-## api/users
+### /users/
 ##### GET
-retrieve all users
+get all users
 
     **Response**
 
-        200
+        200 OK
 
         [
             {
                 "email": String,
                 "username": String
-            }
+            },
         ]
-
-***
-
-## api/users/login_req
-##### GET, POST
-a login required url
-
-    **Response**
-
-        200
-
-        {
-            "username": String
-        }
-        
-        
-        
-        400 BAD REQUEST
 
 ***
