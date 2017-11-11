@@ -5,6 +5,7 @@ from profile import Profile
 from heritage import Heritage
 from django.contrib.auth.models import User
 
+
 class Comment(models.Model):
     text = models.TextField(max_length=200)
     heritage = models.ForeignKey(Heritage)

@@ -6,14 +6,12 @@ from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-
-
-
 from api.model.heritage import Profile
 from api.serializer.profile import ProfileSerializer
 
+
 @api_view(['GET'])
-def profile_get(request,pk):
+def profile_get(request, pk):
     print(pk)
     try:
         profile = Profile.objects.get(id=pk)
@@ -22,6 +20,7 @@ def profile_get(request,pk):
     except Profile.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
+
 @api_view(['GET'])
 def profile_get_all(request):
     try:
@@ -29,4 +28,3 @@ def profile_get_all(request):
         return Response(serializer.data)
     except Profile.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
-

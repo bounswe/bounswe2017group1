@@ -9,14 +9,13 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
-
-
-from api.serializer.user import  UserSerializer
-from api.serializer.profile import  ProfileSerializer
+from api.serializer.user import UserSerializer
+from api.serializer.profile import ProfileSerializer
 
 from api.service import user as UserService
 
 from django.views.decorators.csrf import csrf_exempt
+
 
 @csrf_exempt
 @api_view(['POST'])
@@ -37,13 +36,14 @@ def signup(request):
             data = {
                 "user": user_serializer.data,
                 "profile": profile_serializer.data
-                #"token": token.key
+                # "token": token.key
             }
             return Response(data, status=status.HTTP_201_CREATED)
         else:
             return Response(profile_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     else:
         return Response(user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 @csrf_exempt
 @api_view(['POST'])
@@ -64,7 +64,7 @@ def signin(request):
             return Response({'token': token.key}, status=status.HTTP_200_OK)
         return Response({'error': 'user or password is wrong'}, status=status.HTTP_400_BAD_REQUEST)
 
-    return Response({'error' : 'username and password fields are required'},status=status.HTTP_400_BAD_REQUEST)
+    return Response({'error': 'username and password fields are required'}, status=status.HTTP_400_BAD_REQUEST)
 
 
 @csrf_exempt
@@ -88,10 +88,11 @@ def users(request):
     serializer = UserSerializer(users, many=True)
     return Response(serializer.data)
 
-@api_view(['GET','POST'])
-@permission_classes((IsAuthenticated, ))
+
+@api_view(['GET', 'POST'])
+@permission_classes((IsAuthenticated,))
 def login_required(req):
-    if(req.user.is_authenticated):
+    if (req.user.is_authenticated):
         data = {
             "username": req.user.username
         }

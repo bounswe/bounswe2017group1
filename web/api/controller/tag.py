@@ -26,6 +26,8 @@ def add_tag_to_existed_heritage_item(request):
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     """
+
+
 @api_view(['GET'])
 def list_all_tags(request):
     try:
@@ -33,6 +35,7 @@ def list_all_tags(request):
         return Response(serializer.data)
     except Tag.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
+
 
 @api_view(['GET'])
 def get_all_tags_of_heritage_item(request, pk_heritage):
@@ -44,6 +47,7 @@ def get_all_tags_of_heritage_item(request, pk_heritage):
     except Tag.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
+
 @api_view(['GET'])
 def get_all_heritage_items_own_this_tag(request, pk_tag):
     try:
@@ -53,5 +57,3 @@ def get_all_heritage_items_own_this_tag(request, pk_tag):
         return Response(serializer.data)
     except Heritage.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
-
-

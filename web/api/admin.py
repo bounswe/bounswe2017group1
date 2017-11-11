@@ -10,28 +10,36 @@ from api.model.vote import Vote
 from api.model.tag import Tag
 from api.model.media import Media
 
+
 # Register your models here.
 class ProfileAdmin(admin.ModelAdmin):
     list_display = ('id', 'username', 'location', 'gender', 'photo_path')
 
+
 class ProfileInline(admin.StackedInline):
     model = Profile
+
 
 class UserAdmin(admin.ModelAdmin):
     list_display = ('id', 'username', 'email')
     inlines = [ProfileInline]
 
+
 class HeritageAdmin(admin.ModelAdmin):
-    list_display = ('id','title','creator_id', 'location')
+    list_display = ('id', 'title', 'creator_id', 'location')
+
 
 class CommentAdmin(admin.ModelAdmin):
     list_display = ('id', 'text', 'heritage', 'creator')
 
+
 class TagAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'category')
 
+
 class VoteAdmin(admin.ModelAdmin):
     list_display = ('id', 'value', 'voter', 'heritage')
+
 
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)

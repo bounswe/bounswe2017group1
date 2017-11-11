@@ -1,14 +1,10 @@
-
 from django.conf.urls import url, include
 from django.contrib import admin
-
 
 from api.controller import (
     profile, comment, vote, user,
     heritage, tag, search
 )
-
-
 
 urlpatterns = [
     # USER ROUTES

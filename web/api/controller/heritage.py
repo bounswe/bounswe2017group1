@@ -8,9 +8,6 @@ from rest_framework.response import Response
 
 from api.model.profile import Profile
 
-
-
-
 from api.model.heritage import Heritage
 from api.serializer.heritage import HeritageSerializer
 from django.views.decorators.csrf import csrf_protect
@@ -19,12 +16,9 @@ from django.views.decorators.csrf import csrf_protect
 @api_view(['POST'])
 @csrf_protect
 def heritage_post(request):
-
     username = request.user.username
-    #print "\n--- ",request.user," \n"
     request.data['creator'] = Profile.objects.filter(username=username).first().pk
     serializer = HeritageSerializer(data=request.data)
-
 
     if serializer.is_valid():
         serializer.save()
@@ -32,11 +26,12 @@ def heritage_post(request):
     else:
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
+
 @api_view(['GET'])
 def heritage_get_first(request):
     try:
         heritage = Heritage.objects.first()
-        #print(heritage.creator)
+        # print(heritage.creator)
         serializer = HeritageSerializer(heritage)
         return Response(serializer.data)
     except Heritage.DoesNotExist:
@@ -44,7 +39,7 @@ def heritage_get_first(request):
 
 
 @api_view(['GET', 'PUT', 'DELETE'])
-def heritage_get_put_delete(request,pk):
+def heritage_get_put_delete(request, pk):
     try:
         heritage = Heritage.objects.get(id=pk)
     except Heritage.DoesNotExist:
@@ -77,4 +72,3 @@ def heritage_get_all(request):
         return Response(serializer.data)
     except Heritage.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
-
