@@ -14,10 +14,12 @@ from django.views.decorators.csrf import csrf_protect
 
 
 @api_view(['POST'])
-@csrf_protect
 def heritage_post(request):
     username = request.user.username
+    if(not username):
+        return Response(status=status.HTTP_403_FORBIDDEN)
     request.data['creator'] = Profile.objects.filter(username=username).first().pk
+
     serializer = HeritageSerializer(data=request.data)
 
     if serializer.is_valid():
