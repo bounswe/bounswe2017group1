@@ -51,10 +51,7 @@ def signin(request):
     """
     authenticate user with email and password, return token
     """
-
     if request.data['username'] and request.data['password']:
-
-        #print serializer.validated_data['password']
 
         user = authenticate(
             request,
@@ -65,7 +62,6 @@ def signin(request):
         if user is not None:
             token = UserService.refreshToken(user)
             return Response({'token': token.key}, status=status.HTTP_200_OK)
-
         return Response({'error': 'user or password is wrong'}, status=status.HTTP_400_BAD_REQUEST)
 
     return Response({'error' : 'username and password fields are required'},status=status.HTTP_400_BAD_REQUEST)
