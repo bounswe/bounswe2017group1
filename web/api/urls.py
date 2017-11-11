@@ -3,7 +3,10 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 
-from api.controller import profile,comment,vote,user,heritage,tag
+from api.controller import (
+    profile, comment, vote, user,
+    heritage, tag, search
+)
 
 
 
@@ -35,5 +38,10 @@ urlpatterns = [
     url(r'^tags/all?$', tag.list_all_tags),
     url(r'^tags/all_tags/(?P<pk_heritage>[0-9]+)/?$', tag.get_all_tags_of_heritage_item),
     url(r'^tags/all_heritages/(?P<pk_tag>[0-9]+)/?$', tag.get_all_heritage_items_own_this_tag),
+
+    # SEARCH ROUTES
+    url(r'^search/location/(?P<location>[a-zA-Z]+)/?$', search.searchItemByLocation),
+    url(r'^search/creator/(?P<creator>\w+)/?$', search.searchItemByCreator),
+    url(r'^search/title/(?P<title>\w+)/?$', search.searchItemByTitle),
 
 ]

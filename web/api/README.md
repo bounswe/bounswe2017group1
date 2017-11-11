@@ -27,15 +27,16 @@ Create user and return
 
         {
             "profile": {
-                "id": 3,
-                "username": "user1",
-                "location": "Istanbul",
-                "gender": "Male",
-                "photo_path": ""
+                "id": Integer,
+                "username": String,
+                "location": String,
+                "gender": String,
+                "photo_path": String,
+                "user": Integer
             },
             "user": {
-                "email": "user1@gmail.com",
-                "username": "user1"
+                "email": String,
+                "username": String
             }
         }
         

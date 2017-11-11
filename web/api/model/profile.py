@@ -11,9 +11,9 @@ from django.dispatch import receiver
 class Profile(models.Model):
 	user = models.OneToOneField(User, on_delete=models.CASCADE)
 	username = models.CharField(max_length=50, unique=True)
-	location = models.CharField(max_length=50)
-	gender = models.CharField(max_length=10)
-	photo_path = models.CharField(max_length=50,blank=True, null=True)
+	location = models.CharField(max_length=50, blank=True)
+	gender = models.CharField(max_length=10, blank=True)
+	photo_path = models.CharField(max_length=50, blank=True)
 
 	def __str__(self):
 		return self.username

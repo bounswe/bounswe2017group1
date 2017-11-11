@@ -5,15 +5,16 @@ from django.http import HttpResponse
 from django.utils.datastructures import MultiValueDictKeyError
 
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 
 
-from ..serializer.user import  UserSerializer
-from ..serializer.profile import  ProfileSerializer
+from api.serializer.user import  UserSerializer
+from api.serializer.profile import  ProfileSerializer
 
-from ..service import user as UserService
+from api.service import user as UserService
 
 from django.views.decorators.csrf import csrf_exempt
 
@@ -25,22 +26,18 @@ def signup(request):
     """
     user_serializer = UserSerializer(data=request.data)
     if user_serializer.is_valid():
-        user_id = user_serializer.save().id
-        user = authenticate(
-            request,
-            username=user_serializer.validated_data['username'],
-            password=user_serializer.validated_data['password']
-        )
-        token = UserService.refreshToken(user)
+        user = user_serializer.save()
 
-        request.data['user'] = user_id
+        request.data['user'] = user.id
+        request.data['username'] = user.username
+
         profile_serializer = ProfileSerializer(data=request.data)
         if profile_serializer.is_valid():
             profile_serializer.save()
             data = {
                 "user": user_serializer.data,
-                "profile": profile_serializer.data,
-                "token": token.key
+                "profile": profile_serializer.data
+                #"token": token.key
             }
             return Response(data, status=status.HTTP_201_CREATED)
         else:
@@ -98,8 +95,9 @@ def users(request):
     return Response(serializer.data)
 
 @api_view(['GET','POST'])
+@permission_classes((IsAuthenticated, ))
 def login_required(req):
-    if(req.user.is_authenticated()):
+    if(req.user.is_authenticated):
         data = {
             "username": req.user.username
         }
