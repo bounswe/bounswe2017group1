@@ -74,7 +74,7 @@ def signout(request):
     """
     delete user token from database
     """
-    if request.user:
+    if request.user.is_authenticated:
         UserService.deleteToken(request.user)
         return Response(status=status.HTTP_200_OK)
     return HttpResponse(status=status.HTTP_204_NO_CONTENT)
@@ -85,9 +85,12 @@ def users(request):
     """
     retrieve all users
     """
-    users = User.objects.all()
-    serializer = UserSerializer(users, many=True)
-    return Response(serializer.data)
+    try:
+        serializer = UserSerializer(User.objects.all(), many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except User.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
 
 
 @api_view(['GET', 'POST'])
