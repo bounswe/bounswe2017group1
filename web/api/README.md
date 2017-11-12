@@ -108,6 +108,10 @@ get all users
             "username": String
         },
       ]
+      
+      
+      
+    404 Not Found
 
 ***
 
@@ -158,6 +162,41 @@ Create new heritage item
 
 ***
 
+### /items/
+##### GET
+get all heritage items
+
+  **Response**
+
+    200 OK
+        
+      [
+        {
+            "id": Integer,
+            "upvote_count": Integer,
+            "downvote_count": Integer,
+            "tags": [
+                {
+                    "id": Integer,
+                    "name": String,
+                    "category": String
+                },
+            ],
+            "title": String,
+            "description": String,
+            "creation_date": DateTime,
+            "event_date": DateTime,
+            "location": String,
+            "creator": Integer
+        },
+      ]
+
+
+
+    404 Not Found
+        
+***
+
 ### /items/{id}
 ##### GET
 get heritage item by id
@@ -191,9 +230,66 @@ get heritage item by id
 
 ***
 
-### /items/all
-##### POST
-get all heritage items
+### /items/{id}
+##### PUT
+update the heritage item which is indicated by id
+
+  **Response**
+
+    200 OK
+
+      {
+          "id": Integer,
+          "upvote_count": Integer,
+          "downvote_count": Integer,
+          "tags": [
+              {
+                  "id": Integer,
+                  "name": String,
+                  "category": String
+              },
+          ],
+          "title": String,
+          "description": String,
+          "creation_date": DateTime,
+          "event_date": DateTime,
+          "location": String,
+          "creator": Integer
+      }
+
+    
+    
+    400 Bad Request
+    
+      { field: [error] }
+    
+    
+
+    404 Not Found
+
+***
+
+### /items/{id}
+##### DELETE
+delete the heritage item which is indicated by id
+
+  **Response**
+
+    200 OK
+
+
+
+    204 No Content
+    
+    
+    
+    404 Not Found
+
+***
+
+### /items/{id}/comments/
+##### GET
+get all comments of the heritage item indicated by id
 
   **Response**
 
@@ -202,21 +298,34 @@ get all heritage items
       [
         {
             "id": Integer,
-            "upvote_count": Integer,
-            "downvote_count": Integer,
-            "tags": [
-                {
-                    "id": Integer,
-                    "name": String,
-                    "category": String
-                },
-            ],
-            "title": String,
-            "description": String,
+            "text": String,
             "creation_date": DateTime,
-            "event_date": DateTime,
-            "location": String,
-            "creator": Integer
+            "update_date": DateTime,
+            "heritage": Integer,
+            "creator": Integer,
+            "parent_comment": Integer
+        },
+      ]
+
+
+
+    404 Not Found
+        
+***
+
+### /items/{id}/tags/
+##### GET
+get all tags of the heritage item indicated by id
+
+  **Response**
+
+    200 OK
+        
+      [
+        {
+            "id": Integer,
+            "name": String,
+            "category": String
         },
       ]
 
@@ -264,8 +373,34 @@ Create new comment
 ***
 
 ### /comments/{id}
-##### GET, PUT, DELETE
-get, update or delete a comment by id
+##### GET
+get the comment by id
+
+
+  **Response**
+
+    200 OK
+
+      {
+          "id": Integer,
+          "text": String,
+          "creation_date": DateTime,
+          "update_date": DateTime,
+          "heritage": Integer,
+          "creator": Integer,
+          "parent_comment": Integer
+      }
+
+        
+
+
+    404 Not Found
+
+***
+
+### /comments/{id}
+##### PUT
+update the comment that is indicated by id
 
   **Request**
 
@@ -302,30 +437,22 @@ get, update or delete a comment by id
 
 ***
 
-### /heritagecomments/{id}
-##### GET
-get all comments of the heritage item by id
+### /comments/{id}
+##### DELETE
+delete the comment that is indicated by id
 
   **Response**
 
     200 OK
-        
-      [
-        {
-            "id": Integer,
-            "text": String,
-            "creation_date": DateTime,
-            "update_date": DateTime,
-            "heritage": Integer,
-            "creator": Integer,
-            "parent_comment": Integer
-        },
-      ]
 
 
 
+    204 No Content
+    
+    
+    
     404 Not Found
-        
+
 ***
 
 ## Vote Routes
@@ -365,30 +492,7 @@ Create new vote
 
 ## Profile Routes
 
-### /profiles/{id}
-##### GET
-get user profile by id
-
-  **Response**
-
-    200 OK
-
-      {
-          "id": Integer,
-          "username": String,
-          "location": String,
-          "gender": String,
-          "photo_path": String,
-          "user": Integer
-      }
-
-
-
-    404 Not Found
-
-***
-
-### /profiles/all
+### /profiles/
 ##### GET
 get all user profiles
 
@@ -413,9 +517,32 @@ get all user profiles
         
 ***
 
+### /profiles/{id}
+##### GET
+get user profile by id
+
+  **Response**
+
+    200 OK
+
+      {
+          "id": Integer,
+          "username": String,
+          "location": String,
+          "gender": String,
+          "photo_path": String,
+          "user": Integer
+      }
+
+
+
+    404 Not Found
+
+***
+
 ## Tag Routes
 
-### /tags/all
+### /tags/
 ##### GET
 get all tags
 
@@ -428,6 +555,41 @@ get all tags
             "id": Integer,
             "name": String,
             "category": String
+        },
+      ]
+
+
+
+    404 Not Found
+    
+***
+
+### /tags/{id}/heritages/
+##### GET
+get all heritage items own the tag indicated by id
+
+  **Response**
+
+    200 OK
+        
+      [
+        {
+            "id": Integer,
+            "upvote_count": Integer,
+            "downvote_count": Integer,
+            "tags": [
+                {
+                    "id": Integer,
+                    "name": String,
+                    "category": String
+                },
+            ],
+            "title": String,
+            "description": String,
+            "creation_date": DateTime,
+            "event_date": DateTime,
+            "location": String,
+            "creator": Integer
         },
       ]
 
