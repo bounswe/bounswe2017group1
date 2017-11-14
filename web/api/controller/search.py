@@ -1,34 +1,23 @@
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, AllowAny
 from rest_framework.response import Response
 
 from api.models import Heritage
 from api.serializer.heritage import HeritageSerializer
+from api.service import search
 
 
 @api_view(['GET'])
-def searchItemByLocation(request, location):
-    items = Heritage.objects.filter(location__istartswith=location)
-
-    response_data = {}
-
-    for item in items:
-        print item.title
-
-    return Response(response_data, status=status.HTTP_200_OK)
+@permission_classes((AllowAny, ))
+def basic_search(request):
+    query = request.GET.get('query')
+    search.get_items_by_location(location=query)
+    return Response(status=status.HTTP_200_OK)
 
 
-def searchItemByTag(request, tag):
-    items = Heritage.objects.filter(tag__icontains=tag)
-    print items
-
-
-def searchItemByTitle(request, title):
-    items = Heritage.objects.filter(title__icontains=title)
-    print items
-
-
-def searchItemByCreator(request, creator):
-    items = Heritage.objects.filter(creator__user__username__istartswith=creator)
-    print items
+@api_view(['GET'])
+@permission_classes((AllowAny, ))
+def advanced_search(request):
+    print request.data
+    return Response(status=status.HTTP_200_OK)

@@ -7,8 +7,7 @@ from api.model.heritage import Heritage
 from api.serializer.tag import TagSerializer
 from api.serializer.heritage import HeritageSerializer
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated
-
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, AllowAny
 
 
 @api_view(['POST'])
@@ -33,31 +32,21 @@ def add_tag_to_existed_heritage_item(request):
 
 
 @api_view(['GET'])
+@permission_classes((AllowAny, ))
 def list_all_tags(request):
     try:
         serializer = TagSerializer(Tag.objects.all(), many=True)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
     except Tag.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
 
 @api_view(['GET'])
-def get_all_tags_of_heritage_item(request, pk_heritage):
+@permission_classes((AllowAny, ))
+def get_all_heritage_items_own_this_tag(request, tag_id):
     try:
-        heritage = Heritage.objects.get(id=pk_heritage)
-        tag = Tag.objects.get(heritage=heritage)
-        serializer = TagSerializer(tag)
-        return Response(serializer.data)
-    except Tag.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-
-
-@api_view(['GET'])
-def get_all_heritage_items_own_this_tag(request, pk_tag):
-    try:
-        tag = Tag.objects.get(id=pk_tag)
-        heritage = Heritage.objects.get(tag=tag)
+        heritage = Heritage.objects.get(tags__id=tag_id)
         serializer = HeritageSerializer(heritage)
-        return Response(serializer.data)
+        return Response(serializer.data, status=status.HTTP_200_OK)
     except Heritage.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)

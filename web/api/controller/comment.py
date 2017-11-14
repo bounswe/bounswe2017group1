@@ -10,62 +10,50 @@ from api.model.profile import Profile
 from api.model.comment import Comment
 from api.serializer.comment import CommentSerializer
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+from api.service import permission
 
 
-@api_view(['POST'])
-@permission_classes((IsAuthenticated,))
-def comment_post(request):
-    username = request.user.username
-    request.data['creator'] = Profile.objects.filter(username=username).first().pk
-    serializer = CommentSerializer(data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-    else:
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-@api_view(['GET', 'PUT', 'DELETE'])
-def comment_get_put_delete(request, pk):
-    try:
-        comment = Comment.objects.get(id=pk)
-    except Comment.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+@api_view(['GET', 'POST'])
+@permission_classes((IsAuthenticatedOrReadOnly, ))
+def comment_get_post(request):
 
     if request.method == 'GET':
-        serializer = CommentSerializer(comment)
-        return Response(serializer.data)
+        try:
+            serializer = CommentSerializer(Comment.objects.all(), many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Comment.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
-    elif request.method == 'PUT':
+    elif request.method == 'POST' and request.user.is_authenticated:
+
         username = request.user.username
         request.data['creator'] = Profile.objects.filter(username=username).first().pk
-
-        serializer = CommentSerializer(instance=comment, data=request.data)
+        serializer = CommentSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    elif request.method == 'DELETE':
-        comment.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
 
-
-@api_view(['GET'])
-def comment_get_all(request):
+@api_view(['GET', 'DELETE'])
+@permission_classes((IsAuthenticatedOrReadOnly, ))
+def comment_get_put_delete(request, comment_id):
     try:
-        serializer = CommentSerializer(Comment.objects.all(), many=True)
-        return Response(serializer.data)
+        comment = Comment.objects.get(id=comment_id)
     except Comment.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
+    if request.method == 'GET':
+        serializer = CommentSerializer(comment)
+        return Response(serializer.data, status=status.HTTP_200_OK)
 
-@api_view(['GET'])
-def comment_get_heritage(request, pk):
-    try:
-        serializer = CommentSerializer(Comment.objects.all().filter(heritage=pk), many=True)
-        return Response(serializer.data)
-    except Comment.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+    elif request.method == 'DELETE' and permission.isOwner(request, obj=comment):
+        try:
+            comment.delete()
+            return Response(status=status.HTTP_200_OK)
+        except Exception:
+            return Response(status=status.HTTP_204_NO_CONTENT)
+
+    return Response(status=status.HTTP_412_PRECONDITION_FAILED)
