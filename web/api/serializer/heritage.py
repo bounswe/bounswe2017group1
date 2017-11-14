@@ -3,6 +3,7 @@ from api.serializer.vote import VoteSerializer
 from rest_framework import serializers
 from api.serializer.tag import TagSerializer
 from api.model.tag import Tag
+from api.service import heritage
 
 
 class HeritageSerializer(serializers.ModelSerializer):
@@ -29,6 +30,53 @@ class HeritageSerializer(serializers.ModelSerializer):
             tag, created = Tag.objects.get_or_create(name=tag_data['name'])
             heritage.tags.add(tag)
         return heritage
+
+    def update(self, instance, validated_data):
+        """Performs an update on a Heritage Item"""
+
+        # Passwords should not be handled with `setattr`, unlike other fields.
+        # Django provides a function that handles hashing and
+        # salting passwords. That means
+        # we need to remove the password field from the
+        # `validated_data` dictionary before iterating over it.
+        password = validated_data.pop('password', None)
+        tags_data = validated_data.pop('tags', [])
+        for (key, value) in validated_data.items():
+            # For the keys remaining in `validated_data`, we will set them on
+            # the current `User` instance one at a time.
+            setattr(instance, key, value)
+
+
+
+        old_tags = heritage.get_all_tags(instance.id)
+        #print old_tags
+
+
+        new_tags_data = []
+        for tag in tags_data:
+            serializer = TagSerializer(tag)
+            new_tags_data.append(serializer.data)
+
+        #print new_tags_data
+
+
+
+        for tag_data in new_tags_data:
+            tag, created = Tag.objects.get_or_create(name=tag_data['name'])
+            instance.tags.add(tag)
+
+
+        if password is not None:
+            # `.set_password()`  handles all
+            # of the security stuff that we shouldn't be concerned with.
+            instance.set_password(password)
+
+        # After everything has been updated we must explicitly save
+        # the model. It's worth pointing out that `.set_password()` does not
+        # save the model.
+        instance.save()
+
+        return instance
 
     def get_upvote_count(self, obj):
         votes = obj.votes.all()

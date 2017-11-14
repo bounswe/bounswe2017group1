@@ -4,73 +4,112 @@
 
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, AllowAny
+from api.service import permission
 
 from rest_framework.response import Response
 
-from api.model.profile import Profile
 from api.model.heritage import Heritage
+from api.model.profile import Profile
+from api.model.comment import Comment
+from api.model.tag import Tag
 from api.serializer.heritage import HeritageSerializer
-from django.views.decorators.csrf import csrf_protect
+from api.serializer.comment import CommentSerializer
+from api.serializer.tag import TagSerializer
 
+from api.service.heritage import get_all_comments, get_all_tags
 
-@api_view(['POST'])
-@permission_classes((IsAuthenticated,))
-def heritage_post(request):
-    username = request.user.username
-    request.data['creator'] = Profile.objects.filter(username=username).first().pk
-
-    serializer = HeritageSerializer(data=request.data)
-
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-    else:
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-
-@api_view(['GET'])
-def heritage_get_first(request):
-    try:
-        heritage = Heritage.objects.first()
-        # print(heritage.creator)
-        serializer = HeritageSerializer(heritage)
-        return Response(serializer.data)
-    except Heritage.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
-
-
-@api_view(['GET', 'PUT', 'DELETE'])
-def heritage_get_put_delete(request, pk):
-    try:
-        heritage = Heritage.objects.get(id=pk)
-    except Heritage.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+@api_view(['GET', 'POST'])
+@permission_classes((IsAuthenticatedOrReadOnly, ))
+def heritage_get_post(request):
 
     if request.method == 'GET':
-        serializer = HeritageSerializer(heritage)
-        return Response(serializer.data)
+        try:
+            serializer = HeritageSerializer(Heritage.objects.all(), many=True)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Heritage.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
-    elif request.method == 'PUT':
+    elif request.method == 'POST' and request.user.is_authenticated:
+
         username = request.user.username
         request.data['creator'] = Profile.objects.filter(username=username).first().pk
 
-        serializer = HeritageSerializer(instance=heritage, data=request.data)
+        serializer = HeritageSerializer(data=request.data)
+
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         else:
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    elif request.method == 'DELETE':
-        heritage.delete()
-        return Response(status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['GET', 'PUT', 'DELETE'])
+@permission_classes((IsAuthenticatedOrReadOnly, ))
+def heritage_get_put_delete(request, heritage_id):
+    try:
+        heritage = Heritage.objects.get(id=heritage_id)
+    except Heritage.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        serializer = HeritageSerializer(heritage)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    elif request.method == 'PUT' and permission.isOwner(request, obj=heritage):
+        username = request.user.username
+        request.data['creator'] = Profile.objects.filter(username=username).first().pk
+
+        serializer = HeritageSerializer(instance=heritage, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'DELETE' and permission.isOwner(request, obj=heritage):
+        try:
+            heritage.delete()
+            return Response(status=status.HTTP_200_OK)
+        except Exception:
+            return Response(status=status.HTTP_204_NO_CONTENT)
+
+    return Response(status=status.HTTP_412_PRECONDITION_FAILED)
 
 
 @api_view(['GET'])
-def heritage_get_all(request):
+@permission_classes((AllowAny, ))
+def get_all_comments(request, heritage_id):
+    comments = Comment.objects.all().filter(heritage=heritage_id)
+
+    data = []
+    for comment in comments:
+        serializer = CommentSerializer(comment)
+        data.append(serializer.data)
+
+    return Response(data, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+@permission_classes((AllowAny, ))
+def get_all_tags(request, heritage_id):
+    tags = Tag.objects.filter(heritage_id=heritage_id)
+
+    data = []
+    for tag in tags:
+        serializer = TagSerializer(tag)
+        data.append(serializer.data)
+
+    return Response(data, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+@permission_classes((AllowAny, ))
+def heritage_get_first(request):
     try:
-        serializer = HeritageSerializer(Heritage.objects.all(), many=True)
+        heritage = Heritage.objects.first()
+        # print(heritage.creator)
+        serializer = HeritageSerializer(heritage)
         return Response(serializer.data)
     except Heritage.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)

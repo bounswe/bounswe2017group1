@@ -90,7 +90,11 @@ delete user token from database
         
         
         
-    204 No Content
+    401 Unauthorized
+    
+      {
+        "detail": "Invalid token."
+      }
 
 ***
 
@@ -159,6 +163,12 @@ Create new heritage item
     400 Bad Request
 
       { field: [error] }
+      
+      
+      
+    401 Unauthorized
+    
+      { "detail": [error] }  
 
 ***
 
@@ -266,6 +276,10 @@ update the heritage item which is indicated by id
     
 
     404 Not Found
+    
+    
+    
+    412 Precondition Failed
 
 ***
 
@@ -369,6 +383,12 @@ Create new comment
     400 Bad Request
 
       { field: [error] }
+      
+      
+      
+    401 Unauthorized
+    
+      { "detail": [error] } 
 
 ***
 
@@ -391,45 +411,6 @@ get the comment by id
           "parent_comment": Integer
       }
 
-        
-
-
-    404 Not Found
-
-***
-
-### /comments/{id}
-##### PUT
-update the comment that is indicated by id
-
-  **Request**
-
-    {
-        "text": String, (required)
-        "heritage": Integer, (required)
-        "parent_comment": Integer (optional)
-    }
-    
-
-  **Response**
-
-    200 OK
-
-      {
-          "id": Integer,
-          "text": String,
-          "creation_date": DateTime,
-          "update_date": DateTime,
-          "heritage": Integer,
-          "creator": Integer,
-          "parent_comment": Integer
-      }
-
-        
-        
-    400 Bad Request
-
-      { field: [error] }
         
 
 
@@ -487,6 +468,12 @@ Create new vote
     400 Bad Request
 
       { field: [error] }
+      
+      
+    
+    401 Unauthorized
+    
+      { "detail": [error] } 
 
 ***
 
