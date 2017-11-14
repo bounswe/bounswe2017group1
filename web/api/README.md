@@ -172,7 +172,7 @@ Create new heritage item
 
 ***
 
-### /items/all
+### /items/
 ##### GET
 get all heritage items
 
