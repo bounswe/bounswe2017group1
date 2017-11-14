@@ -7,11 +7,9 @@ from api.model.heritage import Heritage
 from api.serializer.tag import TagSerializer
 from api.serializer.heritage import HeritageSerializer
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated
-from django.views.decorators.csrf import csrf_exempt
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, AllowAny
 
 
-@csrf_exempt
 @api_view(['POST'])
 @permission_classes((IsAuthenticated,))
 def add_tag_to_existed_heritage_item(request):
@@ -34,6 +32,7 @@ def add_tag_to_existed_heritage_item(request):
 
 
 @api_view(['GET'])
+@permission_classes((AllowAny, ))
 def list_all_tags(request):
     try:
         serializer = TagSerializer(Tag.objects.all(), many=True)
@@ -43,10 +42,10 @@ def list_all_tags(request):
 
 
 @api_view(['GET'])
+@permission_classes((AllowAny, ))
 def get_all_heritage_items_own_this_tag(request, tag_id):
     try:
-        tag = Tag.objects.get(id=tag_id)
-        heritage = Heritage.objects.get(tags__id=tag)
+        heritage = Heritage.objects.get(tags__id=tag_id)
         serializer = HeritageSerializer(heritage)
         return Response(serializer.data, status=status.HTTP_200_OK)
     except Heritage.DoesNotExist:

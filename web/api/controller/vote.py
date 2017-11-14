@@ -9,7 +9,6 @@ from rest_framework.permissions import IsAuthenticated
 from django.views.decorators.csrf import csrf_exempt
 
 
-@csrf_exempt
 @api_view(['POST'])
 @permission_classes((IsAuthenticated,))
 def vote_post(request):

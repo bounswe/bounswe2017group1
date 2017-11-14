@@ -12,7 +12,7 @@ urlpatterns = [
     url(r'^users/signin/?$', user.signin),
     url(r'^users/signout/?$', user.signout),
     url(r'^users/?$', user.users),
-    #url(r'^users/login_req/?$', user.login_required),
+    url(r'^users/login_req/?$', user.login_required),
 
 
     # ITEM ROUTES
@@ -34,7 +34,7 @@ urlpatterns = [
 
     # PROFILE ROUTES
     url(r'^profiles/?$', profile.profile_get_all),
-    url(r'^profiles/(?P<pk>[0-9]+)/?$', profile.profile_get),
+    url(r'^profiles/(?P<user_id>[0-9]+)/?$', profile.profile_get),
 
 
     # TAG ROUTES

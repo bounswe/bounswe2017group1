@@ -6,7 +6,7 @@ from django.utils.datastructures import MultiValueDictKeyError
 
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
 from api.serializer.user import UserSerializer
@@ -17,8 +17,8 @@ from api.service import user as UserService
 from django.views.decorators.csrf import csrf_exempt
 
 
-@csrf_exempt
 @api_view(['POST'])
+@permission_classes((AllowAny,))
 def signup(request):
     """
     Create user and return
@@ -45,8 +45,8 @@ def signup(request):
         return Response(user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@csrf_exempt
 @api_view(['POST'])
+@permission_classes((AllowAny,))
 def signin(request):
     """
     authenticate user with email and password, return token
@@ -67,20 +67,18 @@ def signin(request):
     return Response({'error': 'username and password fields are required'}, status=status.HTTP_400_BAD_REQUEST)
 
 
-@csrf_exempt
 @api_view(['GET', 'POST'])
-@permission_classes((IsAuthenticated,))
+@permission_classes((IsAuthenticated, ))
 def signout(request):
     """
     delete user token from database
     """
-    if request.user.is_authenticated:
-        UserService.deleteToken(request.user)
-        return Response(status=status.HTTP_200_OK)
-    return HttpResponse(status=status.HTTP_204_NO_CONTENT)
+    UserService.deleteToken(request.user)
+    return Response(status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
+@permission_classes((AllowAny, ))
 def users(request):
     """
     retrieve all users
@@ -92,13 +90,10 @@ def users(request):
         return Response(status=status.HTTP_404_NOT_FOUND)
 
 
-
 @api_view(['GET', 'POST'])
-@permission_classes((IsAuthenticated,))
+@permission_classes((IsAuthenticated, ))
 def login_required(req):
-    if (req.user.is_authenticated):
-        data = {
-            "username": req.user.username
-        }
-        return Response(data, status=status.HTTP_200_OK)
-    return Response(status=status.HTTP_400_BAD_REQUEST)
+    data = {
+        "username": req.user.username
+    }
+    return Response(data, status=status.HTTP_200_OK)
