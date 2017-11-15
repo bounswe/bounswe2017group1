@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         final TextView username_text = (TextView) findViewById(R.id.username);
         final Button logout = (Button) findViewById(R.id.btn_logout);
+        final Button itemCreate = (Button) findViewById(R.id.item_create_btn);
 
         final SharedPreferences sharedPref = getSharedPreferences("TOKENSHARED", Context.MODE_PRIVATE);
         final SharedPreferences.Editor editor = sharedPref.edit();
@@ -40,6 +41,14 @@ public class MainActivity extends AppCompatActivity {
         String  username = sharedPref.getString("USERNAME", null);
         String  email = sharedPref.getString("EMAIL", null);
         int  id = sharedPref.getInt("ID", -1);
+
+        itemCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                startActivity(new Intent(getApplicationContext(), ItemCreateActivity.class));
+            }
+        });
 
         logout.setOnClickListener(new View.OnClickListener() {
             @Override

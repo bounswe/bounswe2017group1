@@ -42,6 +42,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name="com.boungroup1.androidculturemania.ItemCreateActivity" >
+            <intent-filter>
+                <action android:name="android.intent.action.ITEMCREATE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-#Sat Nov 11 23:55:49 EET 2017
+#Wed Nov 15 15:21:53 EET 2017
 base.0=C\:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
 renamed.0=classes.dex
 file.0=C\:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex

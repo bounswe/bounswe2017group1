@@ -240,6 +240,10 @@
         "source": "C:\\Users\\user\\.android\\build-cache\\3bd0e1888cd861c6cfa803e831983ba297b3d732\\output\\res\\layout\\design_navigation_item_separator.xml"
     },
     {
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_item_create.xml",
+        "source": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\src\\main\\res\\layout\\activity_item_create.xml"
+    },
+    {
         "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
         "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
     },
