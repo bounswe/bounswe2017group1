@@ -5,12 +5,17 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -47,9 +52,25 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<List<JsonResponseHeritage>> call, Response<List<JsonResponseHeritage>> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "SUCCESS", Toast.LENGTH_SHORT).show();
-                    for(JsonResponseHeritage h:response.body()){
-                        Log.d("deneme",String.valueOf(h.getTitle()));
-                    }
+
+                    //--
+                    //--
+                    final RecyclerView heritageView = (RecyclerView) findViewById(R.id.heritage_recycler_view);
+                    final HeritageAdapter sAdapter = new HeritageAdapter((ArrayList<JsonResponseHeritage>) response.body());
+
+                    RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+
+
+
+                    heritageView.setLayoutManager(mLayoutManager);
+                    heritageView.setItemAnimator(new DefaultItemAnimator());
+                    heritageView.setAdapter(sAdapter);
+                    DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(heritageView.getContext(),1);
+                    heritageView.addItemDecoration(dividerItemDecoration);
+                    sAdapter.notifyDataSetChanged();
+
+                    //--
+                    //--
                 } else {
                     Toast.makeText(getApplicationContext(), "Sorry for inconvince server is down" + response.code(), Toast.LENGTH_SHORT).show();
                 }

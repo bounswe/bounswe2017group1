@@ -24,6 +24,10 @@
         "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/notification_action.xml"
     },
     {
+        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/heritage_view.xml",
+        "source": "/Users/tahabayi/bounswe2017group1/android/app/src/main/res/layout/heritage_view.xml"
+    },
+    {
         "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/select_dialog_singlechoice_material.xml",
         "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/select_dialog_singlechoice_material.xml"
     },
