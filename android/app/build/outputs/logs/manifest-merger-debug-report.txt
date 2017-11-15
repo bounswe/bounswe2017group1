@@ -42,7 +42,7 @@ MERGED from [com.android.support:support-compat:25.3.1] /Users/tahabayi/.android
 	android:icon
 		ADDED from /Users/tahabayi/bounswe2017group1/android/app/src/main/AndroidManifest.xml:7:9-43
 	android:theme
-		ADDED from /Users/tahabayi/bounswe2017group1/android/app/src/main/AndroidManifest.xml:11:9-40
+		ADDED from /Users/tahabayi/bounswe2017group1/android/app/src/main/AndroidManifest.xml:11:9-65
 activity#com.boungroup1.androidculturemania.MainActivity
 ADDED from /Users/tahabayi/bounswe2017group1/android/app/src/main/AndroidManifest.xml:12:9-18:20
 	android:name

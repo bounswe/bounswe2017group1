@@ -9,8 +9,13 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.List;
 
 import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import retrofit2.Retrofit;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,6 +36,37 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        Retrofit retrofit = ApiClient.getApiClient();
+        ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+
+        Call<List<JsonResponseHeritage>> call = apiInterface.listHeritage();
+
+        call.enqueue(new Callback<List<JsonResponseHeritage>>() {
+            @Override
+            public void onResponse(Call<List<JsonResponseHeritage>> call, Response<List<JsonResponseHeritage>> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(getApplicationContext(), "SUCCESS", Toast.LENGTH_SHORT).show();
+                    for(JsonResponseHeritage h:response.body()){
+                        Log.d("deneme",String.valueOf(h.getTitle()));
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "Sorry for inconvince server is down" + response.code(), Toast.LENGTH_SHORT).show();
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<JsonResponseHeritage>> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), t.getCause().toString(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+
+
+
         //final TextView username_text = (TextView) findViewById(R.id.username);
         final Button logout = (Button) findViewById(R.id.btn_logout);
 
