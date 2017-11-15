@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        final TextView username_text = (TextView) findViewById(R.id.username);
+        //final TextView username_text = (TextView) findViewById(R.id.username);
         final Button logout = (Button) findViewById(R.id.btn_logout);
 
         final SharedPreferences sharedPref = getSharedPreferences("TOKENSHARED", Context.MODE_PRIVATE);
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        username_text.setText("Welcome " + username + " " + email + " Token = " + token + "ID = " + id );
+        //username_text.setText("Welcome " + username + " " + email + " Token = " + token + "ID = " + id );
 
     }
 }

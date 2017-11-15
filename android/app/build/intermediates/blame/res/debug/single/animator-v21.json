@@ -1,10 +1,6 @@
 [
     {
-        "merged": "C:\\mehmetsefa\\Dersler\\CMPE451\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\animator-v21\\design_appbar_state_list_animator.xml",
-        "source": "C:\\Users\\user\\.android\\build-cache\\3bd0e1888cd861c6cfa803e831983ba297b3d732\\output\\res\\animator-v21\\design_appbar_state_list_animator.xml"
-    },
-    {
-        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\animator-v21\\design_appbar_state_list_animator.xml",
-        "source": "C:\\Users\\user\\.android\\build-cache\\3bd0e1888cd861c6cfa803e831983ba297b3d732\\output\\res\\animator-v21\\design_appbar_state_list_animator.xml"
+        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/animator-v21/design_appbar_state_list_animator.xml",
+        "source": "/Users/tahabayi/.android/build-cache/a85eefc50f3d213c6d0c922f4f92c0d78afca150/output/res/animator-v21/design_appbar_state_list_animator.xml"
     }
 ]
