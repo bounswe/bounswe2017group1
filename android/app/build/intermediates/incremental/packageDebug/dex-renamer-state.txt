@@ -1,4 +1,4 @@
-#Thu Nov 16 02:22:35 EET 2017
+#Thu Nov 16 15:35:39 EET 2017
 base.0=/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_329bba0da2b7fd92ec427099069a649c912fecdd
 renamed.1=classes2.dex
 renamed.0=classes.dex

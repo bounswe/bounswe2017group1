@@ -65,8 +65,6 @@ public class MainActivity extends AppCompatActivity {
                     heritageView.setLayoutManager(mLayoutManager);
                     heritageView.setItemAnimator(new DefaultItemAnimator());
                     heritageView.setAdapter(sAdapter);
-                    DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(heritageView.getContext(),1);
-                    heritageView.addItemDecoration(dividerItemDecoration);
                     sAdapter.notifyDataSetChanged();
 
                     //--

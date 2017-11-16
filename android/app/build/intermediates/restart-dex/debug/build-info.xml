@@ -6,7 +6,7 @@
     density="xxhdpi"
     format="10"
     plugin-version="2.3.3"
-    timestamp="1510788153364"
+    timestamp="1510835736898"
     token="-4645404816646185739"
     verifier="COLD_SWAP_REQUESTED" >
 
@@ -29,20 +29,26 @@
 
     <build
         build-mode="FULL"
-        timestamp="1510787196597"
+        timestamp="1510832809792"
         verifier="FULL_BUILD_REQUESTED" >
         <artifact
-            location="/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
+            location="/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
             type="SPLIT" />
         <artifact
             location="/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
             type="SPLIT" />
         <artifact
+            location="/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
+            type="SPLIT" />
+        <artifact
+            location="/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
+            type="SPLIT" />
+        <artifact
             location="/Users/tahabayi/bounswe2017group1/android/app/build/outputs/apk/app-debug.apk"
             type="SPLIT_MAIN" />
-        <artifact
-            location="/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/split-apk/debug/slices/slice_8.apk"
-            type="SPLIT" />
         <artifact
             location="/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/split-apk/debug/slices/slice_3.apk"
             type="SPLIT" />
@@ -61,16 +67,10 @@
         <artifact
             location="/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/split-apk/debug/slices/slice_5.apk"
             type="SPLIT" />
-        <artifact
-            location="/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/split-apk/debug/dep/dependencies.apk"
-            type="SPLIT" />
-        <artifact
-            location="/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/split-apk/debug/slices/slice_1.apk"
-            type="SPLIT" />
     </build>
     <build
         build-mode="COLD"
-        timestamp="1510787494050"
+        timestamp="1510834671146"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/split-apk/debug/slices/slice_4.apk"
@@ -78,7 +78,7 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1510787694512"
+        timestamp="1510834864698"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/split-apk/debug/slices/slice_7.apk"
@@ -86,7 +86,7 @@
     </build>
     <build
         build-mode="COLD"
-        timestamp="1510788153364"
+        timestamp="1510835736898"
         verifier="COLD_SWAP_REQUESTED" >
         <artifact
             location="/Users/tahabayi/bounswe2017group1/android/app/build/outputs/apk/app-debug.apk"

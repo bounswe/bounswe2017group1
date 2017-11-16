@@ -20,12 +20,14 @@ public class HeritageAdapter extends RecyclerView.Adapter<HeritageAdapter.MyView
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView location, description;
+        private TextView title, description, location, creator ;
 
         public MyViewHolder(View view) {
             super(view);
-            location = (TextView) view.findViewById(R.id.heritage_location_text);
+            title = (TextView) view.findViewById(R.id.heritage_title_text);
             description = (TextView) view.findViewById(R.id.heritage_description_text);
+            location = (TextView) view.findViewById(R.id.heritage_location_text);
+            creator = (TextView) view.findViewById(R.id.heritage_creator_text);
         }
     }
 
@@ -46,16 +48,15 @@ public class HeritageAdapter extends RecyclerView.Adapter<HeritageAdapter.MyView
     public void onBindViewHolder(MyViewHolder holder, int position) {
 
         final JsonResponseHeritage heritageItem = heritageList.get(position);
-        holder.location.setText(heritageItem.getLocation());
+        holder.title.setText(heritageItem.getTitle());
         holder.description.setText(heritageItem.getDescription());
+        holder.location.setText(heritageItem.getLocation());
+        holder.creator.setText("By " + heritageItem.getCreator());
     }
 
     @Override
     public int getItemCount() {
         return heritageList.size();
     }
-
-
-
 
 }

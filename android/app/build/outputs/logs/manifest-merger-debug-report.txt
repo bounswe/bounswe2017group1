@@ -31,6 +31,7 @@ MERGED from [com.android.support:support-media-compat:25.3.1] /Users/tahabayi/.a
 MERGED from [com.android.support:support-core-ui:25.3.1] /Users/tahabayi/.android/build-cache/3da1f3d2c05daa7eafe3d5deb0c3767aaae574ed/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-core-utils:25.3.1] /Users/tahabayi/.android/build-cache/add975f7ec8a9cbb3c485b51bffcdd1675975acd/output/AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-compat:25.3.1] /Users/tahabayi/.android/build-cache/af8937d927670770077f7fdfd2c8ccfc5764f989/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:cardview-v7:25.3.1] /Users/tahabayi/.android/build-cache/fe5fb37811e93f62a2f7c42ca135e65235ef37fb/output/AndroidManifest.xml:26:5-20
 	android:label
 		ADDED from /Users/tahabayi/bounswe2017group1/android/app/src/main/AndroidManifest.xml:8:9-41
 	android:supportsRtl
@@ -96,6 +97,7 @@ MERGED from [com.android.support:support-media-compat:25.3.1] /Users/tahabayi/.a
 MERGED from [com.android.support:support-core-ui:25.3.1] /Users/tahabayi/.android/build-cache/3da1f3d2c05daa7eafe3d5deb0c3767aaae574ed/output/AndroidManifest.xml:21:5-23:58
 MERGED from [com.android.support:support-core-utils:25.3.1] /Users/tahabayi/.android/build-cache/add975f7ec8a9cbb3c485b51bffcdd1675975acd/output/AndroidManifest.xml:21:5-23:61
 MERGED from [com.android.support:support-compat:25.3.1] /Users/tahabayi/.android/build-cache/af8937d927670770077f7fdfd2c8ccfc5764f989/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:cardview-v7:25.3.1] /Users/tahabayi/.android/build-cache/fe5fb37811e93f62a2f7c42ca135e65235ef37fb/output/AndroidManifest.xml:20:5-43
 	tools:overrideLibrary
 		ADDED from [com.android.support:design:25.3.1] /Users/tahabayi/.android/build-cache/a85eefc50f3d213c6d0c922f4f92c0d78afca150/output/AndroidManifest.xml:23:9-59
 	android:targetSdkVersion
@@ -117,6 +119,7 @@ MERGED from [com.android.support:support-media-compat:25.3.1] /Users/tahabayi/.a
 MERGED from [com.android.support:support-core-ui:25.3.1] /Users/tahabayi/.android/build-cache/3da1f3d2c05daa7eafe3d5deb0c3767aaae574ed/output/AndroidManifest.xml:25:5-27:34
 MERGED from [com.android.support:support-core-utils:25.3.1] /Users/tahabayi/.android/build-cache/add975f7ec8a9cbb3c485b51bffcdd1675975acd/output/AndroidManifest.xml:25:5-27:34
 MERGED from [com.android.support:support-compat:25.3.1] /Users/tahabayi/.android/build-cache/af8937d927670770077f7fdfd2c8ccfc5764f989/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:cardview-v7:25.3.1] /Users/tahabayi/.android/build-cache/fe5fb37811e93f62a2f7c42ca135e65235ef37fb/output/AndroidManifest.xml:22:5-24:34
 	android:value
 		ADDED from [com.android.support:design:25.3.1] /Users/tahabayi/.android/build-cache/a85eefc50f3d213c6d0c922f4f92c0d78afca150/output/AndroidManifest.xml:27:9-31
 	android:name
