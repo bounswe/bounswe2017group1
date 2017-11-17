@@ -46,26 +46,41 @@ public class MainActivity extends AppCompatActivity {
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
 
         Call<List<JsonResponseHeritage>> call = apiInterface.listHeritage();
-
         call.enqueue(new Callback<List<JsonResponseHeritage>>() {
             @Override
             public void onResponse(Call<List<JsonResponseHeritage>> call, Response<List<JsonResponseHeritage>> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(getApplicationContext(), "SUCCESS", Toast.LENGTH_SHORT).show();
-
+                    //Toast.makeText(getApplicationContext(), "SUCCESS", Toast.LENGTH_SHORT).show();
                     //--
                     //--
-                    final RecyclerView heritageView = (RecyclerView) findViewById(R.id.heritage_recycler_view);
-                    final HeritageAdapter sAdapter = new HeritageAdapter((ArrayList<JsonResponseHeritage>) response.body());
+                    final RecyclerView heritageRecyclerView = (RecyclerView) findViewById(R.id.heritage_recycler_view);
+                    final ArrayList<JsonResponseHeritage> heritageList = (ArrayList<JsonResponseHeritage>) response.body();
+                    final HeritageAdapter sAdapter = new HeritageAdapter(heritageList);
 
                     RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-
-
-
-                    heritageView.setLayoutManager(mLayoutManager);
-                    heritageView.setItemAnimator(new DefaultItemAnimator());
-                    heritageView.setAdapter(sAdapter);
+                    heritageRecyclerView.setLayoutManager(mLayoutManager);
+                    heritageRecyclerView.setItemAnimator(new DefaultItemAnimator());
+                    heritageRecyclerView.setAdapter(sAdapter);
                     sAdapter.notifyDataSetChanged();
+                    heritageRecyclerView.addOnItemTouchListener(new HeritageRecyclerTouchListener(getApplicationContext(), heritageRecyclerView, new HeritageRecyclerTouchListener.ClickListener() {
+                        @Override
+                        public void onClick(View view, int position) {
+                            JsonResponseHeritage heritage = heritageList.get(position);
+                            // TODO remove this after debugging
+                            Toast.makeText(getApplicationContext(), heritage.getDescription() , Toast.LENGTH_LONG).show();
+                            // TODO edit main activity to heritage detail activity
+                            /*
+                            int heritageId= heritage.getId();
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            intent.putExtra("heritageId",heritageId);
+                            startActivity(intent);
+                            */
+                        }
+
+                        @Override
+                        public void onLongClick(View view, int position) {
+                        }
+                    }));
 
                     //--
                     //--
@@ -80,10 +95,6 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), t.getCause().toString(), Toast.LENGTH_SHORT).show();
             }
         });
-
-
-
-
 
 
         //final TextView username_text = (TextView) findViewById(R.id.username);
