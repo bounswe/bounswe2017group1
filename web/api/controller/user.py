@@ -5,42 +5,38 @@ from django.http import HttpResponse
 from django.utils.datastructures import MultiValueDictKeyError
 
 from rest_framework import status
-from rest_framework.decorators import api_view
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.response import Response
 
+from api.serializer.user import UserSerializer
+from api.serializer.profile import ProfileSerializer
 
-
-from ..serializer.user import  UserSerializer
-from ..serializer.profile import  ProfileSerializer
-
-from ..service import user as UserService
+from api.service import user as UserService
 
 from django.views.decorators.csrf import csrf_exempt
 
-@csrf_exempt
+
 @api_view(['POST'])
+@permission_classes((AllowAny,))
 def signup(request):
     """
     Create user and return
     """
     user_serializer = UserSerializer(data=request.data)
     if user_serializer.is_valid():
-        user_id = user_serializer.save().id
-        user = authenticate(
-            request,
-            username=user_serializer.validated_data['username'],
-            password=user_serializer.validated_data['password']
-        )
-        token = UserService.refreshToken(user)
+        user = user_serializer.save()
 
-        request.data['user'] = user_id
+        request.data['user'] = user.id
+        request.data['username'] = user.username
+
         profile_serializer = ProfileSerializer(data=request.data)
         if profile_serializer.is_valid():
             profile_serializer.save()
             data = {
                 "user": user_serializer.data,
-                "profile": profile_serializer.data,
-                "token": token.key
+                "profile": profile_serializer.data
+                # "token": token.key
             }
             return Response(data, status=status.HTTP_201_CREATED)
         else:
@@ -48,60 +44,56 @@ def signup(request):
     else:
         return Response(user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@csrf_exempt
+
 @api_view(['POST'])
+@permission_classes((AllowAny,))
 def signin(request):
     """
     authenticate user with email and password, return token
     """
-
-    #print request.data
-
-    serializer = UserSerializer(data=request.data)
-
-    #serializer.is_valid()
-
-    if serializer.is_valid():
-
-        #print serializer.validated_data['password']
+    if request.data['username'] and request.data['password']:
 
         user = authenticate(
             request,
-            username=serializer.validated_data['username'],
-            password=serializer.validated_data['password']
+            username=request.data['username'],
+            password=request.data['password']
         )
 
         if user is not None:
             token = UserService.refreshToken(user)
             return Response({'token': token.key}, status=status.HTTP_200_OK)
+        return Response({'error': 'user or password is wrong'}, status=status.HTTP_400_BAD_REQUEST)
 
-    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    return Response({'error': 'username and password fields are required'}, status=status.HTTP_400_BAD_REQUEST)
 
-@csrf_exempt
+
 @api_view(['GET', 'POST'])
+@permission_classes((IsAuthenticated, ))
 def signout(request):
     """
     delete user token from database
     """
-    if request.user:
-        UserService.deleteToken(request.user)
-        return Response(status=status.HTTP_200_OK)
-    return HttpResponse(status=status.HTTP_204_NO_CONTENT)
+    UserService.deleteToken(request.user)
+    return Response(status=status.HTTP_200_OK)
+
 
 @api_view(['GET'])
+@permission_classes((AllowAny, ))
 def users(request):
     """
     retrieve all users
     """
-    users = User.objects.all()
-    serializer = UserSerializer(users, many=True)
-    return Response(serializer.data)
+    try:
+        serializer = UserSerializer(User.objects.all(), many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    except User.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
 
-@api_view(['GET','POST'])
+
+@api_view(['GET', 'POST'])
+@permission_classes((IsAuthenticated, ))
 def login_required(req):
-    if(req.user.is_authenticated()):
-        data = {
-            "username": req.user.username
-        }
-        return Response(data, status=status.HTTP_200_OK)
-    return Response(status=status.HTTP_400_BAD_REQUEST)
+    data = {
+        "username": req.user.username
+    }
+    return Response(data, status=status.HTTP_200_OK)

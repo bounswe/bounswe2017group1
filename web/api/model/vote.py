@@ -14,4 +14,3 @@ class Vote(models.Model):
 
     class Meta:
         unique_together = ('voter', 'heritage')
-
