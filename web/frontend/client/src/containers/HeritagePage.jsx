@@ -13,13 +13,16 @@ class HeritagePage extends React.Component {
 	    super(props, context);
 
 	    this.state = {
-	      
-    		title: "Basri Title",
-    		description: "desc deneme",
-    		creation_date: "2017-10-25T19:01:46Z",
-    		event_date: "2017-10-25T19:01:48Z",
-    		location: "istanbul",
-    		creator: 1
+	      heritage:{
+          title: "Basri Title",
+          description: "desc deneme",
+          creation_date: "2017-10-25T19:01:46Z",
+          event_date: "2017-10-25T19:01:48Z",
+          location: "istanbul",
+          creator: 1,
+          tags: []  
+        },
+        comments:[]
 	    };
   }
 
@@ -35,8 +38,28 @@ class HeritagePage extends React.Component {
     }).then(response=>{
       if(response.ok){
         response.json().then(res=>{
-          this.setState(res);
-          console.log(res);
+          this.setState({heritage: res});
+        });
+
+      } else {
+        // failure
+        errors.summary = 'please check form';
+        this.setState({
+          errors
+        });
+      }
+    });
+    fetch(baseUrl+'/api/items/'+this.props.match.params.heritageId+'/comments',{
+      method: "GET",
+      headers: {
+        "Access-Control-Allow-Origin" : "*",
+        "Content-Type": "application/json"
+      },
+      credentials: "same-origin"
+    }).then(response=>{
+      if(response.ok){
+        response.json().then(res=>{
+          this.setState({comments: res});
         });
 
       } else {
@@ -59,7 +82,7 @@ class HeritagePage extends React.Component {
   		<div className="row ">
 
           <div className="col-md-2 text-center">
-          	<h2 className="my-4">{this.state.title}</h2>
+          	<h2 className="my-4">{this.state.heritage.title}</h2>
       			<button type="button" className="btn btn-success">Add Annotation</button>
             <div className="list-group">
         			<a href="#" className="list-group-item glyphicon glyphicon-chevron-up"></a>
@@ -73,7 +96,15 @@ class HeritagePage extends React.Component {
               <img className="card-img-top img-fluid" src="http://placehold.it/900x400" alt=""/>
               <div className="card-body">
               <br/>
-                <p className="card-text">{this.state.description}</p>
+                <p className="card-text">{this.state.heritage.description}</p>
+                <h3>
+                  {this.state.heritage.tags.map((tag, index)=>(
+                    <div className="d-inline"  style={{ paddingRight: '10px'}}>
+                      <span className="label label-info">{tag.name}</span>
+                    </div>
+                    
+                  ))}        
+                </h3>
               </div>
             </div>
 
@@ -82,18 +113,27 @@ class HeritagePage extends React.Component {
               <div className="card-header">
                 <h3 className="my-4">Comments</h3>
               </div>
-              <div className="card-body">
-                <p>This was so helpful. Thanks to you I got a chance to visit this awasome place! 10/10 would go again</p>
-                <small className="text-muted">Posted by AhmetNecdetSezer	 on 3/10/17</small>
-                <hr/>
-                <p>Good job my friend.</p>
-                <small className="text-muted">Posted by friendlyGuy on 12/9/17</small>
-                <hr/>
-                <p>Another way to advertise. Dont do it to this friendly awasome perfect website</p>
-                <small className="text-muted">Posted by RagingRyan on 3/11/17</small>
-                <hr/>
-                <a href="#" className="btn btn-success">Leave a Review</a>
-              </div>
+              {this.state.comments.map((comment, index)=>{
+                if (comment.parent_comment == null) { 
+                  return(
+                    <div className="card-body">
+                      <button type="button" className="btn btn-success pull-right">Add Annotation</button>
+                      <p>{comment.text}</p>
+                      <small className="text-muted">Posted by {comment.creator} on {comment.creation_date.substring(0,10)}</small>
+
+                      <hr/>
+                    </div>  
+                  );
+                }else{
+                  return(
+                    <div className="card-body" style={{ marginLeft: '40px'}}>
+                      <p>{comment.text}</p>
+                      <small className="text-muted">Posted by {comment.creator} on {comment.creation_date.substring(0,10)}</small>
+                      <hr/>
+                    </div>  
+                  ); 
+                }
+              })}
             </div>
 
           </div>
