@@ -1,4 +1,4 @@
-#Thu Nov 16 02:11:40 EET 2017
+#Thu Nov 16 15:17:55 EET 2017
 base.0=/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4
 renamed.0=classes.dex
 file.0=/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/transforms/dex/debug/folders/1000/5/slice_4/classes.dex
