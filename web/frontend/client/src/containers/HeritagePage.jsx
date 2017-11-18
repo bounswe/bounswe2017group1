@@ -21,7 +21,7 @@ class HeritagePage extends React.Component {
 
   componentDidMount(){
     console.log(this.props.match.params.heritageId);
-    fetch('http://localhost:8000/api/items/'+this.props.match.params.heritageId,{
+    fetch('http://ec2-18-196-2-56.eu-central-1.compute.amazonaws.com/api/items/'+this.props.match.params.heritageId,{
       method: "GET",
       headers: {
         "Access-Control-Allow-Origin" : "*",

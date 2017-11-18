@@ -28,7 +28,8 @@ class LoginPage extends React.Component {
       errors: {},
       successMessage,
       user: {
-        email: '',
+        username:'',
+        //email: '',
         password: ''
       },
       redirect: false
@@ -48,11 +49,13 @@ class LoginPage extends React.Component {
     event.preventDefault();
 
     // create a string for an HTTP body message
-    const username = this.state.user.email;
+    const username = this.state.user.username;
+    //const email = this.state.user.email;
     const password = this.state.user.password;
-    const data = { username, password };
 
-    fetch('http://localhost:8000/api/users/signin',{
+    const data = {username, password};
+
+    fetch('http://ec2-18-196-2-56.eu-central-1.compute.amazonaws.com/api/users/signin',{
       method: "POST",
       body: JSON.stringify(data),
       headers: {
