@@ -115,7 +115,7 @@ class HeritageAddPage extends React.Component {
   render() {
     return (
       <div>
-        <TopBar auth={false}/>
+        <TopBar auth={Auth.isUserAuthenticated()}/>
         
         <HeritageAdd
           onSubmit={this.processForm}
