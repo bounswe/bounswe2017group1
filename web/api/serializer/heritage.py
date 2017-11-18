@@ -21,7 +21,7 @@ class HeritageSerializer(serializers.ModelSerializer):
     # votes = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     # Heritage item may not have a tag or have one or more than one tag.
     tags = TagSerializer(required=False, many=True)
-    creator_dict = ProfileSerializer(required=False)
+    creator_username = serializers.SerializerMethodField()
 
     class Meta:
         model = Heritage
@@ -30,7 +30,6 @@ class HeritageSerializer(serializers.ModelSerializer):
 
     # When creating heritage item, you need to add tags.
     # When adding "tags", this function is needed.
-
     def create(self, validated_data):
         tags_data = validated_data.pop('tags')
         heritage = Heritage.objects.create(**validated_data)
@@ -119,6 +118,9 @@ class HeritageSerializer(serializers.ModelSerializer):
             if requester_id == obj.creator.pk:
                 return True
         return False
+
+    def get_creator_username(self,obj):
+        return obj.creator.username
 
 
 
