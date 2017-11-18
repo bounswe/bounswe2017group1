@@ -18,17 +18,18 @@ def consecutive_subsequences(iterable):
     return ret
 
 
-@api_view(['GET'])
+@api_view(['POST'])
 @permission_classes((AllowAny, ))
-def basic_search(request):
-    query_words = request.GET.get('query').split(' ')
+def search(request):
+    query_words = request.data('query').split(' ')
+    filters = request.data('filters', None)
     query_combinations = consecutive_subsequences(query_words)
 
     ll = {}
 
     for index in range(len(query_combinations)):
         #print search.get_items_by_tag(tag=query_combinations[index])
-        score_list = search.calculate_scores(query_combinations[index])
+        score_list = search.calculate_scores(query_combinations[index], filters)
 
         for iter in score_list:
             if iter[0] in ll.keys():
@@ -48,9 +49,3 @@ def basic_search(request):
 
     return Response(response, status=status.HTTP_200_OK)
 
-
-@api_view(['GET'])
-@permission_classes((AllowAny, ))
-def advanced_search(request):
-    print request.data
-    return Response(status=status.HTTP_200_OK)

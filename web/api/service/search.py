@@ -1,7 +1,8 @@
 from rest_framework import status
 from rest_framework.response import Response
 
-from api.models import Heritage
+from api.models import Heritage, Profile
+import datetime
 from api.serializer.heritage import HeritageSerializer
 
 from api.service import heritage
@@ -14,11 +15,30 @@ DESC_COEF = 3
 LOC_COEF = 3
 TAG_COEF = 5
 
-def calculate_scores(word):
+def calculate_scores(word, filters):
 
     scores = {}
 
     items = Heritage.objects.all()
+    if filters is not None:
+        if filters['location'] is not None:
+            items.filter(location__icontains=filters['location'])
+        if filters['creator'] is not None:
+            usr = Profile.objects.get(username=filters['creator'])
+            items.filter(creator=usr)
+        if filters['creation_start'] is not None and filters['creation_end'] is not None:
+            items.filter(creation_date__range=[filters['creation_start'], filters['creation_end']])
+        elif filters['creation_start'] is not None:
+            items.filter(creation_date__range=[filters['creation_start'], datetime.datetime.max])
+        elif filters['creation_end'] is not None:
+            items.filter(creation_date__range=[datetime.datetime.min, filters['creation_end']])
+
+        if filters['event_start'] is not None and filters['event_end'] is not None:
+            items.filter(event_date__range=[filters['event_start'], filters['event_end']])
+        elif filters['event_start'] is not None:
+            items.filter(creation_date__range=[filters['event_start'], datetime.datetime.max])
+        elif filters['event_end'] is not None:
+            items.filter(creation_date__range=[datetime.datetime.min, filters['event_end']])
 
     for item in items:
         score = 0

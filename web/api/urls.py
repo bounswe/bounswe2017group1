@@ -43,7 +43,7 @@ urlpatterns = [
 
 
     # SEARCH ROUTES
-    url(r'^search/basic/?$', search.basic_search),
+    url(r'^search/?$', search.search),
     #url(r'^search/advanced/?$', search.advanced_search),
 ]
 
