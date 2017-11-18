@@ -3,4 +3,4 @@
 *.pyc
 web/db.sqlite3
 web/frontend/client/dist/*
-web/frontend/npm-debug.log
+web/frontend/index.js
