@@ -5,7 +5,8 @@ from rest_framework.response import Response
 
 from api.models import Heritage
 from api.serializer.heritage import HeritageSerializer
-from api.service import search, heritage
+from api.service import heritage
+from api.service.search import calculate_scores
 
 def consecutive_subsequences(iterable):
 
@@ -21,15 +22,15 @@ def consecutive_subsequences(iterable):
 @api_view(['POST'])
 @permission_classes((AllowAny, ))
 def search(request):
-    query_words = request.data('query').split(' ')
-    filters = request.data('filters', None)
+    query_words = request.data['query'].split(' ')
+    filters = request.data.get('filters', None)
     query_combinations = consecutive_subsequences(query_words)
 
     ll = {}
 
     for index in range(len(query_combinations)):
         #print search.get_items_by_tag(tag=query_combinations[index])
-        score_list = search.calculate_scores(query_combinations[index], filters)
+        score_list = calculate_scores(query_combinations[index], filters)
 
         for iter in score_list:
             if iter[0] in ll.keys():

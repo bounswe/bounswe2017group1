@@ -16,29 +16,37 @@ LOC_COEF = 3
 TAG_COEF = 5
 
 def calculate_scores(word, filters):
-
     scores = {}
 
     items = Heritage.objects.all()
-    if filters is not None:
-        if filters['location'] is not None:
-            items.filter(location__icontains=filters['location'])
-        if filters['creator'] is not None:
-            usr = Profile.objects.get(username=filters['creator'])
-            items.filter(creator=usr)
-        if filters['creation_start'] is not None and filters['creation_end'] is not None:
-            items.filter(creation_date__range=[filters['creation_start'], filters['creation_end']])
-        elif filters['creation_start'] is not None:
-            items.filter(creation_date__range=[filters['creation_start'], datetime.datetime.max])
-        elif filters['creation_end'] is not None:
-            items.filter(creation_date__range=[datetime.datetime.min, filters['creation_end']])
 
-        if filters['event_start'] is not None and filters['event_end'] is not None:
-            items.filter(event_date__range=[filters['event_start'], filters['event_end']])
-        elif filters['event_start'] is not None:
-            items.filter(creation_date__range=[filters['event_start'], datetime.datetime.max])
-        elif filters['event_end'] is not None:
-            items.filter(creation_date__range=[datetime.datetime.min, filters['event_end']])
+    if filters is not None:
+        location = filters.get('location', None)
+        creator = filters.get('creator', None)
+        creation_start = filters.get('creation_start', None)
+        creation_end = filters.get('creation_end', None)
+        event_start = filters.get('event_start', None)
+        event_end = filters.get('event_end', None)
+
+        if location is not None:
+            items = items.filter(location__icontains=location)
+
+        if creator is not None:
+            items = items.filter(creator__username__iexact=creator)
+
+        if creation_start is not None and creation_end is not None:
+            items = items.filter(creation_date__range=[creation_start, creation_end])
+        elif creation_start is not None:
+            items = items.filter(creation_date__range=[creation_start, datetime.datetime.max])
+        elif creation_end is not None:
+            items = items.filter(creation_date__range=[datetime.datetime.min, creation_end])
+
+        if event_start is not None and event_end is not None:
+            items = items.filter(event_date__range=[event_start, event_end])
+        elif event_start is not None:
+            items = items.filter(creation_date__range=[event_start, datetime.datetime.max])
+        elif event_end is not None:
+            items = items.filter(creation_date__range=[datetime.datetime.min, event_end])
 
     for item in items:
         score = 0
