@@ -5,4 +5,4 @@ from rest_framework import serializers
 class ProfileSerializer(serializers.ModelSerializer):
     class Meta:
         model = Profile
-        fields = "__all__"
+        fields = ('id','username','location','gender','photo_path')

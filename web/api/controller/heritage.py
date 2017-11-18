@@ -19,23 +19,37 @@ from api.serializer.tag import TagSerializer
 
 from api.service.heritage import get_all_comments, get_all_tags
 
+
 @api_view(['GET', 'POST'])
 @permission_classes((IsAuthenticatedOrReadOnly, ))
 def heritage_get_post(request):
-
     if request.method == 'GET':
+
+        #if request.user.username:
+        #    print request.user.username
+
         try:
-            serializer = HeritageSerializer(Heritage.objects.all(), many=True)
+            context = {}
+            if request.user.username:
+                profile_id = Profile.objects.filter(username=request.user.username).first().pk
+                context['requester_profile_id'] = profile_id
+            serializer = HeritageSerializer(Heritage.objects.all(),context=context, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
+
         except Heritage.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
+
 
     elif request.method == 'POST' and request.user.is_authenticated:
 
         username = request.user.username
         request.data['creator'] = Profile.objects.filter(username=username).first().pk
+        context = {}
+        if request.user.username:
+            profile_id = Profile.objects.filter(username=request.user.username).first().pk
+            context['requester_profile_id'] = profile_id
 
-        serializer = HeritageSerializer(data=request.data)
+        serializer = HeritageSerializer(data=request.data,context=context)
 
         if serializer.is_valid():
             serializer.save()
@@ -48,12 +62,18 @@ def heritage_get_post(request):
 @permission_classes((IsAuthenticatedOrReadOnly, ))
 def heritage_get_put_delete(request, heritage_id):
     try:
+        context = {}
+        if request.user.username:
+            profile_id = Profile.objects.filter(username=request.user.username).first().pk
+            context['requester_profile_id'] = profile_id
         heritage = Heritage.objects.get(id=heritage_id)
+
     except Heritage.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
+
     if request.method == 'GET':
-        serializer = HeritageSerializer(heritage)
+        serializer = HeritageSerializer(heritage,context = context)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     elif request.method == 'PUT' and permission.isOwner(request, obj=heritage):
@@ -94,7 +114,6 @@ def get_all_comments(request, heritage_id):
 @permission_classes((AllowAny, ))
 def get_all_tags(request, heritage_id):
     tags = Tag.objects.filter(heritage_id=heritage_id)
-
     data = []
     for tag in tags:
         serializer = TagSerializer(tag)
@@ -102,14 +121,3 @@ def get_all_tags(request, heritage_id):
 
     return Response(data, status=status.HTTP_200_OK)
 
-
-@api_view(['GET'])
-@permission_classes((AllowAny, ))
-def heritage_get_first(request):
-    try:
-        heritage = Heritage.objects.first()
-        # print(heritage.creator)
-        serializer = HeritageSerializer(heritage)
-        return Response(serializer.data)
-    except Heritage.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
