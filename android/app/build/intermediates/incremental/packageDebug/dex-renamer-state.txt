@@ -1,7 +1,4 @@
-#Sat Nov 18 15:32:59 EET 2017
-base.0=/home/mustafa/bounswe2017group1/android/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_ea61b05bd5e29d6f0df2ddbfe9e3181630f0c838
-renamed.1=classes.dex
-renamed.0=classes2.dex
-file.1=/home/mustafa/bounswe2017group1/android/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_492c5ddfe542735b2f0e4ebd7b97cb1809e63023/classes.dex
-base.1=/home/mustafa/bounswe2017group1/android/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_492c5ddfe542735b2f0e4ebd7b97cb1809e63023
-file.0=/home/mustafa/bounswe2017group1/android/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_ea61b05bd5e29d6f0df2ddbfe9e3181630f0c838/classes.dex
+#Sat Nov 18 16:22:24 EET 2017
+base.0=/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
+renamed.0=classes.dex
+file.0=/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex
