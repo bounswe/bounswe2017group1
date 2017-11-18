@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { Card, CardTitle, CardHeader, CardText } from 'material-ui/Card';
+import { Card, CardTitle, CardHeader, CardText } from 'material-ui/Card'
 import TopBar from './TopBar.jsx'
 import Auth from '../../modules/Auth.js'
-import { Tabs, Tab } from 'material-ui/Tabs';
+import { Tabs, Tab } from 'material-ui/Tabs'
 import 'whatwg-fetch'
+import appConstants from '../../modules/appConstants.js'
 
+var baseUrl = appConstants.baseUrl;
 const HomePage = React.createClass ({
 	getInitialState: function() {
     return {
@@ -20,7 +22,7 @@ const HomePage = React.createClass ({
     });
 	},
 	componentDidMount(){
-		fetch('http://ec2-18-196-2-56.eu-central-1.compute.amazonaws.com/api/items',{
+		fetch(baseUrl+'/api/items',{
       method: "GET",
       headers: {
         "Access-Control-Allow-Origin" : "*",

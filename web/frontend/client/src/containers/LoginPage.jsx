@@ -6,7 +6,9 @@ import { Redirect } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 import TopBar from '../components/TopBar.jsx'
 import 'whatwg-fetch'
+import appConstants from '../../modules/appConstants.js'
 
+var baseUrl = appConstants.baseUrl;
 class LoginPage extends React.Component {
 
   /**
@@ -55,7 +57,7 @@ class LoginPage extends React.Component {
 
     const data = {username, password};
 
-    fetch('http://ec2-18-196-2-56.eu-central-1.compute.amazonaws.com/api/users/signin',{
+    fetch(baseUrl+'/api/users/signin',{
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -73,7 +75,7 @@ class LoginPage extends React.Component {
         let token;
         response.json().then(res=>{
           /* res.heritage */
-          Auth.authenticateUser(res.token);
+          Auth.authenticateUser(res.token, username);
           this.setState({
             redirect: true
           })

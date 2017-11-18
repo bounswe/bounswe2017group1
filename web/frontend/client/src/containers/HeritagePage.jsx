@@ -1,7 +1,9 @@
 import React from 'react';
 import TopBar from '../components/TopBar.jsx';
 import PropTypes from 'prop-types';
+import appConstants from '../../modules/appConstants.js'
 
+var baseUrl = appConstants.baseUrl;
 class HeritagePage extends React.Component {
 
 
@@ -21,7 +23,7 @@ class HeritagePage extends React.Component {
 
   componentDidMount(){
     console.log(this.props.match.params.heritageId);
-    fetch('http://ec2-18-196-2-56.eu-central-1.compute.amazonaws.com/api/items/'+this.props.match.params.heritageId,{
+    fetch(baseUrl+'/api/items/'+this.props.match.params.heritageId,{
       method: "GET",
       headers: {
         "Access-Control-Allow-Origin" : "*",
