@@ -79,7 +79,6 @@ class HeritageAddPage extends React.Component {
         let token;
         response.json().then(res=>{
           /* res.heritage */
-          Auth.authenticateUser(res.token);
           this.setState({
             redirect: true
           })
@@ -113,6 +112,12 @@ class HeritageAddPage extends React.Component {
    * Render the component.
    */
   render() {
+    const {redirect} = this.state;
+
+      if(redirect){
+        
+        return (<Redirect to='/' push/>)
+      }
     return (
       <div>
         <TopBar auth={Auth.isUserAuthenticated()}/>
