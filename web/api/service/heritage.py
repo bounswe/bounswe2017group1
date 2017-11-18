@@ -6,6 +6,9 @@ from api.model.tag import Tag
 from api.serializer.comment import CommentSerializer
 from api.serializer.tag import TagSerializer
 
+def get_item_by_id(heritage_id):
+        return Heritage.objects.get(id=heritage_id)
+
 def get_all_comments(heritage_id):
     comments = Comment.objects.all().filter(heritage=heritage_id)
 

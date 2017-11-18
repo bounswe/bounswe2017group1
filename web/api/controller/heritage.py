@@ -18,6 +18,7 @@ from api.serializer.comment import CommentSerializer
 from api.serializer.tag import TagSerializer
 
 from api.service.heritage import get_all_comments, get_all_tags
+from api.service import helper
 
 @api_view(['GET', 'POST'])
 @permission_classes((IsAuthenticatedOrReadOnly, ))
