@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import Auth from '../../modules/Auth.js'
 
 class TopBar extends React.Component {
   render(){
@@ -10,7 +11,7 @@ class TopBar extends React.Component {
           <div className=" navbar-collapse top-bar-right">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item ">
-                <a className="nav-link" href="/">Home</a>
+                <a className="nav-link">{Auth.getUsername()}</a>
               </li>
               <li className="nav-item ">
                 <a className="nav-link" href="/itemAdd">New Item</a>

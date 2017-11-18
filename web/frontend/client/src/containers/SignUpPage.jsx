@@ -4,7 +4,9 @@ import SignUpForm from '../components/SignUpForm.jsx';
 import { Redirect } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 import TopBar from '../components/TopBar.jsx'
+import appConstants from '../../modules/appConstants.js'
 
+var baseUrl = appConstants.baseUrl;
 class SignUpPage extends React.Component {
 
   /**
@@ -58,7 +60,7 @@ class SignUpPage extends React.Component {
       return;
     }
     const data = {username, email, location, gender, password};
-    fetch('http://localhost:8000/api/users/signup',{
+    fetch(baseUrl+'/api/users/signup',{
       method: "POST",
       body: JSON.stringify(data),
       headers: {

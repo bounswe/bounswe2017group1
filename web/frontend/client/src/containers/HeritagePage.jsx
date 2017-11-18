@@ -1,7 +1,11 @@
 import React from 'react';
 import TopBar from '../components/TopBar.jsx';
 import PropTypes from 'prop-types';
+import appConstants from '../../modules/appConstants.js'
+import Auth from '../../modules/Auth.js'
 
+
+var baseUrl = appConstants.baseUrl;
 class HeritagePage extends React.Component {
 
 
@@ -21,7 +25,7 @@ class HeritagePage extends React.Component {
 
   componentDidMount(){
     console.log(this.props.match.params.heritageId);
-    fetch('http://localhost:8000/api/items/'+this.props.match.params.heritageId,{
+    fetch(baseUrl+'/api/items/'+this.props.match.params.heritageId,{
       method: "GET",
       headers: {
         "Access-Control-Allow-Origin" : "*",
@@ -49,7 +53,7 @@ class HeritagePage extends React.Component {
     
 		return (
     <div>
-      <TopBar auth={false}/>
+      <TopBar auth={Auth.isUserAuthenticated()}/>
       <div className="container-fluid">
 
   		<div className="row ">
