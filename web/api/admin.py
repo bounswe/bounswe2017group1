@@ -34,7 +34,7 @@ class CommentAdmin(admin.ModelAdmin):
 
 
 class TagAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'category')
+    list_display = ('id', 'name', 'related_list')
 
 
 class VoteAdmin(admin.ModelAdmin):

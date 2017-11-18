@@ -8,7 +8,7 @@ from rest_framework.fields import CurrentUserDefault
 
 
 from api.model.tag import Tag
-from api.service import heritage
+from api.service import heritage, helper
 
 
 class HeritageSerializer(serializers.ModelSerializer):
@@ -36,6 +36,14 @@ class HeritageSerializer(serializers.ModelSerializer):
         for tag_data in tags_data:
             # tag = Tag.objects.get(name=tag_data['name'])
             tag, created = Tag.objects.get_or_create(name=tag_data['name'])
+            if created:
+                concepts_list = helper.get_concepts_from_item(tag.name)
+                jdata = {}
+                for item in concepts_list:
+                    jdata[item[0]] = item[1]
+
+                tag.setlist(jdata)
+
             heritage.tags.add(tag)
         return heritage
 
