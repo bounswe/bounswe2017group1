@@ -2,6 +2,11 @@ from api.model.heritage import Heritage
 from api.serializer.vote import VoteSerializer
 from rest_framework import serializers
 from api.serializer.tag import TagSerializer
+from api.serializer.profile import ProfileSerializer
+from api.model.profile import Profile
+from rest_framework.fields import CurrentUserDefault
+
+
 from api.model.tag import Tag
 from api.service import heritage
 
@@ -9,9 +14,14 @@ from api.service import heritage
 class HeritageSerializer(serializers.ModelSerializer):
     upvote_count = serializers.SerializerMethodField()
     downvote_count = serializers.SerializerMethodField()
+    is_upvoted = serializers.SerializerMethodField()
+    is_downvoted = serializers.SerializerMethodField()
+    is_owner = serializers.SerializerMethodField()
+
     # votes = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     # Heritage item may not have a tag or have one or more than one tag.
     tags = TagSerializer(required=False, many=True)
+    creator_dict = ProfileSerializer(required=False)
 
     class Meta:
         model = Heritage
@@ -23,7 +33,6 @@ class HeritageSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         tags_data = validated_data.pop('tags')
-        print "\nCreate*******\n"
         heritage = Heritage.objects.create(**validated_data)
         for tag_data in tags_data:
             # tag = Tag.objects.get(name=tag_data['name'])
@@ -77,6 +86,9 @@ class HeritageSerializer(serializers.ModelSerializer):
         instance.save()
 
         return instance
+    def get_creator_name(self, obj):
+        return Heritage.creator.username
+
 
     def get_upvote_count(self, obj):
         votes = obj.votes.all()
@@ -85,3 +97,32 @@ class HeritageSerializer(serializers.ModelSerializer):
     def get_downvote_count(self, obj):
         votes = obj.votes.all()
         return votes.filter(value=False).count()
+
+    def get_is_upvoted(self, obj):
+        if 'requester_profile_id' in self.context:
+            requester_id = self.context['requester_profile_id']
+            print  obj.votes.filter(voter = requester_id, heritage = obj.id, value = True).first()
+            if obj.votes.filter(voter = requester_id, heritage = obj.id, value = True).first():
+                return True
+        return False
+
+    def get_is_downvoted(self, obj):
+        if 'requester_profile_id' in self.context:
+            requester_id = self.context['requester_profile_id']
+            if obj.votes.filter(voter = requester_id, heritage = obj.id, value = False).first():
+                return True
+        return False
+
+    def get_is_owner(self, obj):
+        if 'requester_profile_id' in self.context:
+            requester_id = self.context['requester_profile_id']
+            if requester_id == obj.creator.pk:
+                return True
+        return False
+
+
+
+    '''
+    def get_serializer_context(self):
+        return {'request': self.request}
+    '''
