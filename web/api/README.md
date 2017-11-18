@@ -585,3 +585,51 @@ get all heritage items own the tag indicated by id
     404 Not Found
     
 ***
+
+
+
+## Search
+
+### /search/
+##### POST
+searches heritage items
+
+  **Request**
+  
+      [
+         {
+            "query": String, (Required)
+            "filters:" {
+                 "location": String, (optional)
+                 "creator": String, (optional)
+                 "creation_start": datetime, (optional)
+                 "creation_end": datetime, (optional)
+                 "event_start": datetime, (optional)
+                 "event_end": datetime, (optional)
+             } (optional)
+            
+      ]
+
+  **Response**
+  
+      [
+         {
+            "id": Integer,
+            "upvote_count": Integer,
+            "downvote_count": Integer,
+            "tags": [
+                 {
+                    "id": Integer,
+                    "name": String,
+                    "related_list": String,
+                 }
+            ],
+            "title": String,
+            "description": String,
+            "creation_date": String,
+            "event_date": String,
+            "location": String,
+            "creator": Integer
+         },
+      ]
+***
