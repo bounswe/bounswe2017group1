@@ -56,7 +56,7 @@ class HeritageAddPage extends React.Component {
 
     const data = { title, description, location, creator, creation_date: new Date(2017, 11, 20, 12, 0), event_date: new Date(2017, 11, 20, 12, 0)};
 
-    fetch('http://localhost:8000/api/items',{
+    fetch('http://ec2-18-196-2-56.eu-central-1.compute.amazonaws.com/api/items',{
       method: "POST",
       body: JSON.stringify(data),
       headers: {

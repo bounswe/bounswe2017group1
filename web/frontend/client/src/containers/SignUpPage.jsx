@@ -58,7 +58,7 @@ class SignUpPage extends React.Component {
       return;
     }
     const data = {username, email, location, gender, password};
-    fetch('http://localhost:8000/api/users/signup',{
+    fetch('http://ec2-18-196-2-56.eu-central-1.compute.amazonaws.com/api/users/signup',{
       method: "POST",
       body: JSON.stringify(data),
       headers: {

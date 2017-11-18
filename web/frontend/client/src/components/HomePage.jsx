@@ -20,7 +20,7 @@ const HomePage = React.createClass ({
     });
 	},
 	componentDidMount(){
-		fetch('http://localhost:8000/api/items/all',{
+		fetch('http://ec2-18-196-2-56.eu-central-1.compute.amazonaws.com/api/items',{
       method: "GET",
       headers: {
         "Access-Control-Allow-Origin" : "*",
