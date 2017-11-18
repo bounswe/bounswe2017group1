@@ -102,23 +102,18 @@ def heritage_get_put_delete(request, heritage_id):
 @permission_classes((AllowAny, ))
 def get_all_comments(request, heritage_id):
     comments = Comment.objects.all().filter(heritage=heritage_id)
-
-    data = []
-    for comment in comments:
-        serializer = CommentSerializer(comment)
-        data.append(serializer.data)
-
-    return Response(data, status=status.HTTP_200_OK)
+    context = {}
+    if request.user.username:
+        profile_id = Profile.objects.filter(username=request.user.username).first().pk
+        context['requester_profile_id'] = profile_id
+    serializer = CommentSerializer(comments, context=context, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
 
 
 @api_view(['GET'])
 @permission_classes((AllowAny, ))
 def get_all_tags(request, heritage_id):
     tags = Tag.objects.filter(heritage_id=heritage_id)
-    data = []
-    for tag in tags:
-        serializer = TagSerializer(tag)
-        data.append(serializer.data)
-
-    return Response(data, status=status.HTTP_200_OK)
+    serializer = TagSerializer(tags, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
 
