@@ -3,30 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="/Users/tahabayi/.android/build-cache/fe5fb37811e93f62a2f7c42ca135e65235ef37fb/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="26.0.0"
-        sha1="914f5d3e3ace66080e59613708f06d129a222e25">
-        <dex dex="/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_040c8c1048484731522bc4d7ee6d5e8d1266db19/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jar="/home/mustafa/bounswe2017group1/android/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.0"
         sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_ac21cc06c990aa76daeafed896afc3f7b8f05211/classes.dex" />
+        <dex dex="/home/mustafa/bounswe2017group1/android/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_ea61b05bd5e29d6f0df2ddbfe9e3181630f0c838/classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jar="/home/mustafa/bounswe2017group1/android/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.0"
-        sha1="9b043b33955410067caf4924e71a302595d95343">
-        <dex dex="/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_329bba0da2b7fd92ec427099069a649c912fecdd/classes.dex" />
+        sha1="054310437c07ffde1195514fce9837b2d9d2c9af">
+        <dex dex="/home/mustafa/bounswe2017group1/android/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_492c5ddfe542735b2f0e4ebd7b97cb1809e63023/classes.dex" />
     </item>
 
 </items>

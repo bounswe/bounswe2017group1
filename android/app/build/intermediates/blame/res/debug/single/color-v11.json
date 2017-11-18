@@ -1,10 +1,10 @@
 [
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_light.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/color-v11/abc_background_cache_hint_selector_material_light.xml"
+        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_light.xml",
+        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/color-v11/abc_background_cache_hint_selector_material_light.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_dark.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/color-v11/abc_background_cache_hint_selector_material_dark.xml"
+        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/color-v11/abc_background_cache_hint_selector_material_dark.xml",
+        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/color-v11/abc_background_cache_hint_selector_material_dark.xml"
     }
 ]
