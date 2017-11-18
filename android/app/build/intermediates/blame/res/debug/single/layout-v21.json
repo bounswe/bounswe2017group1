@@ -1,18 +1,18 @@
 [
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout-v21/notification_template_icon_group.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout-v21/notification_template_icon_group.xml"
+        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout-v21/notification_template_custom_big.xml",
+        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout-v21/notification_template_custom_big.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout-v21/notification_action.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout-v21/notification_action.xml"
+        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout-v21/notification_template_icon_group.xml",
+        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout-v21/notification_template_icon_group.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout-v21/notification_template_custom_big.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout-v21/notification_template_custom_big.xml"
+        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout-v21/notification_action_tombstone.xml",
+        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout-v21/notification_action_tombstone.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout-v21/notification_action_tombstone.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout-v21/notification_action_tombstone.xml"
+        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout-v21/notification_action.xml",
+        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout-v21/notification_action.xml"
     }
 ]

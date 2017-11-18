@@ -1,26 +1,26 @@
 [
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout-v11/notification_template_big_media.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout-v11/notification_template_big_media.xml"
+        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout-v11/notification_template_big_media_narrow_custom.xml",
+        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout-v11/notification_template_big_media_narrow_custom.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout-v11/notification_template_big_media_custom.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout-v11/notification_template_big_media_custom.xml"
+        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout-v11/notification_media_cancel_action.xml",
+        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout-v11/notification_media_cancel_action.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout-v11/notification_template_big_media_narrow.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout-v11/notification_template_big_media_narrow.xml"
+        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout-v11/notification_template_big_media_narrow.xml",
+        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout-v11/notification_template_big_media_narrow.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout-v11/notification_media_cancel_action.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout-v11/notification_media_cancel_action.xml"
+        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout-v11/notification_template_big_media_custom.xml",
+        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout-v11/notification_template_big_media_custom.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout-v11/notification_media_action.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout-v11/notification_media_action.xml"
+        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout-v11/notification_template_big_media.xml",
+        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout-v11/notification_template_big_media.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout-v11/notification_template_big_media_narrow_custom.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout-v11/notification_template_big_media_narrow_custom.xml"
+        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout-v11/notification_media_action.xml",
+        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout-v11/notification_media_action.xml"
     }
 ]

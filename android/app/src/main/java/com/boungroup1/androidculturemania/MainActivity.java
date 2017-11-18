@@ -6,13 +6,11 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -67,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                         public void onClick(View view, int position) {
                             JsonResponseHeritage heritage = heritageList.get(position);
                             // TODO remove this after debugging
-                            Toast.makeText(getApplicationContext(), heritage.getDescription() , Toast.LENGTH_LONG).show();
+                            Toast.makeText(getApplicationContext(), heritage.getDescription() , Toast.LENGTH_SHORT).show();
                             // TODO edit main activity to heritage detail activity
                             /*
                             int heritageId= heritage.getId();
@@ -98,35 +96,41 @@ public class MainActivity extends AppCompatActivity {
 
 
         //final TextView username_text = (TextView) findViewById(R.id.username);
-        final Button logout = (Button) findViewById(R.id.btn_logout);
 
-        final SharedPreferences sharedPref = getSharedPreferences("TOKENSHARED", Context.MODE_PRIVATE);
-        final SharedPreferences.Editor editor = sharedPref.edit();
-        final String  token = sharedPref.getString("TOKEN", null);
-        String  username = sharedPref.getString("USERNAME", null);
-        String  email = sharedPref.getString("EMAIL", null);
-        int  id = sharedPref.getInt("ID", -1);
-
-        logout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Retrofit retrofit = ApiClient.getApiClient();
-
-                ApiInterface apiInterface = retrofit.create(ApiInterface.class);
-                Call<JsonResponseSignOut> call = apiInterface.logOut("Token " + token);
-
-                editor.remove("TOKEN");
-                editor.remove("USERNAME");
-                editor.remove("EMAIL");
-                editor.remove("ID");
-                editor.commit();
-
-                finish();
-                startActivity(new Intent(getApplicationContext(),LoginActivity.class));
-            }
-        });
 
         //username_text.setText("Welcome " + username + " " + email + " Token = " + token + "ID = " + id );
 
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        final SharedPreferences sharedPref = getSharedPreferences("TOKENSHARED", Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = sharedPref.edit();
+        final String  token = sharedPref.getString("TOKEN", null);
+        if (id == R.id.action_logout){
+            Retrofit retrofit = ApiClient.getApiClient();
+
+            ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+            Call<JsonResponseSignOut> call = apiInterface.logOut("Token " + token);
+
+            editor.remove("TOKEN");
+            editor.remove("USERNAME");
+            editor.remove("EMAIL");
+            editor.remove("ID");
+            editor.commit();
+
+            finish();
+            startActivity(new Intent(getApplicationContext(),LoginActivity.class));
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }
