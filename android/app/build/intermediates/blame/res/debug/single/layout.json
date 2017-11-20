@@ -1,466 +1,698 @@
 [
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/abc_screen_toolbar.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_action_bar_title_item.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_action_menu_item_layout.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/abc_action_menu_item_layout.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\abc_action_mode_bar.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_title_material.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/abc_alert_dialog_title_material.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_header.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\3bd0e1888cd861c6cfa803e831983ba297b3d732\\output\\res\\layout\\design_navigation_item_header.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/notification_action.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/notification_action.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_action_menu_item_layout.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/heritage_view.xml",
-        "source": "/Users/tahabayi/bounswe2017group1/android/app/src/main/res/layout/heritage_view.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_sheet_dialog.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\a85eefc50f3d213c6d0c922f4f92c0d78afca150\\output\\res\\layout\\design_bottom_sheet_dialog.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/select_dialog_singlechoice_material.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/select_dialog_singlechoice_material.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_subheader.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\cc05f1acc98792f50f1e2b2ee778c82a1c266ad0\\output\\res\\layout\\design_navigation_item_subheader.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_action_menu_item_layout.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/abc_action_menu_item_layout.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_activity_chooser_view.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_action_mode_bar.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/abc_action_mode_bar.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\notification_action_tombstone.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/notification_template_part_chronometer.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/notification_template_part_chronometer.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media_custom.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\notification_template_media_custom.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_action_mode_close_item_material.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/abc_action_mode_close_item_material.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\abc_screen_simple.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/design_navigation_item_separator.xml",
-        "source": "/home/mustafa/.android/build-cache/cc05f1acc98792f50f1e2b2ee778c82a1c266ad0/output/res/layout/design_navigation_item_separator.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\cc05f1acc98792f50f1e2b2ee778c82a1c266ad0\\output\\res\\layout\\design_layout_snackbar.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/design_navigation_item_subheader.xml",
-        "source": "/home/mustafa/.android/build-cache/cc05f1acc98792f50f1e2b2ee778c82a1c266ad0/output/res/layout/design_navigation_item_subheader.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\abc_action_bar_up_container.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_action_mode_bar.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/abc_action_mode_bar.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/notification_template_icon_group.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/notification_template_icon_group.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\abc_action_menu_layout.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/design_layout_tab_text.xml",
-        "source": "/Users/tahabayi/.android/build-cache/a85eefc50f3d213c6d0c922f4f92c0d78afca150/output/res/layout/design_layout_tab_text.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_sheet_dialog.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\3bd0e1888cd861c6cfa803e831983ba297b3d732\\output\\res\\layout\\design_bottom_sheet_dialog.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/abc_activity_chooser_view_list_item.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\abc_action_mode_close_item_material.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar.xml",
-        "source": "/home/mustafa/.android/build-cache/cc05f1acc98792f50f1e2b2ee778c82a1c266ad0/output/res/layout/design_layout_snackbar.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\support_simple_spinner_dropdown_item.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_action_bar_title_item.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/abc_action_bar_title_item.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_navigation_item.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\a85eefc50f3d213c6d0c922f4f92c0d78afca150\\output\\res\\layout\\design_bottom_navigation_item.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/select_dialog_singlechoice_material.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/select_dialog_singlechoice_material.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\abc_screen_simple.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_search_view.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/abc_search_view.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_title_material.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\abc_alert_dialog_title_material.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/abc_activity_chooser_view.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_icon.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\a85eefc50f3d213c6d0c922f4f92c0d78afca150\\output\\res\\layout\\design_layout_tab_icon.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_select_dialog_material.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/abc_select_dialog_material.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_dialog_title_material.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/notification_template_part_chronometer.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/notification_template_part_chronometer.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_header_item_layout.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\abc_popup_menu_header_item_layout.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar.xml",
-        "source": "/Users/tahabayi/.android/build-cache/a85eefc50f3d213c6d0c922f4f92c0d78afca150/output/res/layout/design_layout_snackbar.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_text.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\a85eefc50f3d213c6d0c922f4f92c0d78afca150\\output\\res\\layout\\design_layout_tab_text.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/design_text_input_password_icon.xml",
-        "source": "/home/mustafa/.android/build-cache/cc05f1acc98792f50f1e2b2ee778c82a1c266ad0/output/res/layout/design_text_input_password_icon.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\select_dialog_item_material.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_material.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/abc_alert_dialog_material.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_expanded_menu_layout.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/abc_expanded_menu_layout.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_subheader.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\a85eefc50f3d213c6d0c922f4f92c0d78afca150\\output\\res\\layout\\design_navigation_item_subheader.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_screen_content_include.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/abc_screen_content_include.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\notification_action.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/select_dialog_item_material.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/select_dialog_item_material.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\abc_popup_menu_item_layout.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/design_navigation_item_subheader.xml",
-        "source": "/Users/tahabayi/.android/build-cache/a85eefc50f3d213c6d0c922f4f92c0d78afca150/output/res/layout/design_navigation_item_subheader.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_popup_menu_item_layout.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_action_mode_close_item_material.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/abc_action_mode_close_item_material.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
+        "source": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/notification_template_media_custom.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/notification_template_media_custom.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\abc_screen_toolbar.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/design_layout_tab_text.xml",
-        "source": "/home/mustafa/.android/build-cache/cc05f1acc98792f50f1e2b2ee778c82a1c266ad0/output/res/layout/design_layout_tab_text.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_separator.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\a85eefc50f3d213c6d0c922f4f92c0d78afca150\\output\\res\\layout\\design_navigation_item_separator.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/design_bottom_sheet_dialog.xml",
-        "source": "/Users/tahabayi/.android/build-cache/a85eefc50f3d213c6d0c922f4f92c0d78afca150/output/res/layout/design_bottom_sheet_dialog.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
+        "source": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\src\\main\\res\\layout\\activity_main.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_material.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/abc_alert_dialog_material.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_header_item_layout.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\abc_popup_menu_header_item_layout.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_search_dropdown_item_icons_2line.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/abc_search_dropdown_item_icons_2line.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\3bd0e1888cd861c6cfa803e831983ba297b3d732\\output\\res\\layout\\design_navigation_item.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/activity_main.xml",
-        "source": "/home/mustafa/bounswe2017group1/android/app/src/main/res/layout/activity_main.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\abc_action_mode_close_item_material.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/design_bottom_navigation_item.xml",
-        "source": "/Users/tahabayi/.android/build-cache/a85eefc50f3d213c6d0c922f4f92c0d78afca150/output/res/layout/design_bottom_navigation_item.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_signup.xml",
+        "source": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\src\\main\\res\\layout\\activity_signup.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_action_menu_layout.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/abc_action_menu_layout.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_list_menu_item_layout.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_action_bar_up_container.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/abc_action_bar_up_container.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines_media.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\notification_template_lines_media.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar_include.xml",
-        "source": "/home/mustafa/.android/build-cache/cc05f1acc98792f50f1e2b2ee778c82a1c266ad0/output/res/layout/design_layout_snackbar_include.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_close_item_material.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_action_mode_close_item_material.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/notification_template_media_custom.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/notification_template_media_custom.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_list_menu_item_radio.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_checkbox.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/abc_list_menu_item_checkbox.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu_item.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\cc05f1acc98792f50f1e2b2ee778c82a1c266ad0\\output\\res\\layout\\design_navigation_menu_item.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_screen_simple_overlay_action_mode.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/abc_screen_simple_overlay_action_mode.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\abc_action_mode_bar.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_action_bar_up_container.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/abc_action_bar_up_container.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_menu_item_action_area.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\3bd0e1888cd861c6cfa803e831983ba297b3d732\\output\\res\\layout\\design_menu_item_action_area.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_expanded_menu_layout.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/abc_expanded_menu_layout.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\abc_action_menu_item_layout.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_button_bar_material.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/abc_alert_dialog_button_bar_material.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_item_layout.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\abc_action_menu_item_layout.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/notification_action.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/notification_action.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\heritage_view.xml",
+        "source": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\src\\main\\res\\layout\\heritage_view.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/notification_action_tombstone.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/notification_action_tombstone.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_screen_content_include.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/abc_screen_content_include.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\select_dialog_singlechoice_material.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_action_menu_layout.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/abc_action_menu_layout.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\abc_action_bar_title_item.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/design_navigation_menu.xml",
-        "source": "/Users/tahabayi/.android/build-cache/a85eefc50f3d213c6d0c922f4f92c0d78afca150/output/res/layout/design_navigation_menu.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\select_dialog_multichoice_material.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/activity_signup.xml",
-        "source": "/home/mustafa/bounswe2017group1/android/app/src/main/res/layout/activity_signup.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\abc_select_dialog_material.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/activity_signup.xml",
-        "source": "/Users/tahabayi/bounswe2017group1/android/app/src/main/res/layout/activity_signup.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar_include.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\a85eefc50f3d213c6d0c922f4f92c0d78afca150\\output\\res\\layout\\design_layout_snackbar_include.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/design_layout_tab_icon.xml",
-        "source": "/Users/tahabayi/.android/build-cache/a85eefc50f3d213c6d0c922f4f92c0d78afca150/output/res/layout/design_layout_tab_icon.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action_tombstone.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\notification_action_tombstone.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_screen_simple.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/abc_screen_simple.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_text_input_password_icon.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\a85eefc50f3d213c6d0c922f4f92c0d78afca150\\output\\res\\layout\\design_text_input_password_icon.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_item_layout.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/abc_popup_menu_item_layout.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_action_bar_up_container.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/design_navigation_menu.xml",
-        "source": "/home/mustafa/.android/build-cache/cc05f1acc98792f50f1e2b2ee778c82a1c266ad0/output/res/layout/design_navigation_menu.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/notification_template_icon_group.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/notification_template_icon_group.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines_media.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\notification_template_lines_media.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/design_bottom_sheet_dialog.xml",
-        "source": "/home/mustafa/.android/build-cache/cc05f1acc98792f50f1e2b2ee778c82a1c266ad0/output/res/layout/design_bottom_sheet_dialog.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_content_include.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_screen_content_include.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_layout.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/abc_list_menu_item_layout.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\cc05f1acc98792f50f1e2b2ee778c82a1c266ad0\\output\\res\\layout\\design_navigation_item.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/heritage_view.xml",
-        "source": "/home/mustafa/bounswe2017group1/android/app/src/main/res/layout/heritage_view.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\a85eefc50f3d213c6d0c922f4f92c0d78afca150\\output\\res\\layout\\design_navigation_item.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_dialog_title_material.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/abc_dialog_title_material.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\a85eefc50f3d213c6d0c922f4f92c0d78afca150\\output\\res\\layout\\design_navigation_menu.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/support_simple_spinner_dropdown_item.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/support_simple_spinner_dropdown_item.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_header.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\cc05f1acc98792f50f1e2b2ee778c82a1c266ad0\\output\\res\\layout\\design_navigation_item_header.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_action_bar_view_list_nav_layout.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/abc_action_bar_view_list_nav_layout.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\abc_list_menu_item_icon.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/notification_template_custom_big.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/notification_template_custom_big.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\notification_template_media.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_search_view.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/abc_search_view.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\select_dialog_item_material.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/notification_template_lines_media.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/notification_template_lines_media.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\abc_list_menu_item_layout.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/design_text_input_password_icon.xml",
-        "source": "/Users/tahabayi/.android/build-cache/a85eefc50f3d213c6d0c922f4f92c0d78afca150/output/res/layout/design_text_input_password_icon.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\notification_action.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/design_layout_tab_icon.xml",
-        "source": "/home/mustafa/.android/build-cache/cc05f1acc98792f50f1e2b2ee778c82a1c266ad0/output/res/layout/design_layout_tab_icon.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\abc_activity_chooser_view.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/notification_action_tombstone.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/notification_action_tombstone.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_select_dialog_material.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/notification_template_lines_media.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/notification_template_lines_media.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_title_material.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_alert_dialog_title_material.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/select_dialog_multichoice_material.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/select_dialog_multichoice_material.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\abc_expanded_menu_layout.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/design_menu_item_action_area.xml",
-        "source": "/home/mustafa/.android/build-cache/cc05f1acc98792f50f1e2b2ee778c82a1c266ad0/output/res/layout/design_menu_item_action_area.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\notification_action.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/notification_template_media.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/notification_template_media.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\heritage_view.xml",
+        "source": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\src\\main\\res\\layout\\heritage_view.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_action_bar_title_item.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/abc_action_bar_title_item.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\notification_template_icon_group.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/design_navigation_item.xml",
-        "source": "/home/mustafa/.android/build-cache/cc05f1acc98792f50f1e2b2ee778c82a1c266ad0/output/res/layout/design_navigation_item.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\notification_template_part_time.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_item_layout.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/abc_popup_menu_item_layout.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media_custom.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\notification_template_media_custom.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_title_material.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/abc_alert_dialog_title_material.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_up_container.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\abc_action_bar_up_container.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_action_bar_view_list_nav_layout.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/abc_action_bar_view_list_nav_layout.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_header_item_layout.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_popup_menu_header_item_layout.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/design_navigation_menu_item.xml",
-        "source": "/Users/tahabayi/.android/build-cache/a85eefc50f3d213c6d0c922f4f92c0d78afca150/output/res/layout/design_navigation_menu_item.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media_custom.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\notification_template_media_custom.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_checkbox.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/abc_list_menu_item_checkbox.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_login.xml",
+        "source": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\src\\main\\res\\layout\\activity_login.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/select_dialog_multichoice_material.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/select_dialog_multichoice_material.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\select_dialog_multichoice_material.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/design_navigation_item.xml",
-        "source": "/Users/tahabayi/.android/build-cache/a85eefc50f3d213c6d0c922f4f92c0d78afca150/output/res/layout/design_navigation_item.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\notification_template_part_chronometer.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/design_menu_item_action_area.xml",
-        "source": "/Users/tahabayi/.android/build-cache/a85eefc50f3d213c6d0c922f4f92c0d78afca150/output/res/layout/design_menu_item_action_area.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\heritage_view.xml",
+        "source": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\src\\main\\res\\layout\\heritage_view.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/design_navigation_item_header.xml",
-        "source": "/Users/tahabayi/.android/build-cache/a85eefc50f3d213c6d0c922f4f92c0d78afca150/output/res/layout/design_navigation_item_header.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_login.xml",
+        "source": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\src\\main\\res\\layout\\activity_login.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_radio.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/abc_list_menu_item_radio.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\support_simple_spinner_dropdown_item.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/design_navigation_item_separator.xml",
-        "source": "/Users/tahabayi/.android/build-cache/a85eefc50f3d213c6d0c922f4f92c0d78afca150/output/res/layout/design_navigation_item_separator.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\notification_template_custom_big.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_layout.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/abc_list_menu_item_layout.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_menu_item_action_area.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\cc05f1acc98792f50f1e2b2ee778c82a1c266ad0\\output\\res\\layout\\design_menu_item_action_area.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/abc_activity_chooser_view_list_item.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_activity_chooser_view_list_item.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_alert_dialog_button_bar_material.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/abc_alert_dialog_button_bar_material.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_icon.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\cc05f1acc98792f50f1e2b2ee778c82a1c266ad0\\output\\res\\layout\\design_layout_tab_icon.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/abc_screen_toolbar.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\notification_template_part_time.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/abc_activity_chooser_view.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_text_input_password_icon.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\cc05f1acc98792f50f1e2b2ee778c82a1c266ad0\\output\\res\\layout\\design_text_input_password_icon.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_screen_simple.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/abc_screen_simple.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_signup.xml",
+        "source": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\src\\main\\res\\layout\\activity_signup.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/activity_main.xml",
-        "source": "/Users/tahabayi/bounswe2017group1/android/app/src/main/res/layout/activity_main.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\abc_search_view.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_icon.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/abc_list_menu_item_icon.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu_item.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\3bd0e1888cd861c6cfa803e831983ba297b3d732\\output\\res\\layout\\design_navigation_menu_item.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_search_dropdown_item_icons_2line.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/abc_search_dropdown_item_icons_2line.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\abc_list_menu_item_checkbox.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_radio.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/abc_list_menu_item_radio.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\abc_action_menu_layout.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/support_simple_spinner_dropdown_item.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/support_simple_spinner_dropdown_item.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/design_navigation_item_header.xml",
-        "source": "/home/mustafa/.android/build-cache/cc05f1acc98792f50f1e2b2ee778c82a1c266ad0/output/res/layout/design_navigation_item_header.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_separator.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\3bd0e1888cd861c6cfa803e831983ba297b3d732\\output\\res\\layout\\design_navigation_item_separator.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_header_item_layout.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/abc_popup_menu_header_item_layout.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\a85eefc50f3d213c6d0c922f4f92c0d78afca150\\output\\res\\layout\\design_layout_snackbar.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/notification_template_part_time.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/notification_template_part_time.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_title_item.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\abc_action_bar_title_item.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/notification_template_custom_big.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/notification_template_custom_big.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_dialog_title_material.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/abc_dialog_title_material.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_subheader.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\3bd0e1888cd861c6cfa803e831983ba297b3d732\\output\\res\\layout\\design_navigation_item_subheader.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/notification_template_media.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/notification_template_media.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\abc_alert_dialog_material.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_screen_simple_overlay_action_mode.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/abc_screen_simple_overlay_action_mode.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_time.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\notification_template_part_time.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/activity_login.xml",
-        "source": "/Users/tahabayi/bounswe2017group1/android/app/src/main/res/layout/activity_login.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\abc_expanded_menu_layout.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/activity_login.xml",
-        "source": "/home/mustafa/bounswe2017group1/android/app/src/main/res/layout/activity_login.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_icon_group.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\notification_template_icon_group.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/select_dialog_item_material.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/select_dialog_item_material.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\notification_template_media.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/design_bottom_navigation_item.xml",
-        "source": "/home/mustafa/.android/build-cache/cc05f1acc98792f50f1e2b2ee778c82a1c266ad0/output/res/layout/design_bottom_navigation_item.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\notification_template_part_chronometer.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_select_dialog_material.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/abc_select_dialog_material.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\select_dialog_singlechoice_material.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/design_layout_snackbar_include.xml",
-        "source": "/Users/tahabayi/.android/build-cache/a85eefc50f3d213c6d0c922f4f92c0d78afca150/output/res/layout/design_layout_snackbar_include.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_multichoice_material.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\select_dialog_multichoice_material.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_list_menu_item_icon.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout/abc_list_menu_item_icon.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/design_navigation_menu_item.xml",
-        "source": "/home/mustafa/.android/build-cache/cc05f1acc98792f50f1e2b2ee778c82a1c266ad0/output/res/layout/design_navigation_menu_item.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_text.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\3bd0e1888cd861c6cfa803e831983ba297b3d732\\output\\res\\layout\\design_layout_tab_text.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/notification_template_part_time.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/notification_template_part_time.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_navigation_item.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\cc05f1acc98792f50f1e2b2ee778c82a1c266ad0\\output\\res\\layout\\design_bottom_navigation_item.xml"
     },
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout/abc_popup_menu_header_item_layout.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout/abc_popup_menu_header_item_layout.xml"
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_custom_big.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\notification_template_custom_big.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_button_bar_material.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_alert_dialog_button_bar_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_login.xml",
+        "source": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\src\\main\\res\\layout\\activity_login.xml"
+    },
+    {
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\abc_activity_chooser_view.xml"
+    },
+    {
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_layout.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\abc_list_menu_item_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_screen_simple.xml"
+    },
+    {
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_action_tombstone.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\notification_action_tombstone.xml"
+    },
+    {
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_menu_item_action_area.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\a85eefc50f3d213c6d0c922f4f92c0d78afca150\\output\\res\\layout\\design_menu_item_action_area.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\3bd0e1888cd861c6cfa803e831983ba297b3d732\\output\\res\\layout\\design_layout_snackbar.xml"
+    },
+    {
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_expanded_menu_layout.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_expanded_menu_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_navigation_item.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\3bd0e1888cd861c6cfa803e831983ba297b3d732\\output\\res\\layout\\design_bottom_navigation_item.xml"
+    },
+    {
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_popup_menu_item_layout.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\abc_popup_menu_item_layout.xml"
+    },
+    {
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_simple_overlay_action_mode.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\abc_screen_simple_overlay_action_mode.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\support_simple_spinner_dropdown_item.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\support_simple_spinner_dropdown_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_text.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\cc05f1acc98792f50f1e2b2ee778c82a1c266ad0\\output\\res\\layout\\design_layout_tab_text.xml"
+    },
+    {
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_part_chronometer.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\notification_template_part_chronometer.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_screen_toolbar.xml"
+    },
+    {
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_dialog_title_material.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_content_include.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\abc_screen_content_include.xml"
+    },
+    {
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\cc05f1acc98792f50f1e2b2ee778c82a1c266ad0\\output\\res\\layout\\design_navigation_menu.xml"
+    },
+    {
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_header.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\a85eefc50f3d213c6d0c922f4f92c0d78afca150\\output\\res\\layout\\design_navigation_item_header.xml"
+    },
+    {
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\abc_search_view.xml"
+    },
+    {
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_singlechoice_material.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\select_dialog_singlechoice_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_lines_media.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\notification_template_lines_media.xml"
+    },
+    {
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu_item.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\a85eefc50f3d213c6d0c922f4f92c0d78afca150\\output\\res\\layout\\design_navigation_menu_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\select_dialog_item_material.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\select_dialog_item_material.xml"
+    },
+    {
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_icon_group.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\notification_template_icon_group.xml"
+    },
+    {
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_item_separator.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\cc05f1acc98792f50f1e2b2ee778c82a1c266ad0\\output\\res\\layout\\design_navigation_item_separator.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_bar_view_list_nav_layout.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_action_bar_view_list_nav_layout.xml"
+    },
+    {
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_media.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\notification_template_media.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_navigation_menu.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\3bd0e1888cd861c6cfa803e831983ba297b3d732\\output\\res\\layout\\design_navigation_menu.xml"
+    },
+    {
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_signup.xml",
+        "source": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\src\\main\\res\\layout\\activity_signup.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\activity_main.xml",
+        "source": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar_include.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\cc05f1acc98792f50f1e2b2ee778c82a1c266ad0\\output\\res\\layout\\design_layout_snackbar_include.xml"
+    },
+    {
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_content_include.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\abc_screen_content_include.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_view.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_search_view.xml"
+    },
+    {
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_bottom_sheet_dialog.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\cc05f1acc98792f50f1e2b2ee778c82a1c266ad0\\output\\res\\layout\\design_bottom_sheet_dialog.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_snackbar_include.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\3bd0e1888cd861c6cfa803e831983ba297b3d732\\output\\res\\layout\\design_layout_snackbar_include.xml"
+    },
+    {
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_select_dialog_material.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\abc_select_dialog_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_search_dropdown_item_icons_2line.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_search_dropdown_item_icons_2line.xml"
+    },
+    {
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_radio.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\abc_list_menu_item_radio.xml"
+    },
+    {
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_title_material.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\abc_alert_dialog_title_material.xml"
+    },
+    {
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_checkbox.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\abc_list_menu_item_checkbox.xml"
+    },
+    {
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_activity_chooser_view_list_item.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout\\abc_activity_chooser_view_list_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\notification_template_custom_big.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_alert_dialog_material.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_mode_bar.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_action_mode_bar.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_action_menu_layout.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout\\abc_action_menu_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_text_input_password_icon.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\3bd0e1888cd861c6cfa803e831983ba297b3d732\\output\\res\\layout\\design_text_input_password_icon.xml"
+    },
+    {
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_list_menu_item_icon.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\abc_list_menu_item_icon.xml"
+    },
+    {
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\design_layout_tab_icon.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\3bd0e1888cd861c6cfa803e831983ba297b3d732\\output\\res\\layout\\design_layout_tab_icon.xml"
+    },
+    {
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout\\abc_screen_toolbar.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout\\abc_screen_toolbar.xml"
     }
 ]

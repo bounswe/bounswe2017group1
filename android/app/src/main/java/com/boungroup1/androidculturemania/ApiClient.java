@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class ApiClient {
-    public static final String BASE_URL = "http://ec2-18-196-2-56.eu-central-1.compute.amazonaws.com";
+    public static final String BASE_URL = "http://ec2-18-196-2-56.eu-central-1.compute.amazonaws.com:3000";
     public static Retrofit retrofit = null;
 
     public static Retrofit getApiClient(){

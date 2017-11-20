@@ -3,21 +3,21 @@
 
     <item
         is-multidex="true"
-        jar="/home/mustafa/bounswe2017group1/android/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jar="C:\Users\user\Desktop\bounswe2017group1\android\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.0"
         sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="/home/mustafa/bounswe2017group1/android/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_ea61b05bd5e29d6f0df2ddbfe9e3181630f0c838/classes.dex" />
+        <dex dex="C:\Users\user\Desktop\bounswe2017group1\android\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_41f2bb92ea14d06269a00c89ffa349ecc416b72f\classes.dex" />
     </item>
     <item
         is-multidex="true"
-        jar="/home/mustafa/bounswe2017group1/android/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jar="C:\Users\user\Desktop\bounswe2017group1\android\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="26.0.0"
-        sha1="054310437c07ffde1195514fce9837b2d9d2c9af">
-        <dex dex="/home/mustafa/bounswe2017group1/android/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_492c5ddfe542735b2f0e4ebd7b97cb1809e63023/classes.dex" />
+        sha1="dc91192173917c7d91e828664ae190061c65561b">
+        <dex dex="C:\Users\user\Desktop\bounswe2017group1\android\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_9723d8da6557989481a3c16d12932f6990eaf497\classes.dex" />
     </item>
 
 </items>

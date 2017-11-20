@@ -1,10 +1,14 @@
 [
     {
-        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout-v16/notification_template_custom_big.xml",
-        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/layout-v16/notification_template_custom_big.xml"
+        "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout-v16\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\layout-v16\\notification_template_custom_big.xml"
     },
     {
-        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/layout-v16/notification_template_custom_big.xml",
-        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/layout-v16/notification_template_custom_big.xml"
+        "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout-v16\\notification_template_custom_big.xml",
+        "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\layout-v16\\notification_template_custom_big.xml"
+    },
+    {
+        "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\layout-v16\\notification_template_custom_big.xml",
+        "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\layout-v16\\notification_template_custom_big.xml"
     }
 ]
