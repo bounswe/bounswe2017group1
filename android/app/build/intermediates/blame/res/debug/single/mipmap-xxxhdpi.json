@@ -14,5 +14,13 @@
     {
         "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi/ic_launcher_round.png",
         "source": "/Users/tahabayi/bounswe2017group1/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/tahabayi/dmmy/bounswe2017group1/android/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi/ic_launcher.png",
+        "source": "/Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/tahabayi/dmmy/bounswe2017group1/android/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi/ic_launcher_round.png",
+        "source": "/Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
     }
 ]
