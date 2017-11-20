@@ -90,7 +90,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<JsonResponseHeritage>> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), t.getCause().toString(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Sorry for inconvince server is down", Toast.LENGTH_SHORT).show();
             }
         });
 

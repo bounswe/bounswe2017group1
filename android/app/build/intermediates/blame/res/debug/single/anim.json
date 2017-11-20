@@ -4,44 +4,80 @@
         "source": "C:\\Users\\tahabayi\\.android\\build-cache\\a85eefc50f3d213c6d0c922f4f92c0d78afca150\\output\\res\\anim\\design_snackbar_out.xml"
     },
     {
+<<<<<<< HEAD
         "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_fade_out.xml",
         "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\anim\\abc_fade_out.xml"
     },
     {
         "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_bottom_sheet_slide_in.xml",
         "source": "C:\\Users\\user\\.android\\build-cache\\3bd0e1888cd861c6cfa803e831983ba297b3d732\\output\\res\\anim\\design_bottom_sheet_slide_in.xml"
+=======
+        "merged": "/Users/tahabayi/dmmy/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/abc_fade_out.xml",
+        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/anim/abc_fade_out.xml"
+>>>>>>> c16881a578e8446df8576cf2aea76509ec2c8cb2
     },
     {
         "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_bottom.xml",
         "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\anim\\abc_slide_in_bottom.xml"
     },
     {
+<<<<<<< HEAD
         "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_fab_in.xml",
         "source": "C:\\Users\\user\\.android\\build-cache\\3bd0e1888cd861c6cfa803e831983ba297b3d732\\output\\res\\anim\\design_fab_in.xml"
     },
     {
         "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_enter.xml",
         "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\anim\\abc_popup_enter.xml"
+=======
+        "merged": "/Users/tahabayi/dmmy/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/abc_slide_out_bottom.xml",
+        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/anim/abc_slide_out_bottom.xml"
+    },
+    {
+        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/abc_popup_exit.xml",
+        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/anim/abc_popup_exit.xml"
+    },
+    {
+        "merged": "/Users/tahabayi/dmmy/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/design_bottom_sheet_slide_in.xml",
+        "source": "/Users/tahabayi/.android/build-cache/a85eefc50f3d213c6d0c922f4f92c0d78afca150/output/res/anim/design_bottom_sheet_slide_in.xml"
+>>>>>>> c16881a578e8446df8576cf2aea76509ec2c8cb2
     },
     {
         "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_bottom.xml",
         "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\anim\\abc_slide_out_bottom.xml"
     },
     {
+<<<<<<< HEAD
         "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_top.xml",
         "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\anim\\abc_slide_out_top.xml"
+=======
+        "merged": "/Users/tahabayi/dmmy/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/abc_popup_exit.xml",
+        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/anim/abc_popup_exit.xml"
+    },
+    {
+        "merged": "/Users/tahabayi/dmmy/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/design_snackbar_in.xml",
+        "source": "/Users/tahabayi/.android/build-cache/a85eefc50f3d213c6d0c922f4f92c0d78afca150/output/res/anim/design_snackbar_in.xml"
+    },
+    {
+        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",
+        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/anim/abc_slide_out_top.xml"
+>>>>>>> c16881a578e8446df8576cf2aea76509ec2c8cb2
     },
     {
         "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_exit.xml",
         "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\anim\\abc_popup_exit.xml"
     },
     {
+<<<<<<< HEAD
         "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_bottom_sheet_slide_in.xml",
         "source": "C:\\home\\mustafa\\.android\\build-cache\\cc05f1acc98792f50f1e2b2ee778c82a1c266ad0\\output\\res\\anim\\design_bottom_sheet_slide_in.xml"
     },
     {
         "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_out_top.xml",
         "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\anim\\abc_slide_out_top.xml"
+=======
+        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/design_fab_in.xml",
+        "source": "/Users/tahabayi/.android/build-cache/a85eefc50f3d213c6d0c922f4f92c0d78afca150/output/res/anim/design_fab_in.xml"
+>>>>>>> c16881a578e8446df8576cf2aea76509ec2c8cb2
     },
     {
         "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_shrink_fade_out_from_bottom.xml",
@@ -52,8 +88,85 @@
         "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\anim\\abc_slide_in_top.xml"
     },
     {
+<<<<<<< HEAD
         "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_top.xml",
         "source": "C:\\home\\mustafa\\.android\\build-cache\\2c8a3c0cddfe9a86f9eebefe601ea3252c81832d\\output\\res\\anim\\abc_slide_in_top.xml"
+=======
+        "merged": "/Users/tahabayi/dmmy/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/abc_slide_in_bottom.xml",
+        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/anim/abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/abc_popup_enter.xml",
+        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/anim/abc_popup_enter.xml"
+    },
+    {
+        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/abc_popup_enter.xml",
+        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/anim/abc_popup_enter.xml"
+    },
+    {
+        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/abc_fade_in.xml",
+        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/anim/abc_fade_in.xml"
+    },
+    {
+        "merged": "/Users/tahabayi/dmmy/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/design_fab_in.xml",
+        "source": "/Users/tahabayi/.android/build-cache/a85eefc50f3d213c6d0c922f4f92c0d78afca150/output/res/anim/design_fab_in.xml"
+    },
+    {
+        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/design_fab_in.xml",
+        "source": "/home/mustafa/.android/build-cache/cc05f1acc98792f50f1e2b2ee778c82a1c266ad0/output/res/anim/design_fab_in.xml"
+    },
+    {
+        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/abc_fade_out.xml",
+        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/anim/abc_fade_out.xml"
+    },
+    {
+        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/abc_grow_fade_in_from_bottom.xml",
+        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/anim/abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/design_bottom_sheet_slide_out.xml",
+        "source": "/home/mustafa/.android/build-cache/cc05f1acc98792f50f1e2b2ee778c82a1c266ad0/output/res/anim/design_bottom_sheet_slide_out.xml"
+    },
+    {
+        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/abc_slide_in_bottom.xml",
+        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/anim/abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
+        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/anim/abc_slide_in_top.xml"
+    },
+    {
+        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",
+        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/anim/abc_slide_out_top.xml"
+    },
+    {
+        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
+        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/anim/abc_slide_in_top.xml"
+    },
+    {
+        "merged": "/Users/tahabayi/dmmy/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/abc_grow_fade_in_from_bottom.xml",
+        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/anim/abc_grow_fade_in_from_bottom.xml"
+    },
+    {
+        "merged": "/Users/tahabayi/dmmy/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",
+        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/anim/abc_slide_out_top.xml"
+    },
+    {
+        "merged": "/Users/tahabayi/dmmy/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/design_snackbar_out.xml",
+        "source": "/Users/tahabayi/.android/build-cache/a85eefc50f3d213c6d0c922f4f92c0d78afca150/output/res/anim/design_snackbar_out.xml"
+    },
+    {
+        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/abc_slide_in_bottom.xml",
+        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/anim/abc_slide_in_bottom.xml"
+    },
+    {
+        "merged": "/Users/tahabayi/dmmy/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/abc_popup_enter.xml",
+        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/anim/abc_popup_enter.xml"
+    },
+    {
+        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/design_bottom_sheet_slide_in.xml",
+        "source": "/Users/tahabayi/.android/build-cache/a85eefc50f3d213c6d0c922f4f92c0d78afca150/output/res/anim/design_bottom_sheet_slide_in.xml"
+>>>>>>> c16881a578e8446df8576cf2aea76509ec2c8cb2
     },
     {
         "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_snackbar_out.xml",
@@ -64,6 +177,7 @@
         "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\anim\\abc_slide_out_bottom.xml"
     },
     {
+<<<<<<< HEAD
         "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_bottom.xml",
         "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\anim\\abc_slide_in_bottom.xml"
     },
@@ -78,12 +192,21 @@
     {
         "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_enter.xml",
         "source": "C:\\Users\\user\\.android\\build-cache\\27198d22c669526406db49e154ac1bd01ea2fb15\\output\\res\\anim\\abc_popup_enter.xml"
+=======
+        "merged": "/Users/tahabayi/dmmy/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/abc_shrink_fade_out_from_bottom.xml",
+        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/anim/abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "/Users/tahabayi/dmmy/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
+        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/anim/abc_slide_in_top.xml"
+>>>>>>> c16881a578e8446df8576cf2aea76509ec2c8cb2
     },
     {
         "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_snackbar_in.xml",
         "source": "C:\\Users\\tahabayi\\.android\\build-cache\\a85eefc50f3d213c6d0c922f4f92c0d78afca150\\output\\res\\anim\\design_snackbar_in.xml"
     },
     {
+<<<<<<< HEAD
         "merged": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_bottom_sheet_slide_out.xml",
         "source": "C:\\home\\mustafa\\.android\\build-cache\\cc05f1acc98792f50f1e2b2ee778c82a1c266ad0\\output\\res\\anim\\design_bottom_sheet_slide_out.xml"
     },
@@ -98,6 +221,26 @@
     {
         "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_popup_exit.xml",
         "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\anim\\abc_popup_exit.xml"
+=======
+        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/design_snackbar_out.xml",
+        "source": "/home/mustafa/.android/build-cache/cc05f1acc98792f50f1e2b2ee778c82a1c266ad0/output/res/anim/design_snackbar_out.xml"
+    },
+    {
+        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/abc_shrink_fade_out_from_bottom.xml",
+        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/anim/abc_shrink_fade_out_from_bottom.xml"
+    },
+    {
+        "merged": "/Users/tahabayi/dmmy/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/abc_fade_in.xml",
+        "source": "/Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/res/anim/abc_fade_in.xml"
+    },
+    {
+        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/abc_fade_in.xml",
+        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/anim/abc_fade_in.xml"
+    },
+    {
+        "merged": "/Users/tahabayi/dmmy/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/design_bottom_sheet_slide_out.xml",
+        "source": "/Users/tahabayi/.android/build-cache/a85eefc50f3d213c6d0c922f4f92c0d78afca150/output/res/anim/design_bottom_sheet_slide_out.xml"
+>>>>>>> c16881a578e8446df8576cf2aea76509ec2c8cb2
     },
     {
         "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_grow_fade_in_from_bottom.xml",
@@ -112,6 +255,7 @@
         "source": "C:\\home\\mustafa\\.android\\build-cache\\cc05f1acc98792f50f1e2b2ee778c82a1c266ad0\\output\\res\\anim\\design_fab_out.xml"
     },
     {
+<<<<<<< HEAD
         "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\anim\\abc_slide_in_top.xml",
         "source": "C:\\Users\\tahabayi\\.android\\build-cache\\aba487372f1f022541a74d6aae549bc56237b39b\\output\\res\\anim\\abc_slide_in_top.xml"
     },
@@ -190,5 +334,13 @@
     {
         "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\anim\\design_bottom_sheet_slide_out.xml",
         "source": "C:\\Users\\tahabayi\\.android\\build-cache\\a85eefc50f3d213c6d0c922f4f92c0d78afca150\\output\\res\\anim\\design_bottom_sheet_slide_out.xml"
+=======
+        "merged": "/Users/tahabayi/dmmy/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/design_fab_out.xml",
+        "source": "/Users/tahabayi/.android/build-cache/a85eefc50f3d213c6d0c922f4f92c0d78afca150/output/res/anim/design_fab_out.xml"
+    },
+    {
+        "merged": "/home/mustafa/bounswe2017group1/android/app/build/intermediates/res/merged/debug/anim/abc_popup_exit.xml",
+        "source": "/home/mustafa/.android/build-cache/2c8a3c0cddfe9a86f9eebefe601ea3252c81832d/output/res/anim/abc_popup_exit.xml"
+>>>>>>> c16881a578e8446df8576cf2aea76509ec2c8cb2
     }
 ]

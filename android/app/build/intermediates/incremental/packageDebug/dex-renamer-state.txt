@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 #Mon Nov 20 17:48:46 EET 2017
 base.0=C\:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
 renamed.0=classes.dex
 file.0=C\:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex
+=======
+#Mon Nov 20 17:35:29 EET 2017
+base.0=/Users/tahabayi/dmmy/bounswe2017group1/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main
+renamed.0=classes.dex
+file.0=/Users/tahabayi/dmmy/bounswe2017group1/android/app/build/intermediates/transforms/dex/debug/folders/1000/1f/main/classes.dex
+>>>>>>> c16881a578e8446df8576cf2aea76509ec2c8cb2

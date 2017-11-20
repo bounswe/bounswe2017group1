@@ -1,5 +1,6 @@
 -- Merging decision tree log ---
 manifest
+<<<<<<< HEAD
 ADDED from C:\Users\user\Desktop\bounswe2017group1\android\app\src\main\AndroidManifest.xml:2:1-35:12
 	package
 		ADDED from C:\Users\user\Desktop\bounswe2017group1\android\app\src\main\AndroidManifest.xml:3:5-49
@@ -98,14 +99,122 @@ MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\user\.android\
 MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\user\.android\build-cache\2e08b41e5db84fad579b62ba79ee334bcae2ed30\output\AndroidManifest.xml:21:5-23:61
 MERGED from [com.android.support:support-compat:25.3.1] C:\Users\user\.android\build-cache\a5178f586e33aeab7b1c6a34bfa2d9d4a350de35\output\AndroidManifest.xml:21:5-23:58
 MERGED from [com.android.support:cardview-v7:25.3.1] C:\Users\user\.android\build-cache\b4f3876003db03fde8d42e475c89d77e60c7fecb\output\AndroidManifest.xml:20:5-43
+=======
+ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:2:1-35:12
+	package
+		ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:3:5-49
+		INJECTED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.INTERNET
+ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:4:5-83
+	android:name
+		ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:4:22-64
+application
+ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:5:5-33:19
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/tahabayi/.android/build-cache/5f1696ae4cf35a948c6d4afe5ece591c1c334c8a/output/AndroidManifest.xml:9:5-20
+MERGED from [com.android.support:design:25.3.1] /Users/tahabayi/.android/build-cache/a85eefc50f3d213c6d0c922f4f92c0d78afca150/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:appcompat-v7:25.3.1] /Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] /Users/tahabayi/.android/build-cache/7ae5d2649391febece930664d736f0bffca1eb2a/output/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:25.3.1] /Users/tahabayi/.android/build-cache/eadb81b82728a154a3551cd9f6f05f20342d5fd3/output/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:transition:25.3.1] /Users/tahabayi/.android/build-cache/6da537d156a2a149a6ce6b365a5c215a0365f12c/output/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-v4:25.3.1] /Users/tahabayi/.android/build-cache/ac40c6e11f50e401b513a5d9ac45ca6e40e698a8/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:25.3.1] /Users/tahabayi/.android/build-cache/01ab3c4fa4cb2a7ed88106a519a54f64e157148e/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:25.3.1] /Users/tahabayi/.android/build-cache/ac5f0e1d1321544f77ac858a27f756029c4b614f/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:25.3.1] /Users/tahabayi/.android/build-cache/3da1f3d2c05daa7eafe3d5deb0c3767aaae574ed/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:25.3.1] /Users/tahabayi/.android/build-cache/add975f7ec8a9cbb3c485b51bffcdd1675975acd/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-compat:25.3.1] /Users/tahabayi/.android/build-cache/af8937d927670770077f7fdfd2c8ccfc5764f989/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:cardview-v7:25.3.1] /Users/tahabayi/.android/build-cache/fe5fb37811e93f62a2f7c42ca135e65235ef37fb/output/AndroidManifest.xml:26:5-20
+	android:label
+		ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:8:9-41
+	android:supportsRtl
+		ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:10:9-35
+	android:roundIcon
+		ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:9:9-54
+	android:allowBackup
+		ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:6:9-35
+	android:icon
+		ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:7:9-43
+	android:theme
+		ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:11:9-40
+activity#com.boungroup1.androidculturemania.MainActivity
+ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:12:9-18:20
+	android:name
+		ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:12:19-47
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:13:13-17:29
+action#android.intent.action.MAIN
+ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:14:17-69
+	android:name
+		ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:14:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:16:17-77
+	android:name
+		ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:16:27-74
+activity#com.boungroup1.androidculturemania.LoginActivity
+ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:19:9-25:20
+	android:name
+		ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:19:19-48
+intent-filter#android.intent.action.LOGIN+android.intent.category.DEFAULT
+ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:20:13-24:29
+action#android.intent.action.LOGIN
+ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:21:17-70
+	android:name
+		ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:21:25-67
+category#android.intent.category.DEFAULT
+ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:23:17-76
+	android:name
+		ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:23:27-73
+activity#com.boungroup1.androidculturemania.SingUpActivity
+ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:26:9-32:20
+	android:name
+		ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:26:19-49
+intent-filter#android.intent.action.SIGNUP+android.intent.category.DEFAULT
+ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:27:13-31:29
+action#android.intent.action.SIGNUP
+ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:28:17-71
+	android:name
+		ADDED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml:28:25-68
+uses-sdk
+INJECTED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] /Users/tahabayi/.android/build-cache/5f1696ae4cf35a948c6d4afe5ece591c1c334c8a/output/AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support:design:25.3.1] /Users/tahabayi/.android/build-cache/a85eefc50f3d213c6d0c922f4f92c0d78afca150/output/AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:appcompat-v7:25.3.1] /Users/tahabayi/.android/build-cache/aba487372f1f022541a74d6aae549bc56237b39b/output/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] /Users/tahabayi/.android/build-cache/7ae5d2649391febece930664d736f0bffca1eb2a/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.3.1] /Users/tahabayi/.android/build-cache/eadb81b82728a154a3551cd9f6f05f20342d5fd3/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:25.3.1] /Users/tahabayi/.android/build-cache/fff1aed5426bc79326e6d73ec3c08033d92a1a26/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:transition:25.3.1] /Users/tahabayi/.android/build-cache/6da537d156a2a149a6ce6b365a5c215a0365f12c/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:25.3.1] /Users/tahabayi/.android/build-cache/ac40c6e11f50e401b513a5d9ac45ca6e40e698a8/output/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.3.1] /Users/tahabayi/.android/build-cache/01ab3c4fa4cb2a7ed88106a519a54f64e157148e/output/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.3.1] /Users/tahabayi/.android/build-cache/ac5f0e1d1321544f77ac858a27f756029c4b614f/output/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.3.1] /Users/tahabayi/.android/build-cache/3da1f3d2c05daa7eafe3d5deb0c3767aaae574ed/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.3.1] /Users/tahabayi/.android/build-cache/add975f7ec8a9cbb3c485b51bffcdd1675975acd/output/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:25.3.1] /Users/tahabayi/.android/build-cache/af8937d927670770077f7fdfd2c8ccfc5764f989/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:cardview-v7:25.3.1] /Users/tahabayi/.android/build-cache/fe5fb37811e93f62a2f7c42ca135e65235ef37fb/output/AndroidManifest.xml:20:5-43
+>>>>>>> c16881a578e8446df8576cf2aea76509ec2c8cb2
 	tools:overrideLibrary
 		ADDED from [com.android.support:design:25.3.1] C:\Users\user\.android\build-cache\3bd0e1888cd861c6cfa803e831983ba297b3d732\output\AndroidManifest.xml:23:9-59
 	android:targetSdkVersion
+<<<<<<< HEAD
 		INJECTED from C:\Users\user\Desktop\bounswe2017group1\android\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\user\Desktop\bounswe2017group1\android\app\src\main\AndroidManifest.xml
 	android:minSdkVersion
 		INJECTED from C:\Users\user\Desktop\bounswe2017group1\android\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\user\Desktop\bounswe2017group1\android\app\src\main\AndroidManifest.xml
+=======
+		INJECTED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/AndroidManifest.xml
+>>>>>>> c16881a578e8446df8576cf2aea76509ec2c8cb2
 meta-data#android.support.VERSION
 ADDED from [com.android.support:design:25.3.1] C:\Users\user\.android\build-cache\3bd0e1888cd861c6cfa803e831983ba297b3d732\output\AndroidManifest.xml:25:5-27:34
 MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\user\.android\build-cache\27198d22c669526406db49e154ac1bd01ea2fb15\output\AndroidManifest.xml:25:5-27:34

@@ -12,6 +12,7 @@
         "source": "C:\\home\\mustafa\\bounswe2017group1\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
     },
     {
+<<<<<<< HEAD
         "merged": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\ic_launcher_round.png",
         "source": "C:\\Users\\tahabayi\\bounswe2017group1\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
     },
@@ -22,5 +23,17 @@
     {
         "merged": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi\\ic_launcher.png",
         "source": "C:\\Users\\user\\Desktop\\bounswe2017group1\\android\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
+=======
+        "merged": "/Users/tahabayi/bounswe2017group1/android/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi/ic_launcher_round.png",
+        "source": "/Users/tahabayi/bounswe2017group1/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "/Users/tahabayi/dmmy/bounswe2017group1/android/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi/ic_launcher.png",
+        "source": "/Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "/Users/tahabayi/dmmy/bounswe2017group1/android/app/build/intermediates/res/merged/debug/mipmap-xxxhdpi/ic_launcher_round.png",
+        "source": "/Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png"
+>>>>>>> c16881a578e8446df8576cf2aea76509ec2c8cb2
     }
 ]
