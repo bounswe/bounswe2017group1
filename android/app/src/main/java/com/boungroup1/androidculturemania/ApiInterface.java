@@ -16,9 +16,14 @@ public interface ApiInterface {
     @Headers( "Content-Type: application/json" )
     @POST("/api/users/signup")
     Call<JsonResponseSignUp> signUp(@Body SignUpBody signup);
+
     @Headers( "Content-Type: application/json" )
     @POST("/api/users/signin")
     Call<JsonResponseSignIn> signIn(@Body SignInBody signin);
+
+    @Headers( "Content-Type: application/json" )
+    @POST("/api/items/")
+    Call<JsonResponseItemCreate> itemCreate(@Body ItemCreateBody itemcreate, @Header("Authorization") String  auth);
 
     @GET("/api/users/signout")
     Call<JsonResponseSignOut> logOut(@Header("Authorization") String  auth);
