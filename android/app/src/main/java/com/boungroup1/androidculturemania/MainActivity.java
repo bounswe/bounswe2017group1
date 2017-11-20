@@ -40,11 +40,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        final TextView username_text = (TextView) findViewById(R.id.username);
+        final Button logout = (Button) findViewById(R.id.btn_logout);
+        final Button itemCreate = (Button) findViewById(R.id.item_create_btn);
+
+
         Retrofit retrofit = ApiClient.getApiClient();
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
 
+
+        itemCreate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                startActivity(new Intent(getApplicationContext(), ItemCreateActivity.class));
+            }
+        });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+
         Call<List<JsonResponseHeritage>> call = apiInterface.listHeritage();
         call.enqueue(new Callback<List<JsonResponseHeritage>>() {
+
             @Override
             public void onResponse(Call<List<JsonResponseHeritage>> call, Response<List<JsonResponseHeritage>> response) {
                 if (response.isSuccessful()) {

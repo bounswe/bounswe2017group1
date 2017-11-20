@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<<<<<<< HEAD
-<merger version="3"><dataSet config="main"><source path="C:\Users\user\Desktop\bounswe2017group1\android\app\src\main\jniLibs"/></dataSet><dataSet config="debug"><source path="C:\Users\user\Desktop\bounswe2017group1\android\app\src\debug\jniLibs"/></dataSet></merger>
-=======
-<merger version="3"><dataSet config="main"><source path="/Users/tahabayi/dmmy/bounswe2017group1/android/app/src/main/jniLibs"/></dataSet><dataSet config="debug"><source path="/Users/tahabayi/dmmy/bounswe2017group1/android/app/src/debug/jniLibs"/></dataSet></merger>
->>>>>>> c16881a578e8446df8576cf2aea76509ec2c8cb2
