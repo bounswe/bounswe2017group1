@@ -23,8 +23,8 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-import static android.R.attr.password;
-import static com.boungroup1.androidculturemania.R.id.username;
+//import static android.R.attr.password;
+//import static com.boungroup1.androidculturemania.R.id.username;
 
 /**
  * Created by user on 15/11/2017.

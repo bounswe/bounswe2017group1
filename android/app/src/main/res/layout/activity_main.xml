@@ -53,26 +53,13 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.394" />
     -->
-
-    <!-- logout Button -->
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btn_logout"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:text="Logout"
-        tools:layout_editor_absoluteY="16dp"
-        app:layout_constraintTop_toBottomOf="@id/heritage_recycler_view"
-        tools:layout_editor_absoluteX="0dp" />
-
-    <!-- itemcreate Button -->
-    <android.support.v7.widget.AppCompatButton
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/item_create_btn"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="12dp"
-        android:text="Create Item"
-        app:layout_constraintTop_toBottomOf="@id/btn_logout"
-        />
+        android:src="@android:drawable/ic_dialog_email"
+        android:layout_gravity="bottom|end"
+        app:elevation="6dp"
+        app:pressedTranslationZ="12dp"/>
 
 </android.support.constraint.ConstraintLayout>

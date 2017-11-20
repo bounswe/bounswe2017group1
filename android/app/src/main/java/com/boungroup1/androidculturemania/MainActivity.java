@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,6 +12,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -39,25 +42,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+//        final TextView username_text = (TextView) findViewById(R.id.username);
 
-        final TextView username_text = (TextView) findViewById(R.id.username);
-        final Button logout = (Button) findViewById(R.id.btn_logout);
-        final Button itemCreate = (Button) findViewById(R.id.item_create_btn);
+        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.item_create_btn);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                startActivity(new Intent(getApplicationContext(),ItemCreateActivity.class));
+            }
+        });
 
 
         Retrofit retrofit = ApiClient.getApiClient();
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
 
 
-        itemCreate.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-                startActivity(new Intent(getApplicationContext(), ItemCreateActivity.class));
-            }
-        });
-
-        logout.setOnClickListener(new View.OnClickListener() {
+        //logout.setOnClickListener(new View.OnClickListener() {
 
         Call<List<JsonResponseHeritage>> call = apiInterface.listHeritage();
         call.enqueue(new Callback<List<JsonResponseHeritage>>() {
@@ -118,6 +119,7 @@ public class MainActivity extends AppCompatActivity {
         //username_text.setText("Welcome " + username + " " + email + " Token = " + token + "ID = " + id );
 
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
