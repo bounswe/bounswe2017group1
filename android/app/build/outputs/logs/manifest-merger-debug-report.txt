@@ -31,6 +31,7 @@ MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\user\.and
 MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\user\.android\build-cache\8b7c79f3d75f297f198c87eb2c3bfcfacc2c6e3e\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\user\.android\build-cache\2e08b41e5db84fad579b62ba79ee334bcae2ed30\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-compat:25.3.1] C:\Users\user\.android\build-cache\a5178f586e33aeab7b1c6a34bfa2d9d4a350de35\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:cardview-v7:25.3.1] C:\Users\user\.android\build-cache\b4f3876003db03fde8d42e475c89d77e60c7fecb\output\AndroidManifest.xml:26:5-20
 	android:label
 		ADDED from C:\Users\user\Desktop\bounswe2017group1\android\app\src\main\AndroidManifest.xml:8:9-41
 	android:supportsRtl
@@ -106,6 +107,7 @@ MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\user\.and
 MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\user\.android\build-cache\8b7c79f3d75f297f198c87eb2c3bfcfacc2c6e3e\output\AndroidManifest.xml:21:5-23:58
 MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\user\.android\build-cache\2e08b41e5db84fad579b62ba79ee334bcae2ed30\output\AndroidManifest.xml:21:5-23:61
 MERGED from [com.android.support:support-compat:25.3.1] C:\Users\user\.android\build-cache\a5178f586e33aeab7b1c6a34bfa2d9d4a350de35\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:cardview-v7:25.3.1] C:\Users\user\.android\build-cache\b4f3876003db03fde8d42e475c89d77e60c7fecb\output\AndroidManifest.xml:20:5-43
 	tools:overrideLibrary
 		ADDED from [com.android.support:design:25.3.1] C:\Users\user\.android\build-cache\3bd0e1888cd861c6cfa803e831983ba297b3d732\output\AndroidManifest.xml:23:9-59
 	android:targetSdkVersion
@@ -127,6 +129,7 @@ MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\user\.and
 MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\user\.android\build-cache\8b7c79f3d75f297f198c87eb2c3bfcfacc2c6e3e\output\AndroidManifest.xml:25:5-27:34
 MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\user\.android\build-cache\2e08b41e5db84fad579b62ba79ee334bcae2ed30\output\AndroidManifest.xml:25:5-27:34
 MERGED from [com.android.support:support-compat:25.3.1] C:\Users\user\.android\build-cache\a5178f586e33aeab7b1c6a34bfa2d9d4a350de35\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:cardview-v7:25.3.1] C:\Users\user\.android\build-cache\b4f3876003db03fde8d42e475c89d77e60c7fecb\output\AndroidManifest.xml:22:5-24:34
 	android:value
 		ADDED from [com.android.support:design:25.3.1] C:\Users\user\.android\build-cache\3bd0e1888cd861c6cfa803e831983ba297b3d732\output\AndroidManifest.xml:27:9-31
 	android:name

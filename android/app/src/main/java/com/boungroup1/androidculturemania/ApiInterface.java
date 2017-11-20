@@ -1,5 +1,7 @@
 package com.boungroup1.androidculturemania;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -27,4 +29,7 @@ public interface ApiInterface {
 
     @GET("/api/users/signout")
     Call<JsonResponseSignOut> logOut(@Header("Authorization") String  auth);
+
+    @GET("/api/items")
+    Call<List<JsonResponseHeritage>> listHeritage();
 }
