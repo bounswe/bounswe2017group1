@@ -1,13 +1,12 @@
-
 from django.conf.urls import url, include
 from django.contrib import admin
 
-
-from api.controller import profile,comment,vote,user,heritage
-
-
-
+from api.controller import (
+    profile, comment, vote, user,
+    heritage, tag, search, media
+)
 urlpatterns = [
+
     # USER ROUTES
     url(r'^users/signup/?$', user.signup),
     url(r'^users/signin/?$', user.signin),
@@ -15,22 +14,40 @@ urlpatterns = [
     url(r'^users/?$', user.users),
     url(r'^users/login_req/?$', user.login_required),
 
-    url(r'^items/?$', heritage.heritage_post),
-    url(r'^items/get_first/?$', heritage.heritage_get_first),
+
+    # ITEM ROUTES
+    url(r'^items/?$', heritage.heritage_get_post),
+    url(r'^items/(?P<heritage_id>[0-9]+)/?$', heritage.heritage_get_put_delete),
+    url(r'^items/(?P<heritage_id>[0-9]+)/comments/?$', heritage.get_all_comments),
+    url(r'^items/(?P<heritage_id>[0-9]+)/tags/?$', heritage.get_all_tags),
+    #url(r'^items/get_first/?$', heritage.heritage_get_first),
 
 
-    url(r'^items/(?P<pk>[0-9]+)/?$', heritage.heritage_get),
-    url(r'^items/all?$', heritage.heritage_get_all),
+    # COMMENT ROUTES
+    url(r'^comments/?$', comment.comment_get_post),
+    url(r'^comments/(?P<comment_id>[0-9]+)/?$', comment.comment_get_put_delete),
 
-    url(r'^comments/?$', comment.comment_post),
-    url(r'^comments/(?P<pk>[0-9]+)/?$', comment.comment_get),
-    url(r'^comments/all?$', comment.comment_get_all),
-    url(r'^heritagecomments/(?P<pk>[0-9]+)/?$', comment.comment_get_heritage),
 
+    # VOTE ROUTES
     url(r'^votes/?$', vote.vote_post),
 
-    url(r'^profiles/(?P<pk>[0-9]+)/?$', profile.profile_get),
-    url(r'^profiles/all/?$', profile.profile_get_all),
+
+    # PROFILE ROUTES
+    url(r'^profiles/?$', profile.profile_get_all),
+    url(r'^profiles/(?P<user_id>[0-9]+)/?$', profile.profile_get),
 
 
+    # TAG ROUTES
+    url(r'^tags/?$', tag.list_all_tags),
+    url(r'^tags/(?P<tag_id>[0-9]+)/heritages/?$', tag.get_all_heritage_items_own_this_tag),
+
+    #MEDIA ROUTES
+    url(r'^medias/(?P<pk>[0-9]+)/?$', media.media_get_delete),
+    url(r'^medias/?$', media.media_post),
+
+
+    # SEARCH ROUTES
+    url(r'^search/?$', search.search),
+    #url(r'^search/advanced/?$', search.advanced_search),
 ]
+

@@ -6,7 +6,9 @@ import { Redirect } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 import TopBar from '../components/TopBar.jsx'
 import 'whatwg-fetch'
+import appConstants from '../../modules/appConstants.js'
 
+var baseUrl = appConstants.baseUrl;
 class LoginPage extends React.Component {
 
   /**
@@ -28,7 +30,8 @@ class LoginPage extends React.Component {
       errors: {},
       successMessage,
       user: {
-        email: '',
+        username:'',
+        //email: '',
         password: ''
       },
       redirect: false
@@ -48,11 +51,13 @@ class LoginPage extends React.Component {
     event.preventDefault();
 
     // create a string for an HTTP body message
-    const username = this.state.user.email;
+    const username = this.state.user.username;
+    //const email = this.state.user.email;
     const password = this.state.user.password;
-    const data = { username, password };
 
-    fetch('http://localhost:8000/api/users/signin',{
+    const data = {username, password};
+
+    fetch(baseUrl+'/api/users/signin',{
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -70,7 +75,7 @@ class LoginPage extends React.Component {
         let token;
         response.json().then(res=>{
           /* res.heritage */
-          Auth.authenticateUser(res.token);
+          Auth.authenticateUser(res.token, username);
           this.setState({
             redirect: true
           })

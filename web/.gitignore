@@ -1,0 +1,6 @@
+/.idea/**
+/__pycache__/**
+*.pyc
+./db.sqlite3
+./frontend/client/dist/*
+./frontend/npm-debug.log

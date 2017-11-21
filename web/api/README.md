@@ -6,122 +6,630 @@ Authorization: "Token {Token}"
 
 ***
 
-## api/users/signup
+## User Routes
+
+### /users/signup
 ##### POST
-Create user and return
+Create new user
 
-    **Request**
+  **Request**
 
-        {
-            "username": String, (required)
-            "email": String, (required)
-            "password": String, (required)
-            "location": String, (optional)
-            "gender": String, (optional)
-            "photo_path": String (optional)
-        }
+    {
+        "username": String, (required)
+        "email": String, (required)
+        "password": String, (required)
+        "location": String, (optional)
+        "gender": String, (optional)
+        "photo_path": String (optional)
+    }
+    
 
-    **Response**
+  **Response**
 
-        200
+    201 Created
 
-        {
-            "profile": {
-                "id": 3,
-                "username": "user1",
-                "location": "Istanbul",
-                "gender": "Male",
-                "photo_path": ""
-            },
-            "user": {
-                "email": "user1@gmail.com",
-                "username": "user1"
-            }
-        }
+      {
+          "profile": {
+                "id": Integer,
+                "username": String,
+                "location": String,
+                "gender": String,
+                "photo_path": String,
+                "user": Integer
+          },
+          "user": {
+                "email": String,
+                "username": String
+          }
+      }
         
 
 
-        400 Bad Request
+    400 Bad Request
 
-        { field: [error] }
+      { field: [error] }
 
 ***
 
-## api/users/signin
+### /users/signin
 ##### POST
 authenticate user with email and password, return token
 
-    **Request**
+  **Request**
 
-        {
-            "username": String, (required)
-            "email": String, (required)
-            "password": String (required)
-        }
-
-    **Response**
-
-        200
-
-        {
-            "token": Token
-        }
+    {
+        "username": String, (required)
+        "email": String, (optional)
+        "password": String (required)
+    }
 
 
+  **Response**
 
-        400 Bad Request
+    200 OK
 
-        {}
+      {
+          "token": Token
+      }
+
+
+
+    400 Bad Request
+
+      { field: [error] }
 
 ***
 
-## api/users/signout
-##### GET
+### /users/signout
+##### POST
 delete user token from database
 
-    **Response**
+  **Response**
 
-        200
+    200 OK
         
         
         
-        204 NO CONTENT
-
-        { "field": [error] }
+    401 Unauthorized
+    
+      {
+        "detail": "Invalid token."
+      }
 
 ***
 
-## api/users
+### /users/
 ##### GET
-retrieve all users
+get all users
 
-    **Response**
+  **Response**
 
-        200
+    200 OK
 
-        [
-            {
-                "email": String,
-                "username": String
-            }
-        ]
+      [
+        {
+            "email": String,
+            "username": String
+        },
+      ]
+      
+      
+      
+    404 Not Found
 
 ***
 
-## api/users/login_req
-##### GET, POST
-a login required url
+## Heritage Item Routes
 
-    **Response**
+### /items/
+##### POST
+Create new heritage item
 
-        200
+  **Request**
 
+    {
+        "title": String, (required)
+        "description": String, (optional)
+        "event_date": String, (optional)
+        "location": String, (required)
+        "tags": [
+            {
+                "name": String,
+                "category": String
+            },
+        ] (optional)
+    }
+
+
+  **Response**
+
+    201 Created
+
+      {
+          "id": Integer,
+          "upvote_count": Integer,
+          "downvote_count": Integer,
+          "tags": [
+              {
+                  "id": Integer,
+                  "name": String,
+                  "category": String
+              },
+          ] (optional)
+      }
+        
+
+
+    400 Bad Request
+
+      { field: [error] }
+      
+      
+      
+    401 Unauthorized
+    
+      { "detail": [error] }  
+
+***
+
+### /items/
+##### GET
+get all heritage items
+
+  **Response**
+
+    200 OK
+        
+      [
         {
-            "username": String
-        }
-        
-        
-        
-        400 BAD REQUEST
+            "id": Integer,
+            "upvote_count": Integer,
+            "downvote_count": Integer,
+            "tags": [
+                {
+                    "id": Integer,
+                    "name": String,
+                    "category": String
+                },
+            ],
+            "title": String,
+            "description": String,
+            "creation_date": DateTime,
+            "event_date": DateTime,
+            "location": String,
+            "creator": Integer
+        },
+      ]
 
+
+
+    404 Not Found
+        
+***
+
+### /items/{id}
+##### GET
+get heritage item by id
+
+  **Response**
+
+    200 OK
+
+      {
+          "id": Integer,
+          "upvote_count": Integer,
+          "downvote_count": Integer,
+          "tags": [
+              {
+                  "id": Integer,
+                  "name": String,
+                  "category": String
+              },
+          ],
+          "title": String,
+          "description": String,
+          "creation_date": DateTime,
+          "event_date": DateTime,
+          "location": String,
+          "creator": Integer
+      }
+
+
+
+    404 Not Found
+
+***
+
+### /items/{id}
+##### PUT
+update the heritage item which is indicated by id
+
+  **Response**
+
+    200 OK
+
+      {
+          "id": Integer,
+          "upvote_count": Integer,
+          "downvote_count": Integer,
+          "tags": [
+              {
+                  "id": Integer,
+                  "name": String,
+                  "category": String
+              },
+          ],
+          "title": String,
+          "description": String,
+          "creation_date": DateTime,
+          "event_date": DateTime,
+          "location": String,
+          "creator": Integer
+      }
+
+    
+    
+    400 Bad Request
+    
+      { field: [error] }
+    
+    
+
+    404 Not Found
+    
+    
+    
+    412 Precondition Failed
+
+***
+
+### /items/{id}
+##### DELETE
+delete the heritage item which is indicated by id
+
+  **Response**
+
+    200 OK
+
+
+
+    204 No Content
+    
+    
+    
+    404 Not Found
+
+***
+
+### /items/{id}/comments/
+##### GET
+get all comments of the heritage item indicated by id
+
+  **Response**
+
+    200 OK
+        
+      [
+        {
+            "id": Integer,
+            "text": String,
+            "creation_date": DateTime,
+            "update_date": DateTime,
+            "heritage": Integer,
+            "creator": Integer,
+            "parent_comment": Integer
+        },
+      ]
+
+
+
+    404 Not Found
+        
+***
+
+### /items/{id}/tags/
+##### GET
+get all tags of the heritage item indicated by id
+
+  **Response**
+
+    200 OK
+        
+      [
+        {
+            "id": Integer,
+            "name": String,
+            "category": String
+        },
+      ]
+
+
+
+    404 Not Found
+        
+***
+
+## Comment Routes
+
+### /comments/
+##### POST
+Create new comment
+
+  **Request**
+
+    {
+        "text": String, (required)
+        "heritage": Integer, (required)
+        "parent_comment": Integer (optional)
+    }
+    
+
+  **Response**
+
+    201 Created
+
+      {
+          "id": Integer,
+          "text": String,
+          "creation_date": DateTime,
+          "update_date": DateTime,
+          "heritage": Integer,
+          "creator": Integer,
+          "parent_comment": Integer
+      }
+        
+
+
+    400 Bad Request
+
+      { field: [error] }
+      
+      
+      
+    401 Unauthorized
+    
+      { "detail": [error] } 
+
+***
+
+### /comments/{id}
+##### GET
+get the comment by id
+
+
+  **Response**
+
+    200 OK
+
+      {
+          "id": Integer,
+          "text": String,
+          "creation_date": DateTime,
+          "update_date": DateTime,
+          "heritage": Integer,
+          "creator": Integer,
+          "parent_comment": Integer
+      }
+
+        
+
+
+    404 Not Found
+
+***
+
+### /comments/{id}
+##### DELETE
+delete the comment that is indicated by id
+
+  **Response**
+
+    200 OK
+
+
+
+    204 No Content
+    
+    
+    
+    404 Not Found
+
+***
+
+## Vote Routes
+
+### /votes/
+##### POST
+Create new vote
+
+  **Request**
+
+    {
+        "value": Boolean, (required)
+        "heritage": Integer (required)
+    }
+    
+
+  **Response**
+
+    201 Created
+
+      {
+          "id": Integer,
+          "value": Boolean,
+          "creation_date": DateTime,
+          "update_date": DateTime,
+          "voter": Integer,
+          "heritage": Integer
+      }
+        
+
+
+    400 Bad Request
+
+      { field: [error] }
+      
+      
+    
+    401 Unauthorized
+    
+      { "detail": [error] } 
+
+***
+
+## Profile Routes
+
+### /profiles/
+##### GET
+get all user profiles
+
+  **Response**
+
+    200 OK
+        
+      [
+        {
+            "id": Integer,
+            "username": String,
+            "location": String,
+            "gender": String,
+            "photo_path": String,
+            "user": Integer
+        },
+      ]
+
+
+
+    404 Not Found
+        
+***
+
+### /profiles/{id}
+##### GET
+get user profile by id
+
+  **Response**
+
+    200 OK
+
+      {
+          "id": Integer,
+          "username": String,
+          "location": String,
+          "gender": String,
+          "photo_path": String,
+          "user": Integer
+      }
+
+
+
+    404 Not Found
+
+***
+
+## Tag Routes
+
+### /tags/
+##### GET
+get all tags
+
+  **Response**
+
+    200 OK
+        
+      [
+        {
+            "id": Integer,
+            "name": String,
+            "category": String
+        },
+      ]
+
+
+
+    404 Not Found
+    
+***
+
+### /tags/{id}/heritages/
+##### GET
+get all heritage items own the tag indicated by id
+
+  **Response**
+
+    200 OK
+        
+      [
+        {
+            "id": Integer,
+            "upvote_count": Integer,
+            "downvote_count": Integer,
+            "tags": [
+                {
+                    "id": Integer,
+                    "name": String,
+                    "category": String
+                },
+            ],
+            "title": String,
+            "description": String,
+            "creation_date": DateTime,
+            "event_date": DateTime,
+            "location": String,
+            "creator": Integer
+        },
+      ]
+
+
+
+    404 Not Found
+    
+***
+
+
+
+## Search
+
+### /search/
+##### POST
+searches heritage items
+
+  **Request**
+  
+      [
+         {
+            "query": String, (Required)
+            "filters:" {
+                 "location": String, (optional)
+                 "creator": String, (optional)
+                 "creation_start": datetime, (optional)
+                 "creation_end": datetime, (optional)
+                 "event_start": datetime, (optional)
+                 "event_end": datetime, (optional)
+             } (optional)
+            
+      ]
+
+  **Response**
+  
+      [
+         {
+            "id": Integer,
+            "upvote_count": Integer,
+            "downvote_count": Integer,
+            "tags": [
+                 {
+                    "id": Integer,
+                    "name": String,
+                    "related_list": String,
+                 }
+            ],
+            "title": String,
+            "description": String,
+            "creation_date": String,
+            "event_date": String,
+            "location": String,
+            "creator": Integer
+         },
+      ]
 ***

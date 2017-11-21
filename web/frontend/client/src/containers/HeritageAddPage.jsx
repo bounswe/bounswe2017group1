@@ -5,7 +5,9 @@ import HeritageAdd from '../components/HeritageAdd.jsx';
 import { Redirect } from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 import TopBar from '../components/TopBar.jsx'
+import appConstants from '../../modules/appConstants.js'
 
+var baseUrl = appConstants.baseUrl;
 class HeritageAddPage extends React.Component {
 
   /**
@@ -29,7 +31,8 @@ class HeritageAddPage extends React.Component {
       heritage: {
         title: '',
         description: '',
-        location: ''
+        location: '',
+        tags:[]
       },
       redirect: false
     };
@@ -51,17 +54,19 @@ class HeritageAddPage extends React.Component {
     const title = this.state.heritage.title;
     const description = this.state.heritage.description;
     const location = this.state.heritage.location;
+    const tags = this.state.heritage.tags;
     const creator = 1;
     //const data = `title=${title}&description=${description}&location=${location}&creator=1`;
 
-    const data = { title, description, location, creator, creation_date: new Date(2017, 11, 20, 12, 0), event_date: new Date(2017, 11, 20, 12, 0)};
+    const data = { title, description, location, creator,tags, creation_date: new Date(2017, 11, 20, 12, 0), event_date: new Date(2017, 11, 20, 12, 0)};
 
-    fetch('http://localhost:8000/api/items',{
+    fetch(baseUrl+'/api/items',{
       method: "POST",
       body: JSON.stringify(data),
       headers: {
         "Access-Control-Allow-Origin" : "*",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "authorization": "token "+Auth.getToken()
       },
       credentials: "same-origin"
     }).then(response=>{
@@ -74,7 +79,6 @@ class HeritageAddPage extends React.Component {
         let token;
         response.json().then(res=>{
           /* res.heritage */
-          Auth.authenticateUser(res.token);
           this.setState({
             redirect: true
           })
@@ -108,9 +112,15 @@ class HeritageAddPage extends React.Component {
    * Render the component.
    */
   render() {
+    const {redirect} = this.state;
+
+      if(redirect){
+        
+        return (<Redirect to='/' push/>)
+      }
     return (
       <div>
-        <TopBar auth={false}/>
+        <TopBar auth={Auth.isUserAuthenticated()}/>
         
         <HeritageAdd
           onSubmit={this.processForm}
