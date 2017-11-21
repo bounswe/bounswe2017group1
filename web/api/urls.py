@@ -42,7 +42,7 @@ urlpatterns = [
     url(r'^tags/(?P<tag_id>[0-9]+)/heritages/?$', tag.get_all_heritage_items_own_this_tag),
 
     #MEDIA ROUTES
-    url(r'^medias/(?P<pk>[0-9]+)/?$', media.media_get),
+    url(r'^medias/(?P<pk>[0-9]+)/?$', media.media_get_delete),
     url(r'^medias/?$', media.media_post),
 
 

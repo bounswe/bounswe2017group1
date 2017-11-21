@@ -7,5 +7,5 @@ class MediaSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Media
-        fields = ('type', 'image', 'heritage', 'creation_date', 'update_date')
+        fields = ('__all__')
 
