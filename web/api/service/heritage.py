@@ -3,10 +3,8 @@ import json
 from api.model.heritage import Heritage
 from api.model.comment import Comment
 from api.model.tag import Tag
-from api.model.media import Media
 from api.serializer.comment import CommentSerializer
 from api.serializer.tag import TagSerializer
-from api.serializer.media import MediaSerializer
 
 def get_item_by_id(heritage_id):
         return Heritage.objects.get(id=heritage_id)
@@ -31,12 +29,3 @@ def get_all_tags(heritage_id):
 
     return ret
 
-def get_all_medias(heritage_id):
-    medias = Media.objects.filter(heritage=heritage_id)
-    ret    = []
-
-    for media in medias:
-        serializer = MediaSerializer(media)
-        ret.append(serializer.data)
-
-    return ret

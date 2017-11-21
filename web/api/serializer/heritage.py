@@ -18,7 +18,7 @@ class HeritageSerializer(serializers.ModelSerializer):
     # Heritage item may not have a tag or have one or more than one tag.
     tags = TagSerializer(required=False, many=True)
     creator_username = serializers.SerializerMethodField()
-    medias = serializers.SerializerMethodField()
+    medias = MediaSerializer(required=False, many=True)
 
     class Meta:
         model = Heritage
@@ -30,7 +30,6 @@ class HeritageSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         tags_data = validated_data.pop('tags')
         heritage  = Heritage.objects.create(**validated_data)
-        medias_data = validated_data.pop('medias')
         for tag_data in tags_data:
             # tag = Tag.objects.get(name=tag_data['name'])
             tag, created = Tag.objects.get_or_create(name=tag_data['name'])
@@ -43,11 +42,6 @@ class HeritageSerializer(serializers.ModelSerializer):
                 tag.setlist(jdata)
 
             heritage.tags.add(tag)
-
-        for media_data in medias_data:
-            media, created = Media.objects.get_or_create(type=medias_data['type'])
-            if created:
-                heritage.medias.add(media)
 
         return heritage
 
@@ -120,7 +114,3 @@ class HeritageSerializer(serializers.ModelSerializer):
 
     def get_creator_username(self,obj):
         return obj.creator.username
-
-    def get_medias(self, obj):
-        medias   = heritage.get_all_medias(obj.id)
-        return medias
