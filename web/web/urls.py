@@ -24,4 +24,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include('api.urls')),
     url(r'^', lambda req: render(req, 'index.html')),
-]
+]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+

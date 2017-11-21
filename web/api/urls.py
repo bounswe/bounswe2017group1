@@ -3,7 +3,7 @@ from django.contrib import admin
 
 from api.controller import (
     profile, comment, vote, user,
-    heritage, tag, search
+    heritage, tag, search, media
 )
 urlpatterns = [
 
@@ -40,6 +40,10 @@ urlpatterns = [
     # TAG ROUTES
     url(r'^tags/?$', tag.list_all_tags),
     url(r'^tags/(?P<tag_id>[0-9]+)/heritages/?$', tag.get_all_heritage_items_own_this_tag),
+
+    #MEDIA ROUTES
+    url(r'^medias/(?P<pk>[0-9]+)/?$', media.media_get),
+    url(r'^medias/?$', media.media_post),
 
 
     # SEARCH ROUTES

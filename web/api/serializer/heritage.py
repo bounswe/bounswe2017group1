@@ -1,10 +1,11 @@
 from api.model.heritage import Heritage
 from rest_framework import serializers
 from api.serializer.tag import TagSerializer
+from api.serializer.media import MediaSerializer
 
 from api.model.tag import Tag
 from api.service import heritage, helper
-
+from api.model.media import Media
 
 class HeritageSerializer(serializers.ModelSerializer):
     upvote_count = serializers.SerializerMethodField()
@@ -17,6 +18,7 @@ class HeritageSerializer(serializers.ModelSerializer):
     # Heritage item may not have a tag or have one or more than one tag.
     tags = TagSerializer(required=False, many=True)
     creator_username = serializers.SerializerMethodField()
+    #medias = MediaSerializer(required=False, many=True)
 
     class Meta:
         model = Heritage

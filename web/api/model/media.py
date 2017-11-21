@@ -7,7 +7,8 @@ from heritage import Heritage
 
 class Media(models.Model):
     type = models.CharField(max_length=10)
-    data_path = models.CharField(max_length=50)
     heritage = models.ForeignKey(Heritage)
+    #TODO add Images/<item_id>/imagename
+    image = models.ImageField(upload_to = ('Images/'), default='Images/no_image.jpg')
     creation_date = models.DateTimeField(auto_now_add=True)
     update_date = models.DateTimeField(auto_now=True)
