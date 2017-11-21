@@ -1,23 +1,13 @@
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, AllowAny
-from api.service import permission
-
 from rest_framework.response import Response
-
 from django.db.models import Q
 
 from api.model.vote import Vote
 from api.model.heritage import Heritage
 from api.model.profile import Profile
-from api.model.comment import Comment
-from api.model.tag import Tag
 from api.serializer.heritage import HeritageSerializer
-from api.serializer.comment import CommentSerializer
-from api.serializer.tag import TagSerializer
-
-from api.service.heritage import get_all_comments, get_all_tags
-from api.service import helper
 
 @api_view(['GET'])
 @permission_classes((IsAuthenticatedOrReadOnly, ))
