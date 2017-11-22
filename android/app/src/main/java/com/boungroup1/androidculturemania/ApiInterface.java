@@ -8,6 +8,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 /**
  * Created by user on 24/10/2017.
@@ -32,4 +33,7 @@ public interface ApiInterface {
 
     @GET("/api/items")
     Call<List<JsonResponseHeritage>> listHeritage();
+
+    @GET("/api/items/{id}")
+    Call<JsonResponseItemDetail> getItem(@Path("id") int id, @Header("Authorization") String  auth);
 }
