@@ -66,9 +66,6 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<JsonResponseHeritage>> call, Response<List<JsonResponseHeritage>> response) {
                 if (response.isSuccessful()) {
-                    //Toast.makeText(getApplicationContext(), "SUCCESS", Toast.LENGTH_SHORT).show();
-                    //--
-                    //--
                     final RecyclerView heritageRecyclerView = (RecyclerView) findViewById(R.id.heritage_recycler_view);
                     final ArrayList<JsonResponseHeritage> heritageList = (ArrayList<JsonResponseHeritage>) response.body();
                     final HeritageAdapter sAdapter = new HeritageAdapter(heritageList);
@@ -83,14 +80,15 @@ public class MainActivity extends AppCompatActivity {
                         public void onClick(View view, int position) {
                             JsonResponseHeritage heritage = heritageList.get(position);
                             // TODO remove this after debugging
-                            Toast.makeText(getApplicationContext(), heritage.getDescription() , Toast.LENGTH_SHORT).show();
+                           // Toast.makeText(getApplicationContext(), heritage.getDescription() , Toast.LENGTH_SHORT).show();
                             // TODO edit main activity to heritage detail activity
-                            /*
+
                             int heritageId= heritage.getId();
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            Intent intent = new Intent(getApplicationContext(), ItemDetailView.class);
                             intent.putExtra("heritageId",heritageId);
+                            finish();
                             startActivity(intent);
-                            */
+
                         }
 
                         @Override
