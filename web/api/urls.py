@@ -3,7 +3,7 @@ from django.contrib import admin
 
 from api.controller import (
     profile, comment, vote, user,
-    heritage, tag, search, media
+    heritage, tag, search, media, recommendation
 )
 urlpatterns = [
 
@@ -49,5 +49,11 @@ urlpatterns = [
     # SEARCH ROUTES
     url(r'^search/?$', search.search),
     #url(r'^search/advanced/?$', search.advanced_search),
+
+    #RECOMMENDATION ROUTES
+    url(r'^rec/tag/?$', recommendation.get_all_items_same_tag_with_heritage_that_user_created),
+    url(r'^rec/upvote/?$', recommendation.get_all_items_that_user_upvoted_has_same_tags),
+    url(r'^rec/all/?$', recommendation.get_all_recommendations_tag_upvote_related),
+
 ]
 
