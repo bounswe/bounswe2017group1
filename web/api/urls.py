@@ -52,7 +52,7 @@ urlpatterns = [
 
     #RECOMMENDATION ROUTES
     url(r'^rec/tag/?$', recommendation.get_all_items_same_tag_with_heritage_that_user_created),
-    url(r'^rec/upvote/?$', recommendation.get_all_items_that_user_upvoted),
+    url(r'^rec/upvote/?$', recommendation.get_all_items_that_user_upvoted_has_same_tags),
     url(r'^rec/all/?$', recommendation.get_all_recommendations_tag_upvote_related),
 
 ]
