@@ -64,21 +64,62 @@ public class SingUpActivity extends AppCompatActivity {
         });
 
     }
-    public void openMain(String token, String username, String email, int id){
+//    public void openMain(String token, String username, String email, int id){
+//        Intent intent = new Intent(this, MainActivity.class);
+//        SharedPreferences sharedPref = getSharedPreferences("TOKENSHARED", Context.MODE_PRIVATE);
+//        SharedPreferences.Editor editor = sharedPref.edit();
+//        editor.putString("TOKEN", token);
+//        editor.putString("USERNAME", username);
+//        editor.putString("EMAIL", email);
+//        editor.putInt("ID", id);
+//        editor.commit();
+//
+//        finish();
+//        startActivity(intent);
+//    }
+    public void openMain(String token, String username, String email){
         Intent intent = new Intent(this, MainActivity.class);
         SharedPreferences sharedPref = getSharedPreferences("TOKENSHARED", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("TOKEN", token);
         editor.putString("USERNAME", username);
         editor.putString("EMAIL", email);
-        editor.putInt("ID", id);
         editor.commit();
 
         finish();
         startActivity(intent);
     }
 
-    public void sendPost(String username,String email, String password, String location, String gender){
+    public void login(final String username, final String email, String password)
+    {
+        Retrofit retrofit = ApiClient.getApiClient();
+
+        ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+        Call<JsonResponseSignIn> call = apiInterface.signIn(new SignInBody(username,  email, password));
+        call.enqueue(new Callback<JsonResponseSignIn>() {
+            @Override
+            public void onResponse(Call<JsonResponseSignIn> call, Response<JsonResponseSignIn> response) {
+
+                if (response.isSuccessful()) {
+                    Toast.makeText(getApplicationContext(), "SUCCESS", Toast.LENGTH_SHORT).show();
+                    openMain(response.body().getToken(), username,
+                            email);
+
+                } else {
+                    Toast.makeText(getApplicationContext(), "Sorry for inconvince server is down" + response.code(), Toast.LENGTH_SHORT).show();
+                    Log.d("response", response.raw().body().toString());
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<JsonResponseSignIn> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "ERROR while posting", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void sendPost(final String username, final String email, final String password, String location, String gender){
         Retrofit retrofit = ApiClient.getApiClient();
 
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
@@ -89,11 +130,12 @@ public class SingUpActivity extends AppCompatActivity {
 
                 if (response.isSuccessful()) {
 
-                    Toast.makeText(getApplicationContext(), "SUCCESS", Toast.LENGTH_SHORT).show();
-                    Log.d("RESPONSE", response.body().getProfile().getGender());
-                    openMain(response.body().getToken(), response.body().getProfile().getUsername(),
-                            response.body().getUser().getEmail(),
-                            response.body().getProfile().getId());
+//                    Toast.makeText(getApplicationContext(), "SUCCESS", Toast.LENGTH_SHORT).show();
+//                    Log.d("RESPONSE", response.body().getProfile().getGender());
+//                    openMain(response.body().getToken(), response.body().getProfile().getUsername(),
+//                            response.body().getUser().getEmail(),
+//                            response.body().getProfile().getId());
+                    login(username,email,password);
                 } else {
                    Toast.makeText(getApplicationContext(), "Sorry for inconvince server is down" + response.code(), Toast.LENGTH_SHORT).show();
                    Log.d("response", response.raw().body().toString());

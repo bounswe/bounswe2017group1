@@ -30,6 +30,22 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".ItemCreateActivity"
+            android:label="Create New Heritage Item">
+            <intent-filter>
+                <action android:name="android.intent.action.ITEMCREATE" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ItemDetailView"
+            android:label="Detail View">
+            <intent-filter>
+                <action android:name="android.intent.action.ITEMDETAILVIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
