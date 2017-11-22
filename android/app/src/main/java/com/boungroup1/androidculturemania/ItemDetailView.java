@@ -77,4 +77,11 @@ public class ItemDetailView extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+    }
 }
