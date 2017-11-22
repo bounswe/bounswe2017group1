@@ -1,15 +1,11 @@
 from api.model.heritage import Heritage
-from api.serializer.vote import VoteSerializer
 from rest_framework import serializers
 from api.serializer.tag import TagSerializer
-from api.serializer.profile import ProfileSerializer
-from api.model.profile import Profile
-from rest_framework.fields import CurrentUserDefault
-
+from api.serializer.media import MediaSerializer
 
 from api.model.tag import Tag
 from api.service import heritage, helper
-
+from api.model.media import Media
 
 class HeritageSerializer(serializers.ModelSerializer):
     upvote_count = serializers.SerializerMethodField()
@@ -22,6 +18,7 @@ class HeritageSerializer(serializers.ModelSerializer):
     # Heritage item may not have a tag or have one or more than one tag.
     tags = TagSerializer(required=False, many=True)
     creator_username = serializers.SerializerMethodField()
+    medias = MediaSerializer(required=False, many=True)
 
     class Meta:
         model = Heritage
@@ -32,7 +29,7 @@ class HeritageSerializer(serializers.ModelSerializer):
     # When adding "tags", this function is needed.
     def create(self, validated_data):
         tags_data = validated_data.pop('tags')
-        heritage = Heritage.objects.create(**validated_data)
+        heritage  = Heritage.objects.create(**validated_data)
         for tag_data in tags_data:
             # tag = Tag.objects.get(name=tag_data['name'])
             tag, created = Tag.objects.get_or_create(name=tag_data['name'])
@@ -45,6 +42,7 @@ class HeritageSerializer(serializers.ModelSerializer):
                 tag.setlist(jdata)
 
             heritage.tags.add(tag)
+
         return heritage
 
     def update(self, instance, validated_data):
@@ -61,21 +59,12 @@ class HeritageSerializer(serializers.ModelSerializer):
             # For the keys remaining in `validated_data`, we will set them on
             # the current `User` instance one at a time.
             setattr(instance, key, value)
-
-
-
         old_tags = heritage.get_all_tags(instance.id)
         #print old_tags
-
-
         new_tags_data = []
         for tag in tags_data:
             serializer = TagSerializer(tag)
             new_tags_data.append(serializer.data)
-
-        #print new_tags_data
-
-
 
         for tag_data in new_tags_data:
             tag, created = Tag.objects.get_or_create(name=tag_data['name'])
@@ -93,9 +82,6 @@ class HeritageSerializer(serializers.ModelSerializer):
         instance.save()
 
         return instance
-    def get_creator_name(self, obj):
-        return Heritage.creator.username
-
 
     def get_upvote_count(self, obj):
         votes = obj.votes.all()
@@ -108,7 +94,6 @@ class HeritageSerializer(serializers.ModelSerializer):
     def get_is_upvoted(self, obj):
         if 'requester_profile_id' in self.context:
             requester_id = self.context['requester_profile_id']
-            print  obj.votes.filter(voter = requester_id, heritage = obj.id, value = True).first()
             if obj.votes.filter(voter = requester_id, heritage = obj.id, value = True).first():
                 return True
         return False
@@ -129,10 +114,3 @@ class HeritageSerializer(serializers.ModelSerializer):
 
     def get_creator_username(self,obj):
         return obj.creator.username
-
-
-
-    '''
-    def get_serializer_context(self):
-        return {'request': self.request}
-    '''

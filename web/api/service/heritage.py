@@ -28,3 +28,4 @@ def get_all_tags(heritage_id):
         ret.append(serializer.data)
 
     return ret
+
