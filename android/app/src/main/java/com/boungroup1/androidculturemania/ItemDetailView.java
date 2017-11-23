@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatImageView;
 import android.text.method.ScrollingMovementMethod;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import retrofit2.Call;
@@ -26,6 +28,9 @@ public class ItemDetailView extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.item_detail_view);
+
+        final RelativeLayout layout = (RelativeLayout) findViewById(R.id.detail_view_relayout);
+        layout.setVisibility(View.INVISIBLE);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -56,6 +61,7 @@ public class ItemDetailView extends AppCompatActivity {
                     location.setText(response.body().getLocation());
                     name.setText(Integer.toString(response.body().getCreator()));
                     description.setText(response.body().getDescription());
+                    layout.setVisibility(View.VISIBLE);
                 }
             }
 
