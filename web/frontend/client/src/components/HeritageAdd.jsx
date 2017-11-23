@@ -10,7 +10,8 @@ const HeritageForm = ({
   onChange,
   errors,
   successMessage,
-  heritage
+  heritage,
+  onImageChange
 }) => (
   <Card className="container">
     <form action="/" onSubmit={onSubmit}>
@@ -18,7 +19,11 @@ const HeritageForm = ({
 
       {successMessage && <p className="success-message">{successMessage}</p>}
       {errors.summary && <p className="error-message">{errors.summary}</p>}
-
+      <div className="field-line">
+        <div>
+          <input type="file" style={{margin: 'auto'}}onChange={onImageChange} multiple/>
+        </div>
+      </div>
       <div className="field-line">
         <TextField
           floatingLabelText="Title"
@@ -55,6 +60,7 @@ const HeritageForm = ({
     </form>
   </Card>
 );
+
 
 HeritageForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
