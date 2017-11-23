@@ -4,3 +4,4 @@
 ./db.sqlite3
 ./frontend/client/dist/*
 ./frontend/npm-debug.log
+./api/migrations/*
