@@ -192,12 +192,13 @@ class HeritagePage extends React.Component {
             <div className="card mt-4">
               <Carousel>
                 {this.state.heritage.medias.map((url)=>{
-                  console.log(baseUrl+url.image)
+                  console.log(baseUrl+url.image);
                   return (
-                  <Carousel.Item>
-                    <img style={{width: '100%', height: '500px'}}alt="900x500" src={baseUrl+url.image} />
-                  </Carousel.Item>
-                )})}
+                    <Carousel.Item>
+                      <img style={{margin: 'auto'}} alt="900x500" src={baseUrl+url.image} />
+                    </Carousel.Item>
+                  )
+                  })}
               </Carousel>
               <div className="card-body">
               <br/>
