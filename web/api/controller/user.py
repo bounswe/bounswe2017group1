@@ -12,7 +12,6 @@ from api.model.profile import Profile
 
 @api_view(['POST'])
 @permission_classes((AllowAny,))
-@parser_classes((MultiPartParser, FormParser))
 def signup(request):
     """
     Create user and return
