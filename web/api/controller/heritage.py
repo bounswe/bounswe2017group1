@@ -44,7 +44,7 @@ def heritage_get_post(request):
         profile_id = Profile.objects.filter(username=username).first().pk
         request.data['creator'] = profile_id
         context = {}
-        q['requester_profile_id'] = profile_id
+        context['requester_profile_id'] = profile_id
 
         serializer = HeritageSerializer(data=request.data,context=context)
 
