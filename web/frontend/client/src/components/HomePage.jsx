@@ -42,7 +42,29 @@ const HomePage = React.createClass ({
     this.setState({
       filterText: filterText
     });
-  },
+	},
+	onSearch(event){
+		event.preventDefault();
+		console.log(this.state.filterText);
+		fetch(baseUrl+'/api/search',{
+      method: "POST",
+      headers: {
+        "Access-Control-Allow-Origin" : "*",
+        "Content-Type": "application/json"
+      },
+			credentials: "same-origin",
+			body: JSON.stringify({
+				query: this.state.filterText
+			})
+    }).then(response=>{
+      if(response.ok){
+        response.json().then(res=>{
+          this.setState({items: res});
+          console.log(res);
+        });
+      }
+    });
+	},
 	render() {
 		return(
 			<div>
@@ -52,6 +74,7 @@ const HomePage = React.createClass ({
 						filterText={this.state.filterText}
 						inStockOnly={this.state.inStockOnly}
 						onUserInput={this.handleUserInput}
+						onSubmit={this.onSearch}
 					/>
 					{this.renderTabs()}
 				</div>
@@ -146,7 +169,7 @@ const SearchBar = React.createClass({
   },
   render: function() {
     return (
-      <form>
+      <form onSubmit={this.props.onSubmit}>
         <input
           type="text"
           placeholder="Search..."
@@ -155,6 +178,7 @@ const SearchBar = React.createClass({
 					onChange={this.handleChange}
 					style={inputStyle}
         />
+				<input type="submit" style={{display: 'none'}}/>
       </form>
     );
   }
