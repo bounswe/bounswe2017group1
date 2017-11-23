@@ -8,17 +8,16 @@ from api.service import heritage, helper
 from api.model.media import Media
 
 class HeritageSerializer(serializers.ModelSerializer):
+    # votes = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     upvote_count = serializers.SerializerMethodField()
     downvote_count = serializers.SerializerMethodField()
     is_upvoted = serializers.SerializerMethodField()
     is_downvoted = serializers.SerializerMethodField()
     is_owner = serializers.SerializerMethodField()
-
-    # votes = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    # Heritage item may not have a tag or have one or more than one tag.
     tags = TagSerializer(required=False, many=True)
-    creator_username = serializers.SerializerMethodField()
     medias = MediaSerializer(required=False, many=True)
+    creator_username = serializers.SerializerMethodField()
+    creator_image_path = serializers.SerializerMethodField()
 
     class Meta:
         model = Heritage
@@ -114,3 +113,6 @@ class HeritageSerializer(serializers.ModelSerializer):
 
     def get_creator_username(self,obj):
         return obj.creator.username
+
+    def get_creator_image_path(self,obj):
+        return obj.creator.image.url

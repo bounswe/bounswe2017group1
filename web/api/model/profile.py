@@ -4,9 +4,9 @@ from django.contrib.auth.models import User
 from django.db import models
 
 
-def user_directory_path(self, instance, filename):
+def user_directory_path(instance, filename):
     # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
-    return 'Images/ProfilePhotos/{0}/{1}'.format(self.username, filename)
+    return 'Images/ProfilePhotos/{0}/{1}'.format(instance.username, filename)
 
 
 class Profile(models.Model):
