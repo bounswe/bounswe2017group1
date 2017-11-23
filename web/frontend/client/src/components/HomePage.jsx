@@ -191,7 +191,8 @@ const inputStyle = {
     display: 'inline-block',
     border: '2px solid #ccc',
     borderRadius: '10px',
-    boxSizing: 'border-box'
+		boxSizing: 'border-box',
+		outline: 'none'
 }
 const tabStyles = {
   headline: {
