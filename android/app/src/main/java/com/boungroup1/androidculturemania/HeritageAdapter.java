@@ -20,14 +20,14 @@ public class HeritageAdapter extends RecyclerView.Adapter<HeritageAdapter.MyView
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView title, description, location, creator ;
+        private TextView title, description, location, creator_username ;
 
         public MyViewHolder(View view) {
             super(view);
             title = (TextView) view.findViewById(R.id.heritage_title_text);
             description = (TextView) view.findViewById(R.id.heritage_description_text);
             location = (TextView) view.findViewById(R.id.heritage_location_text);
-            creator = (TextView) view.findViewById(R.id.heritage_creator_text);
+            creator_username = (TextView) view.findViewById(R.id.heritage_creator_username_text);
         }
     }
 
@@ -51,7 +51,7 @@ public class HeritageAdapter extends RecyclerView.Adapter<HeritageAdapter.MyView
         holder.title.setText(heritageItem.getTitle());
         holder.description.setText(heritageItem.getDescription());
         holder.location.setText(heritageItem.getLocation());
-        holder.creator.setText("By " + heritageItem.getCreator());
+        holder.creator_username.setText("By " + heritageItem.getCreator_username());
     }
 
     @Override
