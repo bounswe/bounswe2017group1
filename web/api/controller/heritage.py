@@ -26,9 +26,6 @@ from api.service import helper
 def heritage_get_post(request):
     if request.method == 'GET':
 
-        #if request.user.username:
-        #    print request.user.username
-
         try:
             context = {}
             if request.user.username:
@@ -44,11 +41,10 @@ def heritage_get_post(request):
     elif request.method == 'POST' and request.user.is_authenticated:
 
         username = request.user.username
-        request.data['creator'] = Profile.objects.filter(username=username).first().pk
+        profile_id = Profile.objects.filter(username=username).first().pk
+        request.data['creator'] = profile_id
         context = {}
-        if request.user.username:
-            profile_id = Profile.objects.filter(username=request.user.username).first().pk
-            context['requester_profile_id'] = profile_id
+        q['requester_profile_id'] = profile_id
 
         serializer = HeritageSerializer(data=request.data,context=context)
 
