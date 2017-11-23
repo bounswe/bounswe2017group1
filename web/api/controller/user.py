@@ -8,24 +8,19 @@ from api.serializer.user import UserSerializer
 from api.serializer.profile import ProfileSerializer
 from rest_framework.parsers import MultiPartParser, FormParser
 from api.service import user as UserService
-
+from api.model.profile import Profile
 @api_view(['POST'])
 @permission_classes((AllowAny,))
-@parser_classes((MultiPartParser, FormParser))
 def signup(request):
     """
     Create user and return
     """
-    mutable = request.POST._mutable
-    request.POST._mutable = True  # make the request mutable so that I can add extra fields
     user_serializer = UserSerializer(data=request.data)
 
     if user_serializer.is_valid():
         user = user_serializer.save()
         request.data['user'] = user.id
         request.data['username'] = user.username
-        request.POST._mutable = mutable  # leave as you wish to find :)
-
         profile_serializer = ProfileSerializer(data=request.data)
         if profile_serializer.is_valid():
             profile_serializer.save()
@@ -37,8 +32,22 @@ def signup(request):
         else:
             return Response(profile_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     else:
-        request.POST._mutable = mutable  # leave as you wish to find :)
         return Response(user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['PUT'])
+@parser_classes((MultiPartParser, FormParser))
+@permission_classes((IsAuthenticated,))
+def add_or_change_image(request):
+    """
+    Edit profile and image
+    """
+    profile = Profile.objects.filter(username=request.user.username).first()
+    serializer = ProfileSerializer(instance=profile)
+    if 'image' in request.data:
+        Profile.objects.filter(username=request.user.username).update(image=request.data['image'])
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    else:
+        return Response(serializer.data, status=status.HTTP_400_BAD_REQUEST)
 
 
 @api_view(['POST'])
