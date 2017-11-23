@@ -59,7 +59,7 @@ public class ItemDetailView extends AppCompatActivity {
                     title.setText(response.body().getTitle());
                     date.setText(response.body().getCreation_date().toString());
                     location.setText(response.body().getLocation());
-                    name.setText(Integer.toString(response.body().getCreator()));
+                    name.setText("By "+response.body().getCreator_username());
                     description.setText(response.body().getDescription());
                     layout.setVisibility(View.VISIBLE);
                 }

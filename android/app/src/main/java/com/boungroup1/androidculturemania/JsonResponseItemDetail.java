@@ -51,6 +51,10 @@ public class JsonResponseItemDetail {
     @Expose
     private int creator;
 
+    @SerializedName("creator_username")
+    @Expose
+    private String creator_username;
+
     public int getId() {
         return id;
     }
@@ -129,5 +133,13 @@ public class JsonResponseItemDetail {
 
     public void setCreator(int creator) {
         this.creator = creator;
+    }
+
+    public String getCreator_username() {
+        return creator_username;
+    }
+
+    public void setCreator_username(String creator_username) {
+        this.creator_username = creator_username;
     }
 }
