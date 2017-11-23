@@ -13,7 +13,8 @@ from api.model.media import Media
 
 # Register your models here.
 class ProfileAdmin(admin.ModelAdmin):
-    list_display = ('id', 'username', 'location', 'gender', 'photo_path')
+    list_display = ('id', 'username', 'location', 'gender')
+    #TODO: You may need to add image to the line above @furkan you would be the best judge for that @writer hakan ;)
 
 
 class ProfileInline(admin.StackedInline):

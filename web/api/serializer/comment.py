@@ -5,6 +5,8 @@ from rest_framework import serializers
 
 class CommentSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
+    creator_image_path = serializers.SerializerMethodField()
+    creator_username = serializers.SerializerMethodField()
 
     class Meta:
         model = Comment
@@ -17,3 +19,9 @@ class CommentSerializer(serializers.ModelSerializer):
             if requester_id == obj.creator.pk:
                 return True
         return False
+
+    def get_creator_image_path(self,obj):
+        return obj.creator.image.url
+
+    def get_creator_username(self, obj):
+        return obj.creator.username

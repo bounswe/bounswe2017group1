@@ -29,7 +29,7 @@ urlpatterns = [
 
 
     # VOTE ROUTES
-    url(r'^votes/?$', vote.vote_post),
+    url(r'^votes/?$', vote.vote_post_delete),
 
 
     # PROFILE ROUTES
