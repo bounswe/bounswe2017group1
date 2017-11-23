@@ -13,7 +13,7 @@ urlpatterns = [
     url(r'^users/signout/?$', user.signout),
     url(r'^users/?$', user.users),
     url(r'^users/login_req/?$', user.login_required),
-
+    url(r'^users/image/?$', user.add_or_change_image),
 
     # ITEM ROUTES
     url(r'^items/?$', heritage.heritage_get_post),
