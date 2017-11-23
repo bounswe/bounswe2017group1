@@ -32,15 +32,19 @@ class HeritageAddPage extends React.Component {
         title: '',
         description: '',
         location: '',
-        tags:[]
+        tags:[],
       },
+      pictures: [],
       redirect: false
     };
 
     this.processForm = this.processForm.bind(this);
     this.changeUser = this.changeUser.bind(this);
+    this.onImageChange = this.onImageChange.bind(this);
   }
-
+  onImageChange(e){
+    this.setState({pictures: e.target.files});
+  }
   /**
    * Process the form.
    *
@@ -59,7 +63,7 @@ class HeritageAddPage extends React.Component {
     //const data = `title=${title}&description=${description}&location=${location}&creator=1`;
 
     const data = { title, description, location, creator,tags, creation_date: new Date(2017, 11, 20, 12, 0), event_date: new Date(2017, 11, 20, 12, 0)};
-
+    console.log(Auth.getToken())
     fetch(baseUrl+'/api/items',{
       method: "POST",
       body: JSON.stringify(data),
@@ -78,6 +82,26 @@ class HeritageAddPage extends React.Component {
         // save the token
         let token;
         response.json().then(res=>{
+          var formData = new FormData();
+          formData.append('image',this.state.pictures[0]);
+          console.log(this.state.pictures[0]);
+          formData.append('type','image');
+          formData.append('heritage',res.id);
+          formData.append('creation_date', '2017-11-21T15:37:03.905307Z');
+          formData.append('update_date', '2017-11-21T15:37:03.905307Z');
+          fetch(baseUrl+'/api/medias', {
+            method: 'POST',
+            headers: {
+              "Access-Control-Allow-Origin" : "*",
+              "authorization": "token "+Auth.getToken()
+            },
+            credentials: "same-origin",
+            body: formData
+          }).then(response=>{
+            if(response.ok) {
+              console.log('hell yeah')
+            }
+          })
           /* res.heritage */
           this.setState({
             redirect: true
@@ -92,6 +116,7 @@ class HeritageAddPage extends React.Component {
         });
       }
     });
+    
   }
 
   /**
@@ -128,6 +153,7 @@ class HeritageAddPage extends React.Component {
           errors={this.state.errors}
           successMessage={this.state.successMessage}
           heritage={this.state.heritage}
+          onImageChange={this.onImageChange}
         />
       </div>
     );

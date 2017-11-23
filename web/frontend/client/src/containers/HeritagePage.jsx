@@ -3,7 +3,7 @@ import TopBar from '../components/TopBar.jsx';
 import PropTypes from 'prop-types';
 import appConstants from '../../modules/appConstants.js'
 import Auth from '../../modules/Auth.js'
-
+import Carousel from 'react-bootstrap/lib/Carousel';
 
 var baseUrl = appConstants.baseUrl;
 class HeritagePage extends React.Component {
@@ -20,7 +20,8 @@ class HeritagePage extends React.Component {
           event_date: "2017-10-25T19:01:48Z",
           location: "istanbul",
           creator: 1,
-          tags: []  
+          tags: [],
+          medias: []
         },
         comments:[]
 	    };
@@ -93,7 +94,15 @@ class HeritagePage extends React.Component {
 
           <div className="col-md-8">
             <div className="card mt-4">
-              <img className="card-img-top img-fluid" src="http://placehold.it/900x400" alt=""/>
+              <Carousel>
+                {this.state.heritage.medias.map((url)=>{
+                  console.log(baseUrl+url.image)
+                  return (
+                  <Carousel.Item>
+                    <img style={{width: '100%', height: '500px'}}alt="900x500" src={baseUrl+url.image} />
+                  </Carousel.Item>
+                )})}
+              </Carousel>
               <div className="card-body">
               <br/>
                 <p className="card-text">{this.state.heritage.description}</p>
