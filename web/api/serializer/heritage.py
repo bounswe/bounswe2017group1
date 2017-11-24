@@ -34,11 +34,11 @@ class HeritageSerializer(serializers.ModelSerializer):
             tag, created = Tag.objects.get_or_create(name=tag_data['name'])
             if created:
                 concepts_list = helper.get_concepts_from_item(tag.name)
-                jdata = {}
-                for item in concepts_list:
-                    jdata[item[0]] = item[1]
-
-                tag.setlist(jdata)
+                taglist = ""
+                for word in [x[0] for x in concepts_list]:
+                    taglist += word + " "
+                tag.related_list = taglist
+                tag.save()
 
             heritage.tags.add(tag)
 
@@ -67,6 +67,13 @@ class HeritageSerializer(serializers.ModelSerializer):
 
         for tag_data in new_tags_data:
             tag, created = Tag.objects.get_or_create(name=tag_data['name'])
+            if created:
+                concepts_list = helper.get_concepts_from_item(tag.name)
+                taglist = ""
+                for word in [x[0] for x in concepts_list]:
+                    taglist += word + " "
+                tag.related_list = taglist
+                tag.save()
             instance.tags.add(tag)
 
 
