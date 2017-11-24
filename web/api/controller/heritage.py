@@ -134,8 +134,6 @@ def get_new_heritages(request):
 @permission_classes((AllowAny, ))
 def get_top_heritages(request):
     try:
-        print "datetime is: "
-        print datetime.datetime.now()
         context = {}
         if request.user.username:
             profile_id = Profile.objects.filter(username=request.user.username).first().pk
@@ -161,8 +159,6 @@ def get_top_heritages(request):
 @permission_classes((AllowAny, ))
 def get_trending_heritages(request):
     try:
-        print "datetime to compare is: "
-        print datetime.datetime.utcnow()-datetime.timedelta(days=7)
         context = {}
         if request.user.username:
             profile_id = Profile.objects.filter(username=request.user.username).first().pk
