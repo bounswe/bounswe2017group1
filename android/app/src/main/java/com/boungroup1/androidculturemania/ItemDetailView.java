@@ -6,10 +6,10 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.AppCompatImageView;
 import android.text.method.ScrollingMovementMethod;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -42,7 +42,7 @@ public class ItemDetailView extends AppCompatActivity {
         final TextView location = (TextView) findViewById(R.id.detaillocation);
         final TextView name = (TextView) findViewById(R.id.detailname);
         final TextView description = (TextView) findViewById(R.id.detaildescription);
-        AppCompatImageView image = (AppCompatImageView) findViewById(R.id.detailimage);
+        ImageView image = (ImageView) findViewById(R.id.detailimage);
 
         Retrofit retrofit = ApiClient.getApiClient();
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
