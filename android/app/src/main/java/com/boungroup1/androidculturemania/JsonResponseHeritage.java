@@ -97,8 +97,11 @@ public class JsonResponseHeritage {
     @Expose
     private int creator;
 
+    @SerializedName("creator_username")
+    @Expose
+    private String creator_username;
 
-    public JsonResponseHeritage(int id, int upvote_count, int downvote_count, List<tags> tags, String title, String description, String creation_date, String event_date, String location, int creator ) {
+    public JsonResponseHeritage(int id, int upvote_count, int downvote_count, List<tags> tags, String title, String description, String creation_date, String event_date, String location, int creator, String creator_username ) {
         this.id = id;
         this.upvote_count = upvote_count;
         this.downvote_count = downvote_count;
@@ -109,6 +112,7 @@ public class JsonResponseHeritage {
         this.location = location;
         this.creator = creator;
         this.title = title;
+        this.creator_username = creator_username;
     }
 
     public int getId() {
@@ -189,6 +193,14 @@ public class JsonResponseHeritage {
 
     public void setCreator(int creator) {
         this.creator = creator;
+    }
+
+    public String getCreator_username() {
+        return creator_username;
+    }
+
+    public void setCreator_username(String creator_username) {
+        this.creator_username = creator_username;
     }
 
 }

@@ -4,7 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
         if (token == null){
             finish();
             startActivity(intent);
+
         }
     }
 
@@ -42,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        final TextView username_text = (TextView) findViewById(R.id.username);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.item_create_btn);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -53,68 +55,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-        Retrofit retrofit = ApiClient.getApiClient();
-        ApiInterface apiInterface = retrofit.create(ApiInterface.class);
-
-
-        //logout.setOnClickListener(new View.OnClickListener() {
-
-        Call<List<JsonResponseHeritage>> call = apiInterface.listHeritage();
-        call.enqueue(new Callback<List<JsonResponseHeritage>>() {
-
+        //SwipeRefresh
+        final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.heritage_swipelayout);
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
-            public void onResponse(Call<List<JsonResponseHeritage>> call, Response<List<JsonResponseHeritage>> response) {
-                if (response.isSuccessful()) {
-                    final RecyclerView heritageRecyclerView = (RecyclerView) findViewById(R.id.heritage_recycler_view);
-                    final ArrayList<JsonResponseHeritage> heritageList = (ArrayList<JsonResponseHeritage>) response.body();
-                    final HeritageAdapter sAdapter = new HeritageAdapter(heritageList);
-
-                    RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
-                    heritageRecyclerView.setLayoutManager(mLayoutManager);
-                    heritageRecyclerView.setItemAnimator(new DefaultItemAnimator());
-                    heritageRecyclerView.setAdapter(sAdapter);
-                    sAdapter.notifyDataSetChanged();
-                    heritageRecyclerView.addOnItemTouchListener(new HeritageRecyclerTouchListener(getApplicationContext(), heritageRecyclerView, new HeritageRecyclerTouchListener.ClickListener() {
-                        @Override
-                        public void onClick(View view, int position) {
-                            JsonResponseHeritage heritage = heritageList.get(position);
-                            // TODO remove this after debugging
-                           // Toast.makeText(getApplicationContext(), heritage.getDescription() , Toast.LENGTH_SHORT).show();
-                            // TODO edit main activity to heritage detail activity
-
-                            int heritageId= heritage.getId();
-                            Intent intent = new Intent(getApplicationContext(), ItemDetailView.class);
-                            intent.putExtra("heritageId",heritageId);
-                            finish();
-                            startActivity(intent);
-
-                        }
-
-                        @Override
-                        public void onLongClick(View view, int position) {
-                        }
-                    }));
-
-                    //--
-                    //--
-                } else {
-                    Toast.makeText(getApplicationContext(), "Sorry for inconvince server is down" + response.code(), Toast.LENGTH_SHORT).show();
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<List<JsonResponseHeritage>> call, Throwable t) {
-                Toast.makeText(getApplicationContext(), "Sorry for inconvince server is down", Toast.LENGTH_SHORT).show();
+            public void onRefresh() {
+                refreshHeritageList();
             }
         });
 
-
-        //final TextView username_text = (TextView) findViewById(R.id.username);
-
-
-        //username_text.setText("Welcome " + username + " " + email + " Token = " + token + "ID = " + id );
+        getHeritageList();
 
     }
 
@@ -148,6 +98,66 @@ public class MainActivity extends AppCompatActivity {
 
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void refreshHeritageList(){
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                getHeritageList();
+                final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.heritage_swipelayout);
+                swipeRefreshLayout.setRefreshing(false);
+            };
+        });
+    }
+
+    private void setHeritageRecyclerView(final ArrayList<JsonResponseHeritage> heritageList){
+        final RecyclerView heritageRecyclerView = (RecyclerView) findViewById(R.id.heritage_recycler_view);
+        final HeritageAdapter heritageAdapter = new HeritageAdapter(heritageList);
+
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
+        heritageRecyclerView.setLayoutManager(mLayoutManager);
+        heritageRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        heritageRecyclerView.setAdapter(heritageAdapter);
+        heritageAdapter.notifyDataSetChanged();
+        heritageRecyclerView.addOnItemTouchListener(new HeritageRecyclerTouchListener(getApplicationContext(), heritageRecyclerView, new HeritageRecyclerTouchListener.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+                JsonResponseHeritage heritage = heritageList.get(position);
+                int heritageId= heritage.getId();
+                Intent intent = new Intent(getApplicationContext(), ItemDetailView.class);
+                intent.putExtra("heritageId",heritageId);
+                finish();
+                startActivity(intent);
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+            }
+        }));
+    }
+
+    private void getHeritageList(){
+        Retrofit retrofit = ApiClient.getApiClient();
+        ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+
+        Call<List<JsonResponseHeritage>> call = apiInterface.listHeritage();
+        call.enqueue(new Callback<List<JsonResponseHeritage>>() {
+            @Override
+            public void onResponse(Call<List<JsonResponseHeritage>> call, Response<List<JsonResponseHeritage>> response) {
+                if (response.isSuccessful()) {
+                    final ArrayList<JsonResponseHeritage> heritageList = (ArrayList<JsonResponseHeritage>) response.body();
+                    setHeritageRecyclerView(heritageList);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Sorry for inconvince server is down" + response.code(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<JsonResponseHeritage>> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Sorry for inconvince server is down", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 }
