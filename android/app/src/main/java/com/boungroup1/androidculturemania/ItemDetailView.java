@@ -42,6 +42,7 @@ public class ItemDetailView extends AppCompatActivity {
         final TextView location = (TextView) findViewById(R.id.detaillocation);
         final TextView name = (TextView) findViewById(R.id.detailname);
         final TextView description = (TextView) findViewById(R.id.detaildescription);
+        final TextView tag = (TextView) findViewById(R.id.tag);
         AppCompatImageView image = (AppCompatImageView) findViewById(R.id.detailimage);
 
         Retrofit retrofit = ApiClient.getApiClient();
@@ -56,11 +57,17 @@ public class ItemDetailView extends AppCompatActivity {
             public void onResponse(Call<JsonResponseItemDetail> call, Response<JsonResponseItemDetail> response) {
                 if(response.isSuccessful())
                 {
+                    String[] datestr = response.body().getEvent_date().toString().split("\\s+");
                     title.setText(response.body().getTitle());
-                    date.setText(response.body().getCreation_date().toString());
+                    date.setText(datestr[0] + "-"+ datestr[1] + "-" + datestr[2]);
                     location.setText(response.body().getLocation());
                     name.setText("By "+response.body().getCreator_username());
                     description.setText(response.body().getDescription());
+                    for(TagResponse tags : response.body().getTags())
+                    {
+                        tag.append(tags.getName().toString());
+                        tag.append(",");
+                    }
                     layout.setVisibility(View.VISIBLE);
                 }
             }
@@ -71,16 +78,7 @@ public class ItemDetailView extends AppCompatActivity {
             }
         });
 
-//        title.setText("TITLE");
-//        date.setText("DATE");
-//        location.setText("LOCATION");
-//        name.setText("USERNAME");
-//        description.setText("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id scelerisque leo, in pharetra leo. Duis porta, urna sit amet convallis hendrerit, mi nulla gravida purus, ac facilisis velit felis eu elit. Fusce ornare neque massa, a cursus odio dapibus ut. Fusce pretium nisl a nibh varius, vel malesuada orci interdum. Aliquam erat volutpat. Aliquam erat volutpat. Morbi scelerisque ac massa sit amet eleifend. Vivamus venenatis erat et velit ultricies, eu rutrum nunc scelerisque. Cras elementum pharetra dui quis dictum. Nunc lacus nisi, blandit sed nunc non, lacinia gravida est. Aliquam pretium ultricies porttitor. Nunc fringilla mollis lacus non pulvinar. Sed bibendum augue eget lacus pellentesque auctor. Nunc id augue vitae eros interdum sodales. Mauris ullamcorper pellentesque pretium." +
-//                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse id scelerisque leo, in pharetra leo. Duis porta, urna sit amet convallis hendrerit, mi nulla gravida purus, ac facilisis velit felis eu elit. Fusce ornare neque massa, a cursus odio dapibus ut. Fusce pretium nisl a nibh varius, vel malesuada orci interdum. Aliquam erat volutpat. Aliquam erat volutpat. Morbi scelerisque ac massa sit amet eleifend. Vivamus venenatis erat et velit ultricies, eu rutrum nunc scelerisque. Cras elementum pharetra dui quis dictum. Nunc lacus nisi, blandit sed nunc non, lacinia gravida est. Aliquam pretium ultricies porttitor. Nunc fringilla mollis lacus non pulvinar. Sed bibendum augue eget lacus pellentesque auctor. Nunc id augue vitae eros interdum sodales. Mauris ullamcorper pellentesque pretium.");
         description.setMovementMethod(new ScrollingMovementMethod());
-
-
-
 
     }
 

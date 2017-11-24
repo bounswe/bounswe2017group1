@@ -3,6 +3,8 @@ package com.boungroup1.androidculturemania;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 /**
  * Created by user on 12/11/2017.
  */
@@ -22,9 +24,9 @@ public class ItemCreateBody {
     public String location;
     @SerializedName("tags")
     @Expose
-    public Tag[] tags;
+    public List<Tag> tags;
 
-    public ItemCreateBody(String title, String description, String event_date, String location, Tag[] tags) {
+    public ItemCreateBody(String title, String description, String event_date, String location, List<Tag> tags) {
         this.title = title;
         this.description = description;
         this.event_date = event_date;
@@ -64,11 +66,11 @@ public class ItemCreateBody {
         this.location = location;
     }
 
-    public Tag[] getTags() {
+    public List<Tag> getTags() {
         return tags;
     }
 
-    public void setTags(Tag[] tags) {
+    public void setTags(List<Tag> tags) {
         this.tags = tags;
     }
 }
