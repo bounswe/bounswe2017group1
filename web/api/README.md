@@ -207,6 +207,24 @@ get all heritage items
         
 ***
 
+### /items/top
+##### GET
+Get heritage items sorted by their votes
+
+Response is the same as GET /items/
+
+### /items/trending
+##### GET
+Get heritage items sorted by the increase in their votes in the last week
+
+Response is the same as GET /items/
+
+### /items/new
+##### GET
+Get heritage items sorted by their creation dates.
+
+Response is the same as GET /items/
+
 ### /items/{id}
 ##### GET
 get heritage item by id
