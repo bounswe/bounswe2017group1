@@ -159,6 +159,7 @@ def get_top_heritages(request):
 @permission_classes((AllowAny, ))
 def get_trending_heritages(request):
     try:
+        now = datetime.datetime.utcnow()+datetime.timedelta(hours=3)
         context = {}
         if request.user.username:
             profile_id = Profile.objects.filter(username=request.user.username).first().pk
@@ -167,7 +168,7 @@ def get_trending_heritages(request):
         heritages = Heritage.objects.all()
         myList = []
         for item in heritages:
-            votes = item.votes.filter(update_date__gte=datetime.datetime.utcnow()-datetime.timedelta(days=7))
+            votes = item.votes.filter(update_date__gte=now-datetime.timedelta(days=7))
             score = votes.filter(value=True).count() - votes.filter(value=False).count()
             myList.append((item, score ))
 
