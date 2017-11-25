@@ -20,6 +20,9 @@ urlpatterns = [
     url(r'^items/(?P<heritage_id>[0-9]+)/?$', heritage.heritage_get_put_delete),
     url(r'^items/(?P<heritage_id>[0-9]+)/comments/?$', heritage.get_all_comments),
     url(r'^items/(?P<heritage_id>[0-9]+)/tags/?$', heritage.get_all_tags),
+    url(r'^items/new/?$', heritage.get_new_heritages),
+    url(r'^items/top/?$', heritage.get_top_heritages),
+    url(r'^items/trending/?$', heritage.get_trending_heritages),
     #url(r'^items/get_first/?$', heritage.heritage_get_first),
 
 
