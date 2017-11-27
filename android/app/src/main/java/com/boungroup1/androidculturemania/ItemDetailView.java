@@ -116,7 +116,7 @@ public class ItemDetailView extends AppCompatActivity {
 
     public void sendPostUpVote(){
         Intent intent = getIntent();
-        int heritageId = intent.getIntExtra("heritageId", -1);
+        final int heritageId = intent.getIntExtra("heritageId", -1);
         Retrofit retrofit = ApiClient.getApiClient();
         final SharedPreferences sharedPref = getSharedPreferences("TOKENSHARED", Context.MODE_PRIVATE);
         final String  token = sharedPref.getString("TOKEN", null);
@@ -128,8 +128,11 @@ public class ItemDetailView extends AppCompatActivity {
 
                 if (response.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "SUCCESSFUL UPVOTE", Toast.LENGTH_SHORT).show();
+                    Intent e = new Intent(getApplicationContext(),
+                            ItemDetailView.class);
+                    e.putExtra("heritageId", heritageId);
                     finish();
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    startActivity(e);
                 } else {
                     Toast.makeText(getApplicationContext(), "Sorry for inconvince server is down" + response.code(), Toast.LENGTH_SHORT).show();
                     Log.d("response", response.raw().body().toString());
@@ -146,7 +149,7 @@ public class ItemDetailView extends AppCompatActivity {
     }
     public void sendPostDownVote(){
         Intent intent = getIntent();
-        int heritageId = intent.getIntExtra("heritageId", -1);
+        final int heritageId = intent.getIntExtra("heritageId", -1);
         Retrofit retrofit = ApiClient.getApiClient();
         final SharedPreferences sharedPref = getSharedPreferences("TOKENSHARED", Context.MODE_PRIVATE);
         final String  token = sharedPref.getString("TOKEN", null);
@@ -158,8 +161,11 @@ public class ItemDetailView extends AppCompatActivity {
 
                 if (response.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "SUCCESSFUL DOWNVOTE", Toast.LENGTH_SHORT).show();
+                    Intent e = new Intent(getApplicationContext(),
+                            ItemDetailView.class);
+                    e.putExtra("heritageId", heritageId);
                     finish();
-                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    startActivity(e);
                 } else {
                     Toast.makeText(getApplicationContext(), "Sorry for inconvince server is down" + response.code(), Toast.LENGTH_SHORT).show();
                     Log.d("response", response.raw().body().toString());
