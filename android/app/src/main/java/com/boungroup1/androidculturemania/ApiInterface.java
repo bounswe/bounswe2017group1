@@ -36,4 +36,10 @@ public interface ApiInterface {
 
     @GET("/api/items/{id}")
     Call<JsonResponseItemDetail> getItem(@Path("id") int id, @Header("Authorization") String  auth);
+
+    @Headers( "Content-Type: application/json" )
+    @POST("/api/votes/")
+    Call<JsonResponseVote> vote(@Body VoteBody vote, @Header("Authorization") String  auth);
+
+
 }

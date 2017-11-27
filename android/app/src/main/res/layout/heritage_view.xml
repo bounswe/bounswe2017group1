@@ -19,6 +19,8 @@
 
         <TextView
             android:id="@+id/heritage_description_text"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="4dp" />
