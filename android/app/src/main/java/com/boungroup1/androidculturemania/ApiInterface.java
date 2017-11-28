@@ -41,5 +41,14 @@ public interface ApiInterface {
     @POST("/api/votes/")
     Call<JsonResponseVote> vote(@Body VoteBody vote, @Header("Authorization") String  auth);
 
+    @GET("/api/items/new")
+    Call<List<JsonResponseHeritage>> listNewHeritage();
+
+    @GET("/api/items/top")
+    Call<List<JsonResponseHeritage>> listTopHeritage();
+
+    @GET("/api/items/trending")
+    Call<List<JsonResponseHeritage>> listTrendingHeritage();
+
 
 }
