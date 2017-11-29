@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private int tabPosition = 0;
 
     @Override
     protected void onStart() {
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 int position = tab.getPosition();
+                tabPosition = position;
                 Log.d("POSITION",Integer.toString(position));
                 if(position == 0)
                     getHeritageList();
@@ -147,7 +149,14 @@ public class MainActivity extends AppCompatActivity {
         new Handler().post(new Runnable() {
             @Override
             public void run() {
-                getHeritageList();
+                if(tabPosition == 0)
+                    getHeritageList();
+                if(tabPosition == 1)
+                    getTopHeritageList();
+                if(tabPosition == 2)
+                    getNewHeritageList();
+                if(tabPosition == 3)
+                    getTrendingHeritageList();
                 final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.heritage_swipelayout);
                 swipeRefreshLayout.setRefreshing(false);
             };
