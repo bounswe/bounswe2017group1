@@ -55,7 +55,7 @@
             android:layout_height="0dp"/>
 
     </android.support.v4.widget.SwipeRefreshLayout>
-    >
+
 
 
     <android.support.design.widget.CoordinatorLayout
