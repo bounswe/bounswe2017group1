@@ -4,7 +4,7 @@ from api.model.heritage import Heritage
 from api.model.comment import Comment
 from api.model.tag import Tag
 from api.serializer.comment import CommentSerializer
-from api.serializer.tag import TagSerializer
+from api.serializer.tag import ExtendedTagSerializer
 
 def get_item_by_id(heritage_id):
         return Heritage.objects.get(id=heritage_id)
@@ -24,7 +24,7 @@ def get_all_tags(heritage_id):
 
     ret = []
     for tag in tags:
-        serializer = TagSerializer(tag)
+        serializer = ExtendedTagSerializer(tag)
         ret.append(serializer.data)
 
     return ret

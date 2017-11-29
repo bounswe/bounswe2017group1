@@ -14,6 +14,7 @@ TITLE_COEF = 5
 DESC_COEF = 3
 LOC_COEF = 3
 TAG_COEF = 5
+RELATED_TAG_COEF = 1
 
 def calculate_scores(word, filters):
     scores = {}
@@ -55,7 +56,10 @@ def calculate_scores(word, filters):
         score += LOC_COEF * int((re.search(word, item.location, re.IGNORECASE)) is not None)
         tags = heritage.get_all_tags(item.id)
         for tag in tags:
-            score += TAG_COEF * int((re.search(word, tag['name'], re.IGNORECASE)) is not None)
+            found_in_name = int((re.search(word, tag['name'], re.IGNORECASE)) is not None)
+            score += TAG_COEF * found_in_name
+            if found_in_name==1:
+                score += RELATED_TAG_COEF * len(re.findall(word, tag['related_list'], re.IGNORECASE))
 
         if score > 0:
             scores[item.id] = score
