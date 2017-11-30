@@ -5,6 +5,7 @@ import Auth from '../../modules/Auth.js'
 import { Tabs, Tab } from 'material-ui/Tabs'
 import 'whatwg-fetch'
 import appConstants from '../../modules/appConstants.js'
+import { Button, Form, FormGroup, InputGroup, ControlLabel, FormControl } from 'react-bootstrap';
 
 var baseUrl = appConstants.baseUrl;
 const HomePage = React.createClass ({
@@ -12,7 +13,8 @@ const HomePage = React.createClass ({
     return {
 			filterText: '',
 			value: 'a',
-			items: []
+			items: [],
+			hideAdvanced: true
     };
 	},
 	
@@ -65,6 +67,12 @@ const HomePage = React.createClass ({
       }
     });
 	},
+	onToggle (event) {
+		event.preventDefault();
+		this.setState({
+			hideAdvanced: !this.state.hideAdvanced
+		})
+	},
 	render() {
 		return(
 			<div>
@@ -75,7 +83,24 @@ const HomePage = React.createClass ({
 						inStockOnly={this.state.inStockOnly}
 						onUserInput={this.handleUserInput}
 						onSubmit={this.onSearch}
+						onToggle={this.onToggle}
 					/>
+					<div>
+						<Form inline style={this.state.hideAdvanced? {display: 'none'}: {} }inline>
+							<FormGroup style={{margin: '5px'}}>
+								<ControlLabel>Location Name</ControlLabel>
+								{' '}
+								<FormControl type="text" placeholder="Location..." />
+							</FormGroup>
+							{' '}
+							<FormGroup style={{margin: '5px'}}>
+								<ControlLabel>Creator Name</ControlLabel>
+								{' '}
+								<FormControl type="text" placeholder="Creator name.." />
+							</FormGroup>
+							{' '}
+						</Form>
+					</div>
 					{this.renderTabs()}
 				</div>
   		</div>
@@ -114,7 +139,7 @@ const HomePage = React.createClass ({
 									title={item.title}
 									titleStyle={{fontWeight: 'bold'}}
 								/>
-								<CardText>{ item.description} </CardText>
+								<CardText expandable={true}>{ item.description} </CardText>
 							</Card>
 						</div>
 					))}
@@ -169,23 +194,29 @@ const SearchBar = React.createClass({
   },
   render: function() {
     return (
-      <form onSubmit={this.props.onSubmit}>
-        <input
-          type="text"
-          placeholder="Search..."
-          value={this.props.filterText}
-          ref="filterTextInput"
-					onChange={this.handleChange}
-					style={inputStyle}
-        />
-				<input type="submit" style={{display: 'none'}}/>
-      </form>
+      <FormGroup onSubmit={this.props.onSubmit}>
+				<InputGroup>
+					<input
+						type="text"
+						placeholder="Search..."
+						value={this.props.filterText}
+						ref="filterTextInput"
+						onChange={this.handleChange}
+						style={inputStyle}
+					/>
+					<input type="submit" style={{display: 'none'}}/>
+					<button style={buttonStyle} onClick={this.props.onToggle}>
+						<img src="http://www.pvhc.net/img6/qelyglamexpdbblhacjf.png" style={{height: '32px', width: '32px'}}/>
+					</button>
+				</InputGroup>
+        
+      </FormGroup>
     );
   }
 });
 
 const inputStyle = {
-    width: '100%',
+		width: 'calc(100% - 44px)',
     padding: '12px 20px',
     margin: '8px 0',
     display: 'inline-block',
@@ -203,5 +234,10 @@ const tabStyles = {
   },
 };
 
+const buttonStyle = {
+	background: 'transparent',
+	borderWidth: 0,
+	outline: 'none'
+}
 
 export default HomePage;

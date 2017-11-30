@@ -331,3 +331,13 @@ a:hover {
 .material-icons.md-48 { font-size: 48px; }
 .material-icons.md-64 { font-size: 64px; }
 .material-icons.orange600 { color: #FB8C00; }
+
+.custom-label {
+    text-align: right;
+    font-weight: bold;
+}
+
+.h2 {
+    font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}

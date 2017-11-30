@@ -5,6 +5,7 @@ import appConstants from '../../modules/appConstants.js'
 import Auth from '../../modules/Auth.js'
 import Carousel from 'react-bootstrap/lib/Carousel';
 import Vote from '../components/Vote.jsx'
+import { Image } from 'react-bootstrap';
 var Upvote = require('react-upvote');
 
 var baseUrl = appConstants.baseUrl;
@@ -195,7 +196,8 @@ class HeritagePage extends React.Component {
                   console.log(baseUrl+url.image);
                   return (
                     <Carousel.Item>
-                      <img style={{margin: 'auto'}} alt="900x500" src={baseUrl+url.image} />
+                      <Image  style={{margin: 'auto'}} src={baseUrl+url.image} responsive/>
+                      {/* <img style={{margin: 'auto'}} alt="900x500" src={baseUrl+url.image} /> */}
                     </Carousel.Item>
                   )
                   })}
