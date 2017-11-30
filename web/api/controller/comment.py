@@ -20,16 +20,22 @@ def comment_get_post(request):
 
     if request.method == 'GET':
         try:
-            serializer = CommentSerializer(Comment.objects.all(), many=True)
+            context = {}
+            if request.user.username:
+                profile_id = Profile.objects.filter(username=request.user.username).first().pk
+                context['requester_profile_id'] = profile_id
+            serializer = CommentSerializer(Comment.objects.all(),context=context, many=True)
             return Response(serializer.data, status=status.HTTP_200_OK)
         except Comment.DoesNotExist:
             return Response(status=status.HTTP_404_NOT_FOUND)
 
     elif request.method == 'POST' and request.user.is_authenticated:
-
         username = request.user.username
-        request.data['creator'] = Profile.objects.filter(username=username).first().pk
-        serializer = CommentSerializer(data=request.data)
+        context = {}
+        profile_id = Profile.objects.filter(username=username).first().pk
+        context['requester_profile_id'] = profile_id
+        request.data['creator'] = profile_id
+        serializer = CommentSerializer(data=request.data, context=context)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -42,11 +48,15 @@ def comment_get_post(request):
 def comment_get_put_delete(request, comment_id):
     try:
         comment = Comment.objects.get(id=comment_id)
+        context = {}
+        if request.user.username:
+            profile_id = Profile.objects.filter(username=request.user.username).first().pk
+            context['requester_profile_id'] = profile_id
     except Comment.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'GET':
-        serializer = CommentSerializer(comment)
+        serializer = CommentSerializer(comment, context = context)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     elif request.method == 'DELETE' and permission.isOwner(request, obj=comment):

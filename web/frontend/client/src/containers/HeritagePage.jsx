@@ -3,7 +3,9 @@ import TopBar from '../components/TopBar.jsx';
 import PropTypes from 'prop-types';
 import appConstants from '../../modules/appConstants.js'
 import Auth from '../../modules/Auth.js'
-
+import Carousel from 'react-bootstrap/lib/Carousel';
+import Vote from '../components/Vote.jsx'
+var Upvote = require('react-upvote');
 
 var baseUrl = appConstants.baseUrl;
 class HeritagePage extends React.Component {
@@ -20,10 +22,100 @@ class HeritagePage extends React.Component {
           event_date: "2017-10-25T19:01:48Z",
           location: "istanbul",
           creator: 1,
-          tags: []  
+          tags: [],
+          medias: [],
+          upvote_count: 0,
+          downvote_count: 0,
+          is_upvoted: false,
+          is_downvoted: false,
+          is_owner: false
         },
         comments:[]
-	    };
+      };
+      this.onUpVote = this.onUpVote.bind(this);
+      this.onDownVote = this.onDownVote.bind(this);
+  }
+
+  onUpVote(event) {
+    event.preventDefault();
+    if(this.state.heritage.is_upvoted) return;
+    fetch(baseUrl+'/api/votes/',{
+      method: 'POST',
+      headers: {
+        "Access-Control-Allow-Origin" : "*",
+        "Content-Type": "application/json",
+        "authorization": "token " + Auth.getToken()
+      },
+      credentials: "same-origin",
+      body: JSON.stringify({
+        value: true,
+        heritage: this.props.match.params.heritageId
+      })
+    }).then(resp=>{
+      if(resp.status === 201) {
+        fetch(baseUrl+'/api/items/'+this.props.match.params.heritageId,{
+          method: "GET",
+          headers: {
+            "Access-Control-Allow-Origin" : "*",
+            "Content-Type": "application/json",
+            "authorization": "token " + Auth.getToken()
+          },
+          credentials: "same-origin"
+        }).then(response=>{
+          if(response.ok){
+            response.json().then(res=>{
+              this.setState({heritage: res});
+            });
+    
+          } else {
+            this.setState({
+              errors
+            });
+          }
+        });
+      }
+    });
+  }
+
+  onDownVote(event) {
+    event.preventDefault();
+    if(this.state.heritage.is_downvoted) return;
+    fetch(baseUrl+'/api/votes/',{
+      method: 'POST',
+      headers: {
+        "Access-Control-Allow-Origin" : "*",
+        "Content-Type": "application/json",
+        "authorization": "token " + Auth.getToken()
+      },
+      credentials: "same-origin",
+      body: JSON.stringify({
+        value: false,
+        heritage: this.props.match.params.heritageId
+      })
+    }).then(resp=>{
+      if(resp.status === 201) {
+        fetch(baseUrl+'/api/items/'+this.props.match.params.heritageId,{
+          method: "GET",
+          headers: {
+            "Access-Control-Allow-Origin" : "*",
+            "Content-Type": "application/json",
+            "authorization": "token " + Auth.getToken()
+          },
+          credentials: "same-origin"
+        }).then(response=>{
+          if(response.ok){
+            response.json().then(res=>{
+              this.setState({heritage: res});
+            });
+    
+          } else {
+            this.setState({
+              errors
+            });
+          }
+        });
+      }
+    });
   }
 
   componentDidMount(){
@@ -32,7 +124,8 @@ class HeritagePage extends React.Component {
       method: "GET",
       headers: {
         "Access-Control-Allow-Origin" : "*",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "authorization": "token " + Auth.getToken()
       },
       credentials: "same-origin"
     }).then(response=>{
@@ -53,7 +146,8 @@ class HeritagePage extends React.Component {
       method: "GET",
       headers: {
         "Access-Control-Allow-Origin" : "*",
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
+        "authorization": "token " + Auth.getToken()
       },
       credentials: "same-origin"
     }).then(response=>{
@@ -73,7 +167,10 @@ class HeritagePage extends React.Component {
   }
 
 	render() {
-    
+    let voteStatus = 0;
+    if(this.state.heritage.is_upvoted) voteStatus = 1;
+    else if (this.state.heritage.is_downvoted) voteStatus = -1;
+    const voteCount = this.state.heritage.upvote_count - this.state.heritage.downvote_count;
 		return (
     <div>
       <TopBar auth={Auth.isUserAuthenticated()}/>
@@ -84,16 +181,25 @@ class HeritagePage extends React.Component {
           <div className="col-md-2 text-center">
           	<h2 className="my-4">{this.state.heritage.title}</h2>
       			<button type="button" className="btn btn-success">Add Annotation</button>
-            <div className="list-group">
-        			<a href="#" className="list-group-item glyphicon glyphicon-chevron-up"></a>
-        			<span className="list-group-item">123</span >
-        			<a href="#" className="list-group-item glyphicon glyphicon-chevron-down"></a>
-            </div>
+            <Vote
+              voteStatus={voteStatus}
+              voteCount={voteCount}
+              onUpVote={this.onUpVote}
+              onDownVote={this.onDownVote}/>
           </div>
 
           <div className="col-md-8">
             <div className="card mt-4">
-              <img className="card-img-top img-fluid" src="http://placehold.it/900x400" alt=""/>
+              <Carousel>
+                {this.state.heritage.medias.map((url)=>{
+                  console.log(baseUrl+url.image);
+                  return (
+                    <Carousel.Item>
+                      <img style={{margin: 'auto'}} alt="900x500" src={baseUrl+url.image} />
+                    </Carousel.Item>
+                  )
+                  })}
+              </Carousel>
               <div className="card-body">
               <br/>
                 <p className="card-text">{this.state.heritage.description}</p>
