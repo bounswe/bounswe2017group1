@@ -65,6 +65,8 @@ class HeritageSerializer(serializers.ModelSerializer):
             serializer = TagSerializer(tag)
             new_tags_data.append(serializer.data)
 
+        #clear tags, before adding
+        instance.tags.clear()
         for tag_data in new_tags_data:
             tag, created = Tag.objects.get_or_create(name=tag_data['name'])
             if created:
