@@ -9,6 +9,7 @@ from api.model.profile import Profile
 from api.model.comment import Comment
 from api.serializer.heritage import HeritageSerializer
 from api.service import recommendation
+import operator
 
 
 @api_view(['GET'])
@@ -54,14 +55,18 @@ def user_based(request):
                 res[key] += recommended_items[key]
             else:
                 res[key] = recommended_items[key]
+    #sort res
+    sorted_res = sorted(res.items(), key=operator.itemgetter(1), reverse=True)
+    sorted_keys = [x[0] for x in sorted_res]
 
-    # get all recommended items except user created, upvoted or commented
-    response_items = Heritage.objects.all(). \
-        filter(id__in=res.keys()). \
-        exclude(id__in=exclude_ids)
+    response=[]
+    for item in sorted_keys:
+        if item not in exclude_ids:
+            heritage_item = Heritage.objects.get(item)
+            serializer = HeritageSerializer(heritage_item)
+            response.append(serializer.data)
 
-    serializer = HeritageSerializer(response_items, context=context, many=True)
-    return Response(serializer.data, status=status.HTTP_200_OK)
+    return Response(response, status=status.HTTP_200_OK)
 
 @api_view(['GET'])
 @permission_classes((IsAuthenticatedOrReadOnly, ))
