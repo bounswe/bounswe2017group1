@@ -141,6 +141,9 @@ public class MainActivity extends AppCompatActivity {
             finish();
             startActivity(new Intent(getApplicationContext(),LoginActivity.class));
 
+        }else if (id == R.id.action_search) {
+            // TODO search function will be implemented in here
+
         }
         return super.onOptionsItemSelected(item);
     }

@@ -138,7 +138,7 @@ public class ItemDetailView extends AppCompatActivity {
         });
 
         description.setMovementMethod(new ScrollingMovementMethod());
-        //TODO complete upvote function
+        //upvote and downvote functions
         upVote.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
