@@ -1,5 +1,6 @@
 package com.boungroup1.androidculturemania;
 
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,6 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -117,6 +119,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setIconifiedByDefault(false);
         return true;
     }
 
@@ -142,7 +148,8 @@ public class MainActivity extends AppCompatActivity {
             startActivity(new Intent(getApplicationContext(),LoginActivity.class));
 
         }else if (id == R.id.action_search) {
-            // TODO search function will be implemented in here
+            onSearchRequested();
+                return true;
 
         }
         return super.onOptionsItemSelected(item);
