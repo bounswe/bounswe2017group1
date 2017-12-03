@@ -132,7 +132,7 @@
                 android:id="@+id/detaildescription"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:maxLines="10"
+                android:maxLines="15"
                 android:scrollbars="vertical"/>
             <RelativeLayout
                 android:layout_width="match_parent"
