@@ -57,5 +57,8 @@ public interface ApiInterface {
     @POST("/api/comments/")
     Call<JsonResponseComment> commentCreate(@Body CommentBody itemcreate, @Header("Authorization") String  auth);
 
+    @GET("/api/recommendation/user/")
+    Call<List<JsonResponseHeritage>> listRecommendedHeritage(@Header("Authorization") String  auth);
+
 
 }

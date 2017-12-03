@@ -202,6 +202,7 @@ public class ItemDetailView extends AppCompatActivity {
             public void onResponse(Call<List<JsonResponseComment>> call, Response<List<JsonResponseComment>> response) {
                 if (response.isSuccessful()) {
                     final ArrayList<JsonResponseComment> heritageList = (ArrayList<JsonResponseComment>) response.body();
+                    //Log.d("RESPONSE", response.body());
                     setCommentRecyclerView(heritageList);
                 } else {
                     Toast.makeText(getApplicationContext(), "Sorry for inconvince server is down" + response.code(), Toast.LENGTH_SHORT).show();

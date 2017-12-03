@@ -214,6 +214,31 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+    private void getRecommendedHeritageList(){
+        final SharedPreferences sharedPref = getSharedPreferences("TOKENSHARED", Context.MODE_PRIVATE);
+        final SharedPreferences.Editor editor = sharedPref.edit();
+        final String  token = sharedPref.getString("TOKEN", null);
+        Retrofit retrofit = ApiClient.getApiClient();
+        ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+
+        Call<List<JsonResponseHeritage>> call = apiInterface.listRecommendedHeritage("Token " + token);
+        call.enqueue(new Callback<List<JsonResponseHeritage>>() {
+            @Override
+            public void onResponse(Call<List<JsonResponseHeritage>> call, Response<List<JsonResponseHeritage>> response) {
+                if (response.isSuccessful()) {
+                    final ArrayList<JsonResponseHeritage> heritageList = (ArrayList<JsonResponseHeritage>) response.body();
+                    setHeritageRecyclerView(heritageList);
+                } else {
+                    Toast.makeText(getApplicationContext(), "Sorry for inconvince server is down" + response.code(), Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<JsonResponseHeritage>> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "Sorry for inconvince server is down", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
     private void getNewHeritageList(){
         Retrofit retrofit = ApiClient.getApiClient();
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
