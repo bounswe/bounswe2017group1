@@ -2,118 +2,87 @@ from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, AllowAny
 from rest_framework.response import Response
-from django.db.models import Q
 
 from api.model.vote import Vote
 from api.model.heritage import Heritage
 from api.model.profile import Profile
+from api.model.comment import Comment
 from api.serializer.heritage import HeritageSerializer
-from itertools import chain
+from api.service import recommendation
+import operator
+
+
+@api_view(['GET'])
+@permission_classes((IsAuthenticated, ))
+def user_based(request):
+
+    user_upvoted_heritages = []
+    user_commented_heritages = []
+
+    context = {}
+    profile_id = Profile.objects.filter(username=request.user.username).first().pk
+    context['requester_profile_id'] = profile_id
+
+    # Get all heritage items user created
+    user_created_heritages = Heritage.objects.filter(creator=profile_id)
+
+    # Get all heritage items user upvoted
+    user_votes = Vote.objects.filter(voter=profile_id, value=True)
+    for vote in user_votes:
+        user_upvoted_heritages.append(vote.heritage)
+
+    # Get all heritage items user commented
+    user_comments = Comment.objects.filter(creator=profile_id)
+    for comment in user_comments:
+        user_commented_heritages.append(comment.heritage)
+
+    # Merge created, upvoted and commented items by the user into a list without duplicate
+    recommended_related_items = list(set(user_created_heritages)|set(user_upvoted_heritages)|set(user_commented_heritages))
+
+    exclude_ids = []
+    res = {}
+
+    # put recommended items into a function and get recommendations for that item
+    for item in recommended_related_items:
+
+        if item.id not in exclude_ids:
+            exclude_ids.append(item.id)
+
+        recommended_items = recommendation.get_recommendation_for_heritage(item)
+
+        for key in recommended_items.keys():
+            if key in res.keys():
+                res[key] += recommended_items[key]
+            else:
+                res[key] = recommended_items[key]
+    #sort res
+    sorted_res = sorted(res.items(), key=operator.itemgetter(1), reverse=True)
+    sorted_keys = [x[0] for x in sorted_res]
+
+    response=[]
+    for item in sorted_keys:
+        if item not in exclude_ids:
+            heritage_item = Heritage.objects.get(item)
+            serializer = HeritageSerializer(heritage_item)
+            response.append(serializer.data)
+
+    return Response(response, status=status.HTTP_200_OK)
 
 @api_view(['GET'])
 @permission_classes((IsAuthenticatedOrReadOnly, ))
-def get_all_items_same_tag_with_heritage_that_user_created(request):
-    names_of_heritage_tags = []
-    if request.method == 'GET':
-        try:
-            context = {}
-            if request.user.username:
-                print request.user.username
-                profile_id = Profile.objects.filter(username=request.user.username).first().pk
-                heritage_tags = Heritage.objects.filter(creator=profile_id)
-                context['requester_profile_id'] = profile_id
-                for h in heritage_tags:
-                    for t in h.tags.all():
-                        names_of_heritage_tags.append(t.name)
-                #Making distinct list of tags
-                names_of_heritage_tags = list(set(names_of_heritage_tags))
+def heritage_based(request, item_id):
 
-                """This function do:
-                    * Get all heritage items that this user created.
-                    * Get all tags of heritage items that this user owns.
-                    * Get all heritage items that these tags included in.
-                    * Exclude the heritage items which this current user created.
-                    * Returns heritage items, distinctly!
-                """
-                serializer = HeritageSerializer(Heritage.objects.all().
-                                                filter(tags__name__in=names_of_heritage_tags).
-                                                exclude(creator=profile_id).distinct(), context=context, many=True)
+    the_heritage = Heritage.objects.get(id=item_id)
+    recommended_items = recommendation.get_recommendation_for_heritage(the_heritage)
+    response_items = Heritage.objects.all().filter(id__in=recommended_items.keys())
 
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        except Heritage.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
+    if request.user.is_authenticated:
+        context = {}
+        profile_id = Profile.objects.filter(username=request.user.username).first().pk
+        context['requester_profile_id'] = profile_id
 
-@api_view(['GET'])
-@permission_classes((IsAuthenticatedOrReadOnly, ))
-def get_all_items_that_user_upvoted_has_same_tags(request):
-    heritage_tags = []
-    tags_upvoted_items = []
-    if request.method == 'GET':
-        try:
-            context = {}
-            if request.user.username:
-                print request.user.username
-                profile_id = Profile.objects.filter(username=request.user.username).first().pk
-
-                #Take only UP votes
-                votes_include_heritages = Vote.objects.filter(voter=profile_id, value=True)
-                context['requester_profile_id'] = profile_id
-
-                for v in votes_include_heritages:
-                    heritage_tags.append(v.heritage)
-
-                for h in heritage_tags:
-                    for t in h.tags.all():
-                        tags_upvoted_items.append(t.name)
-
-                """This function do:
-                    * Get all heritage items that this user upvoted.
-                    * Exclude the heritage items which this current user created.
-                    * Returns heritage items, distinctly!
-                """
-                serializer = HeritageSerializer(Heritage.objects.all().filter(tags__name__in=tags_upvoted_items).exclude(creator=profile_id).distinct().order_by('id'), context=context, many=True)
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        except Heritage.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
-
-@api_view(['GET'])
-@permission_classes((IsAuthenticatedOrReadOnly, ))
-def get_all_recommendations_tag_upvote_related(request):
-    names_of_heritage_tags = []
-    vote_heritage_tags = []
-    if request.method == 'GET':
-        try:
-            context = {}
-            if request.user.username:
-                print request.user.username
-                profile_id = Profile.objects.filter(username=request.user.username).first().pk
-                heritage_tags = Heritage.objects.filter(creator=profile_id)
-                # Take only UP votes
-                votes_include_heritages = Vote.objects.filter(voter=profile_id, value=True)
-                context['requester_profile_id'] = profile_id
-
-                for v in votes_include_heritages:
-                    vote_heritage_tags.append(v.heritage)
-
-
-                for h in heritage_tags:
-                    for t in h.tags.all():
-                        names_of_heritage_tags.append(t.name)
-
-                for h in vote_heritage_tags:
-                    for t in h.tags.all():
-                        names_of_heritage_tags.append(t.name)
-                names_of_heritage_tags = list(set(names_of_heritage_tags))
-
-                serializer = HeritageSerializer(Heritage.objects.all().
-                                                filter(tags__name__in=names_of_heritage_tags).
-                                                exclude(creator=profile_id).distinct(), context=context, many=True)
-
-            return Response(serializer.data, status=status.HTTP_200_OK)
-        except Heritage.DoesNotExist:
-            return Response(status=status.HTTP_404_NOT_FOUND)
-
-
-
-
-
+        serializer = HeritageSerializer(response_items, context=context, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    else:
+        serializer = HeritageSerializer(response_items, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
