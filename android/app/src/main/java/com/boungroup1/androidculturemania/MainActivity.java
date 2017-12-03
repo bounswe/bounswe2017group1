@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
-        getHeritageList();
+        getRecommendedHeritageList();
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 tabPosition = position;
                 Log.d("POSITION",Integer.toString(position));
                 if(position == 0)
-                    getHeritageList();
+                    getRecommendedHeritageList();
                 if(position == 1)
                     getTopHeritageList();
                 if(position == 2)
@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if(tabPosition == 0)
-                    getHeritageList();
+                    getRecommendedHeritageList();
                 if(tabPosition == 1)
                     getTopHeritageList();
                 if(tabPosition == 2)
