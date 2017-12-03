@@ -58,7 +58,7 @@ def calculate_scores(word, filters):
         for tag in tags:
             found_in_name = int((re.search(word, tag['name'], re.IGNORECASE)) is not None)
             score += TAG_COEF * found_in_name
-            if found_in_name==0:
+            if found_in_name==0 and tag['related_list']:
                 score += RELATED_TAG_COEF * len(re.findall(word, tag['related_list'], re.IGNORECASE))
 
         if score > 0:
