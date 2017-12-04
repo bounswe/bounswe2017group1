@@ -62,7 +62,7 @@ def user_based(request):
     response=[]
     for item in sorted_keys:
         if item not in exclude_ids:
-            heritage_item = Heritage.objects.get(item)
+            heritage_item = Heritage.objects.get(id=item)
             serializer = HeritageSerializer(heritage_item)
             response.append(serializer.data)
 
