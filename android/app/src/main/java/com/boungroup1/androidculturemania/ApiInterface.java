@@ -2,12 +2,16 @@ package com.boungroup1.androidculturemania;
 
 import java.util.List;
 
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.Part;
 import retrofit2.http.Path;
 
 /**
@@ -63,6 +67,10 @@ public interface ApiInterface {
     @Headers( "Content-Type: application/json" )
     @POST("/api/search/")
     Call<List<JsonResponseSearchHeritage>> searchHeritage(@Body SearchHeritageBody item, @Header("Authorization") String  auth);
+
+    @Multipart
+    @POST("/api/medias")
+    Call<JsonResponseImage> uploadImage(@Header("Authorization") String authorization, @Part MultipartBody.Part image , @Part("type") String type,@Part("heritage") int heritage,@Part("creation_date") String creation_date,@Part("update_date") String update_date);
 
 
 }

@@ -3,7 +3,11 @@ package com.boungroup1.androidculturemania;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.ParcelFileDescriptor;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.ActionBar;
@@ -26,9 +30,16 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileDescriptor;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -44,6 +55,8 @@ public class ItemDetailView extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.item_detail_view);
+
+
 
         final NestedScrollView layout = (NestedScrollView) findViewById(R.id.detail_view_relayout);
         layout.setVisibility(View.INVISIBLE);
@@ -69,6 +82,13 @@ public class ItemDetailView extends AppCompatActivity {
 
         final TextView tag = (TextView) findViewById(R.id.tag);
         final ImageView image = (ImageView) findViewById(R.id.detailimage);
+        final Button uploadButton = (Button) findViewById(R.id.uploadButton);
+        uploadButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uploadImage();
+            }
+        });
 
         send_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -275,6 +295,15 @@ public class ItemDetailView extends AppCompatActivity {
         });
     }
 
+
+    public void uploadImage(){
+        Intent intent = new Intent(Intent.ACTION_OPEN_DOCUMENT);
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.setType("image/*");
+        startActivityForResult(intent, 42);
+    }
+
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -291,4 +320,55 @@ public class ItemDetailView extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode,
+                                 Intent resultData) {
+        Uri uri = resultData.getData();
+        Log.d("deneme",uri.toString());
+        final byte[] file = getBitmapFromUri(uri);
+        String url = uri.toString();
+
+        final SharedPreferences sharedPref = getSharedPreferences("TOKENSHARED", Context.MODE_PRIVATE);
+        final String  token = sharedPref.getString("TOKEN", null);
+        Retrofit retrofit = ApiClient.getApiClient();
+        ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+
+        /*String[] perms = {"android.permission.READ_EXTERNAL_STORAGE"};
+        int permsRequestCode = 200;
+        if(Build.VERSION.SDK_INT>Build.VERSION_CODES.LOLLIPOP_MR1)
+            requestPermissions(perms, permsRequestCode);*/
+        MultipartBody.Part filePart = MultipartBody.Part.createFormData("image", url.substring( url.lastIndexOf('/')+1, url.length() ), RequestBody.create(MediaType.parse("image/*"),file));
+        Call<JsonResponseImage> call = apiInterface.uploadImage("Token " + token,filePart,"image",heritageId,"","");
+        call.enqueue(new Callback<JsonResponseImage>() {
+            @Override
+            public void onResponse(Call<JsonResponseImage> call, Response<JsonResponseImage> response) {
+                Toast.makeText(getApplicationContext(),"Image successfully uploaded.",Toast.LENGTH_SHORT);
+            }
+
+            @Override
+            public void onFailure(Call<JsonResponseImage> call, Throwable t) {
+                Toast.makeText(getApplicationContext(),"Uploading image failed, try again.",Toast.LENGTH_SHORT);
+            }
+        });
+
+    }
+
+    private byte[] getBitmapFromUri(Uri uri) {
+        byte[] byteArray = null;
+        try{
+            ParcelFileDescriptor parcelFileDescriptor =
+                    getContentResolver().openFileDescriptor(uri, "r");
+            FileDescriptor fileDescriptor = parcelFileDescriptor.getFileDescriptor();
+            Bitmap image = BitmapFactory.decodeFileDescriptor(fileDescriptor);
+            parcelFileDescriptor.close();
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            image.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            byteArray = stream.toByteArray();
+        }catch (IOException e){
+        }
+        return byteArray;
+    }
+
 }
