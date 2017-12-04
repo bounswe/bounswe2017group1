@@ -7,7 +7,7 @@ def get_concepts_from_item(source):
     myList = []
     obj = requests.get('https://api.datamuse.com/words?ml='+source.replace(" ", "+")).json()
     for data in obj:
-        if data['word'] and data['score']:
+        if "score" in data.keys() and "word" in data.keys():
             myList.append((data['word'], data['score']))
         if len(myList)>9:
             break
@@ -19,7 +19,8 @@ def get_concepts_from_list(source):
         entry = entry.lower()
         obj = requests.get('https://api.datamuse.com/words?ml='+entry.replace(" ", "+")).json()
         for data in obj:
-            if data['word'] and data['score']:
+            print data
+            if "score" in data.keys() and "word" in data.keys():
                 if data['word'] in [x[0] for x in myList]:
                     index = [x[0] for x in myList].index(data['word'])
                     myList[index] = (myList[index][0], myList[index][1]+data['score'])
