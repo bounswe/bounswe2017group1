@@ -2,7 +2,6 @@ from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, AllowAny
 from rest_framework.response import Response
-from django.db.models import Q
 
 from api.model.vote import Vote
 from api.model.heritage import Heritage
@@ -11,16 +10,20 @@ from api.serializer.heritage import HeritageSerializer
 from api.service.search import calculate_scores
 from api.service import heritage
 
+import re
+
 
 def get_recommendation_for_heritage(heritage_obj):
     tags = heritage_obj.tags.all()
     query_words = []
 
-    if heritage_obj.title != "":
+    if heritage_obj.title:
         query_words.append(heritage_obj.title)
 
-    if heritage_obj.location != "":
-        query_words.append(heritage_obj.location)
+    if heritage_obj.location:
+        pattern = re.compile("^\s+|\s*,\s*|\s+$")
+        parsed_location = [x for x in pattern.split(heritage_obj.location) if x]
+        query_words.extend(parsed_location)
 
     for tag in tags:
         query_words.append(tag.name)
