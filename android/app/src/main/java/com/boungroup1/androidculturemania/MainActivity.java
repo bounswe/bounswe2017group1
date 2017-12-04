@@ -56,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
@@ -65,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(viewPager);
 
-        getRecommendedHeritageList();
+        getNewHeritageList();
 
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -73,13 +74,13 @@ public class MainActivity extends AppCompatActivity {
                 int position = tab.getPosition();
                 tabPosition = position;
                 Log.d("POSITION",Integer.toString(position));
-                if(position == 0)
-                    getRecommendedHeritageList();
-                if(position == 1)
-                    getTopHeritageList();
-                if(position == 2)
+                if(tabPosition == 0)
                     getNewHeritageList();
-                if(position == 3)
+                if(tabPosition == 1)
+                    getTopHeritageList();
+                if(tabPosition == 2)
+                    getRecommendedHeritageList();
+                if(tabPosition == 3)
                     getTrendingHeritageList();
 
 
@@ -163,11 +164,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if(tabPosition == 0)
-                    getRecommendedHeritageList();
+                    getNewHeritageList();
                 if(tabPosition == 1)
                     getTopHeritageList();
                 if(tabPosition == 2)
-                    getNewHeritageList();
+                    getRecommendedHeritageList();
                 if(tabPosition == 3)
                     getTrendingHeritageList();
                 final SwipeRefreshLayout swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.heritage_swipelayout);

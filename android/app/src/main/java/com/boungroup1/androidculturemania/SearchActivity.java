@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -31,6 +32,8 @@ public class SearchActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         Retrofit retrofit = ApiClient.getApiClient();
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
@@ -89,5 +92,15 @@ public class SearchActivity extends AppCompatActivity {
             public void onLongClick(View view, int position) {
             }
         }));
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                finish();
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        }
+        return super.onOptionsItemSelected(item);
     }
 }
