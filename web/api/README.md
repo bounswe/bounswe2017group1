@@ -551,7 +551,9 @@ Create new vote
           "creation_date": DateTime,
           "update_date": DateTime,
           "voter": Integer,
-          "heritage": Integer
+          "heritage": Integer,
+          "upvote_count": Integer,
+          "downvote_count": Integer
       }
         
 
@@ -566,6 +568,37 @@ Create new vote
     
       { "detail": [error] } 
 
+***
+
+##### DELETE
+Deletes the existing vote of the requester
+
+  **Request**
+
+    {
+        "heritage": Integer (required)
+    }
+    
+
+  **Response**
+
+    200 Ok
+    action successfully done
+
+      {
+          "upvote_count": Integer,
+          "downvote_count": Integer
+      }
+        
+
+
+    404 Not Found
+    Means there is no old vote in the DB to specified heritage item ID or it is already deleted.
+
+    
+    HTTP_412_PRECONDITION_FAILED    
+    Probably there is no heritage field in the request or something else is wrong about the request.
+    
 ***
 
 ## Profile Routes
@@ -593,6 +626,7 @@ get all user profiles
 
     404 Not Found
         
+
 ***
 
 ### /profiles/{id}
