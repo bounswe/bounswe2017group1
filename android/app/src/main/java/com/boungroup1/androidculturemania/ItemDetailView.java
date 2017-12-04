@@ -132,7 +132,7 @@ public class ItemDetailView extends AppCompatActivity {
                         tag.append(tags.getName().toString());
                         tag.append(",");
                     }
-                    if(response.body().getMedia()!=null)
+                    if(response.body().getMedia().size()>0)
                         Picasso.with(getApplicationContext()).load(ApiClient.BASE_URL+response.body().getMedia().get(0).getImage()).into(image);
                     layout.setVisibility(View.VISIBLE);
                 }

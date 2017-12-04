@@ -89,12 +89,12 @@
 
             <ImageView
                 android:id="@+id/detailimage"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentTop="true"
                 android:layout_toEndOf="@+id/buttons"
                 android:layout_toRightOf="@+id/buttons"
-                android:src="@drawable/placeholder"/>
+                android:src="@drawable/placeholder" />
 
         </LinearLayout>
     </LinearLayout>
