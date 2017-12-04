@@ -63,6 +63,10 @@ public class JsonResponseItemDetail {
     @Expose
     private String creator_username;
 
+    @SerializedName("medias")
+    @Expose
+    private List<Media> media;
+
     public int getId() {
         return id;
     }
@@ -165,5 +169,13 @@ public class JsonResponseItemDetail {
 
     public void setCreator_username(String creator_username) {
         this.creator_username = creator_username;
+    }
+
+    public List<Media> getMedia() {
+        return media;
+    }
+
+    public void setMedia(List<Media> media) {
+        this.media = media;
     }
 }
