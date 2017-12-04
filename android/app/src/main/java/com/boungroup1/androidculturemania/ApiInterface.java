@@ -60,5 +60,9 @@ public interface ApiInterface {
     @GET("/api/recommendation/user/")
     Call<List<JsonResponseHeritage>> listRecommendedHeritage(@Header("Authorization") String  auth);
 
+    @Headers( "Content-Type: application/json" )
+    @POST("/api/search/")
+    Call<List<JsonResponseSearchHeritage>> searchHeritage(@Body SearchHeritageBody item, @Header("Authorization") String  auth);
+
 
 }

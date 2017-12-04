@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,12 +14,14 @@ import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -41,7 +44,7 @@ public class ItemDetailView extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.item_detail_view);
 
-        final RelativeLayout layout = (RelativeLayout) findViewById(R.id.detail_view_relayout);
+        final NestedScrollView layout = (NestedScrollView) findViewById(R.id.detail_view_relayout);
         layout.setVisibility(View.INVISIBLE);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -138,6 +141,13 @@ public class ItemDetailView extends AppCompatActivity {
         });
 
         description.setMovementMethod(new ScrollingMovementMethod());
+        description.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                v.getParent().requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
         //upvote and downvote functions
         upVote.setOnClickListener(new View.OnClickListener() {
             @Override
