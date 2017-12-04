@@ -5,4 +5,10 @@ from rest_framework import serializers
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
-        fields = "__all__"
+        fields = ("id", "name")
+
+
+class ExtendedTagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = '__all__'

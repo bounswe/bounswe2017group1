@@ -43,6 +43,7 @@ class HeritageAddPage extends React.Component {
     this.onImageChange = this.onImageChange.bind(this);
   }
   onImageChange(e){
+    //console.log(e.target.files)
     this.setState({pictures: e.target.files});
   }
   /**

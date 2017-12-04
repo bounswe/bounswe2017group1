@@ -9,16 +9,29 @@ from rest_framework.permissions import IsAuthenticated
 from django.views.decorators.csrf import csrf_exempt
 
 
-@api_view(['POST'])
+@api_view(['POST','DELETE'])
 @permission_classes((IsAuthenticated,))
-def vote_post(request):
+def vote_post_delete(request):
     username = request.user.username
     request.data['voter'] = Profile.objects.filter(username=username).first().pk
     old_vote = Vote.objects.filter(voter=request.data['voter'],
                                    heritage=request.data['heritage']).first()
-    serializer = VoteSerializer(instance=old_vote, data=request.data)
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-    else:
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    if request.method == 'POST':
+
+        serializer = VoteSerializer(instance=old_vote, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        else:
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    elif request.method == 'DELETE':
+        if old_vote:
+            old_vote.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        else:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+    return Response(status=status.HTTP_412_PRECONDITION_FAILED)
+
+
