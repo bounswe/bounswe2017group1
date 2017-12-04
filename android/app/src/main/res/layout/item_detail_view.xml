@@ -1,12 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    android:id="@+id/detail_view_relayout"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.NestedScrollView android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    android:id="@+id/detail_view_relayout"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -132,13 +128,11 @@
             android:layout_height="wrap_content"
             android:layout_weight="5"
             android:orientation="vertical">
-
             <TextView
                 android:id="@+id/detaildescription"
                 android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:maxLines="10"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:maxLines="15"
                 android:scrollbars="vertical"/>
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -168,5 +162,4 @@
         </LinearLayout>
 
     </LinearLayout>
-    </ScrollView>
-</RelativeLayout>
+</android.support.v4.widget.NestedScrollView>
