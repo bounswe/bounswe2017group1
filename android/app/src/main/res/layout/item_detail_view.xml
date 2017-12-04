@@ -21,6 +21,7 @@
 
             <TextView
                 android:id="@+id/detailtitle"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
@@ -42,6 +43,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textStyle="italic"
             android:id="@+id/tag"/>
         <LinearLayout
             android:layout_width="match_parent"
@@ -71,6 +73,7 @@
                 <TextView
                     android:id="@+id/vote_count"
                     android:layout_marginTop="24dp"
+                    android:textStyle="bold"
                     android:layout_marginBottom="24dp"
                     android:layout_width="88dp"
                     android:layout_height="match_parent"
@@ -108,6 +111,7 @@
 
             <TextView
                 android:id="@+id/detaillocation"
+                android:textStyle="italic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"/>
@@ -115,6 +119,7 @@
             <TextView
                 android:text="ahmet"
                 android:gravity="right"
+                android:textStyle="italic"
                 android:id="@+id/detailname"
                 android:paddingRight="12dp"
                 android:layout_width="wrap_content"
@@ -143,6 +148,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:id="@+id/comment_entry"
+                    android:lines="1"
+                    android:maxLines="30"
                     android:hint="Type Your Comment"
                     android:layout_alignParentLeft="true"/>
                 <Button

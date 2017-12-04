@@ -11,7 +11,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 class ViewPagerAdapter extends FragmentPagerAdapter {
 
-    private String title[] = {"Recommended", "Top", "New", "Trending"};
+    private String title[] = {"New", "Top", "Recommended", "Trending"};
 
     public ViewPagerAdapter(FragmentManager manager) {
         super(manager);
