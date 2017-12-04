@@ -689,7 +689,7 @@ searches heritage items
       [
          {
             "query": String, (Required)
-            "filters:" {
+            "filters":{
                  "location": String, (optional)
                  "creator": String, (optional)
                  "creation_start": datetime, (optional)
@@ -697,7 +697,7 @@ searches heritage items
                  "event_start": datetime, (optional)
                  "event_end": datetime, (optional)
              } (optional)
-            
+          }
       ]
 
   **Response**
