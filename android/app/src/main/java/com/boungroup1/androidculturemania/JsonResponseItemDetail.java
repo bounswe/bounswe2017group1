@@ -23,6 +23,14 @@ public class JsonResponseItemDetail {
     @Expose
     private int downvote_count;
 
+    @SerializedName("is_upvoted")
+    @Expose
+    private boolean is_upvoted;
+
+    @SerializedName("is_downvoted")
+    @Expose
+    private boolean is_downvoted;
+
     @SerializedName("tags")
     @Expose
     private List<TagResponse> tags;
@@ -81,6 +89,22 @@ public class JsonResponseItemDetail {
 
     public List<TagResponse> getTags() {
         return tags;
+    }
+
+    public boolean isIs_upvoted() {
+        return is_upvoted;
+    }
+
+    public void setIs_upvoted(boolean is_upvoted) {
+        this.is_upvoted = is_upvoted;
+    }
+
+    public boolean isIs_downvoted() {
+        return is_downvoted;
+    }
+
+    public void setIs_downvoted(boolean is_downvoted) {
+        this.is_downvoted = is_downvoted;
     }
 
     public void setTags(List<TagResponse> tags) {

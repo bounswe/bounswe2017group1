@@ -12,13 +12,13 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/heritage_title_text"
+            android:id="@+id/heritage_search_title_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="4dp" />
 
         <TextView
-            android:id="@+id/heritage_description_text"
+            android:id="@+id/heritage_search_description_text"
             android:ellipsize="end"
             android:maxLines="1"
             android:layout_width="match_parent"
@@ -32,12 +32,12 @@
             android:layout_margin="4dp">
 
             <TextView
-                android:id="@+id/heritage_location_text"
+                android:id="@+id/heritage_search_location_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
             <TextView
-                android:id="@+id/heritage_creator_username_text"
+                android:id="@+id/heritage_search_creator_username_text"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"

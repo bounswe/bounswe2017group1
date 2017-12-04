@@ -36,4 +36,33 @@ public interface ApiInterface {
 
     @GET("/api/items/{id}")
     Call<JsonResponseItemDetail> getItem(@Path("id") int id, @Header("Authorization") String  auth);
+
+    @Headers( "Content-Type: application/json" )
+    @POST("/api/votes/")
+    Call<JsonResponseVote> vote(@Body VoteBody vote, @Header("Authorization") String  auth);
+
+    @GET("/api/items/new")
+    Call<List<JsonResponseHeritage>> listNewHeritage();
+
+    @GET("/api/items/top")
+    Call<List<JsonResponseHeritage>> listTopHeritage();
+
+    @GET("/api/items/trending")
+    Call<List<JsonResponseHeritage>> listTrendingHeritage();
+
+    @GET("/api/items/{id}/comments")
+    Call<List<JsonResponseComment>> getComments(@Path("id") int id, @Header("Authorization") String  auth);
+
+    @Headers( "Content-Type: application/json" )
+    @POST("/api/comments/")
+    Call<JsonResponseComment> commentCreate(@Body CommentBody itemcreate, @Header("Authorization") String  auth);
+
+    @GET("/api/recommendation/user/")
+    Call<List<JsonResponseHeritage>> listRecommendedHeritage(@Header("Authorization") String  auth);
+
+    @Headers( "Content-Type: application/json" )
+    @POST("/api/search/")
+    Call<List<JsonResponseSearchHeritage>> searchHeritage(@Body SearchHeritageBody item, @Header("Authorization") String  auth);
+
+
 }
