@@ -177,7 +177,11 @@ public class JsonResponseSearchHeritage {
     @Expose
     private String creator_username;
 
-    public JsonResponseSearchHeritage(int id, int upvote_count, int downvote_count, List<JsonResponseSearchHeritage.tags> tags, List<JsonResponseSearchHeritage.media> media, String title, String description, String creation_date, String event_date, String location, int creator, String creator_username) {
+    @SerializedName("creator_image_path")
+    @Expose
+    private String creator_image_path;
+
+    public JsonResponseSearchHeritage(int id, int upvote_count, int downvote_count, List<JsonResponseSearchHeritage.tags> tags, List<JsonResponseSearchHeritage.media> media, String title, String description, String creation_date, String event_date, String location, int creator, String creator_username,String creator_image_path) {
         this.id = id;
         this.upvote_count = upvote_count;
         this.downvote_count = downvote_count;
@@ -190,6 +194,7 @@ public class JsonResponseSearchHeritage {
         this.location = location;
         this.creator = creator;
         this.creator_username = creator_username;
+        this.creator_image_path = creator_image_path;
     }
 
     public int getId() {
@@ -278,6 +283,14 @@ public class JsonResponseSearchHeritage {
 
     public void setCreator_username(String creator_username) {
         this.creator_username = creator_username;
+    }
+
+    public String getCreator_image_path() {
+        return creator_image_path;
+    }
+
+    public void setCreator_image_path(String creator_image_path) {
+        this.creator_image_path = creator_image_path;
     }
 
     public List<JsonResponseSearchHeritage.media> getMedia() {

@@ -29,6 +29,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -65,6 +66,7 @@ public class ItemDetailView extends AppCompatActivity {
         final ImageButton downVote = (ImageButton) findViewById(R.id.down_vote_button);
         final EditText comment_entry = (EditText) findViewById(R.id.comment_entry);
         final Button send_button = (Button) findViewById(R.id.comment_send);
+        final CircleImageView comment_avatar = (CircleImageView) findViewById(R.id.avatar_comment);
         getCommentList();
 
         final TextView tag = (TextView) findViewById(R.id.tag);
@@ -123,6 +125,13 @@ public class ItemDetailView extends AppCompatActivity {
                     voteCount.setText(Integer.toString(response.body().getUpvote_count()-response.body().getDownvote_count()));
                     //Log.d("RESPONSE", Integer.toString(response.body().getUpvote_count()));
                     String[] datestr = response.body().getEvent_date().toString().split("\\s+");
+                    //todo
+                    /*Picasso.with(getApplicationContext())
+                            .load(ApiClient.BASE_URL+response.body().getCreator_image_path())
+                            .into(comment_avatar);*/
+                    /*if(response.body().getCreator_image_path()!=null)
+                        Log.d("RESPONSE", ApiClient.BASE_URL);
+                        Picasso.with(getApplicationContext()).load(ApiClient.BASE_URL+response.body().getCreator_image_path()).into(avatar_comment);*/
                     title.setText(response.body().getTitle());
                     date.setText(datestr[0] + "-"+ datestr[1] + "-" + datestr[2]);
                     location.setText(response.body().getLocation());
@@ -233,7 +242,7 @@ public class ItemDetailView extends AppCompatActivity {
 
     private void setCommentRecyclerView(final ArrayList<JsonResponseComment> heritageList){
         final RecyclerView heritageRecyclerView = (RecyclerView) findViewById(R.id.comment_recycler_view);
-        final CommentAdapter heritageAdapter = new CommentAdapter(heritageList);
+        final CommentAdapter heritageAdapter = new CommentAdapter(getApplicationContext(),heritageList);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         heritageRecyclerView.setLayoutManager(mLayoutManager);
