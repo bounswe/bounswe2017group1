@@ -25,6 +25,8 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,7 +67,7 @@ public class ItemDetailView extends AppCompatActivity {
         getCommentList();
 
         final TextView tag = (TextView) findViewById(R.id.tag);
-        ImageView image = (ImageView) findViewById(R.id.detailimage);
+        final ImageView image = (ImageView) findViewById(R.id.detailimage);
 
         send_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -130,6 +132,8 @@ public class ItemDetailView extends AppCompatActivity {
                         tag.append(tags.getName().toString());
                         tag.append(",");
                     }
+                    if(response.body().getMedia().size()>0)
+                        Picasso.with(getApplicationContext()).load(ApiClient.BASE_URL+response.body().getMedia().get(0).getImage()).into(image);
                     layout.setVisibility(View.VISIBLE);
                 }
             }
