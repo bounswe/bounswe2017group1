@@ -5,6 +5,10 @@ import { Card, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
 import { Form, FormGroup, Col, FieldGroup, FormControl, Button, PageHeader  } from 'react-bootstrap'
+import PlacesAutocomplete from 'react-places-autocomplete';
+import Select from 'react-select'
+
+const AsyncComponent = Select.Async;
 
 const HeritageForm = ({
   onSubmit,
@@ -12,7 +16,12 @@ const HeritageForm = ({
   errors,
   successMessage,
   heritage,
-  onImageChange
+  onImageChange,
+  locationInputProps,
+  handleLocationSelect,
+  placesAutocompleteItem,
+  getTags,
+  onTagChange
 }) => (
   <Card className="container">
     <PageHeader >New Heritage Item</PageHeader>
@@ -60,16 +69,33 @@ const HeritageForm = ({
 
       <FormGroup>
         <Col className="custom-label" sm={3}>
+          Tags
+        </Col>
+        <Col sm={6}>
+          <div className="selection">
+            <AsyncComponent
+              multi={true}
+              value={heritage.tags}
+              onChange={onTagChange}
+              valueKey="id"
+              labelKey="label"
+              loadOptions={getTags}
+              backspaceRemoves={true}/>
+          </div>
+          </Col>
+      </FormGroup>
+
+      <FormGroup>
+        <Col className="custom-label" sm={3}>
           Location
         </Col>
         <Col sm={6}>
-          <FormControl
-            type="text"
-            placeholder="Enter Location"
-            onChange={onChange}
-            value={heritage.location}
-            name="location"
-          />
+          <PlacesAutocomplete 
+            inputProps={locationInputProps}
+            onSelect={handleLocationSelect}
+            onEnterKeyDown={handleLocationSelect}
+            autocompleteItem={placesAutocompleteItem}
+            />
         </Col>
       </FormGroup>
       <Button type="submit" bsStyle="primary">Create</Button>
@@ -83,7 +109,9 @@ HeritageForm.propTypes = {
   onChange: PropTypes.func.isRequired,
   errors: PropTypes.object.isRequired,
   successMessage: PropTypes.string.isRequired,
-  heritage: PropTypes.object.isRequired
+  heritage: PropTypes.object.isRequired,
+  locationInputProps: PropTypes.object.isRequired,
+  handleLocationSelect: PropTypes.func.isRequired
 };
 
 export default HeritageForm;
