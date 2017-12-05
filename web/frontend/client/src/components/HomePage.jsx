@@ -12,10 +12,20 @@ const HomePage = React.createClass ({
 	getInitialState: function() {
     return {
 			filterText: '',
+			extrafilter: {
+				location: '',
+				creator: ''
+			},
 			value: 'a',
 			items: [],
 			hideAdvanced: true
     };
+	},
+
+	onAdvancedSearchChange(e){
+		const extrafilter = this.state.extrafilter;
+		extrafilter[e.target.name] = e.target.value;
+		this.setState({ extrafilter });
 	},
 	
 	handleChange: function(value){
@@ -47,6 +57,9 @@ const HomePage = React.createClass ({
 	},
 	onSearch(event){
 		event.preventDefault();
+		const extrafilter = this.state.extrafilter;
+		if(extrafilter.location === '') delete extrafilter.location;
+		if(extrafilter.creator === '') delete extrafilter.creator;
 		console.log(this.state.filterText);
 		fetch(baseUrl+'/api/search',{
       method: "POST",
@@ -56,7 +69,8 @@ const HomePage = React.createClass ({
       },
 			credentials: "same-origin",
 			body: JSON.stringify({
-				query: this.state.filterText
+				query: this.state.filterText,
+				filters: extrafilter
 			})
     }).then(response=>{
       if(response.ok){
@@ -70,7 +84,11 @@ const HomePage = React.createClass ({
 	onToggle (event) {
 		event.preventDefault();
 		this.setState({
-			hideAdvanced: !this.state.hideAdvanced
+			hideAdvanced: !this.state.hideAdvanced,
+			extrafilter: {
+				location: '',
+				creator: ''
+			}
 		})
 	},
 	render() {
@@ -91,7 +109,14 @@ const HomePage = React.createClass ({
 								<FormGroup bsSize="small" style={{display: '-webkit-inline-box'}}>
 									<ControlLabel>Location</ControlLabel>
 									{' '}
-									<FormControl type="text" placeholder="Location..." style={{marginLeft: '4px'}}/>
+									<FormControl
+										type="text"
+										placeholder="Location..."
+										style={{marginLeft: '4px'}}
+										name="location"
+										value={this.state.extrafilter.location}
+										onChange={this.onAdvancedSearchChange}
+										/>
 								</FormGroup>
 							</Col>
 							{' '}
@@ -99,13 +124,19 @@ const HomePage = React.createClass ({
 								<FormGroup bsSize="small" style={{display: '-webkit-inline-box'}}>
 									<ControlLabel>Creator</ControlLabel>
 									{' '}
-									<FormControl type="text" placeholder="Creator name.." style={{marginLeft: '4px'}}/>
+									<FormControl
+										type="text"
+										placeholder="Creator name.."
+										style={{marginLeft: '4px'}}
+										name="creator"
+										onChange={this.onAdvancedSearchChange}
+										/>
 								</FormGroup>
 							</Col>
 							{' '}
 							<Col sm={2} style={{paddingLeft: '5px', paddingRight: '5px'}}>
 								<FormGroup style={{display: '-webkit-inline-box'}}>
-									<Button type="submit" bsStyle="primary" bsSize="small" >Search</Button>
+									<Button type="submit" bsStyle="primary" bsSize="small" onClick={this.onSearch}>Search</Button>
 								</FormGroup>
 							</Col>
 							
