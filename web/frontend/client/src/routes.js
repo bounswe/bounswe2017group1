@@ -9,6 +9,7 @@ import HomeDash from './containers/HomeDash.jsx';
 import LogoutPage from './containers/LogoutPage.jsx';
 import HeritagePage from './containers/HeritagePage.jsx';
 import HeritageAddPage from './containers/HeritageAddPage.jsx';
+import HeritageEditPage from './containers/HeritageEditPage.jsx';
 
 
 const routes = [
@@ -43,6 +44,10 @@ const routes = [
         path: '/itemAdd',
         component: HeritageAddPage
     },
+    {
+        path: '/item/edit/:heritageId',
+        component: HeritageEditPage
+    }
   ]
 
 

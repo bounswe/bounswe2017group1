@@ -212,6 +212,7 @@ class HeritageAddPage extends React.Component {
           placesAutocompleteItem={AutocompleteItem}
           getTags={this.getTags}
           onTagChange={this.onTagChange}
+          isEdit={true}
         />
       </div>
     );

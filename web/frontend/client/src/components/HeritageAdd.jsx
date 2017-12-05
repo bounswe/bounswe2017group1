@@ -21,22 +21,25 @@ const HeritageForm = ({
   handleLocationSelect,
   placesAutocompleteItem,
   getTags,
-  onTagChange
+  onTagChange,
+  isEdit
 }) => (
   <Card className="container">
     <PageHeader >New Heritage Item</PageHeader>
     <Form horizontal style={{margin: '50px 0 50px 0'}} action="/" onSubmit={onSubmit}>
-      <FormGroup>
-        <Col className="custom-label" sm={3}>
-          Media
-        </Col>
-        <Col sm={6}>
-          <FormControl
-            type="file"
-            onChange={onImageChange}
-          />
-        </Col>
-      </FormGroup>
+      {isEdit? (
+        <FormGroup>
+          <Col className="custom-label" sm={3}>
+            Media
+          </Col>
+          <Col sm={6}>
+            <FormControl
+              type="file"
+              onChange={onImageChange}
+            />
+          </Col>
+        </FormGroup>
+      ): (<br/>)}
       <FormGroup>
         <Col className="custom-label" sm={3}>
           Title
@@ -98,7 +101,7 @@ const HeritageForm = ({
             />
         </Col>
       </FormGroup>
-      <Button type="submit" bsStyle="primary">Create</Button>
+      <Button type="submit" bsStyle="primary">{isEdit? 'Create' : 'Save'}</Button>
     </Form>
   </Card>
 );

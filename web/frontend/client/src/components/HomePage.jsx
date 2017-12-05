@@ -1,11 +1,15 @@
 import React, { Component } from 'react';
 import { Card, CardTitle, CardHeader, CardText } from 'material-ui/Card'
+import Dialog from 'material-ui/Dialog';
+import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
 import TopBar from './TopBar.jsx'
 import Auth from '../../modules/Auth.js'
 import { Tabs, Tab } from 'material-ui/Tabs'
 import 'whatwg-fetch'
 import appConstants from '../../modules/appConstants.js'
 import { Button, Form, FormGroup, InputGroup, ControlLabel, FormControl, Col } from 'react-bootstrap';
+//import Dialog from 'react-bootstrap-dialog'
 
 var baseUrl = appConstants.baseUrl;
 const HomePage = React.createClass ({
@@ -18,9 +22,19 @@ const HomePage = React.createClass ({
 			},
 			value: 'a',
 			items: [],
-			hideAdvanced: true
+			hideAdvanced: true,
+			dialogOpen: false,
+			intendedIndex: null
     };
 	},
+
+	handleDialogOpen(index){
+    this.setState({dialogOpen: true, intendedIndex: index});
+  },
+
+  handleDialogClose() {
+    this.setState({dialogOpen: false});
+  },
 
 	onAdvancedSearchChange(e){
 		const extrafilter = this.state.extrafilter;
@@ -92,9 +106,46 @@ const HomePage = React.createClass ({
 			}
 		})
 	},
+	onItemDelete(){
+		console.log(this.state.intendedIndex);
+		fetch(baseUrl+`/api/items/${this.state.items[this.state.intendedIndex].id}`,{
+      method: "DELETE",
+      headers: {
+        "Access-Control-Allow-Origin" : "*",
+				"Content-Type": "application/json",
+				"authorization": "token "+Auth.getToken()
+      },
+      credentials: "same-origin"
+    }).then(response=>{
+      if(response.ok){
+				window.location.reload();
+			}
+    });
+		
+	},
 	render() {
+		const actions = [
+      <FlatButton
+        label="Cancel"
+        primary={true}
+        onClick={this.handleDialogClose}
+      />,
+      <FlatButton
+        label="Delete"
+       	secondary={true}
+        onClick={this.onItemDelete}
+      />,
+    ];
 		return(
-			<div>
+			<div style={{marginBottom: '50px'}}>
+				<Dialog
+					actions={actions}
+					modal={false}
+					open={this.state.dialogOpen}
+					onRequestClose={this.handleDialogClose}
+					>
+					Remove Your Cultural Heritage?
+				</Dialog>
 				<TopBar auth={Auth.isUserAuthenticated()}/>
 				<div style={{width: '50%', margin: 'auto'}}>
 					<SearchBar
@@ -150,6 +201,8 @@ const HomePage = React.createClass ({
 	},
 	renderTabs(){
 		return(
+			<div>
+				
 			<Tabs
 				value={this.state.value}
 				onChange={this.handleChange}
@@ -169,13 +222,13 @@ const HomePage = React.createClass ({
 									/>
 								</a>
 								<CardTitle title={item.title}/>
-								<CardText>{ item.description} </CardText>
+								<CardText style={{paddingBottom: '48px'}}>{ item.description} </CardText>
 								{Auth.getUsername() === item.creator_username ? (
 									<div style={{float: 'right', marginTop: '-32px', display: 'inline'}}>
-										<button style={buttonStyle}>
+										<a href={"/item/edit/"+item.id}>
 											<i className={"material-icons md-24"}>mode_edit</i>
-										</button>
-										<button style={buttonStyle}>
+										</a>
+										<button style={buttonStyle} onClick={()=>{this.handleDialogOpen(index)}} >
 											<i className={"material-icons md-24"}>delete</i>
 										</button>
 									</div>
@@ -226,6 +279,7 @@ const HomePage = React.createClass ({
 						))}
 				</Tab>
 			</Tabs>
+			</div>
 		);
 	}
 });
