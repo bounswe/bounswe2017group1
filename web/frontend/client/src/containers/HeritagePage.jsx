@@ -6,7 +6,11 @@ import Auth from '../../modules/Auth.js'
 import Carousel from 'react-bootstrap/lib/Carousel';
 import Vote from '../components/Vote.jsx'
 import { Image } from 'react-bootstrap';
+import CommentForm from '../components/CommentForm.jsx';
+import { Panel, Form, FormGroup, Col, FieldGroup, FormControl, Button, PageHeader  } from 'react-bootstrap'
+
 var Upvote = require('react-upvote');
+
 
 var baseUrl = appConstants.baseUrl;
 class HeritagePage extends React.Component {
@@ -17,8 +21,9 @@ class HeritagePage extends React.Component {
 
 	    this.state = {
 	      heritage:{
-          title: "Basri Title",
-          description: "desc deneme",
+          id: 1,
+          title: "Title",
+          description: "Description",
           creation_date: "2017-10-25T19:01:46Z",
           event_date: "2017-10-25T19:01:48Z",
           location: "istanbul",
@@ -31,10 +36,16 @@ class HeritagePage extends React.Component {
           is_downvoted: false,
           is_owner: false
         },
-        comments:[]
+        comments:[],
+        commentFormText:'',
+        hideCommentDiv:[]
       };
       this.onUpVote = this.onUpVote.bind(this);
       this.onDownVote = this.onDownVote.bind(this);
+      this.processCommentForm = this.processCommentForm.bind(this);
+      this.setComment = this.setComment.bind(this);
+      this.toggleComment = this.toggleComment.bind(this);
+      this.deleteComment = this.deleteComment.bind(this);
   }
 
   onUpVote(event) {
@@ -172,8 +183,94 @@ class HeritagePage extends React.Component {
       if(response.ok){
         response.json().then(res=>{
           this.setState({comments: res});
+          var rows = [];
+          for (var i = 0; i < res.length; i++) {
+              rows.push(false);
+          }
+          this.setState({hideCommentDiv: rows});
         });
 
+      } else {
+        // failure
+        errors.summary = 'please check form';
+        this.setState({
+          errors
+        });
+      }
+    });
+    
+  }
+
+  /**
+   * Process the form.
+   *
+   * @param {object} event - the JavaScript event object
+   */
+  processCommentForm(event,parent_id) {
+    // prevent default action. in this case, action is the form submission event
+    event.preventDefault();
+    
+    const text = this.state.commentFormText;
+    const heritage = this.state.heritage.id;
+    var data;
+    if(parent_id !== null){
+      const parent_comment = parent_id;
+      data = {text,heritage,parent_comment};
+    }else{
+      data = {text, heritage};  
+    }
+    
+    fetch(baseUrl+'/api/comments',{
+      method: "POST",
+      body: JSON.stringify(data),
+      headers: {
+        "Access-Control-Allow-Origin" : "*",
+        "Content-Type": "application/json",
+        "authorization": "token " + Auth.getToken()
+      },
+      credentials: "same-origin"
+    }).then(response=>{
+      if(response.ok){
+        this.setState({
+          errors: {}
+        });
+        window.location.reload();
+      } else {
+        // failure
+        errors.summary = 'please check form';
+        this.setState({
+          errors
+        });
+      }
+    });
+  }
+
+  setComment(event) {
+    event.preventDefault();
+    this.setState({commentFormText:event.target.value});
+
+  }
+  toggleComment(index) {
+    const hideCommentDiv = this.state.hideCommentDiv;
+    hideCommentDiv[index] = !hideCommentDiv[index];
+    this.setState({hideCommentDiv});
+  }
+
+  deleteComment(comment_id){
+    fetch(baseUrl+'/api/comments/'+comment_id,{
+      method: "DELETE",
+      headers: {
+        "Access-Control-Allow-Origin" : "*",
+        "Content-Type": "application/json",
+        "authorization": "token " + Auth.getToken()
+      },
+      credentials: "same-origin"
+    }).then(response=>{
+      if(response.ok){
+        this.setState({
+          errors: {}
+        });
+        window.location.reload();
       } else {
         // failure
         errors.summary = 'please check form';
@@ -210,7 +307,6 @@ class HeritagePage extends React.Component {
             <div className="card mt-4">
               <Carousel>
                 {this.state.heritage.medias.map((url)=>{
-                  console.log(baseUrl+url.image);
                   return (
                     <Carousel.Item>
                       <Image  style={{margin: 'auto'}} src={baseUrl+url.image} responsive/>
@@ -239,28 +335,31 @@ class HeritagePage extends React.Component {
                 <h3 className="my-4">Comments</h3>
               </div>
               {this.state.comments.map((comment, index)=>{
-                if (comment.parent_comment == null) { 
                   return(
-                    <div className="card-body">
-                      <button type="button" className="btn btn-success pull-right">Add Annotation</button>
+                    <div className="card-body" style={comment.parent_comment !== null? {marginLeft: '40px'}: {}}>
+                      <button type="button" style={{ marginLeft: '10px'}} onClick={()=>{this.toggleComment(index)}} className="btn btn-primary pull-right hover reply">Reply</button>
+                      <button type="button" style={(!comment.is_owner)? {display:'none'}: {}} onClick={()=>{this.deleteComment(comment.id)}} className="btn btn-danger pull-right hover">Delete</button>
+
                       <p>{comment.text}</p>
                       <small className="text-muted">Posted by {comment.creator} on {comment.creation_date.substring(0,10)}</small>
-
-                      <hr/>
+                      <Panel collapsible expanded={this.state.hideCommentDiv[index]}>
+                        <CommentForm 
+                          onSubmit={(e)=>{this.processCommentForm(e,comment.id)}}
+                          onChange={this.setComment}
+                          comment={this.state.commentFormText}
+                          />
+                      </Panel>
                     </div>  
                   );
-                }else{
-                  return(
-                    <div className="card-body" style={{ marginLeft: '40px'}}>
-                      <p>{comment.text}</p>
-                      <small className="text-muted">Posted by {comment.creator} on {comment.creation_date.substring(0,10)}</small>
-                      <hr/>
-                    </div>  
-                  ); 
-                }
               })}
-            </div>
+              <Panel header="Add a Comment">
+                <CommentForm
+                  onSubmit={(e)=>{this.processCommentForm(e,null)}}
+                  onChange={this.setComment}
+                  comment={this.state.commentFormText}/>
+              </Panel>
 
+            </div>
           </div>
 
         </div>
