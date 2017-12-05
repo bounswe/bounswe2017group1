@@ -98,15 +98,19 @@ def heritage_get_put_delete(request, heritage_id):
 @api_view(['GET'])
 @permission_classes((AllowAny, ))
 def get_all_comments(request, heritage_id):
-    comments = Comment.objects.all().filter(heritage=heritage_id).order_by('creation_date')
+    comments = Comment.objects.all().filter(heritage=heritage_id)
     head_comments = comments.filter(parent_comment=None)
     ordered_comment_ids = []
+    ordered_comments = []
+
     for comment in head_comments:
         ordered_comment_ids.append(comment.pk)
         for subcomment in comments.filter(parent_comment=comment.pk):
             ordered_comment_ids.append(subcomment.pk)
 
-    ordered_comments = Comment.objects.filter(id__in=ordered_comment_ids)
+    ordered_comments = []
+    for id in ordered_comment_ids:
+        ordered_comments.append(comments.get(id=id))
 
     context = {}
     if request.user.username:
