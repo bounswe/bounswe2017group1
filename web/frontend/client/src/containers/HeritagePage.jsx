@@ -335,13 +335,14 @@ class HeritagePage extends React.Component {
                 <h3 className="my-4">Comments</h3>
               </div>
               {this.state.comments.map((comment, index)=>{
+                console.log(comment);
                   return(
                     <div className="card-body" style={comment.parent_comment !== null? {marginLeft: '40px'}: {}}>
                       <button type="button" style={{ marginLeft: '10px'}} onClick={()=>{this.toggleComment(index)}} className="btn btn-primary pull-right hover reply">Reply</button>
                       <button type="button" style={(!comment.is_owner)? {display:'none'}: {}} onClick={()=>{this.deleteComment(comment.id)}} className="btn btn-danger pull-right hover">Delete</button>
 
                       <p>{comment.text}</p>
-                      <small className="text-muted">Posted by {comment.creator} on {comment.creation_date.substring(0,10)}</small>
+                      <small className="text-muted">Posted by {comment.creator_username} on {comment.creation_date.substring(0,10)}</small>
                       <Panel collapsible expanded={this.state.hideCommentDiv[index]}>
                         <CommentForm 
                           onSubmit={(e)=>{this.processCommentForm(e,comment.id)}}
