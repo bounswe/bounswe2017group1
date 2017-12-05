@@ -4,6 +4,8 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+
         SharedPreferences sharedPref = getSharedPreferences("TOKENSHARED", Context.MODE_PRIVATE);
         String  token = sharedPref.getString("TOKEN", null);
         Intent intent = new Intent(this, SingUpActivity.class);
@@ -55,6 +58,11 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        String[] perms = {"android.permission.READ_EXTERNAL_STORAGE"};
+        int permsRequestCode = 200;
+        if(Build.VERSION.SDK_INT>Build.VERSION_CODES.LOLLIPOP_MR1&&checkSelfPermission(perms[0])!= PackageManager.PERMISSION_GRANTED)
+            requestPermissions(perms, permsRequestCode);
 
 
 
