@@ -132,14 +132,23 @@ class HeritagePage extends React.Component {
   }
 
   componentDidMount(){
-    
-    fetch(baseUrl+'/api/items/'+this.props.match.params.heritageId,{
-      method: "GET",
-      headers: {
+    var headerTmp;
+    if (Auth.isUserAuthenticated()) {
+      headerTmp = {
         "Access-Control-Allow-Origin" : "*",
         "Content-Type": "application/json",
         "authorization": "token " + Auth.getToken()
-      },
+      };
+    }else{
+      headerTmp = {
+        "Access-Control-Allow-Origin" : "*",
+        "Content-Type": "application/json",
+      };
+    }
+
+    fetch(baseUrl+'/api/items/'+this.props.match.params.heritageId,{
+      method: "GET",
+      headers: headerTmp,
       credentials: "same-origin"
     }).then(response=>{
       if(response.ok){
@@ -157,11 +166,7 @@ class HeritagePage extends React.Component {
     });
     fetch(baseUrl+'/api/items/'+this.props.match.params.heritageId+'/comments',{
       method: "GET",
-      headers: {
-        "Access-Control-Allow-Origin" : "*",
-        "Content-Type": "application/json",
-        "authorization": "token " + Auth.getToken()
-      },
+      headers: headerTmp,
       credentials: "same-origin"
     }).then(response=>{
       if(response.ok){
