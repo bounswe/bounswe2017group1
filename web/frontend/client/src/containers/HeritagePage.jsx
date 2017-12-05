@@ -39,9 +39,15 @@ class HeritagePage extends React.Component {
 
   onUpVote(event) {
     event.preventDefault();
-    if(this.state.heritage.is_upvoted) return;
+    let body = {}
+    let method = ''
+    if(this.state.heritage.is_upvoted){
+      method = 'DELETE';
+    }else{
+      method = 'POST';
+    }
     fetch(baseUrl+'/api/votes/',{
-      method: 'POST',
+      method,
       headers: {
         "Access-Control-Allow-Origin" : "*",
         "Content-Type": "application/json",
@@ -53,7 +59,7 @@ class HeritagePage extends React.Component {
         heritage: this.props.match.params.heritageId
       })
     }).then(resp=>{
-      if(resp.status === 201) {
+      if(resp.status === 201 || resp.status == 200) {
         fetch(baseUrl+'/api/items/'+this.props.match.params.heritageId,{
           method: "GET",
           headers: {
@@ -80,9 +86,15 @@ class HeritagePage extends React.Component {
 
   onDownVote(event) {
     event.preventDefault();
-    if(this.state.heritage.is_downvoted) return;
+    let body = {}
+    let method = ''
+    if(this.state.heritage.is_downvoted){
+      method = 'DELETE';
+    }else{
+      method = 'POST';
+    }
     fetch(baseUrl+'/api/votes/',{
-      method: 'POST',
+      method,
       headers: {
         "Access-Control-Allow-Origin" : "*",
         "Content-Type": "application/json",
@@ -94,7 +106,7 @@ class HeritagePage extends React.Component {
         heritage: this.props.match.params.heritageId
       })
     }).then(resp=>{
-      if(resp.status === 201) {
+      if(resp.status === 201 || resp.status == 200) {
         fetch(baseUrl+'/api/items/'+this.props.match.params.heritageId,{
           method: "GET",
           headers: {
@@ -120,7 +132,7 @@ class HeritagePage extends React.Component {
   }
 
   componentDidMount(){
-    console.log(this.props.match.params.heritageId);
+    
     fetch(baseUrl+'/api/items/'+this.props.match.params.heritageId,{
       method: "GET",
       headers: {
