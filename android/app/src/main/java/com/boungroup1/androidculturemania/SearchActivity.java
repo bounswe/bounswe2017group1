@@ -70,7 +70,7 @@ public class SearchActivity extends AppCompatActivity {
 
     private void setHeritageRecyclerView(final ArrayList<JsonResponseSearchHeritage> heritageList){
         final RecyclerView heritageRecyclerView = (RecyclerView) findViewById(R.id.search_heritage_recycler_view);
-        final HeritageSearchAdapter heritageAdapter = new HeritageSearchAdapter(heritageList);
+        final HeritageSearchAdapter heritageAdapter = new HeritageSearchAdapter(getApplicationContext(),heritageList);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         heritageRecyclerView.setLayoutManager(mLayoutManager);

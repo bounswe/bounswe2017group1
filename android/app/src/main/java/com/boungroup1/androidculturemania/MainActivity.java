@@ -24,6 +24,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -54,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
@@ -175,7 +178,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void setHeritageRecyclerView(final ArrayList<JsonResponseHeritage> heritageList){
         final RecyclerView heritageRecyclerView = (RecyclerView) findViewById(R.id.heritage_recycler_view);
-        final HeritageAdapter heritageAdapter = new HeritageAdapter(heritageList);
+        final HeritageAdapter heritageAdapter = new HeritageAdapter(getApplicationContext(),heritageList);
+        final CircleImageView item_avatar = (CircleImageView) findViewById(R.id.item_avatar);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         heritageRecyclerView.setLayoutManager(mLayoutManager);

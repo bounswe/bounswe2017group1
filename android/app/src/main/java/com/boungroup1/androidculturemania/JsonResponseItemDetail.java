@@ -63,9 +63,21 @@ public class JsonResponseItemDetail {
     @Expose
     private String creator_username;
 
+    @SerializedName("creator_image_path")
+    @Expose
+    private String creator_image_path;
+
     @SerializedName("medias")
     @Expose
     private List<Media> media;
+
+    public String getCreator_image_path() {
+        return creator_image_path;
+    }
+
+    public void setCreator_image_path(String creator_image_path) {
+        this.creator_image_path = creator_image_path;
+    }
 
     public int getId() {
         return id;

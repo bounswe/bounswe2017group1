@@ -39,6 +39,9 @@ import retrofit2.Retrofit;
  */
 
 public class ItemDetailView extends AppCompatActivity {
+    TextView voteCount;
+    ImageButton upVote;
+    ImageButton downVote;
     int heritageId;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -60,9 +63,9 @@ public class ItemDetailView extends AppCompatActivity {
         final TextView location = (TextView) findViewById(R.id.detaillocation);
         final TextView name = (TextView) findViewById(R.id.detailname);
         final TextView description = (TextView) findViewById(R.id.detaildescription);
-        final TextView voteCount = (TextView) findViewById(R.id.vote_count);
-        final ImageButton upVote = (ImageButton) findViewById(R.id.up_vote_button);
-        final ImageButton downVote = (ImageButton) findViewById(R.id.down_vote_button);
+        voteCount = (TextView) findViewById(R.id.vote_count);
+        upVote = (ImageButton) findViewById(R.id.up_vote_button);
+        downVote = (ImageButton) findViewById(R.id.down_vote_button);
         final EditText comment_entry = (EditText) findViewById(R.id.comment_entry);
         final Button send_button = (Button) findViewById(R.id.comment_send);
         getCommentList();
@@ -184,11 +187,14 @@ public class ItemDetailView extends AppCompatActivity {
 
                 if (response.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "SUCCESSFUL UPVOTE", Toast.LENGTH_SHORT).show();
-                    Intent e = new Intent(getApplicationContext(),
+                    voteCount.setText(Integer.toString(response.body().getUpvote_count()-response.body().getDownvote_count()));
+                    upVote.setEnabled(false);
+                    downVote.setEnabled(true);
+                    /*Intent e = new Intent(getApplicationContext(),
                             ItemDetailView.class);
                     e.putExtra("heritageId", heritageId);
                     finish();
-                    startActivity(e);
+                    startActivity(e);*/
                 } else {
                     Toast.makeText(getApplicationContext(), "Sorry for inconvince server is down" + response.code(), Toast.LENGTH_SHORT).show();
                     Log.d("response", response.raw().body().toString());
@@ -233,7 +239,7 @@ public class ItemDetailView extends AppCompatActivity {
 
     private void setCommentRecyclerView(final ArrayList<JsonResponseComment> heritageList){
         final RecyclerView heritageRecyclerView = (RecyclerView) findViewById(R.id.comment_recycler_view);
-        final CommentAdapter heritageAdapter = new CommentAdapter(heritageList);
+        final CommentAdapter heritageAdapter = new CommentAdapter(getApplicationContext(),heritageList);
 
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getApplicationContext());
         heritageRecyclerView.setLayoutManager(mLayoutManager);
@@ -256,11 +262,14 @@ public class ItemDetailView extends AppCompatActivity {
 
                 if (response.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "SUCCESSFUL DOWNVOTE", Toast.LENGTH_SHORT).show();
-                    Intent e = new Intent(getApplicationContext(),
+                    voteCount.setText(Integer.toString(response.body().getUpvote_count()-response.body().getDownvote_count()));
+                    downVote.setEnabled(false);
+                    upVote.setEnabled(true);
+                    /*Intent e = new Intent(getApplicationContext(),
                             ItemDetailView.class);
                     e.putExtra("heritageId", heritageId);
                     finish();
-                    startActivity(e);
+                    startActivity(e);*/
                 } else {
                     Toast.makeText(getApplicationContext(), "Sorry for inconvince server is down" + response.code(), Toast.LENGTH_SHORT).show();
                     Log.d("response", response.raw().body().toString());
