@@ -57,6 +57,7 @@ const HomePage = React.createClass ({
 	},
 	onSearch(event){
 		event.preventDefault();
+		console.log('here');
 		const extrafilter = this.state.extrafilter;
 		if(extrafilter.location === '') delete extrafilter.location;
 		if(extrafilter.creator === '') delete extrafilter.creator;
@@ -162,11 +163,23 @@ const HomePage = React.createClass ({
 							<Card style={{ backgroundColor: '#E0E0E0' }}>
 								<a className="nav-link" href={'/item/'+item.id}>
 								<CardHeader
-									title={item.title}
-									titleStyle={{fontWeight: 'bold'}}/>
+									title={item.creator_username}
+									subtitle={item.creation_date.substring(0, 10)}
+									avatar={baseUrl+item.creator_image_path}
+									/>
 								</a>
+								<CardTitle title={item.title}/>
 								<CardText>{ item.description} </CardText>
-
+								{Auth.getUsername() === item.creator_username ? (
+									<div style={{float: 'right', marginTop: '-32px', display: 'inline'}}>
+										<button style={buttonStyle}>
+											<i className={"material-icons md-24"}>mode_edit</i>
+										</button>
+										<button style={buttonStyle}>
+											<i className={"material-icons md-24"}>delete</i>
+										</button>
+									</div>
+								):(<br/>)}
 							</Card>
 						</div>
 					))}
@@ -245,10 +258,10 @@ const SearchBar = React.createClass({
 						onChange={this.handleChange}
 						style={inputStyle}
 					/>
-					<input type="submit" style={{display: 'none'}}/>
 					<button style={buttonStyle} onClick={this.props.onToggle}>
 						<img src="http://www.pvhc.net/img6/qelyglamexpdbblhacjf.png" style={{height: '32px', width: '32px', marginLeft: '-48px'}}/>
 					</button>
+					<input type="submit" style={{display: 'none'}}/>
 				</InputGroup>
         
       </FormGroup>
