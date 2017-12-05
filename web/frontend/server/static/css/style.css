@@ -341,3 +341,13 @@ a:hover {
     font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
     font-weight: bold;
 }
+
+.place-suggestion-item {
+    text-align: left;
+    vertical-align: middle;
+}
+
+.place-icon {
+    margin-right: 4px;
+    margin-top: -5px
+}

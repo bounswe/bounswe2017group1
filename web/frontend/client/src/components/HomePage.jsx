@@ -5,7 +5,7 @@ import Auth from '../../modules/Auth.js'
 import { Tabs, Tab } from 'material-ui/Tabs'
 import 'whatwg-fetch'
 import appConstants from '../../modules/appConstants.js'
-import { Button, Form, FormGroup, InputGroup, ControlLabel, FormControl } from 'react-bootstrap';
+import { Button, Form, FormGroup, InputGroup, ControlLabel, FormControl, Col } from 'react-bootstrap';
 
 var baseUrl = appConstants.baseUrl;
 const HomePage = React.createClass ({
@@ -86,19 +86,29 @@ const HomePage = React.createClass ({
 						onToggle={this.onToggle}
 					/>
 					<div>
-						<Form inline style={this.state.hideAdvanced? {display: 'none'}: {} }inline>
-							<FormGroup style={{margin: '5px'}}>
-								<ControlLabel>Location Name</ControlLabel>
-								{' '}
-								<FormControl type="text" placeholder="Location..." />
-							</FormGroup>
+						<Form inline style={this.state.hideAdvanced? {display: 'none'}: {}}>
+							<Col sm={5} style={{padding: '4px'}}>
+								<FormGroup bsSize="small" style={{display: '-webkit-inline-box'}}>
+									<ControlLabel>Location</ControlLabel>
+									{' '}
+									<FormControl type="text" placeholder="Location..." style={{marginLeft: '4px'}}/>
+								</FormGroup>
+							</Col>
 							{' '}
-							<FormGroup style={{margin: '5px'}}>
-								<ControlLabel>Creator Name</ControlLabel>
-								{' '}
-								<FormControl type="text" placeholder="Creator name.." />
-							</FormGroup>
+							<Col sm={5} style={{padding: '4px'}}>
+								<FormGroup bsSize="small" style={{display: '-webkit-inline-box'}}>
+									<ControlLabel>Creator</ControlLabel>
+									{' '}
+									<FormControl type="text" placeholder="Creator name.." style={{marginLeft: '4px'}}/>
+								</FormGroup>
+							</Col>
 							{' '}
+							<Col sm={2} style={{paddingLeft: '5px', paddingRight: '5px'}}>
+								<FormGroup style={{display: '-webkit-inline-box'}}>
+									<Button type="submit" bsStyle="primary" bsSize="small" >Search</Button>
+								</FormGroup>
+							</Col>
+							
 						</Form>
 					</div>
 					{this.renderTabs()}
@@ -111,7 +121,7 @@ const HomePage = React.createClass ({
 			<Tabs
 				value={this.state.value}
 				onChange={this.handleChange}
-				style={{ marginTop: '20px'}}
+				style={{ marginTop: '5px'}}
 				tabItemContainerStyle={{ backgroundColor: '#757575' }}
 				inkBarStyle={{ backgroundColor: '#212121' }}
 			>
@@ -194,8 +204,8 @@ const SearchBar = React.createClass({
   },
   render: function() {
     return (
-      <FormGroup onSubmit={this.props.onSubmit}>
-				<InputGroup>
+      <FormGroup onSubmit={this.props.onSubmit} style={{marginBottom: '5px'}}>
+				<InputGroup style={{display: 'flex'}}>
 					<input
 						type="text"
 						placeholder="Search..."
@@ -206,7 +216,7 @@ const SearchBar = React.createClass({
 					/>
 					<input type="submit" style={{display: 'none'}}/>
 					<button style={buttonStyle} onClick={this.props.onToggle}>
-						<img src="http://www.pvhc.net/img6/qelyglamexpdbblhacjf.png" style={{height: '32px', width: '32px'}}/>
+						<img src="http://www.pvhc.net/img6/qelyglamexpdbblhacjf.png" style={{height: '32px', width: '32px', marginLeft: '-48px'}}/>
 					</button>
 				</InputGroup>
         
@@ -216,7 +226,8 @@ const SearchBar = React.createClass({
 });
 
 const inputStyle = {
-		width: 'calc(100% - 44px)',
+		width: 'calc(100% )',
+		height: '36px',
     padding: '12px 20px',
     margin: '8px 0',
     display: 'inline-block',
