@@ -29,7 +29,6 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.hdodenhof.circleimageview.CircleImageView;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -40,6 +39,9 @@ import retrofit2.Retrofit;
  */
 
 public class ItemDetailView extends AppCompatActivity {
+    TextView voteCount;
+    ImageButton upVote;
+    ImageButton downVote;
     int heritageId;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,12 +63,11 @@ public class ItemDetailView extends AppCompatActivity {
         final TextView location = (TextView) findViewById(R.id.detaillocation);
         final TextView name = (TextView) findViewById(R.id.detailname);
         final TextView description = (TextView) findViewById(R.id.detaildescription);
-        final TextView voteCount = (TextView) findViewById(R.id.vote_count);
-        final ImageButton upVote = (ImageButton) findViewById(R.id.up_vote_button);
-        final ImageButton downVote = (ImageButton) findViewById(R.id.down_vote_button);
+        voteCount = (TextView) findViewById(R.id.vote_count);
+        upVote = (ImageButton) findViewById(R.id.up_vote_button);
+        downVote = (ImageButton) findViewById(R.id.down_vote_button);
         final EditText comment_entry = (EditText) findViewById(R.id.comment_entry);
         final Button send_button = (Button) findViewById(R.id.comment_send);
-        final CircleImageView comment_avatar = (CircleImageView) findViewById(R.id.avatar_comment);
         getCommentList();
 
         final TextView tag = (TextView) findViewById(R.id.tag);
@@ -125,13 +126,6 @@ public class ItemDetailView extends AppCompatActivity {
                     voteCount.setText(Integer.toString(response.body().getUpvote_count()-response.body().getDownvote_count()));
                     //Log.d("RESPONSE", Integer.toString(response.body().getUpvote_count()));
                     String[] datestr = response.body().getEvent_date().toString().split("\\s+");
-                    //todo
-                    /*Picasso.with(getApplicationContext())
-                            .load(ApiClient.BASE_URL+response.body().getCreator_image_path())
-                            .into(comment_avatar);*/
-                    /*if(response.body().getCreator_image_path()!=null)
-                        Log.d("RESPONSE", ApiClient.BASE_URL);
-                        Picasso.with(getApplicationContext()).load(ApiClient.BASE_URL+response.body().getCreator_image_path()).into(avatar_comment);*/
                     title.setText(response.body().getTitle());
                     date.setText(datestr[0] + "-"+ datestr[1] + "-" + datestr[2]);
                     location.setText(response.body().getLocation());
@@ -193,11 +187,14 @@ public class ItemDetailView extends AppCompatActivity {
 
                 if (response.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "SUCCESSFUL UPVOTE", Toast.LENGTH_SHORT).show();
-                    Intent e = new Intent(getApplicationContext(),
+                    voteCount.setText(Integer.toString(response.body().getUpvote_count()-response.body().getDownvote_count()));
+                    upVote.setEnabled(false);
+                    downVote.setEnabled(true);
+                    /*Intent e = new Intent(getApplicationContext(),
                             ItemDetailView.class);
                     e.putExtra("heritageId", heritageId);
                     finish();
-                    startActivity(e);
+                    startActivity(e);*/
                 } else {
                     Toast.makeText(getApplicationContext(), "Sorry for inconvince server is down" + response.code(), Toast.LENGTH_SHORT).show();
                     Log.d("response", response.raw().body().toString());
@@ -265,11 +262,14 @@ public class ItemDetailView extends AppCompatActivity {
 
                 if (response.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "SUCCESSFUL DOWNVOTE", Toast.LENGTH_SHORT).show();
-                    Intent e = new Intent(getApplicationContext(),
+                    voteCount.setText(Integer.toString(response.body().getUpvote_count()-response.body().getDownvote_count()));
+                    downVote.setEnabled(false);
+                    upVote.setEnabled(true);
+                    /*Intent e = new Intent(getApplicationContext(),
                             ItemDetailView.class);
                     e.putExtra("heritageId", heritageId);
                     finish();
-                    startActivity(e);
+                    startActivity(e);*/
                 } else {
                     Toast.makeText(getApplicationContext(), "Sorry for inconvince server is down" + response.code(), Toast.LENGTH_SHORT).show();
                     Log.d("response", response.raw().body().toString());

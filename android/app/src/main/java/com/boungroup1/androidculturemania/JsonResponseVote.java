@@ -34,6 +34,14 @@ public class JsonResponseVote {
     @Expose
     private Integer heritage;
 
+    @SerializedName("upvote_count")
+    @Expose
+    private Integer upvote_count;
+
+    @SerializedName("downvote_count")
+    @Expose
+    private Integer downvote_count;
+
     public Integer getId() {
         return id;
     }
@@ -80,5 +88,21 @@ public class JsonResponseVote {
 
     public void setHeritage(Integer heritage) {
         this.heritage = heritage;
+    }
+
+    public Integer getUpvote_count() {
+        return upvote_count;
+    }
+
+    public void setUpvote_count(Integer upvote_count) {
+        this.upvote_count = upvote_count;
+    }
+
+    public Integer getDownvote_count() {
+        return downvote_count;
+    }
+
+    public void setDownvote_count(Integer downvote_count) {
+        this.downvote_count = downvote_count;
     }
 }
