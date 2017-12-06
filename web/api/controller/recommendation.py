@@ -74,11 +74,25 @@ def heritage_based(request, item_id):
 
     the_heritage = Heritage.objects.get(id=item_id)
     recommended_items = recommendation.get_recommendation_for_heritage(the_heritage)
-    #recommend only 5 items if more than 5 items are returned
-    rec_keys = recommended_items.keys()
-    if rec_keys.__sizeof__()>5:
-        rec_keys = rec_keys[:5]
-    response_items = Heritage.objects.all().filter(id__in=rec_keys)
+
+    max = 0;
+    max_val =0;
+    for key,value in recommended_items.items():
+        if value>max_val:
+            max_val=value
+            max = key
+        #print (key,value)
+    sorted_rec_items = (sorted(recommended_items, key=recommended_items.get))[::-1] #reverse sort the list
+
+    #print 'sorted keys'
+    #print sorted_rec_items
+
+    #recommend only 7 items if more than 7 items are returned
+    if sorted_rec_items.__sizeof__()>7:
+        sorted_rec_items = sorted_rec_items[:7]
+    response_items = []
+    for heritage_id in sorted_rec_items:
+        response_items.append(Heritage.objects.get(id=heritage_id))
 
     if request.user.is_authenticated:
         context = {}

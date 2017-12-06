@@ -26,7 +26,18 @@ def get_recommendation_for_heritage(heritage_obj):
         query_words.extend(parsed_location)
 
     for tag in tags:
+        #temporary solution to increase the weight of the tags
         query_words.append(tag.name)
+        query_words.append(tag.name)
+        query_words.append(tag.name)
+        query_words.append(tag.name)
+        query_words.append(tag.name)
+        query_words.append(tag.name)
+        query_words.append(tag.name)
+        query_words.append(tag.name)
+        query_words.append(tag.name)
+
+
         #print "tag: {}, related_list: {}".format(tag.name, tag.related_list)
         if tag.related_list is not None:
             tt = tag.related_list.split(' ')
