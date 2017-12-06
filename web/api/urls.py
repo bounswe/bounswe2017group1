@@ -46,6 +46,8 @@ urlpatterns = [
 
     #MEDIA ROUTES
     url(r'^medias/(?P<pk>[0-9]+)/?$', media.media_get_delete),
+    url(r'^medias/backdoor/(?P<pk>[0-9]+)/?$', media.media_backdoor_delete),
+
     url(r'^medias/?$', media.media_post),
 
 
