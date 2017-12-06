@@ -389,7 +389,9 @@ class HeritagePage extends React.Component {
                       
                     ))} 
                     <br/>      
-                    {recHeritage.description.substring(0,100)}...
+                    {(recHeritage.description.length > 100)? 
+                        recHeritage.description.substring(0,100)+"...": recHeritage.description
+                    }
                   </ListGroupItem>
                 ))} 
             </ListGroup>
