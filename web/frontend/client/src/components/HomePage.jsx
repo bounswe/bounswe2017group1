@@ -110,9 +110,8 @@ const HomePage = React.createClass ({
       filterText: filterText
     });
 	},
-	onSearch(event){
-		event.preventDefault();
-		console.log('here');
+	onSearch(e){
+		e.preventDefault();
 		const extrafilter = this.state.extrafilter;
 		if(extrafilter.location === '') delete extrafilter.location;
 		if(extrafilter.creator === '') delete extrafilter.creator;
@@ -323,23 +322,25 @@ const SearchBar = React.createClass({
   },
   render: function() {
     return (
-      <FormGroup onSubmit={this.props.onSubmit} style={{marginBottom: '5px'}}>
-				<InputGroup style={{display: 'flex'}}>
-					<input
-						type="text"
-						placeholder="Search..."
-						value={this.props.filterText}
-						ref="filterTextInput"
-						onChange={this.handleChange}
-						style={inputStyle}
-					/>
-					<button style={buttonStyle} onClick={this.props.onToggle}>
-						<img src="http://www.pvhc.net/img6/qelyglamexpdbblhacjf.png" style={{height: '32px', width: '32px', marginLeft: '-48px'}}/>
-					</button>
-					<input type="submit" style={{display: 'none'}}/>
-				</InputGroup>
-        
-      </FormGroup>
+			<form onSubmit={this.props.onSubmit} >
+				<FormGroup style={{marginBottom: '5px'}}>
+					<InputGroup style={{display: 'flex'}}>
+						<input
+							type="text"
+							placeholder="Search..."
+							value={this.props.filterText}
+							ref="filterTextInput"
+							onChange={this.handleChange}
+							style={inputStyle}
+						/>
+						<input type="submit" style={{display: 'none'}}/>
+						<button style={buttonStyle} onClick={this.props.onToggle}>
+							<img src="http://www.pvhc.net/img6/qelyglamexpdbblhacjf.png" style={{height: '32px', width: '32px', marginLeft: '-48px'}}/>
+						</button>
+					</InputGroup>
+				</FormGroup>
+				
+			</form>
     );
   }
 });
