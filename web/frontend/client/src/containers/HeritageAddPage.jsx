@@ -49,7 +49,9 @@ class HeritageAddPage extends React.Component {
     this.onTagChange = this.onTagChange.bind(this);
   }
   onImageChange(e){
-    this.setState({pictures: e.target.files});
+    const pictures = this.state.pictures;
+    pictures.push(e.target.files[0]);
+    this.setState({pictures});
   }
   onLocationChane(location) {
     const heritage = this.state.heritage;
@@ -115,9 +117,32 @@ class HeritageAddPage extends React.Component {
         // save the token
         let token;
         response.json().then(res=>{
-          var formData = new FormData();
+          Promise.all(this.state.pictures.map((pic)=>{
+            var formData = new FormData();
+            formData.append('image',pic);
+            formData.append('type','image');
+            formData.append('heritage',res.id);
+            formData.append('creation_date', '2017-11-21T15:37:03.905307Z');
+            formData.append('update_date', '2017-11-21T15:37:03.905307Z');
+            return fetch(baseUrl+'/api/medias', {
+              method: 'POST',
+              headers: {
+                "Access-Control-Allow-Origin" : "*",
+                "authorization": "token "+Auth.getToken()
+              },
+              credentials: "same-origin",
+              body: formData
+            }).then(resp=> resp.status);
+          })).then(responses=>{
+            console.log(responses)
+            if(responses.every((x)=>(x === 200 || x === 201))){
+              this.setState({
+                redirect: true
+              })
+            }
+          })
+          /* var formData = new FormData();
           formData.append('image',this.state.pictures[0]);
-          console.log(this.state.pictures[0]);
           formData.append('type','image');
           formData.append('heritage',res.id);
           formData.append('creation_date', '2017-11-21T15:37:03.905307Z');
@@ -135,10 +160,9 @@ class HeritageAddPage extends React.Component {
               console.log('hell yeah')
             }
           })
-          /* res.heritage */
           this.setState({
             redirect: true
-          })
+          }) */
         });
       } else {
         console.log(this.state.heritage);

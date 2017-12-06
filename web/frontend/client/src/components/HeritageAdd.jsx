@@ -36,6 +36,7 @@ const HeritageForm = ({
             <FormControl
               type="file"
               onChange={onImageChange}
+              multiple
             />
           </Col>
         </FormGroup>
