@@ -76,7 +76,7 @@ def heritage_based(request, item_id):
     recommended_items = recommendation.get_recommendation_for_heritage(the_heritage)
     #recommend only 5 items if more than 5 items are returned
     rec_keys = recommended_items.keys()
-    if rec_keys.count()>5:
+    if rec_keys.__sizeof__()>5:
         rec_keys = rec_keys[:5]
     response_items = Heritage.objects.all().filter(id__in=rec_keys)
 
