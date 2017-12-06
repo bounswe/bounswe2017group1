@@ -278,8 +278,9 @@ const HomePage = React.createClass ({
 									subtitle={item.creation_date.substring(0, 10)}
 									avatar={baseUrl+item.creator_image_path}
 									/>
-								</a>
+								
 								<CardTitle title={item.title}/>
+								</a>
 								<CardText style={{paddingBottom: '48px'}}>
 									{(item.description.length > 300)? 
 		                    			item.description.substring(0,300)+"...": 

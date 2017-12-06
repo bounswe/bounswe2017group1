@@ -469,7 +469,7 @@ class HeritagePage extends React.Component {
              <ListGroup>
                 {this.state.recommendedHeritages.map((recHeritage, index)=>(
                   <ListGroupItem style={{marginBottom:'10px', overflow: 'hidden'}} header={recHeritage.title} href={"/item/"+recHeritage.id}>
-                    {recHeritage.tags.map((tag, index)=>(
+                    {recHeritage.tags.slice(0,3).map((tag, index)=>(
                       <div className="d-inline"  style={{ paddingRight: '10px'}}>
                         <span className="label label-info">{tag.name}</span>
                       </div>
