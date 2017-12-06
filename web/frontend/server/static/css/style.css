@@ -351,3 +351,11 @@ a:hover {
     margin-right: 4px;
     margin-top: -5px
 }
+
+div.card-body button.hover {
+  display:none;
+}
+
+div.card-body:hover button.hover {
+  display: inline-block;
+}
