@@ -29,7 +29,7 @@ urlpatterns = [
     # COMMENT ROUTES
     url(r'^comments/?$', comment.comment_get_post),
     url(r'^comments/(?P<comment_id>[0-9]+)/?$', comment.comment_get_put_delete),
-
+    url(r'^comments/backdoor/(?P<comment_id>[0-9]+)/?$', comment.comment_bacdoor_delete),
 
     # VOTE ROUTES
     url(r'^votes/?$', vote.vote_post_delete),
