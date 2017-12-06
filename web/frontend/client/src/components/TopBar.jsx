@@ -5,7 +5,7 @@ import Auth from '../../modules/Auth.js'
 class TopBar extends React.Component {
   render(){
     return(
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <nav className="navbar navbar-expand-lg navbar-dark bar-blue fixed-top">
         <a className="navbar-brand" href="/">CultureMania</a>
           {this.props.auth ? (
           <div className=" navbar-collapse top-bar-right">
