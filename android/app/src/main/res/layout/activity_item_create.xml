@@ -69,6 +69,13 @@
                 android:hint="Tags" />
         </android.support.design.widget.TextInputLayout>
 
+        <Button
+            android:id="@+id/uploadImage"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Pick Image" />
+
         <!-- Signup Button -->
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/btn_create_item"

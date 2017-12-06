@@ -3,13 +3,14 @@ package com.boungroup1.androidculturemania;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Date;
 import java.util.List;
 
 /**
- * Created by tahabayi on 15/11/2017.
+ * Created by user on 03/12/2017.
  */
 
-public class JsonResponseHeritage {
+public class JsonResponseSearchHeritage {
 
     class tags{
 
@@ -57,6 +58,77 @@ public class JsonResponseHeritage {
 
     }
 
+    class media
+    {
+        @SerializedName("id")
+        @Expose
+        private int id;
+
+        @SerializedName("heritage")
+        @Expose
+        private int heritage;
+
+        @SerializedName("image")
+        @Expose
+        private String image;
+
+        @SerializedName("creation_date")
+        @Expose
+        private Date creation_date;
+
+        @SerializedName("update_date")
+        @Expose
+        private Date update_date;
+
+        public media(int id, int heritage, String image, Date creation_date, Date update_date) {
+            this.id = id;
+            this.heritage = heritage;
+            this.image = image;
+            this.creation_date = creation_date;
+            this.update_date = update_date;
+        }
+
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public int getHeritage() {
+            return heritage;
+        }
+
+        public void setHeritage(int heritage) {
+            this.heritage = heritage;
+        }
+
+        public String getImage() {
+            return image;
+        }
+
+        public void setImage(String image) {
+            this.image = image;
+        }
+
+        public Date getCreation_date() {
+            return creation_date;
+        }
+
+        public void setCreation_date(Date creation_date) {
+            this.creation_date = creation_date;
+        }
+
+        public Date getUpdate_date() {
+            return update_date;
+        }
+
+        public void setUpdate_date(Date update_date) {
+            this.update_date = update_date;
+        }
+    }
+
     @SerializedName("id")
     @Expose
     private int id;
@@ -71,7 +143,11 @@ public class JsonResponseHeritage {
 
     @SerializedName("tags")
     @Expose
-    private List<tags> tags;
+    private List<JsonResponseSearchHeritage.tags> tags;
+
+    @SerializedName("media")
+    @Expose
+    private List<JsonResponseSearchHeritage.media> media;
 
     @SerializedName("title")
     @Expose
@@ -105,26 +181,19 @@ public class JsonResponseHeritage {
     @Expose
     private String creator_image_path;
 
-    public JsonResponseHeritage(int id, int upvote_count, int downvote_count, List<tags> tags, String title, String description, String creation_date, String event_date, String location, int creator, String creator_username, String creator_image_path ) {
+    public JsonResponseSearchHeritage(int id, int upvote_count, int downvote_count, List<JsonResponseSearchHeritage.tags> tags, List<JsonResponseSearchHeritage.media> media, String title, String description, String creation_date, String event_date, String location, int creator, String creator_username,String creator_image_path) {
         this.id = id;
         this.upvote_count = upvote_count;
         this.downvote_count = downvote_count;
         this.tags = tags;
+        this.media = media;
+        this.title = title;
         this.description = description;
         this.creation_date = creation_date;
         this.event_date = event_date;
         this.location = location;
         this.creator = creator;
-        this.title = title;
         this.creator_username = creator_username;
-        this.creator_image_path = creator_image_path;
-    }
-
-    public String getCreator_image_path() {
-        return creator_image_path;
-    }
-
-    public void setCreator_image_path(String creator_image_path) {
         this.creator_image_path = creator_image_path;
     }
 
@@ -152,11 +221,11 @@ public class JsonResponseHeritage {
         this.downvote_count = downvote_count;
     }
 
-    public List<JsonResponseHeritage.tags> getTags() {
+    public List<JsonResponseSearchHeritage.tags> getTags() {
         return tags;
     }
 
-    public void setTags(List<JsonResponseHeritage.tags> tags) {
+    public void setTags(List<JsonResponseSearchHeritage.tags> tags) {
         this.tags = tags;
     }
 
@@ -216,4 +285,19 @@ public class JsonResponseHeritage {
         this.creator_username = creator_username;
     }
 
+    public String getCreator_image_path() {
+        return creator_image_path;
+    }
+
+    public void setCreator_image_path(String creator_image_path) {
+        this.creator_image_path = creator_image_path;
+    }
+
+    public List<JsonResponseSearchHeritage.media> getMedia() {
+        return media;
+    }
+
+    public void setMedia(List<JsonResponseSearchHeritage.media> media) {
+        this.media = media;
+    }
 }
