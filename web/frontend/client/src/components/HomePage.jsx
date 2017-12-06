@@ -69,24 +69,28 @@ const HomePage = React.createClass ({
 	handleTabChange(tabNo) {
 		let feed = ''
 		switch(tabNo) {
+			case 0:
+				feed = 'items'
 			case 1:
-				feed = '/top';
+				feed = 'items/top';
 				break
 			case 2:
-				feed = '/trending';
+				feed = Auth.isUserAuthenticated()? 'recommendation/user' : 'items/';
 				break
 			case 3:
-				feed = '/new';
+				feed = 'items/new';
 				break
 			default:
 				break;
 		}
-		fetch(baseUrl+'/api/items'+feed,{
+		const headers = {
+			"Access-Control-Allow-Origin" : "*",
+			"Content-Type": "application/json",
+		}
+		if(Auth.isUserAuthenticated()) headers.authorization= "token "+Auth.getToken()
+		fetch(baseUrl+'/api/'+feed,{
       method: "GET",
-      headers: {
-        "Access-Control-Allow-Origin" : "*",
-        "Content-Type": "application/json"
-      },
+      headers,
       credentials: "same-origin"
     }).then(response=>{
       if(response.ok){
@@ -253,7 +257,7 @@ const HomePage = React.createClass ({
 				<Tab label="Best" value="b" onActive={()=>this.handleTabChange(1)}>
 					{this.renderTab()}
 				</Tab>
-				<Tab label="Trended" value="c" onActive={()=>this.handleTabChange(2)}>
+				<Tab label={Auth.isUserAuthenticated() ? "Recommended" : "Trending"} value="c" onActive={()=>this.handleTabChange(2)}>
 					{this.renderTab()}
 				</Tab>
 				<Tab label="New" value="d" onActive={()=>this.handleTabChange(3)}>
