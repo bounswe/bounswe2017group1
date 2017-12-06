@@ -8,6 +8,9 @@ import Vote from '../components/Vote.jsx'
 import { Image } from 'react-bootstrap';
 import CommentForm from '../components/CommentForm.jsx';
 import { ListGroup,ListGroupItem,Panel, Form, FormGroup, Col, FieldGroup, FormControl, Button, PageHeader  } from 'react-bootstrap'
+import FlatButton from 'material-ui/FlatButton';
+import RaisedButton from 'material-ui/RaisedButton';
+import Dialog from 'material-ui/Dialog';
 
 var Upvote = require('react-upvote');
 
@@ -39,7 +42,8 @@ class HeritagePage extends React.Component {
         comments:[],
         commentFormText:'',
         hideCommentDiv:[],
-        recommendedHeritages:[]
+        recommendedHeritages:[],
+        dialogOpen: false
       };
       this.onUpVote = this.onUpVote.bind(this);
       this.onDownVote = this.onDownVote.bind(this);
@@ -47,8 +51,34 @@ class HeritagePage extends React.Component {
       this.setComment = this.setComment.bind(this);
       this.toggleComment = this.toggleComment.bind(this);
       this.deleteComment = this.deleteComment.bind(this);
+      this.handleDialogOpen = this.handleDialogOpen.bind(this);
+      this.handleDialogClose = this.handleDialogClose.bind(this);
+      this.onItemDelete = this.onItemDelete.bind(this);
+    }
+
+  handleDialogOpen(){
+    this.setState({dialogOpen: true});
   }
 
+  handleDialogClose() {
+    this.setState({dialogOpen: false});
+  }
+  onItemDelete(){
+		fetch(baseUrl+'/api/items/'+this.state.heritage.id,{
+      method: "DELETE",
+      headers: {
+        "Access-Control-Allow-Origin" : "*",
+				"Content-Type": "application/json",
+				"authorization": "token "+Auth.getToken()
+      },
+      credentials: "same-origin"
+    }).then(response=>{
+      if(response.ok){
+				window.location.replace("/");
+			}
+    });
+		
+	}
   onUpVote(event) {
     event.preventDefault();
     let body = {}
@@ -300,6 +330,18 @@ class HeritagePage extends React.Component {
   }
 
 	render() {
+    const actions = [
+      <FlatButton
+        label="Cancel"
+        primary={true}
+        onClick={this.handleDialogClose}
+      />,
+      <FlatButton
+        label="Delete"
+       	secondary={true}
+        onClick={this.onItemDelete}
+      />,
+    ];
     console.log(this.state.recommendedHeritages.length);
     let voteStatus = 0;
     if(this.state.heritage.is_upvoted) voteStatus = 1;
@@ -318,6 +360,14 @@ class HeritagePage extends React.Component {
               onUpVote={this.onUpVote}
               onDownVote={this.onDownVote}/>
           </div>
+          <Dialog
+            actions={actions}
+            modal={false}
+            open={this.state.dialogOpen}
+            onRequestClose={this.handleDialogClose}
+            >
+            Remove Your Cultural Heritage?
+          </Dialog>
           <div className="col-md-6">
             <div className="card mt-4">
               <Carousel>
@@ -341,7 +391,17 @@ class HeritagePage extends React.Component {
                   ))}        
                 </h3>
                 <br/>
-                <p className="card-text">{this.state.heritage.description}</p>
+                <p className="card-text" style={{paddingBottom: '20px'}}>{this.state.heritage.description}</p>
+                {Auth.getUsername() === this.state.heritage.creator_username ? (
+									<div style={{float: 'right', marginTop: '-32px', display: 'inline'}}>
+										<a href={"/item/edit/"+this.state.heritage.id}>
+											<i className={"material-icons md-24"}>mode_edit</i>
+										</a>
+										<button style={buttonStyle} onClick={()=>{this.handleDialogOpen()}} >
+											<i className={"material-icons md-24 red800"}>delete</i>
+										</button>
+									</div>
+								):(<br/>)}
               </div>
             </div>
 
@@ -407,6 +467,12 @@ class HeritagePage extends React.Component {
     
 		);
 	}
+}
+
+const buttonStyle = {
+	background: 'transparent',
+	borderWidth: 0,
+	outline: 'none'
 }
 
 export default HeritagePage;
