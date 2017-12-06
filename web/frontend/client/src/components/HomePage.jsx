@@ -58,6 +58,43 @@ const HomePage = React.createClass ({
     }).then(response=>{
       if(response.ok){
         response.json().then(res=>{
+					res.sort(()=>{ return (0.5 - Math.random()); });
+					res = res.slice(0,5);
+          this.setState({items: res});
+          console.log(res);
+        });
+      }
+    });
+	},
+	handleTabChange(tabNo) {
+		let feed = ''
+		switch(tabNo) {
+			case 1:
+				feed = '/top';
+				break
+			case 2:
+				feed = '/trending';
+				break
+			case 3:
+				feed = '/new';
+				break
+			default:
+				break;
+		}
+		fetch(baseUrl+'/api/items'+feed,{
+      method: "GET",
+      headers: {
+        "Access-Control-Allow-Origin" : "*",
+        "Content-Type": "application/json"
+      },
+      credentials: "same-origin"
+    }).then(response=>{
+      if(response.ok){
+        response.json().then(res=>{
+					if(tabNo === 0) {
+						res.sort(()=>{ return (0.5 - Math.random()); });
+						res = res.slice(0,5);
+					}
           this.setState({items: res});
           console.log(res);
         });
@@ -210,8 +247,26 @@ const HomePage = React.createClass ({
 				tabItemContainerStyle={{ backgroundColor: '#757575' }}
 				inkBarStyle={{ backgroundColor: '#212121' }}
 			>
-				<Tab label="Random" value="a">
-					{this.state.items.map((item, index)=>(
+				<Tab label="Random" value="a" onActive={()=>this.handleTabChange(0)}>
+					{this.renderTab()}
+				</Tab>
+				<Tab label="Best" value="b" onActive={()=>this.handleTabChange(1)}>
+					{this.renderTab()}
+				</Tab>
+				<Tab label="Trended" value="c" onActive={()=>this.handleTabChange(2)}>
+					{this.renderTab()}
+				</Tab>
+				<Tab label="New" value="d" onActive={()=>this.handleTabChange(3)}>
+					{this.renderTab()}
+				</Tab>
+			</Tabs>
+			</div>
+		);
+	},
+	renderTab(){
+		return (
+			<div>
+				{this.state.items.map((item, index)=>(
 						<div style={{marginTop: '20px'}}>
 							<Card style={{ backgroundColor: '#E0E0E0' }}>
 								<a className="nav-link" href={'/item/'+item.id}>
@@ -236,49 +291,6 @@ const HomePage = React.createClass ({
 							</Card>
 						</div>
 					))}
-				</Tab>
-				<Tab label="Best" value="b">
-				<div style={{marginTop: '20px'}}>
-					{this.state.items.map((item, index)=>(
-						<div style={{marginTop: '20px'}}>
-							<Card style={{ backgroundColor: '#E0E0E0' }}>
-								<CardHeader
-									title={item.title}
-									titleStyle={{fontWeight: 'bold'}}
-								/>
-								<CardText expandable={true}>{ item.description} </CardText>
-							</Card>
-						</div>
-					))}
-				</div>
-				</Tab>
-				<Tab label="Trended" value="c">
-					{this.state.items.map((item, index)=>(
-							<div style={{marginTop: '20px'}}>
-								<Card style={{ backgroundColor: '#E0E0E0' }}>
-									<CardHeader
-										title={item.title}
-										titleStyle={{fontWeight: 'bold'}}
-									/>
-									<CardText>{ item.description} </CardText>
-								</Card>
-							</div>
-						))}
-				</Tab>
-				<Tab label="New" value="d">
-					{this.state.items.map((item, index)=>(
-							<div style={{marginTop: '20px'}}>
-								<Card style={{ backgroundColor: '#E0E0E0' }}>
-									<CardHeader
-										title={item.title}
-										titleStyle={{fontWeight: 'bold'}}
-									/>
-									<CardText>{ item.description} </CardText>
-								</Card>
-							</div>
-						))}
-				</Tab>
-			</Tabs>
 			</div>
 		);
 	}
