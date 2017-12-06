@@ -350,7 +350,7 @@ class HeritagePage extends React.Component {
 		return (
     <div>
       <TopBar auth={Auth.isUserAuthenticated()}/>
-  		  <div className="row ">
+  		  <div className="row fill-parent">
           <div className="col-md-2 text-center">
           	<h2 className="my-4">{this.state.heritage.title}</h2>
       			<button type="button" className="btn btn-success">Add Annotation</button>
@@ -382,14 +382,17 @@ class HeritagePage extends React.Component {
               </Carousel>
               <div className="card-body">
                 <br/>
-                <h3>
-                  {this.state.heritage.tags.map((tag, index)=>(
+                <div style={{overflow: 'auto'}}>
+                  <h3>
+                    {this.state.heritage.tags.map((tag, index)=>(
                     <div className="d-inline"  style={{ paddingRight: '10px'}}>
                       <span className="label label-info">{tag.name}</span>
                     </div>
                     
-                  ))}        
-                </h3>
+                  ))}
+                  </h3>
+                </div>
+                
                 <br/>
                 <p className="card-text" style={{paddingBottom: '20px'}}>{this.state.heritage.description}</p>
                 {Auth.getUsername() === this.state.heritage.creator_username ? (
@@ -447,7 +450,7 @@ class HeritagePage extends React.Component {
           <div className="col-md-3">
              <ListGroup>
                 {this.state.recommendedHeritages.map((recHeritage, index)=>(
-                  <ListGroupItem style={{marginBottom:'10px'}} header={recHeritage.title} href={"/item/"+recHeritage.id}>
+                  <ListGroupItem style={{marginBottom:'10px', overflow: 'hidden'}} header={recHeritage.title} href={"/item/"+recHeritage.id}>
                     {recHeritage.tags.map((tag, index)=>(
                       <div className="d-inline"  style={{ paddingRight: '10px'}}>
                         <span className="label label-info">{tag.name}</span>

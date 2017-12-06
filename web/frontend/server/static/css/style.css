@@ -365,3 +365,7 @@ div.card-body button.hover {
 div.card-body:hover button.hover {
   display: inline-block;
 }
+
+.fill-parent {
+    width: 100%;
+}
