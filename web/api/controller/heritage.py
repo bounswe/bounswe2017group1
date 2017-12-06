@@ -143,6 +143,7 @@ def get_new_heritages(request):
     except Heritage.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
+
 @api_view(['GET'])
 @permission_classes((AllowAny, ))
 def get_top_heritages(request):

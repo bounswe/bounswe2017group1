@@ -277,7 +277,12 @@ const HomePage = React.createClass ({
 									/>
 								</a>
 								<CardTitle title={item.title}/>
-								<CardText style={{paddingBottom: '48px'}}>{ item.description} </CardText>
+								<CardText style={{paddingBottom: '48px'}}>
+									{(item.description.length > 300)? 
+		                    			item.description.substring(0,300)+"...": 
+		                    			item.description
+		                			}
+                   				 </CardText>
 								{Auth.getUsername() === item.creator_username ? (
 									<div style={{float: 'right', marginTop: '-32px', display: 'inline'}}>
 										<a href={"/item/edit/"+item.id}>
