@@ -7,7 +7,7 @@ import Carousel from 'react-bootstrap/lib/Carousel';
 import Vote from '../components/Vote.jsx'
 import { Image } from 'react-bootstrap';
 import CommentForm from '../components/CommentForm.jsx';
-import { Panel, Form, FormGroup, Col, FieldGroup, FormControl, Button, PageHeader  } from 'react-bootstrap'
+import { ListGroup,ListGroupItem,Panel, Form, FormGroup, Col, FieldGroup, FormControl, Button, PageHeader  } from 'react-bootstrap'
 
 var Upvote = require('react-upvote');
 
@@ -38,7 +38,8 @@ class HeritagePage extends React.Component {
         },
         comments:[],
         commentFormText:'',
-        hideCommentDiv:[]
+        hideCommentDiv:[],
+        recommendedHeritages:[]
       };
       this.onUpVote = this.onUpVote.bind(this);
       this.onDownVote = this.onDownVote.bind(this);
@@ -199,6 +200,23 @@ class HeritagePage extends React.Component {
       }
     });
     
+    fetch(baseUrl+'/api/recommendation/heritage/'+this.props.match.params.heritageId,{
+      method: "GET",
+      headers: headerTmp,
+      credentials: "same-origin"
+    }).then(response=>{
+      if(response.ok){
+        response.json().then(res=>{
+          this.setState({recommendedHeritages: res});
+        });
+
+      } else {
+        errors.summary = 'please check form';
+        this.setState({
+          errors
+        });
+      }
+    });
   }
 
   /**
@@ -282,6 +300,7 @@ class HeritagePage extends React.Component {
   }
 
 	render() {
+    console.log(this.state.recommendedHeritages.length);
     let voteStatus = 0;
     if(this.state.heritage.is_upvoted) voteStatus = 1;
     else if (this.state.heritage.is_downvoted) voteStatus = -1;
@@ -289,10 +308,7 @@ class HeritagePage extends React.Component {
 		return (
     <div>
       <TopBar auth={Auth.isUserAuthenticated()}/>
-      <div className="container-fluid">
-
-  		<div className="row ">
-
+  		  <div className="row ">
           <div className="col-md-2 text-center">
           	<h2 className="my-4">{this.state.heritage.title}</h2>
       			<button type="button" className="btn btn-success">Add Annotation</button>
@@ -302,8 +318,7 @@ class HeritagePage extends React.Component {
               onUpVote={this.onUpVote}
               onDownVote={this.onDownVote}/>
           </div>
-
-          <div className="col-md-8">
+          <div className="col-md-6">
             <div className="card mt-4">
               <Carousel>
                 {this.state.heritage.medias.map((url)=>{
@@ -316,8 +331,7 @@ class HeritagePage extends React.Component {
                   })}
               </Carousel>
               <div className="card-body">
-              <br/>
-                <p className="card-text">{this.state.heritage.description}</p>
+                <br/>
                 <h3>
                   {this.state.heritage.tags.map((tag, index)=>(
                     <div className="d-inline"  style={{ paddingRight: '10px'}}>
@@ -326,6 +340,8 @@ class HeritagePage extends React.Component {
                     
                   ))}        
                 </h3>
+                <br/>
+                <p className="card-text">{this.state.heritage.description}</p>
               </div>
             </div>
 
@@ -362,11 +378,23 @@ class HeritagePage extends React.Component {
 
             </div>
           </div>
-
-        </div>
-
+          <div className="col-md-3">
+             <ListGroup>
+                {this.state.recommendedHeritages.map((recHeritage, index)=>(
+                  <ListGroupItem style={{marginBottom:'10px'}} header={recHeritage.title} href={"/item/"+recHeritage.id}>
+                    {recHeritage.tags.map((tag, index)=>(
+                      <div className="d-inline"  style={{ paddingRight: '10px'}}>
+                        <span className="label label-info">{tag.name}</span>
+                      </div>
+                      
+                    ))} 
+                    <br/>      
+                    {recHeritage.description.substring(0,100)}...
+                  </ListGroupItem>
+                ))} 
+            </ListGroup>
+          </div>
       </div>
-
     </div>
     
 		);
