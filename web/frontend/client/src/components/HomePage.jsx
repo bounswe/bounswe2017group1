@@ -244,8 +244,8 @@ const HomePage = React.createClass ({
 				value={this.state.value}
 				onChange={this.handleChange}
 				style={{ marginTop: '5px'}}
-				tabItemContainerStyle={{ backgroundColor: '#757575' }}
-				inkBarStyle={{ backgroundColor: '#212121' }}
+				tabItemContainerStyle={{ backgroundColor: '#0091EA' }}
+				inkBarStyle={{ backgroundColor: '#01579B' }}
 			>
 				<Tab label="Random" value="a" onActive={()=>this.handleTabChange(0)}>
 					{this.renderTab()}
@@ -268,7 +268,7 @@ const HomePage = React.createClass ({
 			<div>
 				{this.state.items.map((item, index)=>(
 						<div style={{marginTop: '20px'}}>
-							<Card style={{ backgroundColor: '#E0E0E0' }}>
+							<Card style={{ backgroundColor: '#B3E5FC' }}>
 								<a className="nav-link" href={'/item/'+item.id}>
 								<CardHeader
 									title={item.creator_username}
@@ -289,7 +289,7 @@ const HomePage = React.createClass ({
 											<i className={"material-icons md-24"}>mode_edit</i>
 										</a>
 										<button style={buttonStyle} onClick={()=>{this.handleDialogOpen(index)}} >
-											<i className={"material-icons md-24"}>delete</i>
+											<i className={"material-icons md-24 red800"}>delete</i>
 										</button>
 									</div>
 								):(<br/>)}
