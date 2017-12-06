@@ -39,6 +39,10 @@ class HeritagePage extends React.Component {
           is_downvoted: false,
           is_owner: false
         },
+        mediacontainer : {
+          index: 0,
+          direction: null
+        },
         comments:[],
         commentFormText:'',
         hideCommentDiv:[],
@@ -54,6 +58,7 @@ class HeritagePage extends React.Component {
       this.handleDialogOpen = this.handleDialogOpen.bind(this);
       this.handleDialogClose = this.handleDialogClose.bind(this);
       this.onItemDelete = this.onItemDelete.bind(this);
+      this.handleMediaSelect = this.handleMediaSelect.bind(this);
     }
 
   handleDialogOpen(){
@@ -293,6 +298,15 @@ class HeritagePage extends React.Component {
     });
   }
 
+  handleMediaSelect(selectedIndex, e) {
+    this.setState({
+      mediacontainer: {
+        index: selectedIndex,
+        direction: e.direction
+      }
+    });
+  }
+
   setComment(event) {
     event.preventDefault();
     this.setState({commentFormText:event.target.value});
@@ -370,7 +384,11 @@ class HeritagePage extends React.Component {
           </Dialog>
           <div className="col-md-6">
             <div className="card mt-4">
-              <Carousel>
+              <Carousel 
+                activeIndex={this.state.mediacontainer.index}
+                direction={this.state.mediacontainer.direction}
+                onSelect={this.handleMediaSelect}
+                >
                 {this.state.heritage.medias.map((url)=>{
                   return (
                     <Carousel.Item>
