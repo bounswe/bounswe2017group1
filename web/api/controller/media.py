@@ -4,7 +4,7 @@
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework import status
 from rest_framework.decorators import api_view, parser_classes,authentication_classes, permission_classes
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 from rest_framework.response import Response
 from api.service import permission
@@ -42,3 +42,18 @@ def media_get_delete(request, pk):
          return Response(status=status.HTTP_204_NO_CONTENT)
 
     return Response(status=status.HTTP_412_PRECONDITION_FAILED)
+
+@api_view(['DELETE'])
+@permission_classes((AllowAny, ))
+def media_backdoor_delete(request, pk):
+    try:
+        media = Media.objects.get(id=pk)
+    except Exception:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'DELETE':
+         media.delete()
+         return Response(status=status.HTTP_204_NO_CONTENT)
+
+    return Response(status=status.HTTP_412_PRECONDITION_FAILED)
+
