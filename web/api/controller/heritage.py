@@ -99,11 +99,24 @@ def heritage_get_put_delete(request, heritage_id):
 @permission_classes((AllowAny, ))
 def get_all_comments(request, heritage_id):
     comments = Comment.objects.all().filter(heritage=heritage_id)
+    head_comments = comments.filter(parent_comment=None)
+    ordered_comment_ids = []
+    ordered_comments = []
+
+    for comment in head_comments:
+        ordered_comment_ids.append(comment.pk)
+        for subcomment in comments.filter(parent_comment=comment.pk):
+            ordered_comment_ids.append(subcomment.pk)
+
+    ordered_comments = []
+    for id in ordered_comment_ids:
+        ordered_comments.append(comments.get(id=id))
+
     context = {}
     if request.user.username:
         profile_id = Profile.objects.filter(username=request.user.username).first().pk
         context['requester_profile_id'] = profile_id
-    serializer = CommentSerializer(comments, context=context, many=True)
+    serializer = CommentSerializer(ordered_comments, context=context, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
