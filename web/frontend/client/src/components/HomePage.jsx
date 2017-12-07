@@ -9,6 +9,7 @@ import { Tabs, Tab } from 'material-ui/Tabs'
 import 'whatwg-fetch'
 import appConstants from '../../modules/appConstants.js'
 import { Button, Form, FormGroup, InputGroup, ControlLabel, FormControl, Col } from 'react-bootstrap';
+import CircularProgress from 'material-ui/CircularProgress';
 //import Dialog from 'react-bootstrap-dialog'
 
 var baseUrl = appConstants.baseUrl;
@@ -24,7 +25,8 @@ const HomePage = React.createClass ({
 			items: [],
 			hideAdvanced: true,
 			dialogOpen: false,
-			intendedIndex: null
+			intendedIndex: null,
+			isLoading: false
     };
 	},
 
@@ -67,6 +69,8 @@ const HomePage = React.createClass ({
     });
 	},
 	handleTabChange(tabNo) {
+		this.setState({isLoading: true});
+		this.setState({items: []});
 		let feed = ''
 		switch(tabNo) {
 			case 0:
@@ -99,7 +103,8 @@ const HomePage = React.createClass ({
 						res.sort(()=>{ return (0.5 - Math.random()); });
 						res = res.slice(0,5);
 					}
-          this.setState({items: res});
+					this.setState({items: res});
+					this.setState({isLoading: false})
           console.log(res);
         });
       }
@@ -242,33 +247,35 @@ const HomePage = React.createClass ({
 	renderTabs(){
 		return(
 			<div>
-				
-			<Tabs
-				value={this.state.value}
-				onChange={this.handleChange}
-				style={{ marginTop: '5px'}}
-				tabItemContainerStyle={{ backgroundColor: '#0091EA' }}
-				inkBarStyle={{ backgroundColor: '#01579B' }}
-			>
-				<Tab label="Random" value="a" onActive={()=>this.handleTabChange(0)}>
-					{this.renderTab()}
-				</Tab>
-				<Tab label="Best" value="b" onActive={()=>this.handleTabChange(1)}>
-					{this.renderTab()}
-				</Tab>
-				<Tab label={Auth.isUserAuthenticated() ? "Recommended" : "Trending"} value="c" onActive={()=>this.handleTabChange(2)}>
-					{this.renderTab()}
-				</Tab>
-				<Tab label="New" value="d" onActive={()=>this.handleTabChange(3)}>
-					{this.renderTab()}
-				</Tab>
-			</Tabs>
+				<Tabs
+					value={this.state.value}
+					onChange={this.handleChange}
+					style={{ marginTop: '5px'}}
+					tabItemContainerStyle={{ backgroundColor: '#0091EA' }}
+					inkBarStyle={{ backgroundColor: '#01579B' }}
+				>
+					<Tab label="Random" value="a" onActive={()=>this.handleTabChange(0)}>
+						{this.renderTab()}
+					</Tab>
+					<Tab label="Best" value="b" onActive={()=>this.handleTabChange(1)}>
+						{this.renderTab()}
+					</Tab>
+					<Tab label={Auth.isUserAuthenticated() ? "Recommended" : "Trending"} value="c" onActive={()=>this.handleTabChange(2)}>
+						{this.renderTab()}
+					</Tab>
+					<Tab label="New" value="d" onActive={()=>this.handleTabChange(3)}>
+						{this.renderTab()}
+					</Tab>
+				</Tabs>
 			</div>
 		);
 	},
 	renderTab(){
 		return (
 			<div>
+				<div style={this.state.isLoading ? {marginLeft: '35%', padding: '50px'}: {display: 'none'}}>
+						<CircularProgress size={80} thickness={7}/>
+				</div>
 				{this.state.items.map((item, index)=>(
 						<div style={{marginTop: '20px'}}>
 							<Card style={{ backgroundColor: '#B3E5FC' }}>
