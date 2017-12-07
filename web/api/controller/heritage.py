@@ -19,15 +19,13 @@ from api.serializer.tag import TagSerializer
 
 from api.service.heritage import get_all_comments, get_all_tags
 from api.service import helper
+import datetime
 
 
 @api_view(['GET', 'POST'])
 @permission_classes((IsAuthenticatedOrReadOnly, ))
 def heritage_get_post(request):
     if request.method == 'GET':
-
-        #if request.user.username:
-        #    print request.user.username
 
         try:
             context = {}
@@ -44,11 +42,10 @@ def heritage_get_post(request):
     elif request.method == 'POST' and request.user.is_authenticated:
 
         username = request.user.username
-        request.data['creator'] = Profile.objects.filter(username=username).first().pk
+        profile_id = Profile.objects.filter(username=username).first().pk
+        request.data['creator'] = profile_id
         context = {}
-        if request.user.username:
-            profile_id = Profile.objects.filter(username=request.user.username).first().pk
-            context['requester_profile_id'] = profile_id
+        context['requester_profile_id'] = profile_id
 
         serializer = HeritageSerializer(data=request.data,context=context)
 
@@ -102,11 +99,24 @@ def heritage_get_put_delete(request, heritage_id):
 @permission_classes((AllowAny, ))
 def get_all_comments(request, heritage_id):
     comments = Comment.objects.all().filter(heritage=heritage_id)
+    head_comments = comments.filter(parent_comment=None)
+    ordered_comment_ids = []
+    ordered_comments = []
+
+    for comment in head_comments:
+        ordered_comment_ids.append(comment.pk)
+        for subcomment in comments.filter(parent_comment=comment.pk):
+            ordered_comment_ids.append(subcomment.pk)
+
+    ordered_comments = []
+    for id in ordered_comment_ids:
+        ordered_comments.append(comments.get(id=id))
+
     context = {}
     if request.user.username:
         profile_id = Profile.objects.filter(username=request.user.username).first().pk
         context['requester_profile_id'] = profile_id
-    serializer = CommentSerializer(comments, context=context, many=True)
+    serializer = CommentSerializer(ordered_comments, context=context, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
@@ -117,3 +127,69 @@ def get_all_tags(request, heritage_id):
     serializer = TagSerializer(tags, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
+@api_view(['GET'])
+@permission_classes((AllowAny, ))
+def get_new_heritages(request):
+    try:
+        context = {}
+        if request.user.username:
+            profile_id = Profile.objects.filter(username=request.user.username).first().pk
+            context['requester_profile_id'] = profile_id
+
+        heritages = Heritage.objects.order_by('-creation_date')
+        serializer = HeritageSerializer(heritages, context=context, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    except Heritage.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+
+@api_view(['GET'])
+@permission_classes((AllowAny, ))
+def get_top_heritages(request):
+    try:
+        context = {}
+        if request.user.username:
+            profile_id = Profile.objects.filter(username=request.user.username).first().pk
+            context['requester_profile_id'] = profile_id
+
+        heritages = Heritage.objects.all()
+        myList = []
+        for item in heritages:
+            votes =  item.votes.all()
+            score = votes.filter(value=True).count() - votes.filter(value=False).count()
+            myList.append((item, score ))
+
+        myList.sort(key=lambda tup: tup[1], reverse=True);
+        sorted_heritages = [x[0] for x in myList]
+        serializer = HeritageSerializer(sorted_heritages, context=context, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    except Heritage.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+
+
+@api_view(['GET'])
+@permission_classes((AllowAny, ))
+def get_trending_heritages(request):
+    try:
+        now = datetime.datetime.utcnow()+datetime.timedelta(hours=3)
+        context = {}
+        if request.user.username:
+            profile_id = Profile.objects.filter(username=request.user.username).first().pk
+            context['requester_profile_id'] = profile_id
+
+        heritages = Heritage.objects.all()
+        myList = []
+        for item in heritages:
+            votes = item.votes.filter(update_date__gte=now-datetime.timedelta(days=7))
+            score = votes.filter(value=True).count() - votes.filter(value=False).count()
+            myList.append((item, score ))
+
+        myList.sort(key=lambda tup: tup[1], reverse=True);
+        sorted_heritages = [x[0] for x in myList]
+        serializer = HeritageSerializer(sorted_heritages, context=context, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    except Heritage.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)

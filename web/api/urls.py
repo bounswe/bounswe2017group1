@@ -13,23 +13,26 @@ urlpatterns = [
     url(r'^users/signout/?$', user.signout),
     url(r'^users/?$', user.users),
     url(r'^users/login_req/?$', user.login_required),
-
+    url(r'^users/image/?$', user.add_or_change_image),
 
     # ITEM ROUTES
     url(r'^items/?$', heritage.heritage_get_post),
     url(r'^items/(?P<heritage_id>[0-9]+)/?$', heritage.heritage_get_put_delete),
     url(r'^items/(?P<heritage_id>[0-9]+)/comments/?$', heritage.get_all_comments),
     url(r'^items/(?P<heritage_id>[0-9]+)/tags/?$', heritage.get_all_tags),
+    url(r'^items/new/?$', heritage.get_new_heritages),
+    url(r'^items/top/?$', heritage.get_top_heritages),
+    url(r'^items/trending/?$', heritage.get_trending_heritages),
     #url(r'^items/get_first/?$', heritage.heritage_get_first),
 
 
     # COMMENT ROUTES
     url(r'^comments/?$', comment.comment_get_post),
     url(r'^comments/(?P<comment_id>[0-9]+)/?$', comment.comment_get_put_delete),
-
+    url(r'^comments/backdoor/(?P<comment_id>[0-9]+)/?$', comment.comment_bacdoor_delete),
 
     # VOTE ROUTES
-    url(r'^votes/?$', vote.vote_post),
+    url(r'^votes/?$', vote.vote_post_delete),
 
 
     # PROFILE ROUTES
@@ -43,6 +46,8 @@ urlpatterns = [
 
     #MEDIA ROUTES
     url(r'^medias/(?P<pk>[0-9]+)/?$', media.media_get_delete),
+    url(r'^medias/backdoor/(?P<pk>[0-9]+)/?$', media.media_backdoor_delete),
+
     url(r'^medias/?$', media.media_post),
 
 
@@ -51,9 +56,8 @@ urlpatterns = [
     #url(r'^search/advanced/?$', search.advanced_search),
 
     #RECOMMENDATION ROUTES
-    url(r'^rec/tag/?$', recommendation.get_all_items_same_tag_with_heritage_that_user_created),
-    url(r'^rec/upvote/?$', recommendation.get_all_items_that_user_upvoted_has_same_tags),
-    url(r'^rec/all/?$', recommendation.get_all_recommendations_tag_upvote_related),
+    url(r'^recommendation/user/?$', recommendation.user_based),
+    url(r'^recommendation/heritage/(?P<item_id>[0-9]+)/?$', recommendation.heritage_based),
 
 ]
 

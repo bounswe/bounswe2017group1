@@ -129,15 +129,14 @@ Create new heritage item
 
     {
         "title": String, (required)
-        "description": String, (optional)
+        "description": String, (required)
         "event_date": String, (optional)
-        "location": String, (required)
+        "location": String, (optional)
         "tags": [
             {
                 "name": String,
-                "category": String
             },
-        ] (optional)
+        ] (required, send empty list if there are no tags)
     }
 
 
@@ -149,13 +148,34 @@ Create new heritage item
           "id": Integer,
           "upvote_count": Integer,
           "downvote_count": Integer,
+          "is_upvoted": Boolean,
+          "is_downvoted": Boolean,
+          "is_owner": Boolean,
           "tags": [
               {
                   "id": Integer,
-                  "name": String,
-                  "category": String
+                  "name": String
               },
-          ] (optional)
+          ],
+          "media":[
+              {
+                   "id": Integer,
+                   "heritage": Integer,
+                   "image": URL,
+                   "creation_date": Datetime,
+                   "update_date": Datetime
+              
+              },
+          ],
+          "creator_username": String,  
+          "creator_image_path": URL,
+          "title": String,
+          "description": String,
+          "creation_date": Datetime,
+          "event_date": Datetime,
+          "location": String,
+          "creator": Integer
+          
       }
         
 
@@ -182,23 +202,38 @@ get all heritage items
         
       [
         {
-            "id": Integer,
-            "upvote_count": Integer,
-            "downvote_count": Integer,
-            "tags": [
-                {
-                    "id": Integer,
-                    "name": String,
-                    "category": String
-                },
-            ],
-            "title": String,
-            "description": String,
-            "creation_date": DateTime,
-            "event_date": DateTime,
-            "location": String,
-            "creator": Integer
-        },
+          "id": Integer,
+          "upvote_count": Integer,
+          "downvote_count": Integer,
+          "is_upvoted": Boolean,
+          "is_downvoted": Boolean,
+          "is_owner": Boolean,
+          "tags": [
+              {
+                  "id": Integer,
+                  "name": String
+              },
+          ],
+          "media":[
+              {
+                   "id": Integer,
+                   "heritage": Integer,
+                   "image": URL,
+                   "creation_date": Datetime,
+                   "update_date": Datetime
+              
+              },
+          ],
+          "creator_username": String,  
+          "creator_image_path": URL,
+          "title": String,
+          "description": String,
+          "creation_date": Datetime,
+          "event_date": Datetime,
+          "location": String,
+          "creator": Integer
+          
+         },
       ]
 
 
@@ -206,6 +241,24 @@ get all heritage items
     404 Not Found
         
 ***
+
+### /items/top
+##### GET
+Get heritage items sorted by their votes
+
+Response is the same as GET /items/
+
+### /items/trending
+##### GET
+Get heritage items sorted by the increase in their votes in the last week
+
+Response is the same as GET /items/
+
+### /items/new
+##### GET
+Get heritage items sorted by their creation dates.
+
+Response is the same as GET /items/
 
 ### /items/{id}
 ##### GET
@@ -219,19 +272,34 @@ get heritage item by id
           "id": Integer,
           "upvote_count": Integer,
           "downvote_count": Integer,
+          "is_upvoted": Boolean,
+          "is_downvoted": Boolean,
+          "is_owner": Boolean,
           "tags": [
               {
                   "id": Integer,
-                  "name": String,
-                  "category": String
+                  "name": String
               },
           ],
+          "media":[
+              {
+                   "id": Integer,
+                   "heritage": Integer,
+                   "image": URL,
+                   "creation_date": Datetime,
+                   "update_date": Datetime
+              
+              },
+          ],
+          "creator_username": String,  
+          "creator_image_path": URL,
           "title": String,
           "description": String,
-          "creation_date": DateTime,
-          "event_date": DateTime,
+          "creation_date": Datetime,
+          "event_date": Datetime,
           "location": String,
           "creator": Integer
+          
       }
 
 
@@ -252,19 +320,34 @@ update the heritage item which is indicated by id
           "id": Integer,
           "upvote_count": Integer,
           "downvote_count": Integer,
+          "is_upvoted": Boolean,
+          "is_downvoted": Boolean,
+          "is_owner": Boolean,
           "tags": [
               {
                   "id": Integer,
-                  "name": String,
-                  "category": String
+                  "name": String
               },
           ],
+          "media":[
+              {
+                   "id": Integer,
+                   "heritage": Integer,
+                   "image": URL,
+                   "creation_date": Datetime,
+                   "update_date": Datetime
+              
+              },
+          ],
+          "creator_username": String,  
+          "creator_image_path": URL,
           "title": String,
           "description": String,
-          "creation_date": DateTime,
-          "event_date": DateTime,
+          "creation_date": Datetime,
+          "event_date": Datetime,
           "location": String,
           "creator": Integer
+          
       }
 
     
@@ -312,12 +395,15 @@ get all comments of the heritage item indicated by id
       [
         {
             "id": Integer,
-            "text": String,
-            "creation_date": DateTime,
-            "update_date": DateTime,
+            "is_owner": Boolean,
+            "creator_image_path": URL,
+            "creator_username": string,
+            "text": string,
+            "creation_date": Datetime,
+            "update_date": Datetime,
             "heritage": Integer,
             "creator": Integer,
-            "parent_comment": Integer
+            "parent_comment": Integer (can be null)
         },
       ]
 
@@ -339,7 +425,6 @@ get all tags of the heritage item indicated by id
         {
             "id": Integer,
             "name": String,
-            "category": String
         },
       ]
 
@@ -369,13 +454,16 @@ Create new comment
     201 Created
 
       {
-          "id": Integer,
-          "text": String,
-          "creation_date": DateTime,
-          "update_date": DateTime,
-          "heritage": Integer,
-          "creator": Integer,
-          "parent_comment": Integer
+        "id": Integer,
+        "is_owner": Boolean,
+        "creator_image_path": URL,
+        "creator_username": string,
+        "text": string,
+        "creation_date": Datetime,
+        "update_date": Datetime,
+        "heritage": Integer,
+        "creator": Integer,
+        "parent_comment": Integer (can be null)
       }
         
 
@@ -402,13 +490,16 @@ get the comment by id
     200 OK
 
       {
-          "id": Integer,
-          "text": String,
-          "creation_date": DateTime,
-          "update_date": DateTime,
-          "heritage": Integer,
-          "creator": Integer,
-          "parent_comment": Integer
+        "id": Integer,
+        "is_owner": Boolean,
+        "creator_image_path": URL,
+        "creator_username": string,
+        "text": string,
+        "creation_date": Datetime,
+        "update_date": Datetime,
+        "heritage": Integer,
+        "creator": Integer,
+        "parent_comment": Integer (can be null)
       }
 
         
@@ -460,7 +551,9 @@ Create new vote
           "creation_date": DateTime,
           "update_date": DateTime,
           "voter": Integer,
-          "heritage": Integer
+          "heritage": Integer,
+          "upvote_count": Integer,
+          "downvote_count": Integer
       }
         
 
@@ -475,6 +568,37 @@ Create new vote
     
       { "detail": [error] } 
 
+***
+
+##### DELETE
+Deletes the existing vote of the requester
+
+  **Request**
+
+    {
+        "heritage": Integer (required)
+    }
+    
+
+  **Response**
+
+    200 Ok
+    action successfully done
+
+      {
+          "upvote_count": Integer,
+          "downvote_count": Integer
+      }
+        
+
+
+    404 Not Found
+    Means there is no old vote in the DB to specified heritage item ID or it is already deleted.
+
+    
+    HTTP_412_PRECONDITION_FAILED    
+    Probably there is no heritage field in the request or something else is wrong about the request.
+    
 ***
 
 ## Profile Routes
@@ -502,6 +626,7 @@ get all user profiles
 
     404 Not Found
         
+
 ***
 
 ### /profiles/{id}
@@ -541,7 +666,6 @@ get all tags
         {
             "id": Integer,
             "name": String,
-            "category": String
         },
       ]
 
@@ -599,7 +723,7 @@ searches heritage items
       [
          {
             "query": String, (Required)
-            "filters:" {
+            "filters":{
                  "location": String, (optional)
                  "creator": String, (optional)
                  "creation_start": datetime, (optional)
@@ -607,29 +731,44 @@ searches heritage items
                  "event_start": datetime, (optional)
                  "event_end": datetime, (optional)
              } (optional)
-            
+          }
       ]
 
   **Response**
   
       [
-         {
-            "id": Integer,
-            "upvote_count": Integer,
-            "downvote_count": Integer,
-            "tags": [
-                 {
-                    "id": Integer,
-                    "name": String,
-                    "related_list": String,
-                 }
-            ],
-            "title": String,
-            "description": String,
-            "creation_date": String,
-            "event_date": String,
-            "location": String,
-            "creator": Integer
+        {
+          "id": Integer,
+          "upvote_count": Integer,
+          "downvote_count": Integer,
+          "is_upvoted": Boolean,
+          "is_downvoted": Boolean,
+          "is_owner": Boolean,
+          "tags": [
+              {
+                  "id": Integer,
+                  "name": String
+              },
+          ],
+          "media":[
+              {
+                   "id": Integer,
+                   "heritage": Integer,
+                   "image": URL,
+                   "creation_date": Datetime,
+                   "update_date": Datetime
+              
+              },
+          ],
+          "creator_username": String,  
+          "creator_image_path": URL,
+          "title": String,
+          "description": String,
+          "creation_date": Datetime,
+          "event_date": Datetime,
+          "location": String,
+          "creator": Integer
+          
          },
       ]
 ***

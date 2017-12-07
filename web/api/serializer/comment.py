@@ -5,6 +5,8 @@ from rest_framework import serializers
 
 class CommentSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
+    creator_image_path = serializers.SerializerMethodField()
+    creator_username = serializers.SerializerMethodField()
 
     class Meta:
         model = Comment
@@ -17,3 +19,16 @@ class CommentSerializer(serializers.ModelSerializer):
             if requester_id == obj.creator.pk:
                 return True
         return False
+
+    def get_creator_username(self, obj):
+        return obj.creator.username
+
+    def get_creator_image_path(self, obj):
+        gender = obj.creator.gender.lower()
+        if gender.startswith('m'):
+            return '/media/avatars/m' + str(obj.creator.pk % 8 + 1) + '.png'
+        elif gender.startswith('f'):
+            return '/media/avatars/f' + str(obj.creator.pk % 8 + 1) + '.png'
+        else:
+            return '/media/avatars/doge.png'
+

@@ -8,17 +8,16 @@ from api.service import heritage, helper
 from api.model.media import Media
 
 class HeritageSerializer(serializers.ModelSerializer):
+    # votes = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     upvote_count = serializers.SerializerMethodField()
     downvote_count = serializers.SerializerMethodField()
     is_upvoted = serializers.SerializerMethodField()
     is_downvoted = serializers.SerializerMethodField()
     is_owner = serializers.SerializerMethodField()
-
-    # votes = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
-    # Heritage item may not have a tag or have one or more than one tag.
     tags = TagSerializer(required=False, many=True)
-    creator_username = serializers.SerializerMethodField()
     medias = MediaSerializer(required=False, many=True)
+    creator_username = serializers.SerializerMethodField()
+    creator_image_path = serializers.SerializerMethodField()
 
     class Meta:
         model = Heritage
@@ -35,11 +34,11 @@ class HeritageSerializer(serializers.ModelSerializer):
             tag, created = Tag.objects.get_or_create(name=tag_data['name'])
             if created:
                 concepts_list = helper.get_concepts_from_item(tag.name)
-                jdata = {}
-                for item in concepts_list:
-                    jdata[item[0]] = item[1]
-
-                tag.setlist(jdata)
+                taglist = ""
+                for word in [x[0] for x in concepts_list]:
+                    taglist += word + " "
+                tag.related_list = taglist
+                tag.save()
 
             heritage.tags.add(tag)
 
@@ -66,8 +65,17 @@ class HeritageSerializer(serializers.ModelSerializer):
             serializer = TagSerializer(tag)
             new_tags_data.append(serializer.data)
 
+        #clear tags, before adding
+        instance.tags.clear()
         for tag_data in new_tags_data:
             tag, created = Tag.objects.get_or_create(name=tag_data['name'])
+            if created:
+                concepts_list = helper.get_concepts_from_item(tag.name)
+                taglist = ""
+                for word in [x[0] for x in concepts_list]:
+                    taglist += word + " "
+                tag.related_list = taglist
+                tag.save()
             instance.tags.add(tag)
 
 
@@ -114,3 +122,13 @@ class HeritageSerializer(serializers.ModelSerializer):
 
     def get_creator_username(self,obj):
         return obj.creator.username
+
+    def get_creator_image_path(self,obj):
+        gender = obj.creator.gender.lower()
+        if gender.startswith('m'):
+            return '/media/avatars/m' + str(obj.creator.pk%8 + 1) + '.png'
+        elif gender.startswith('f'):
+            return '/media/avatars/f' + str(obj.creator.pk%8 + 1) + '.png'
+        else:
+            return '/media/avatars/doge.png'
+
