@@ -23,6 +23,11 @@ a:hover {
   padding: 10px 15px;
   margin-bottom: 50px;
 }
+
+.bar-blue {
+    background-color: #0091EA;
+}
+
 .top-bar::after {
   content: '';
   display: block;
@@ -331,3 +336,36 @@ a:hover {
 .material-icons.md-48 { font-size: 48px; }
 .material-icons.md-64 { font-size: 64px; }
 .material-icons.orange600 { color: #FB8C00; }
+.material-icons.red800 { color: #D84315}
+
+.custom-label {
+    text-align: right;
+    font-weight: bold;
+}
+
+.h2 {
+    font-family: 'Lato', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+
+.place-suggestion-item {
+    text-align: left;
+    vertical-align: middle;
+}
+
+.place-icon {
+    margin-right: 4px;
+    margin-top: -5px
+}
+
+div.card-body button.hover {
+  display:none;
+}
+
+div.card-body:hover button.hover {
+  display: inline-block;
+}
+
+.fill-parent {
+    width: 100%;
+}

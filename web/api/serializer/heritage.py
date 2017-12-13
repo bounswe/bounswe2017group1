@@ -124,4 +124,11 @@ class HeritageSerializer(serializers.ModelSerializer):
         return obj.creator.username
 
     def get_creator_image_path(self,obj):
-        return obj.creator.image.url
+        gender = obj.creator.gender.lower()
+        if gender.startswith('m'):
+            return '/media/avatars/m' + str(obj.creator.pk%8 + 1) + '.png'
+        elif gender.startswith('f'):
+            return '/media/avatars/f' + str(obj.creator.pk%8 + 1) + '.png'
+        else:
+            return '/media/avatars/doge.png'
+

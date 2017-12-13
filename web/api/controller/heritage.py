@@ -16,9 +16,6 @@ from api.model.tag import Tag
 from api.serializer.heritage import HeritageSerializer
 from api.serializer.comment import CommentSerializer
 from api.serializer.tag import TagSerializer
-
-from api.service.heritage import get_all_comments, get_all_tags
-from api.service import helper
 import datetime
 
 
@@ -99,11 +96,24 @@ def heritage_get_put_delete(request, heritage_id):
 @permission_classes((AllowAny, ))
 def get_all_comments(request, heritage_id):
     comments = Comment.objects.all().filter(heritage=heritage_id)
+    head_comments = comments.filter(parent_comment=None)
+    ordered_comment_ids = []
+    ordered_comments = []
+
+    for comment in head_comments:
+        ordered_comment_ids.append(comment.pk)
+        for subcomment in comments.filter(parent_comment=comment.pk):
+            ordered_comment_ids.append(subcomment.pk)
+
+    ordered_comments = []
+    for id in ordered_comment_ids:
+        ordered_comments.append(comments.get(id=id))
+
     context = {}
     if request.user.username:
         profile_id = Profile.objects.filter(username=request.user.username).first().pk
         context['requester_profile_id'] = profile_id
-    serializer = CommentSerializer(comments, context=context, many=True)
+    serializer = CommentSerializer(ordered_comments, context=context, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
 
 
@@ -129,6 +139,7 @@ def get_new_heritages(request):
 
     except Heritage.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
+
 
 @api_view(['GET'])
 @permission_classes((AllowAny, ))
