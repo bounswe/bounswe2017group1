@@ -42,6 +42,7 @@ public class ItemDetailView extends AppCompatActivity {
     TextView voteCount;
     ImageButton upVote;
     ImageButton downVote;
+    ImageButton deleteVote;
     int heritageId;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -66,6 +67,7 @@ public class ItemDetailView extends AppCompatActivity {
         voteCount = (TextView) findViewById(R.id.vote_count);
         upVote = (ImageButton) findViewById(R.id.up_vote_button);
         downVote = (ImageButton) findViewById(R.id.down_vote_button);
+        deleteVote = (ImageButton) findViewById(R.id.delete_vote_button);
         final EditText comment_entry = (EditText) findViewById(R.id.comment_entry);
         final Button send_button = (Button) findViewById(R.id.comment_send);
         getCommentList();
@@ -171,6 +173,47 @@ public class ItemDetailView extends AppCompatActivity {
 
             }
         });
+        deleteVote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendPostDeleteVote();
+            }
+        });
+    }
+    public void sendPostDeleteVote(){
+        Intent intent = getIntent();
+        final int heritageId = intent.getIntExtra("heritageId", -1);
+        Retrofit retrofit = ApiClient.getApiClient();
+        final SharedPreferences sharedPref = getSharedPreferences("TOKENSHARED", Context.MODE_PRIVATE);
+        final String  token = sharedPref.getString("TOKEN", null);
+        ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+        Call<JsonResponseDeleteVote> call = apiInterface.deleteVote(new DeleteVoteBody(heritageId),"Token " + token);
+        call.enqueue(new Callback<JsonResponseDeleteVote>() {
+            @Override
+            public void onResponse(Call<JsonResponseDeleteVote> call, Response<JsonResponseDeleteVote> response) {
+
+                if (response.isSuccessful()) {
+                    Toast.makeText(getApplicationContext(), "SUCCESSFUL DELETE VOTE", Toast.LENGTH_SHORT).show();
+                    voteCount.setText(Integer.toString(response.body().getUpvote_count()-response.body().getDownvote_count()));
+                    upVote.setEnabled(true);
+                    downVote.setEnabled(true);
+
+                }else if(response.code() == 404){
+                    Toast.makeText(getApplicationContext(), "Firstly, please vote !!" , Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "Sorry for inconvince server is down" + response.code(), Toast.LENGTH_SHORT).show();
+                    Log.d("response", response.raw().body().toString());
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<JsonResponseDeleteVote> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "ERROR while posting", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     public void sendPostUpVote(){
@@ -188,13 +231,10 @@ public class ItemDetailView extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "SUCCESSFUL UPVOTE", Toast.LENGTH_SHORT).show();
                     voteCount.setText(Integer.toString(response.body().getUpvote_count()-response.body().getDownvote_count()));
+                    deleteVote.setEnabled(true);
                     upVote.setEnabled(false);
                     downVote.setEnabled(true);
-                    /*Intent e = new Intent(getApplicationContext(),
-                            ItemDetailView.class);
-                    e.putExtra("heritageId", heritageId);
-                    finish();
-                    startActivity(e);*/
+
                 } else {
                     Toast.makeText(getApplicationContext(), "Sorry for inconvince server is down" + response.code(), Toast.LENGTH_SHORT).show();
                     Log.d("response", response.raw().body().toString());
@@ -263,13 +303,10 @@ public class ItemDetailView extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "SUCCESSFUL DOWNVOTE", Toast.LENGTH_SHORT).show();
                     voteCount.setText(Integer.toString(response.body().getUpvote_count()-response.body().getDownvote_count()));
+                    deleteVote.setEnabled(true);
                     downVote.setEnabled(false);
                     upVote.setEnabled(true);
-                    /*Intent e = new Intent(getApplicationContext(),
-                            ItemDetailView.class);
-                    e.putExtra("heritageId", heritageId);
-                    finish();
-                    startActivity(e);*/
+
                 } else {
                     Toast.makeText(getApplicationContext(), "Sorry for inconvince server is down" + response.code(), Toast.LENGTH_SHORT).show();
                     Log.d("response", response.raw().body().toString());
