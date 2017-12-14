@@ -58,6 +58,7 @@ urlpatterns = [
     #RECOMMENDATION ROUTES
     url(r'^recommendation/user/?$', recommendation.user_based),
     url(r'^recommendation/heritage/(?P<item_id>[0-9]+)/?$', recommendation.heritage_based),
+    url(r'^recommendation/test/(?P<item_id>[0-9]+)/?$', recommendation.recommendation_test),
 
 ]
 

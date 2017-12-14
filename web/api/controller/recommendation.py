@@ -75,8 +75,8 @@ def heritage_based(request, item_id):
     the_heritage = Heritage.objects.get(id=item_id)
     recommended_items = recommendation.get_recommendation_for_heritage(the_heritage)
 
-    max = 0;
-    max_val =0;
+    max = 0
+    max_val =0
     for key,value in recommended_items.items():
         if value>max_val:
             max_val=value
@@ -104,3 +104,12 @@ def heritage_based(request, item_id):
     else:
         serializer = HeritageSerializer(response_items, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+@api_view(['GET'])
+@permission_classes((IsAuthenticatedOrReadOnly, ))
+def recommendation_test(request, item_id):
+
+    the_heritage = Heritage.objects.get(id=item_id)
+    response = recommendation.alternative_recommendation_for_heritage(the_heritage)
+    return Response(response, status=status.HTTP_200_OK)
