@@ -56,9 +56,9 @@ urlpatterns = [
     #url(r'^search/advanced/?$', search.advanced_search),
 
     #RECOMMENDATION ROUTES
-    url(r'^recommendation/user/?$', recommendation.user_based),
-    url(r'^recommendation/heritage/(?P<item_id>[0-9]+)/?$', recommendation.heritage_based),
-    url(r'^recommendation/test/(?P<item_id>[0-9]+)/?$', recommendation.recommendation_test),
+    url(r'^recommendation/user/?$', recommendation.user_based_alternative),
+    url(r'^recommendation/heritage/(?P<item_id>[0-9]+)/?$', recommendation.heritage_based_alternative),
+    #url(r'^recommendation/test/(?P<item_id>[0-9]+)/?$', recommendation.recommendation_test),
 
 ]
 

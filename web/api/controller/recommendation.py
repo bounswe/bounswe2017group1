@@ -107,9 +107,93 @@ def heritage_based(request, item_id):
 
 
 @api_view(['GET'])
+@permission_classes((IsAuthenticated, ))
+def user_based_alternative(request):
+
+    user_upvoted_heritages = []
+    user_commented_heritages = []
+
+    context = {}
+    profile_id = Profile.objects.filter(username=request.user.username).first().pk
+    context['requester_profile_id'] = profile_id
+
+    # Get all heritage items user created
+    user_created_heritages = Heritage.objects.filter(creator=profile_id)
+
+    # Get all heritage items user upvoted
+    user_votes = Vote.objects.filter(voter=profile_id, value=True)
+    for vote in user_votes:
+        user_upvoted_heritages.append(vote.heritage)
+
+    # Get all heritage items user commented
+    user_comments = Comment.objects.filter(creator=profile_id)
+    for comment in user_comments:
+        user_commented_heritages.append(comment.heritage)
+
+    # Merge created, upvoted and commented items by the user into a list without duplicate
+    recommended_related_items = list(set(user_created_heritages)|set(user_upvoted_heritages)|set(user_commented_heritages))
+
+    exclude_ids = []
+    res = {}
+
+    # put recommended items into a function and get recommendations for that item
+    for item in recommended_related_items:
+
+        if item.id not in exclude_ids:
+            exclude_ids.append(item.id)
+
+        sorted_res = recommendation.alternative_recommendation_for_heritage(item)
+
+        for item_id, score in sorted_res:
+            if item_id in res.keys():
+                res[item_id] += score
+            else:
+                res[item_id] = score
+    #sort res
+    sorted_res = sorted(res.items(), key=operator.itemgetter(1), reverse=True)
+    sorted_keys = [x[0] for x in sorted_res]
+
+    print sorted_res
+
+    response=[]
+    count = 5
+    for item in sorted_keys:
+        if count > 0 and item not in exclude_ids:
+            heritage_item = Heritage.objects.get(id=item)
+            #print heritage_item
+            serializer = HeritageSerializer(heritage_item)
+            response.append(serializer.data)
+            count-=1
+
+
+    return Response(response, status=status.HTTP_200_OK)
+
+
+
+@api_view(['GET'])
 @permission_classes((IsAuthenticatedOrReadOnly, ))
-def recommendation_test(request, item_id):
+def heritage_based_alternative(request, item_id):
 
     the_heritage = Heritage.objects.get(id=item_id)
-    response = recommendation.alternative_recommendation_for_heritage(the_heritage)
-    return Response(response, status=status.HTTP_200_OK)
+    sorted_res = recommendation.alternative_recommendation_for_heritage(the_heritage)
+    sorted_keys = [x[0] for x in sorted_res]
+
+
+    response_items = []
+    count = 5
+    for item in sorted_keys:
+        if count > 0:
+            heritage_item = Heritage.objects.get(id=item)
+            response_items.append(heritage_item)
+            count-=1
+
+    if request.user.is_authenticated:
+        context = {}
+        profile_id = Profile.objects.filter(username=request.user.username).first().pk
+        context['requester_profile_id'] = profile_id
+
+        serializer = HeritageSerializer(response_items, context=context, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+    else:
+        serializer = HeritageSerializer(response_items, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
