@@ -8,7 +8,7 @@ from tag import Tag
 from django.db.models.signals import post_save, pre_migrate, post_migrate,pre_save
 from django.dispatch import receiver
 import datetime
-
+import re
 
 class Heritage(models.Model):
     title = models.CharField(max_length=100)
@@ -22,6 +22,15 @@ class Heritage(models.Model):
 
     def __str__(self):
         return self.title
+
+
+    def getLocationAsList(self):
+        location_words = []
+        if self.location:
+            pattern = re.compile("^\s+|\s*,\s*|\s+$")
+            location_words = [x for x in pattern.split(self.location) if x]
+
+        return location_words
 
 @receiver(post_save, sender=Heritage)
 def my_handler(sender, instance, **kwargs):
