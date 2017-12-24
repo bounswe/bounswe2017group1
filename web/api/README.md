@@ -772,3 +772,81 @@ searches heritage items
          },
       ]
 ***
+
+
+
+## Annotation
+
+### /annotation/heritage/{item_id}/
+##### POST
+create annotation on the description of the heritage item
+
+  **Request**
+  
+      {
+	    "text": String, (Required),
+	    "coordinates": [ Integer, Integer ]
+      }
+
+
+  **Response**
+    
+    201 Created
+    
+    
+    
+    400 Bad Request
+      
+***
+
+
+## Annotation
+
+### /annotation/heritage/{item_id}/media/{media_id}
+##### POST
+create annotation on the media file of the heritage item
+
+  **Request**
+  
+      {
+	    "text": String, (Required),
+	    "coordinates": [ Integer, Integer, Integer, Integer ]
+      }
+
+
+  **Response**
+    
+    201 Created
+    
+    
+    
+    400 Bad Request
+      
+***
+
+
+
+## Annotation
+
+### /annotation/heritage/{item_id}/comment/{comment_id}
+##### POST
+create annotation on the comment of the heritage item
+
+  **Request**
+  
+      {
+	    "text": String, (Required),
+	    "coordinates": [ Integer, Integer ]
+      }
+
+
+  **Response**
+    
+    201 Created
+    
+    
+    
+    400 Bad Request
+      
+***
+
