@@ -65,8 +65,7 @@ urlpatterns = [
 
     #ANNOTATION ROUTES
     url(r'^annotation/?$', annotation.get_all),
-    url(r'^annotation/heritage/(?P<item_id>[0-9]+)/?$', annotation.create_annotation_on_description),
-    url(r'^annotation/heritage/(?P<item_id>[0-9]+)/?$', annotation.get_annotations_of_item),
+    url(r'^annotation/heritage/(?P<item_id>[0-9]+)/?$', annotation.create_on_description_or_get),
     url(r'^annotation/heritage/(?P<item_id>[0-9]+)/media/(?P<media_id>[0-9]+)/?$', annotation.create_annotation_on_media),
     url(r'^annotation/heritage/(?P<item_id>[0-9]+)/comment/(?P<comment_id>[0-9]+)/?$', annotation.create_annotation_on_comment),
 

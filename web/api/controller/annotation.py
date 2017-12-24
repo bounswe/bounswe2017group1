@@ -30,25 +30,27 @@ def create_annotation_on_comment(request, item_id, comment_id):
     response_code = create_annotation(body, target)
     return Response(status=response_code)
 
-@api_view(['POST'])
+@api_view(['GET', 'POST'])
 @permission_classes((IsAuthenticated, ))
-def create_annotation_on_description(request, item_id):
-    body = request.data.get('text', None)
-    fragment_selector = ','.join(map(str, request.data['coordinates']))
-    target = "heritage/" + item_id + "/description"
-    target += "#char=" + fragment_selector
+def create_on_description_or_get(request, item_id):
 
-    print body, target
+    if request.method == 'POST':
 
-    response_code = create_annotation(body, target)
-    return Response(status=response_code)
+        body = request.data.get('text', None)
+        fragment_selector = ','.join(map(str, request.data['coordinates']))
+        target = "heritage/" + item_id + "/description"
+        target += "#char=" + fragment_selector
 
-@api_view(['GET'])
-@permission_classes((IsAuthenticated, ))
-def get_annotations_of_item(request, item_id):
+        print body, target
 
-    response = get_annotations_of_item_id(item_id)
-    return Response(response, status=status.HTTP_200_OK)
+        response_code = create_annotation(body, target)
+        return Response(status=response_code)
+
+    elif request.method == 'GET':
+        response = get_annotations_of_item_id(item_id)
+        return Response(response, status=status.HTTP_200_OK)
+
+    return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
 @api_view(['GET'])
 @permission_classes((IsAuthenticated, ))
