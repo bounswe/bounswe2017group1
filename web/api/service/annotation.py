@@ -36,10 +36,10 @@ def get_annotations_of_item_id(item_id):
     pattern = "heritage/"+item_id
     all_annotations = get_all_annotations()
     #all_annotations_graph = all_annotations.pop('@graph', None)
-    annotations_of_item['@graph'] = []
+    annotations_of_item = []
 
     for anno in all_annotations['@graph']:
         if pattern in anno['target']:
-            annotations_of_item['@graph'].append(anno)
+            annotations_of_item.append(anno)
 
     return annotations_of_item
