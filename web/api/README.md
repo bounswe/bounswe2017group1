@@ -800,6 +800,26 @@ create annotation on the description of the heritage item
 ***
 
 
+### /annotation/heritage/{item_id}/
+##### GET
+get annotations of a heritage item indicated by id
+
+  **Response**
+    
+    200 OK
+      [
+        {
+          "annotatedAt": DateTimeString,
+          "body": String,
+          "@id": String,
+          "serializedAt": DateTimeString,
+          "target": String
+        },
+      ]
+      
+***
+
+
 ## Annotation
 
 ### /annotation/heritage/{item_id}/media/{media_id}
@@ -850,3 +870,22 @@ create annotation on the comment of the heritage item
       
 ***
 
+
+### /annotation/
+##### GET
+get all annotations
+
+  **Response**
+    
+    200 OK
+      [
+        {
+          "annotatedAt": DateTimeString,
+          "body": String,
+          "@id": String,
+          "serializedAt": DateTimeString,
+          "target": String
+        },
+      ]
+      
+***
