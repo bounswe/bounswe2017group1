@@ -9,6 +9,7 @@ from api.model.profile import Profile
 from api.model.comment import Comment
 from api.serializer.heritage import HeritageSerializer
 from api.service import recommendation
+from api.controller.heritage import get_trending_heritages
 import operator
 
 
@@ -154,6 +155,9 @@ def user_based_alternative(request):
     sorted_keys = [x[0] for x in sorted_res]
 
     print sorted_res
+
+    if len(sorted_res)==0:
+        return get_trending_heritages(request)
 
     response=[]
     count = 5
