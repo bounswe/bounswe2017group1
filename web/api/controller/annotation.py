@@ -8,7 +8,7 @@ from api.service.annotation import post_annotation
 @permission_classes((IsAuthenticated, ))
 def create_annotation_on_media(request, item_id, media_id):
     body = request.data.get('text', None)
-    fragment_selector = ','.join(request.data['coordinates'])
+    fragment_selector = ','.join(map(str, request.data['coordinates']))
     target = "heritage/" + item_id + "/media/" + media_id
     target += "#xywh=" + fragment_selector
 
@@ -21,7 +21,7 @@ def create_annotation_on_media(request, item_id, media_id):
 @permission_classes((IsAuthenticated, ))
 def create_annotation_on_comment(request, item_id, comment_id):
     body = request.data.get('text', None)
-    fragment_selector = ','.join(request.data['coordinates'])
+    fragment_selector = ','.join(map(str, request.data['coordinates']))
     target = "heritage/" + item_id + "/comment/" + comment_id
     target += "#char=" + fragment_selector
 
@@ -34,7 +34,7 @@ def create_annotation_on_comment(request, item_id, comment_id):
 @permission_classes((IsAuthenticated, ))
 def create_annotation_on_description(request, item_id):
     body = request.data.get('text', None)
-    fragment_selector = ','.join(request.data['coordinates'])
+    fragment_selector = ','.join(map(str, request.data['coordinates']))
     target = "heritage/" + item_id + "/description"
     target += "#char=" + fragment_selector
 
