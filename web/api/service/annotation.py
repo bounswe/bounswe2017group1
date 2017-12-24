@@ -11,5 +11,5 @@ def post_annotation(body, target):
 
     header = {"Content-Type": "application/ld+json"}
 
-    r = requests.post("127.0.0.1:8000/annotations/", data=data, headers=header)
+    r = requests.post("http://127.0.0.1:8000/annotations/", data=data, headers=header)
     return r.status_code
