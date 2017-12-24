@@ -1,0 +1,44 @@
+from rest_framework import status
+from rest_framework.decorators import api_view, permission_classes
+from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, AllowAny
+from rest_framework.response import Response
+from api.service.annotation import post_annotation
+
+@api_view(['POST'])
+@permission_classes((IsAuthenticated, ))
+def create_annotation_on_media(request, item_id, media_id):
+    body = request.data.get('text', None)
+    fragment_selector = ','.join(request.data['coordinates'])
+    target = "heritage/" + item_id + "/media/" + media_id
+    target += "#xywh=" + fragment_selector
+
+    print body, target
+
+    response_code = post_annotation(body, target)
+    return Response(status=response_code)
+
+@api_view(['POST'])
+@permission_classes((IsAuthenticated, ))
+def create_annotation_on_comment(request, item_id, comment_id):
+    body = request.data.get('text', None)
+    fragment_selector = ','.join(request.data['coordinates'])
+    target = "heritage/" + item_id + "/comment/" + comment_id
+    target += "#char=" + fragment_selector
+
+    print body, target
+
+    response_code = post_annotation(body, target)
+    return Response(status=response_code)
+
+@api_view(['POST'])
+@permission_classes((IsAuthenticated, ))
+def create_annotation_on_description(request, item_id):
+    body = request.data.get('text', None)
+    fragment_selector = ','.join(request.data['coordinates'])
+    target = "heritage/" + item_id + "/description"
+    target += "#char=" + fragment_selector
+
+    print body, target
+
+    response_code = post_annotation(body, target)
+    return Response(status=response_code)

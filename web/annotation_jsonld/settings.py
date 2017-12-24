@@ -4,7 +4,7 @@ __author__ = 'Sampo Pyysalo'
 __license__ = 'MIT'
 
 # The port on the server to listen to
-PORT = 5005
+PORT = 8000
 
 # CORS settings
 X_DOMAINS = '*'  # Access-Control-Allow-Origin: * (open to all)
@@ -165,7 +165,7 @@ DOMAIN = {
 # Please note that MONGO_HOST and MONGO_PORT could very well be left
 # out as they already default to a bare bones local 'mongod' instance.
 MONGO_HOST = 'localhost'
-MONGO_PORT = 8000
+MONGO_PORT = 27017
 MONGO_USERNAME = 'admin'
 MONGO_PASSWORD = 'admin12345'
 MONGO_DBNAME = 'annotation_db'
