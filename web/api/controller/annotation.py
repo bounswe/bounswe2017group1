@@ -31,7 +31,7 @@ def create_annotation_on_comment(request, item_id, comment_id):
     return Response(status=response_code)
 
 @api_view(['GET', 'POST'])
-@permission_classes((IsAuthenticated, ))
+@permission_classes((IsAuthenticatedOrReadOnly, ))
 def create_on_description_or_get(request, item_id):
 
     if request.method == 'POST':
@@ -53,7 +53,7 @@ def create_on_description_or_get(request, item_id):
     return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
 
 @api_view(['GET'])
-@permission_classes((IsAuthenticated, ))
+@permission_classes((AllowAny, ))
 def get_all(request):
 
     all_anno = get_all_annotations()
