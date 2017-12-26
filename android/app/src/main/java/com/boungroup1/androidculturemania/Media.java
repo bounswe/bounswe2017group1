@@ -12,12 +12,35 @@ public class Media {
     @SerializedName("id")
     @Expose
     public int id;
+    @SerializedName("type")
+    @Expose
+    public String type;
     @SerializedName("heritage")
     @Expose
     public int heritage;
     @SerializedName("image")
     @Expose
     public String image;
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+    public String getVideo_url() {
+        return video_url;
+    }
+
+    public void setVideo_url(String video_url) {
+        this.video_url = video_url;
+    }
+
+    @SerializedName("video_url")
+    @Expose
+    public String video_url;
     @SerializedName("creation_date")
     @Expose
     public String creation_date;

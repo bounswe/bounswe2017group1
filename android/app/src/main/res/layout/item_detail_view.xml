@@ -140,6 +140,13 @@
                 android:layout_weight="1"/>
         </LinearLayout>
 
+        <Button
+            android:id="@+id/videobutton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Display Video"
+            />
+
         <LinearLayout
             android:id="@+id/lineardescription"
             android:layout_width="match_parent"
