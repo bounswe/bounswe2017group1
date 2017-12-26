@@ -1,23 +1,4 @@
 """
-    This controller handles the routing for heritage items
-"""
-from rest_framework.parsers import MultiPartParser, FormParser
-from rest_framework import status
-from rest_framework.decorators import api_view, parser_classes,authentication_classes, permission_classes
-from rest_framework.permissions import IsAuthenticated, AllowAny
-
-from rest_framework.response import Response
-
-from api.controller import heritage
-from api.service import permission
-
-from api.model.media import Media
-
-from api.serializer.media import MediaSerializer
-
-
-
-"""
     This controller handles the routing for media items
 """
 from rest_framework import status
