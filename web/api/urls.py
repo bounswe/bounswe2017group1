@@ -3,8 +3,10 @@ from django.contrib import admin
 
 from api.controller import (
     profile, comment, vote, user,
-    heritage, tag, search, media, recommendation
+    heritage, tag, search, media,
+    recommendation, annotation
 )
+
 urlpatterns = [
 
     # USER ROUTES
@@ -60,5 +62,11 @@ urlpatterns = [
     url(r'^recommendation/heritage/(?P<item_id>[0-9]+)/?$', recommendation.heritage_based_alternative),
     #url(r'^recommendation/test/(?P<item_id>[0-9]+)/?$', recommendation.recommendation_test),
 
-]
 
+    #ANNOTATION ROUTES
+    url(r'^annotation/?$', annotation.get_all),
+    url(r'^annotation/heritage/(?P<item_id>[0-9]+)/?$', annotation.create_on_description_or_get),
+    url(r'^annotation/heritage/(?P<item_id>[0-9]+)/media/(?P<media_id>[0-9]+)/?$', annotation.create_annotation_on_media),
+    url(r'^annotation/heritage/(?P<item_id>[0-9]+)/comment/(?P<comment_id>[0-9]+)/?$', annotation.create_annotation_on_comment),
+
+]
