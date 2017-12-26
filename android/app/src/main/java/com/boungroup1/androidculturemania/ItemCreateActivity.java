@@ -133,6 +133,8 @@ public class ItemCreateActivity extends AppCompatActivity{
         List<Tag> tagsArray = new ArrayList<Tag>();
         for (String tagss : tagstr)
             tagsArray.add(new Tag(tagss, "cat"));
+        EditText video_url_edit = (EditText) findViewById(R.id.video_url);
+        videoUrl = video_url_edit.getText().toString();
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
         Call<JsonResponseItemCreate> call = apiInterface.itemCreate(new ItemCreateBody(title, description, dateyear + "-"+ datemonth+"-"+dateday+" 06:00:00.000000",
                 location,tagsArray ),"Token " + token);
@@ -147,7 +149,7 @@ public class ItemCreateActivity extends AppCompatActivity{
                         uploadImage(heritageId);
                     }
                     if(videoUrl!=null){
-                        uploadVideo(heritageId);
+                        //uploadVideo(heritageId);
                     }
 
 
@@ -201,6 +203,8 @@ public class ItemCreateActivity extends AppCompatActivity{
     private void uploadImage(int heritageId){
         if(imageUri==null)
             return;
+        if(videoUrl==null)
+            return;
         final byte[] file = getBitmapFromUri(imageUri);
         String url = imageUri.toString();
 
@@ -213,7 +217,7 @@ public class ItemCreateActivity extends AppCompatActivity{
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
 
         MultipartBody.Part filePart = MultipartBody.Part.createFormData("image", url.substring( url.lastIndexOf('/')+1, url.length() ), RequestBody.create(MediaType.parse("image/*"),file));
-        Call<JsonResponseMedia> call = apiInterface.uploadImage("Token " + token,filePart,"image",heritageId,sdf.format(cal.getTime()),sdf.format(cal.getTime()));
+        Call<JsonResponseMedia> call = apiInterface.uploadImage("Token " + token,filePart, videoUrl , "image",heritageId,sdf.format(cal.getTime()),sdf.format(cal.getTime()));
         call.enqueue(new Callback<JsonResponseMedia>() {
             @Override
             public void onResponse(Call<JsonResponseMedia> call, Response<JsonResponseMedia> response) {
@@ -240,7 +244,7 @@ public class ItemCreateActivity extends AppCompatActivity{
         Retrofit retrofit = ApiClient.getApiClient();
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
 
-        Call<JsonResponseMedia> call = apiInterface.uploadVideo("Token " + token,videoUrl,"image",heritageId,sdf.format(cal.getTime()),sdf.format(cal.getTime()));
+        Call<JsonResponseMedia> call = apiInterface.uploadVideo("Token " + token,videoUrl,"video",heritageId,sdf.format(cal.getTime()),sdf.format(cal.getTime()));
         call.enqueue(new Callback<JsonResponseMedia>() {
             @Override
             public void onResponse(Call<JsonResponseMedia> call, Response<JsonResponseMedia> response) {

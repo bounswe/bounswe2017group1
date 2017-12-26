@@ -69,6 +69,14 @@
                 android:hint="Tags" />
         </android.support.design.widget.TextInputLayout>
 
+        <EditText
+            android:id="@+id/video_url"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapWords"
+            android:hint="Video url"
+        />
+
         <Button
             android:id="@+id/uploadImage"
             android:layout_width="match_parent"
