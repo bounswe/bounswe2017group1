@@ -4,7 +4,7 @@ from django.contrib import admin
 from api.controller import (
     profile, comment, vote, user,
     heritage, tag, search, media,
-    recommendation, annotation
+    recommendation, annotation, video
 )
 
 urlpatterns = [
@@ -49,9 +49,12 @@ urlpatterns = [
     #MEDIA ROUTES
     url(r'^medias/(?P<pk>[0-9]+)/?$', media.media_get_delete),
     url(r'^medias/backdoor/(?P<pk>[0-9]+)/?$', media.media_backdoor_delete),
-
     url(r'^medias/?$', media.media_post),
 
+    # VIDEO ROUTES
+    url(r'^videos/(?P<pk>[0-9]+)/?$', video.video_get_delete),
+    url(r'^videos/backdoor/(?P<pk>[0-9]+)/?$', video.video_backdoor_delete),
+    url(r'^videos/?$', video.video_post),
 
     # SEARCH ROUTES
     url(r'^search/?$', search.search),
