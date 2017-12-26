@@ -47,6 +47,7 @@ import retrofit2.Retrofit;
 public class ItemCreateActivity extends AppCompatActivity{
     int dateyear, datemonth, dateday;
     Uri imageUri = null;
+    String videoUrl = null;
 
 
 
@@ -145,6 +146,9 @@ public class ItemCreateActivity extends AppCompatActivity{
                     if(imageUri!=null){
                         uploadImage(heritageId);
                     }
+                    if(videoUrl!=null){
+                        uploadVideo(heritageId);
+                    }
 
 
                     Log.d("deneme",response.body().getId().toString());
@@ -190,7 +194,8 @@ public class ItemCreateActivity extends AppCompatActivity{
     @Override
     public void onActivityResult(int requestCode, int resultCode,
                                  Intent resultData) {
-        imageUri = resultData.getData();
+        if(resultData!=null)
+            imageUri = resultData.getData();
     }
 
     private void uploadImage(int heritageId){
@@ -208,15 +213,42 @@ public class ItemCreateActivity extends AppCompatActivity{
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
 
         MultipartBody.Part filePart = MultipartBody.Part.createFormData("image", url.substring( url.lastIndexOf('/')+1, url.length() ), RequestBody.create(MediaType.parse("image/*"),file));
-        Call<JsonResponseImage> call = apiInterface.uploadImage("Token " + token,filePart,"image",heritageId,sdf.format(cal.getTime()),sdf.format(cal.getTime()));
-        call.enqueue(new Callback<JsonResponseImage>() {
+        Call<JsonResponseMedia> call = apiInterface.uploadImage("Token " + token,filePart,"image",heritageId,sdf.format(cal.getTime()),sdf.format(cal.getTime()));
+        call.enqueue(new Callback<JsonResponseMedia>() {
             @Override
-            public void onResponse(Call<JsonResponseImage> call, Response<JsonResponseImage> response) {
+            public void onResponse(Call<JsonResponseMedia> call, Response<JsonResponseMedia> response) {
                 Toast.makeText(getApplicationContext(),"Image successfully uploaded.",Toast.LENGTH_SHORT);
             }
 
             @Override
-            public void onFailure(Call<JsonResponseImage> call, Throwable t) {
+            public void onFailure(Call<JsonResponseMedia> call, Throwable t) {
+                Toast.makeText(getApplicationContext(),"Uploading image failed, try again.",Toast.LENGTH_SHORT);
+            }
+        });
+
+    }
+
+    private void uploadVideo(int heritageId){
+        if(videoUrl==null)
+            return;
+
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+
+        final SharedPreferences sharedPref = getSharedPreferences("TOKENSHARED", Context.MODE_PRIVATE);
+        final String  token = sharedPref.getString("TOKEN", null);
+        Retrofit retrofit = ApiClient.getApiClient();
+        ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+
+        Call<JsonResponseMedia> call = apiInterface.uploadVideo("Token " + token,videoUrl,"image",heritageId,sdf.format(cal.getTime()),sdf.format(cal.getTime()));
+        call.enqueue(new Callback<JsonResponseMedia>() {
+            @Override
+            public void onResponse(Call<JsonResponseMedia> call, Response<JsonResponseMedia> response) {
+                Toast.makeText(getApplicationContext(),"Video successfully uploaded.",Toast.LENGTH_SHORT);
+            }
+
+            @Override
+            public void onFailure(Call<JsonResponseMedia> call, Throwable t) {
                 Toast.makeText(getApplicationContext(),"Uploading image failed, try again.",Toast.LENGTH_SHORT);
             }
         });

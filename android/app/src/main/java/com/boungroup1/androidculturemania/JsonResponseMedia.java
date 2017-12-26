@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
  * Created by tahabayi on 04/12/2017.
  */
 
-public class JsonResponseImage {
+public class JsonResponseMedia {
 
     @SerializedName("id")
     @Expose
@@ -16,6 +16,10 @@ public class JsonResponseImage {
     @SerializedName("image")
     @Expose
     private String image;
+
+    @SerializedName("video_url")
+    @Expose
+    private String video_url;
 
     @SerializedName("type")
     @Expose
