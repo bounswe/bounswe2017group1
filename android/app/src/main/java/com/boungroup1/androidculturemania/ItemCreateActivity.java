@@ -149,11 +149,11 @@ public class ItemCreateActivity extends AppCompatActivity{
                         uploadImage(heritageId);
                     }
                     if(videoUrl!=null){
-                        //uploadVideo(heritageId);
+                        uploadVideo(heritageId);
                     }
 
 
-                    Log.d("deneme",response.body().getId().toString());
+                    //Log.d("deneme",response.body().getId().toString());
 
                     Toast.makeText(getApplicationContext(), "SUCCESS", Toast.LENGTH_SHORT).show();
 //                    Log.d("RESPONSE", response.body().getProfile().getGender());
@@ -203,8 +203,6 @@ public class ItemCreateActivity extends AppCompatActivity{
     private void uploadImage(int heritageId){
         if(imageUri==null)
             return;
-        if(videoUrl==null)
-            return;
         final byte[] file = getBitmapFromUri(imageUri);
         String url = imageUri.toString();
 
@@ -217,7 +215,7 @@ public class ItemCreateActivity extends AppCompatActivity{
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
 
         MultipartBody.Part filePart = MultipartBody.Part.createFormData("image", url.substring( url.lastIndexOf('/')+1, url.length() ), RequestBody.create(MediaType.parse("image/*"),file));
-        Call<JsonResponseMedia> call = apiInterface.uploadImage("Token " + token,filePart, videoUrl , "image",heritageId,sdf.format(cal.getTime()),sdf.format(cal.getTime()));
+        Call<JsonResponseMedia> call = apiInterface.uploadImage("Token " + token,filePart , "image",heritageId,sdf.format(cal.getTime()),sdf.format(cal.getTime()));
         call.enqueue(new Callback<JsonResponseMedia>() {
             @Override
             public void onResponse(Call<JsonResponseMedia> call, Response<JsonResponseMedia> response) {
@@ -243,8 +241,9 @@ public class ItemCreateActivity extends AppCompatActivity{
         final String  token = sharedPref.getString("TOKEN", null);
         Retrofit retrofit = ApiClient.getApiClient();
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+        MultipartBody.Part filePart = MultipartBody.Part.createFormData("","");
 
-        Call<JsonResponseMedia> call = apiInterface.uploadVideo("Token " + token,videoUrl,"video",heritageId,sdf.format(cal.getTime()),sdf.format(cal.getTime()));
+        Call<JsonResponseMedia> call = apiInterface.uploadVideo("Token " + token,null ,videoUrl,"video",heritageId,sdf.format(cal.getTime()),sdf.format(cal.getTime()));
         call.enqueue(new Callback<JsonResponseMedia>() {
             @Override
             public void onResponse(Call<JsonResponseMedia> call, Response<JsonResponseMedia> response) {
@@ -253,7 +252,7 @@ public class ItemCreateActivity extends AppCompatActivity{
 
             @Override
             public void onFailure(Call<JsonResponseMedia> call, Throwable t) {
-                Toast.makeText(getApplicationContext(),"Uploading image failed, try again.",Toast.LENGTH_SHORT);
+                Toast.makeText(getApplicationContext(),"Uploading video failed, try again.",Toast.LENGTH_SHORT);
             }
         });
 

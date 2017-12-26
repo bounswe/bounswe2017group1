@@ -70,11 +70,11 @@ public interface ApiInterface {
 
     @Multipart
     @POST("/api/medias")
-    Call<JsonResponseMedia> uploadImage(@Header("Authorization") String authorization, @Part MultipartBody.Part image , @Part("video_url") String video_url, @Part("type") String type, @Part("heritage") int heritage, @Part("creation_date") String creation_date, @Part("update_date") String update_date);
+    Call<JsonResponseMedia> uploadImage(@Header("Authorization") String authorization, @Part MultipartBody.Part image, @Part("type") String type, @Part("heritage") int heritage, @Part("creation_date") String creation_date, @Part("update_date") String update_date);
 
     @Multipart
     @POST("/api/medias")
-    Call<JsonResponseMedia> uploadVideo(@Header("Authorization") String authorization, @Part("video_url") String video_url, @Part("type") String type, @Part("heritage") int heritage, @Part("creation_date") String creation_date, @Part("update_date") String update_date);
+    Call<JsonResponseMedia> uploadVideo(@Header("Authorization") String authorization, @Part MultipartBody.Part image, @Part("video_url") String video_url, @Part("type") String type, @Part("heritage") int heritage, @Part("creation_date") String creation_date, @Part("update_date") String update_date);
 
     @Headers( "Content-Type: application/json" )
     @HTTP(method = "DELETE", path = "/api/votes", hasBody = true)
