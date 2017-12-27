@@ -1,23 +1,25 @@
 """
-    This controller handles the routing for heritage items
+    This controller handles the routing for media items
 """
-from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework import status
 from rest_framework.decorators import api_view, parser_classes,authentication_classes, permission_classes
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import IsAuthenticated, AllowAny, IsAuthenticatedOrReadOnly
 
 from rest_framework.response import Response
 from api.service import permission
+from django.shortcuts import get_object_or_404
 
-from api.model.media import Media
+from api.model.video import Video
 
-from api.serializer.media import MediaSerializer
+from api.serializer.video import VideoSerializer
 
 @api_view(['POST'])
 @permission_classes((IsAuthenticated,))
-@parser_classes((MultiPartParser, FormParser,))
-def media_post(request):
-    serializer = MediaSerializer(data=request.data)
+def video_post(request):
+    video = None
+    if(request.data["heritage"]):
+        video = Video.objects.filter(heritage = request.data["heritage"]).first()
+    serializer = VideoSerializer(instance=video, data=request.data)
     if serializer.is_valid():
         serializer.save()
         return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -26,33 +28,34 @@ def media_post(request):
 
 
 @api_view(['GET', 'DELETE'])
-@permission_classes((IsAuthenticated,))
-def media_get_delete(request, pk):
+@permission_classes((IsAuthenticatedOrReadOnly,))
+def video_get_delete(request, pk):
     try:
-        media = Media.objects.get(id=pk)
-        heritage = media.heritage
+        video = Video.objects.get(id=pk)
+        heritage = video.heritage
     except Exception:
         return Response(status=status.HTTP_404_NOT_FOUND)
     if request.method == 'GET':
-        serializer = MediaSerializer(media)
+        serializer = VideoSerializer(video)
         return Response(serializer.data)
 
     elif request.method == 'DELETE' and permission.isOwner(request, obj=heritage):
-         media.delete()
+         video.delete()
          return Response(status=status.HTTP_204_NO_CONTENT)
 
     return Response(status=status.HTTP_412_PRECONDITION_FAILED)
 
 @api_view(['DELETE'])
 @permission_classes((AllowAny, ))
-def media_backdoor_delete(request, pk):
+def video_backdoor_delete(request, pk):
     try:
-        media = Media.objects.get(id=pk)
+        video = Video.objects.get(id=pk)
     except Exception:
         return Response(status=status.HTTP_404_NOT_FOUND)
 
     if request.method == 'DELETE':
-         media.delete()
+         video.delete()
          return Response(status=status.HTTP_204_NO_CONTENT)
 
     return Response(status=status.HTTP_412_PRECONDITION_FAILED)
+

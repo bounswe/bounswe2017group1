@@ -25,7 +25,6 @@ class UserAdmin(admin.ModelAdmin):
     list_display = ('id', 'username', 'email')
     inlines = [ProfileInline]
 
-
 class HeritageAdmin(admin.ModelAdmin):
     list_display = ('id', 'title', 'creator_id', 'location')
 

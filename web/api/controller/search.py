@@ -54,6 +54,11 @@ def search(request):
 
     sorted_tuple = sorted(ll.items(), key=operator.itemgetter(1), reverse=True)
     print sorted_tuple
+    for index in range(len(sorted_tuple)):
+        if sorted_tuple[index][1] < 3:
+            sorted_tuple = sorted_tuple[:index]
+            break
+
     response = []
 
     for item in sorted_tuple:
