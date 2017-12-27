@@ -148,7 +148,7 @@ public class ItemCreateActivity extends AppCompatActivity{
                     if(imageUri!=null){
                         uploadImage(heritageId);
                     }
-                    if(videoUrl!=null){
+                    if(!videoUrl.equals("")){
                         uploadVideo(heritageId);
                     }
 
@@ -231,27 +231,23 @@ public class ItemCreateActivity extends AppCompatActivity{
     }
 
     private void uploadVideo(int heritageId){
-        if(videoUrl==null)
+        if(videoUrl.equals(""))
             return;
-
-        Calendar cal = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
 
         final SharedPreferences sharedPref = getSharedPreferences("TOKENSHARED", Context.MODE_PRIVATE);
         final String  token = sharedPref.getString("TOKEN", null);
         Retrofit retrofit = ApiClient.getApiClient();
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
-        MultipartBody.Part filePart = MultipartBody.Part.createFormData("","");
 
-        Call<JsonResponseMedia> call = apiInterface.uploadVideo("Token " + token,null ,videoUrl,"video",heritageId,sdf.format(cal.getTime()),sdf.format(cal.getTime()));
-        call.enqueue(new Callback<JsonResponseMedia>() {
+        Call<String> call = apiInterface.uploadVideo(new VideoBody(videoUrl,heritageId),"Token " + token);
+        call.enqueue(new Callback<String>() {
             @Override
-            public void onResponse(Call<JsonResponseMedia> call, Response<JsonResponseMedia> response) {
+            public void onResponse(Call<String> call, Response<String> response) {
                 Toast.makeText(getApplicationContext(),"Video successfully uploaded.",Toast.LENGTH_SHORT);
             }
 
             @Override
-            public void onFailure(Call<JsonResponseMedia> call, Throwable t) {
+            public void onFailure(Call<String> call, Throwable t) {
                 Toast.makeText(getApplicationContext(),"Uploading video failed, try again.",Toast.LENGTH_SHORT);
             }
         });

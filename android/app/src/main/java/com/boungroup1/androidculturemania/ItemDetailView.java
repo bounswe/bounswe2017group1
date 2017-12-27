@@ -141,28 +141,25 @@ public class ItemDetailView extends AppCompatActivity {
                         tag.append(tags.getName().toString());
                         tag.append(",");
                     }
-                    int counter = 0;
+                    /*int counter = 0;
                     Integer ind_img = null;
-                    Integer ind_vid = null;
-
                     for(Media m:response.body().getMedia()){
                         if(m.getType().equals("image"))
                             ind_img = counter;
-                        if(m.getType().equals("video"))
-                            ind_vid = counter;
                         counter += 1;
                     }
 
-                    if(ind_img!=null)
-                        Picasso.with(getApplicationContext()).load(ApiClient.BASE_URL+response.body().getMedia().get(ind_img).getImage()).into(image);
 
-                    if(ind_vid!=null) {
-                        final Integer ind = ind_vid;
+                    if(ind_img!=null)*/
+                    if(response.body().getMedia().size()>0)
+                        Picasso.with(getApplicationContext()).load(ApiClient.BASE_URL+response.body().getMedia().get(0).getImage()).into(image);
+
+                    if(response.body().getVideo()!=null) {
                         videobutton.setVisibility(View.VISIBLE);
                         videobutton.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(response.body().getMedia().get(ind).getVideo_url())));
+                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(response.body().getVideo().video_url)));
                                 Log.i("Video", "Video Playing....");
                             }
                         });
