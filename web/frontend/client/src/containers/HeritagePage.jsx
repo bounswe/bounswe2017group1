@@ -699,9 +699,6 @@ class HeritagePage extends React.Component {
                       </Carousel.Item>
                     )
                     })}
-                    <Carousel.Item>
-                      <iframe width="920" height="520" src="https://www.youtube.com/embed/icZ-OlVSvb4" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
-                    </Carousel.Item>
                 </Carousel>
                 {this.state.isAnnotationActive ? (
                       <Rector
