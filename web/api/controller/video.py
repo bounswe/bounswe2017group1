@@ -7,6 +7,7 @@ from rest_framework.permissions import IsAuthenticated, AllowAny, IsAuthenticate
 
 from rest_framework.response import Response
 from api.service import permission
+from django.shortcuts import get_object_or_404
 
 from api.model.video import Video
 
@@ -17,7 +18,7 @@ from api.serializer.video import VideoSerializer
 def video_post(request):
     video = None
     if(request.data["heritage"]):
-        video = Video.objects.get(heritage = request.data["heritage"])
+        video = Video.objects.filter(heritage = request.data["heritage"]).first()
     serializer = VideoSerializer(instance=video, data=request.data)
     if serializer.is_valid():
         serializer.save()
