@@ -47,6 +47,7 @@ import retrofit2.Retrofit;
 public class ItemCreateActivity extends AppCompatActivity{
     int dateyear, datemonth, dateday;
     Uri imageUri = null;
+    String videoUrl = null;
 
 
 
@@ -132,6 +133,8 @@ public class ItemCreateActivity extends AppCompatActivity{
         List<Tag> tagsArray = new ArrayList<Tag>();
         for (String tagss : tagstr)
             tagsArray.add(new Tag(tagss, "cat"));
+        EditText video_url_edit = (EditText) findViewById(R.id.video_url);
+        videoUrl = video_url_edit.getText().toString();
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
         Call<JsonResponseItemCreate> call = apiInterface.itemCreate(new ItemCreateBody(title, description, dateyear + "-"+ datemonth+"-"+dateday+" 06:00:00.000000",
                 location,tagsArray ),"Token " + token);
@@ -145,9 +148,12 @@ public class ItemCreateActivity extends AppCompatActivity{
                     if(imageUri!=null){
                         uploadImage(heritageId);
                     }
+                    if(!videoUrl.equals("")){
+                        uploadVideo(heritageId);
+                    }
 
 
-                    Log.d("deneme",response.body().getId().toString());
+                    //Log.d("deneme",response.body().getId().toString());
 
                     Toast.makeText(getApplicationContext(), "SUCCESS", Toast.LENGTH_SHORT).show();
 //                    Log.d("RESPONSE", response.body().getProfile().getGender());
@@ -190,7 +196,8 @@ public class ItemCreateActivity extends AppCompatActivity{
     @Override
     public void onActivityResult(int requestCode, int resultCode,
                                  Intent resultData) {
-        imageUri = resultData.getData();
+        if(resultData!=null)
+            imageUri = resultData.getData();
     }
 
     private void uploadImage(int heritageId){
@@ -208,16 +215,40 @@ public class ItemCreateActivity extends AppCompatActivity{
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
 
         MultipartBody.Part filePart = MultipartBody.Part.createFormData("image", url.substring( url.lastIndexOf('/')+1, url.length() ), RequestBody.create(MediaType.parse("image/*"),file));
-        Call<JsonResponseImage> call = apiInterface.uploadImage("Token " + token,filePart,"image",heritageId,sdf.format(cal.getTime()),sdf.format(cal.getTime()));
-        call.enqueue(new Callback<JsonResponseImage>() {
+        Call<JsonResponseMedia> call = apiInterface.uploadImage("Token " + token,filePart , "image",heritageId,sdf.format(cal.getTime()),sdf.format(cal.getTime()));
+        call.enqueue(new Callback<JsonResponseMedia>() {
             @Override
-            public void onResponse(Call<JsonResponseImage> call, Response<JsonResponseImage> response) {
+            public void onResponse(Call<JsonResponseMedia> call, Response<JsonResponseMedia> response) {
                 Toast.makeText(getApplicationContext(),"Image successfully uploaded.",Toast.LENGTH_SHORT);
             }
 
             @Override
-            public void onFailure(Call<JsonResponseImage> call, Throwable t) {
+            public void onFailure(Call<JsonResponseMedia> call, Throwable t) {
                 Toast.makeText(getApplicationContext(),"Uploading image failed, try again.",Toast.LENGTH_SHORT);
+            }
+        });
+
+    }
+
+    private void uploadVideo(int heritageId){
+        if(videoUrl.equals(""))
+            return;
+
+        final SharedPreferences sharedPref = getSharedPreferences("TOKENSHARED", Context.MODE_PRIVATE);
+        final String  token = sharedPref.getString("TOKEN", null);
+        Retrofit retrofit = ApiClient.getApiClient();
+        ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+
+        Call<String> call = apiInterface.uploadVideo(new VideoBody(videoUrl,heritageId),"Token " + token);
+        call.enqueue(new Callback<String>() {
+            @Override
+            public void onResponse(Call<String> call, Response<String> response) {
+                Toast.makeText(getApplicationContext(),"Video successfully uploaded.",Toast.LENGTH_SHORT);
+            }
+
+            @Override
+            public void onFailure(Call<String> call, Throwable t) {
+                Toast.makeText(getApplicationContext(),"Uploading video failed, try again.",Toast.LENGTH_SHORT);
             }
         });
 

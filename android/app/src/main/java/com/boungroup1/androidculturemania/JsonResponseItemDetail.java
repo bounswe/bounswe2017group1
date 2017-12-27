@@ -71,6 +71,18 @@ public class JsonResponseItemDetail {
     @Expose
     private List<Media> media;
 
+    public Video getVideo() {
+        return video;
+    }
+
+    public void setVideo(Video video) {
+        this.video = video;
+    }
+
+    @SerializedName("video")
+    @Expose
+    private Video video;
+
     public String getCreator_image_path() {
         return creator_image_path;
     }

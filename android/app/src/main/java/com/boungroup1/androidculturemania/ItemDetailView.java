@@ -3,6 +3,7 @@ package com.boungroup1.androidculturemania;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.NestedScrollView;
@@ -70,6 +71,8 @@ public class ItemDetailView extends AppCompatActivity {
         deleteVote = (ImageButton) findViewById(R.id.delete_vote_button);
         final EditText comment_entry = (EditText) findViewById(R.id.comment_entry);
         final Button send_button = (Button) findViewById(R.id.comment_send);
+        final Button videobutton = (Button) findViewById(R.id.videobutton);
+        videobutton.setVisibility(View.INVISIBLE);
         getCommentList();
 
         final TextView tag = (TextView) findViewById(R.id.tag);
@@ -118,7 +121,7 @@ public class ItemDetailView extends AppCompatActivity {
         Call<JsonResponseItemDetail> call = apiInterface.getItem(heritageId, "Token " + token);
         call.enqueue(new Callback<JsonResponseItemDetail>() {
             @Override
-            public void onResponse(Call<JsonResponseItemDetail> call, Response<JsonResponseItemDetail> response) {
+            public void onResponse(Call<JsonResponseItemDetail> call, final Response<JsonResponseItemDetail> response) {
                 if(response.isSuccessful())
                 {
                     if(response.body().isIs_upvoted())
@@ -138,8 +141,30 @@ public class ItemDetailView extends AppCompatActivity {
                         tag.append(tags.getName().toString());
                         tag.append(",");
                     }
+                    /*int counter = 0;
+                    Integer ind_img = null;
+                    for(Media m:response.body().getMedia()){
+                        if(m.getType().equals("image"))
+                            ind_img = counter;
+                        counter += 1;
+                    }
+
+
+                    if(ind_img!=null)*/
                     if(response.body().getMedia().size()>0)
                         Picasso.with(getApplicationContext()).load(ApiClient.BASE_URL+response.body().getMedia().get(0).getImage()).into(image);
+
+                    if(response.body().getVideo()!=null) {
+                        videobutton.setVisibility(View.VISIBLE);
+                        videobutton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(response.body().getVideo().video_url)));
+                                Log.i("Video", "Video Playing....");
+                            }
+                        });
+                    }
+
                     layout.setVisibility(View.VISIBLE);
                 }
             }
