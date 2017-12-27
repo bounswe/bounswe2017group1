@@ -49,7 +49,6 @@ public class ItemDetailView extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.item_detail_view);
-
         final NestedScrollView layout = (NestedScrollView) findViewById(R.id.detail_view_relayout);
         layout.setVisibility(View.INVISIBLE);
 
@@ -72,11 +71,34 @@ public class ItemDetailView extends AppCompatActivity {
         final EditText comment_entry = (EditText) findViewById(R.id.comment_entry);
         final Button send_button = (Button) findViewById(R.id.comment_send);
         final Button videobutton = (Button) findViewById(R.id.videobutton);
+        final Button editbutton = (Button) findViewById(R.id.item_edit);
+        final Button deletebutton = (Button) findViewById(R.id.item_delete);
+
+        editbutton.setVisibility(View.INVISIBLE);
+        deletebutton.setVisibility(View.INVISIBLE);
+
         videobutton.setVisibility(View.INVISIBLE);
         getCommentList();
 
         final TextView tag = (TextView) findViewById(R.id.tag);
         final ImageView image = (ImageView) findViewById(R.id.detailimage);
+
+        editbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ItemEditActivity.class);
+                intent.putExtra("heritageId",heritageId);
+                finish();
+                startActivity(intent);
+            }
+        });
+
+        deletebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deletePost(heritageId);
+            }
+        });
 
         send_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -128,6 +150,10 @@ public class ItemDetailView extends AppCompatActivity {
                         upVote.setEnabled(false);
                     if(response.body().isIs_downvoted())
                         downVote.setEnabled(false);
+                    if(response.body().isIs_owner()){
+                        editbutton.setVisibility(View.VISIBLE);
+                        deletebutton.setVisibility(View.VISIBLE);
+                    }
                     voteCount.setText(Integer.toString(response.body().getUpvote_count()-response.body().getDownvote_count()));
                     //Log.d("RESPONSE", Integer.toString(response.body().getUpvote_count()));
                     String[] datestr = response.body().getEvent_date().toString().split("\\s+");
@@ -202,6 +228,27 @@ public class ItemDetailView extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 sendPostDeleteVote();
+            }
+        });
+    }
+    public void deletePost(int id){
+        Retrofit retrofit = ApiClient.getApiClient();
+        final SharedPreferences sharedPref = getSharedPreferences("TOKENSHARED", Context.MODE_PRIVATE);
+        final String  token = sharedPref.getString("TOKEN", null);
+        ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+        Call<JsonResponseDeletePost> call = apiInterface.deletePost(id,"Token " + token);
+        call.enqueue(new Callback<JsonResponseDeletePost>() {
+            @Override
+            public void onResponse(Call<JsonResponseDeletePost> call, Response<JsonResponseDeletePost> response) {
+                    finish();
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
+            }
+
+            @Override
+            public void onFailure(Call<JsonResponseDeletePost> call, Throwable t) {
+                finish();
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });
     }

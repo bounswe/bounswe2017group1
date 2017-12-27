@@ -39,6 +39,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".ItemEditActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.ITEMDETAIL" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
         <activity android:name=".ItemCreateActivity"
             android:label="Create New Heritage Item">
             <intent-filter>
