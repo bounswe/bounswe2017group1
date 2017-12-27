@@ -66,7 +66,7 @@ class HeritageAddPage extends React.Component {
     heritage.location = location;
     this.setState({
       heritage,
-      locationOK: false
+      locationOK: true
     });
   }
   getTags(input) {

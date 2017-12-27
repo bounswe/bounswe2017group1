@@ -191,7 +191,7 @@ class HeritageEditPage extends React.Component {
 
       if(redirect){
         
-        return (<Redirect to='/' push/>)
+        return (<Redirect to={'/item/'+this.props.match.params.heritageId} push/>)
       }
     return (
       <div>
