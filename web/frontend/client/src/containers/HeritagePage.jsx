@@ -42,7 +42,8 @@ class HeritagePage extends React.Component {
         downvote_count: 0,
         is_upvoted: false,
         is_downvoted: false,
-        is_owner: false
+        is_owner: false,
+        video: null
       },
       mediacontainer : {
         index: 0,
@@ -699,6 +700,19 @@ class HeritagePage extends React.Component {
                       </Carousel.Item>
                     )
                     })}
+                    {this.state.heritage.video !== null ? (
+                    <Carousel.Item>  
+                      <iframe
+                        width="920"
+                        height="520"
+                        src={getEmbedURL(this.state.heritage.video.video_url)}
+                        frameborder="0"
+                        gesture="media"
+                        allow="encrypted-media"
+                      >
+                      </iframe>
+                    </Carousel.Item>
+                    ): null }
                 </Carousel>
                 {this.state.isAnnotationActive ? (
                       <Rector
@@ -835,11 +849,19 @@ function getAnnotatedText(annots,desc) {
   return <span dangerouslySetInnerHTML={{__html: desc}}></span>;
 }
 
+function getEmbedURL(url){
+  url = url.replace("watch?v=","");
+  var index = url.indexOf('.com') + 5;
+  url = [url.slice(0,index), 'embed/', url.slice(index)].join('');
+  return url;
+}
+
 const buttonStyle = {
 	background: 'transparent',
 	borderWidth: 0,
 	outline: 'none'
 }
+
 
 
 /* fetch('http://ec2-18-196-2-56.eu-central-1.compute.amazonaws.com:3000/api/annotation/heritage/92',{
