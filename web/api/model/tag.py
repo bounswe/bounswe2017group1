@@ -12,7 +12,14 @@ class Tag(models.Model):
         self.related_list = json.dumps(x)
 
     def getlist(self):
-        return json.loads(self.related_list)
+        if self.related_list:
+            tt = self.related_list.split(' ')
+            if tt[len(tt)-1] == '':
+                tt = tt[:len(tt)-1]
+            return tt
+
+        return None
+        #return json.loads(self.related_list)
 
     def __str__(self):
         return self.name

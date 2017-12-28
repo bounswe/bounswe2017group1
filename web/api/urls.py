@@ -3,8 +3,10 @@ from django.contrib import admin
 
 from api.controller import (
     profile, comment, vote, user,
-    heritage, tag, search, media, recommendation
+    heritage, tag, search, media,
+    recommendation, annotation, video
 )
+
 urlpatterns = [
 
     # USER ROUTES
@@ -47,17 +49,27 @@ urlpatterns = [
     #MEDIA ROUTES
     url(r'^medias/(?P<pk>[0-9]+)/?$', media.media_get_delete),
     url(r'^medias/backdoor/(?P<pk>[0-9]+)/?$', media.media_backdoor_delete),
-
     url(r'^medias/?$', media.media_post),
 
+    # VIDEO ROUTES
+    url(r'^videos/(?P<pk>[0-9]+)/?$', video.video_get_delete),
+    url(r'^videos/backdoor/(?P<pk>[0-9]+)/?$', video.video_backdoor_delete),
+    url(r'^videos/?$', video.video_post),
 
     # SEARCH ROUTES
     url(r'^search/?$', search.search),
     #url(r'^search/advanced/?$', search.advanced_search),
 
     #RECOMMENDATION ROUTES
-    url(r'^recommendation/user/?$', recommendation.user_based),
-    url(r'^recommendation/heritage/(?P<item_id>[0-9]+)/?$', recommendation.heritage_based),
+    url(r'^recommendation/user/?$', recommendation.user_based_alternative),
+    url(r'^recommendation/heritage/(?P<item_id>[0-9]+)/?$', recommendation.heritage_based_alternative),
+    #url(r'^recommendation/test/(?P<item_id>[0-9]+)/?$', recommendation.recommendation_test),
+
+
+    #ANNOTATION ROUTES
+    url(r'^annotation/?$', annotation.get_all),
+    url(r'^annotation/heritage/(?P<item_id>[0-9]+)/?$', annotation.create_on_description_or_get),
+    url(r'^annotation/heritage/(?P<item_id>[0-9]+)/media/(?P<media_id>[0-9]+)/?$', annotation.create_annotation_on_media),
+    url(r'^annotation/heritage/(?P<item_id>[0-9]+)/comment/(?P<comment_id>[0-9]+)/?$', annotation.create_annotation_on_comment),
 
 ]
-

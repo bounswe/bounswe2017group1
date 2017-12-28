@@ -2,6 +2,8 @@ from api.model.heritage import Heritage
 from rest_framework import serializers
 from api.serializer.tag import TagSerializer
 from api.serializer.media import MediaSerializer
+from api.serializer.video import VideoSerializer
+
 
 from api.model.tag import Tag
 from api.service import heritage, helper
@@ -18,7 +20,7 @@ class HeritageSerializer(serializers.ModelSerializer):
     medias = MediaSerializer(required=False, many=True)
     creator_username = serializers.SerializerMethodField()
     creator_image_path = serializers.SerializerMethodField()
-
+    video = VideoSerializer(required=False)
     class Meta:
         model = Heritage
         fields = '__all__'

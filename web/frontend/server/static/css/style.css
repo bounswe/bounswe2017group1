@@ -369,3 +369,67 @@ div.card-body:hover button.hover {
 .fill-parent {
     width: 100%;
 }
+
+@media only screen and (max-width: 767px) {
+
+    h1 {
+       font-size: 3em;
+    }
+ 
+    h2 {
+       font-size: 2em;
+    }
+
+    h3 {
+        font-size: 1em;
+    }
+ 
+ }
+
+ div.relative {
+     position: relative;
+ }
+
+ canvas.annotation {
+    position: absolute;
+    border:1px solid #000000;
+    margin-top: 0;
+    z-index: 1;
+    left: calc(50% - 160px);
+    top: 0px;
+ }
+
+ .mytooltip {
+    position: relative;
+    background: #03A9F4;
+}
+
+.mytooltip .mytooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 150%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.mytooltip .mytooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+.mytooltip:hover .mytooltiptext {
+    visibility: visible;
+}
