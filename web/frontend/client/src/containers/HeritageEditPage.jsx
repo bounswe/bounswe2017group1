@@ -173,7 +173,8 @@ class HeritageEditPage extends React.Component {
                 this.setState({redirect: true});
               }
             });
-          };
+          }
+          this.setState({redirect: true});
         }
     })
     
