@@ -231,6 +231,7 @@ public class ItemDetailView extends AppCompatActivity {
             }
         });
     }
+
     public void deletePost(int id){
         Retrofit retrofit = ApiClient.getApiClient();
         final SharedPreferences sharedPref = getSharedPreferences("TOKENSHARED", Context.MODE_PRIVATE);
@@ -322,7 +323,7 @@ public class ItemDetailView extends AppCompatActivity {
 
     }
 
-    private void getCommentList(){
+    public void getCommentList(){
         Retrofit retrofit = ApiClient.getApiClient();
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
 
