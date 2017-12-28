@@ -186,7 +186,21 @@
                 android:layout_weight="3"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/item_delete"
+                android:text="Delete"/>
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/item_edit"
+                android:text="Edit"/>
+            </LinearLayout>
         </LinearLayout>
-
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

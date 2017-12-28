@@ -23,6 +23,18 @@ public class JsonResponseItemDetail {
     @Expose
     private int downvote_count;
 
+    @SerializedName("is_owner")
+    @Expose
+    private boolean is_owner;
+
+    public boolean isIs_owner() {
+        return is_owner;
+    }
+
+    public void setIs_owner(boolean is_owner) {
+        this.is_owner = is_owner;
+    }
+
     @SerializedName("is_upvoted")
     @Expose
     private boolean is_upvoted;

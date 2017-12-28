@@ -80,4 +80,8 @@ public interface ApiInterface {
     @HTTP(method = "DELETE", path = "/api/votes", hasBody = true)
     Call<JsonResponseDeleteVote> deleteVote(@Body DeleteVoteBody vote,@Header("Authorization") String  auth);
 
+    @Headers( "Content-Type: application/json" )
+    @HTTP(method = "DELETE", path = "/api/items/{id}", hasBody = false)
+Call<JsonResponseDeletePost> deletePost(@Path("id") int id, @Header("Authorization") String  auth);
+
 }
