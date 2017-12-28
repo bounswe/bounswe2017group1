@@ -37,7 +37,7 @@ class HeritageEditPage extends React.Component {
       location: '',
       pictures: [],
       video:'',
-      locationOK: false,
+      locationOK: true,
       redirect: false
     };
 
@@ -103,7 +103,7 @@ class HeritageEditPage extends React.Component {
     heritage.location = location;
     this.setState({
       heritage,
-      locationOK: false
+      locationOK: true
     });
   }
   getTags(input) {
@@ -125,6 +125,11 @@ class HeritageEditPage extends React.Component {
   processForm(event) {
     // prevent default action. in this case, action is the form submission event
     event.preventDefault();
+
+    if(!this.state.locationOK) {
+      alert('Please select location from dropdown menu');
+      return;
+    }
 
     // create a string for an HTTP body message
     const title = this.state.heritage.title;
