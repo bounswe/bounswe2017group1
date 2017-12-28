@@ -22,7 +22,9 @@ const HeritageForm = ({
   placesAutocompleteItem,
   getTags,
   onTagChange,
-  isEdit
+  isEdit,
+  onVideoChange,
+  video
 }) => (
   <Card className="container">
     <PageHeader >New Heritage Item</PageHeader>
@@ -100,6 +102,20 @@ const HeritageForm = ({
             onEnterKeyDown={handleLocationSelect}
             autocompleteItem={placesAutocompleteItem}
             />
+        </Col>
+      </FormGroup>
+      <FormGroup>
+        <Col className="custom-label" sm={3}>
+          Video
+        </Col>
+        <Col sm={6}>
+          <FormControl
+            type="text"
+            placeholder="Enter video link here"
+            onChange={onVideoChange}
+            value={video}
+            name="video"
+          />
         </Col>
       </FormGroup>
       <Button type="submit" bsStyle="primary">{isEdit? 'Create' : 'Save'}</Button>

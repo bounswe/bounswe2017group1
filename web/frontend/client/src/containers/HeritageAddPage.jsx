@@ -36,6 +36,7 @@ class HeritageAddPage extends React.Component {
       },
       location: '',
       pictures: [],
+      video:'',
       locationOK: false,
       redirect: false
     };
@@ -47,6 +48,7 @@ class HeritageAddPage extends React.Component {
     this.onLocationSelect = this.onLocationSelect.bind(this);
     this.getTags = this.getTags.bind(this);
     this.onTagChange = this.onTagChange.bind(this);
+    this.onVideoChange = this.onVideoChange.bind(this);
   }
   onImageChange(e){
     const pictures = this.state.pictures;
@@ -66,7 +68,7 @@ class HeritageAddPage extends React.Component {
     heritage.location = location;
     this.setState({
       heritage,
-      locationOK: true
+      locationOK: false
     });
   }
   getTags(input) {
@@ -141,6 +143,23 @@ class HeritageAddPage extends React.Component {
               })
             }
           })
+
+          if (this.state.video != '') {
+            const video_url = this.state.video;
+            const heritage = res.id;
+            const videoFormData = {video_url, heritage};
+            console.log(videoFormData);
+            fetch(baseUrl+'/api/videos', {
+              method: 'POST',
+              headers: {
+                "Access-Control-Allow-Origin" : "*",
+                "Content-Type": "application/json",
+                "authorization": "token "+Auth.getToken()
+              },
+              credentials: "same-origin",
+              body: JSON.stringify(videoFormData),
+            }).then(resp=> resp.status);
+          };
           /* var formData = new FormData();
           formData.append('image',this.state.pictures[0]);
           formData.append('type','image');
@@ -187,6 +206,13 @@ class HeritageAddPage extends React.Component {
     heritage[field] = event.target.value;
     this.setState({
       heritage
+    });
+  }
+
+  onVideoChange(event){
+    var video = event.target.value;
+    this.setState({
+      video
     });
   }
 
@@ -237,6 +263,8 @@ class HeritageAddPage extends React.Component {
           getTags={this.getTags}
           onTagChange={this.onTagChange}
           isEdit={true}
+          onVideoChange={this.onVideoChange}
+          video={this.state.video}
         />
       </div>
     );
