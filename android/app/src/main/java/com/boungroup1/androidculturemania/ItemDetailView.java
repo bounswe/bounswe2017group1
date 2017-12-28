@@ -88,6 +88,10 @@ public class ItemDetailView extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(getApplicationContext(), ItemEditActivity.class);
                 intent.putExtra("heritageId",heritageId);
+                intent.putExtra("description", ""+description.getText() );
+                intent.putExtra("title", title.getText() );
+                intent.putExtra("location", ""+location.getText());
+                intent.putExtra("tags", ""+tag.getText());
                 finish();
                 startActivity(intent);
             }

@@ -46,6 +46,7 @@ public class ItemEditActivity extends AppCompatActivity {
     Uri imageUri = null;
     String videoUrl = null;
     int heritageId;
+    String descstr,titlestr, tagstr, locstr;
 
 
     @Override
@@ -62,6 +63,10 @@ public class ItemEditActivity extends AppCompatActivity {
         final Button uploadImage = (Button) findViewById(R.id.edit_uploadImage);
         Intent intent = getIntent();
         heritageId = intent.getIntExtra("heritageId", -1);
+        descstr = intent.getStringExtra("description");
+        titlestr = intent.getStringExtra("title");
+        tagstr = intent.getStringExtra("tags");
+        locstr = intent.getStringExtra("location");
         uploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,6 +76,10 @@ public class ItemEditActivity extends AppCompatActivity {
                 startActivityForResult(intent, 42);
             }
         });
+        title.setText(titlestr);
+        description.setText("" + descstr);
+        tags.setText(""+tagstr);
+        location.setText(""+locstr);
 
         final Calendar myCalendar = Calendar.getInstance();
 
