@@ -86,7 +86,7 @@ public class ItemDetailView extends AppCompatActivity {
         editbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ItemEditActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ItemCreateActivity.class);
                 intent.putExtra("heritageId",heritageId);
                 finish();
                 startActivity(intent);
