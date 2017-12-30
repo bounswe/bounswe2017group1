@@ -9,8 +9,8 @@ django-filter==1.0.4
 django-cors-headers==2.1.0
 django-rest-swagger==2.1.2
 drfdocs
+Pillow
 requests==2.18.4
-gensim
 idna==2.6
 Markdown==2.6.9
 pytz==2017.2
