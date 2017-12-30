@@ -1,7 +1,7 @@
 package com.boungroup1.androidculturemania;
 
 /**
- * Created by mustafa on 12/28/17.
+ * Created by user on 28/12/2017.
  */
 
 public class JsonResponseDeleteComment {
