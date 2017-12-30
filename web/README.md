@@ -1,5 +1,4 @@
-CultureMania Web Service
-***
+# CultureMania Web Service
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
@@ -42,4 +41,19 @@ node.js, npm
 2. Install necessary dependecies: `npm install``
 3. Run server locally: `npm start`
 4. If you get success message, server’s running, visit `http://127.0.0.1:3000/`
+***
+
+## Annotation Server
+
+### Prerequisites
+python2.7, mongodb
+
+### How to Setup
+1. Clone this repo to your desktop: `git clone https://github.com/bounswe/bounswe2017group1.git`
+2. Go to annotation service folder: `cd bounswe2017group1/web/annotation_jsonld`
+3. Install necessary dependecies: `pip install -r requirements.txt`
+4. Start mongodb service: `mongod`
+5. Create a new mongo database: `mongo <dbname>`
+6. Run annotation server locally: `python server.py`
+7. If you get success message, server’s running, visit `http://127.0.0.1:5005/`
 ***
