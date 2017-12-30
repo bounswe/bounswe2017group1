@@ -37,33 +37,36 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
-//import static android.R.attr.password;
-//import static com.boungroup1.androidculturemania.R.id.username;
-
 /**
- * Created by user on 15/11/2017.
+ * Created by user on 28/12/2017.
  */
 
-public class ItemCreateActivity extends AppCompatActivity{
+public class ItemEditActivity extends AppCompatActivity {
     int dateyear, datemonth, dateday;
     Uri imageUri = null;
     String videoUrl = null;
-
+    int heritageId;
+    String descstr,titlestr, tagstr, locstr;
 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_item_create);
+        setContentView(R.layout.activity_item_edit);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        final EditText title = (EditText) findViewById(R.id.input_title);
-        final EditText description = (EditText) findViewById(R.id.input_description);
-        final EditText location = (EditText) findViewById(R.id.input_location);
-        final EditText tags = (EditText) findViewById(R.id.tags);
-        final Button btn_create_item = (Button) findViewById(R.id.btn_create_item);
-        final EditText dateedit = (EditText) findViewById(R.id.date);
-        final Button uploadImage = (Button) findViewById(R.id.uploadImage);
-
+        final EditText title = (EditText) findViewById(R.id.edit_input_title);
+        final EditText description = (EditText) findViewById(R.id.edit_input_description);
+        final EditText location = (EditText) findViewById(R.id.edit_input_location);
+        final EditText tags = (EditText) findViewById(R.id.edit_tags);
+        final Button btn_create_item = (Button) findViewById(R.id.edit_btn_create_item);
+        final EditText dateedit = (EditText) findViewById(R.id.edit_date);
+        final Button uploadImage = (Button) findViewById(R.id.edit_uploadImage);
+        Intent intent = getIntent();
+        heritageId = intent.getIntExtra("heritageId", -1);
+        descstr = intent.getStringExtra("description");
+        titlestr = intent.getStringExtra("title");
+        tagstr = intent.getStringExtra("tags");
+        locstr = intent.getStringExtra("location");
         uploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,6 +76,10 @@ public class ItemCreateActivity extends AppCompatActivity{
                 startActivityForResult(intent, 42);
             }
         });
+        title.setText(titlestr);
+        description.setText("" + descstr);
+        tags.setText(""+tagstr);
+        location.setText(""+locstr);
 
         final Calendar myCalendar = Calendar.getInstance();
 
@@ -101,7 +108,7 @@ public class ItemCreateActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                new DatePickerDialog(ItemCreateActivity.this, date, myCalendar
+                new DatePickerDialog(ItemEditActivity.this, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
@@ -117,11 +124,31 @@ public class ItemCreateActivity extends AppCompatActivity{
 
                 if (!TextUtils.isEmpty(title_str) && !TextUtils.isEmpty(description_str) && !TextUtils.isEmpty(location_str) && !TextUtils.isEmpty(tag_string))
                 {
+                    deletePost(heritageId);
                     sendPost(title_str, description_str, location_str, tag_string);
                 }
             }
         });
 
+    }
+
+    public void deletePost(int id){
+        Retrofit retrofit = ApiClient.getApiClient();
+        final SharedPreferences sharedPref = getSharedPreferences("TOKENSHARED", Context.MODE_PRIVATE);
+        final String  token = sharedPref.getString("TOKEN", null);
+        ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+        Call<JsonResponseDeletePost> call = apiInterface.deletePost(id,"Token " + token);
+        call.enqueue(new Callback<JsonResponseDeletePost>() {
+            @Override
+            public void onResponse(Call<JsonResponseDeletePost> call, Response<JsonResponseDeletePost> response) {
+
+            }
+
+            @Override
+            public void onFailure(Call<JsonResponseDeletePost> call, Throwable t) {
+
+            }
+        });
     }
 
 
@@ -133,7 +160,7 @@ public class ItemCreateActivity extends AppCompatActivity{
         List<Tag> tagsArray = new ArrayList<Tag>();
         for (String tagss : tagstr)
             tagsArray.add(new Tag(tagss, "cat"));
-        EditText video_url_edit = (EditText) findViewById(R.id.video_url);
+        EditText video_url_edit = (EditText) findViewById(R.id.edit_video_url);
         videoUrl = video_url_edit.getText().toString();
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
         Call<JsonResponseItemCreate> call = apiInterface.itemCreate(new ItemCreateBody(title, description, dateyear + "-"+ datemonth+"-"+dateday+" 06:00:00.000000",

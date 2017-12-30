@@ -23,6 +23,18 @@ public class JsonResponseItemDetail {
     @Expose
     private int downvote_count;
 
+    @SerializedName("is_owner")
+    @Expose
+    private boolean is_owner;
+
+    public boolean isIs_owner() {
+        return is_owner;
+    }
+
+    public void setIs_owner(boolean is_owner) {
+        this.is_owner = is_owner;
+    }
+
     @SerializedName("is_upvoted")
     @Expose
     private boolean is_upvoted;
@@ -70,6 +82,18 @@ public class JsonResponseItemDetail {
     @SerializedName("medias")
     @Expose
     private List<Media> media;
+
+    public Video getVideo() {
+        return video;
+    }
+
+    public void setVideo(Video video) {
+        this.video = video;
+    }
+
+    @SerializedName("video")
+    @Expose
+    private Video video;
 
     public String getCreator_image_path() {
         return creator_image_path;

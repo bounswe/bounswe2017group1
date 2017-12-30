@@ -3,6 +3,7 @@ package com.boungroup1.androidculturemania;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.NestedScrollView;
@@ -42,12 +43,12 @@ public class ItemDetailView extends AppCompatActivity {
     TextView voteCount;
     ImageButton upVote;
     ImageButton downVote;
+    ImageButton deleteVote;
     int heritageId;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.item_detail_view);
-
         final NestedScrollView layout = (NestedScrollView) findViewById(R.id.detail_view_relayout);
         layout.setVisibility(View.INVISIBLE);
 
@@ -66,12 +67,42 @@ public class ItemDetailView extends AppCompatActivity {
         voteCount = (TextView) findViewById(R.id.vote_count);
         upVote = (ImageButton) findViewById(R.id.up_vote_button);
         downVote = (ImageButton) findViewById(R.id.down_vote_button);
+        deleteVote = (ImageButton) findViewById(R.id.delete_vote_button);
         final EditText comment_entry = (EditText) findViewById(R.id.comment_entry);
         final Button send_button = (Button) findViewById(R.id.comment_send);
+        final Button videobutton = (Button) findViewById(R.id.videobutton);
+        final Button editbutton = (Button) findViewById(R.id.item_edit);
+        final Button deletebutton = (Button) findViewById(R.id.item_delete);
+
+        editbutton.setVisibility(View.INVISIBLE);
+        deletebutton.setVisibility(View.INVISIBLE);
+
+        videobutton.setVisibility(View.INVISIBLE);
         getCommentList();
 
         final TextView tag = (TextView) findViewById(R.id.tag);
         final ImageView image = (ImageView) findViewById(R.id.detailimage);
+
+        editbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), ItemCreateActivity.class);
+                intent.putExtra("heritageId",heritageId);
+                intent.putExtra("description", ""+description.getText() );
+                intent.putExtra("title", title.getText() );
+                intent.putExtra("location", ""+location.getText());
+                intent.putExtra("tags", ""+tag.getText());
+                finish();
+                startActivity(intent);
+            }
+        });
+
+        deletebutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                deletePost(heritageId);
+            }
+        });
 
         send_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -116,13 +147,17 @@ public class ItemDetailView extends AppCompatActivity {
         Call<JsonResponseItemDetail> call = apiInterface.getItem(heritageId, "Token " + token);
         call.enqueue(new Callback<JsonResponseItemDetail>() {
             @Override
-            public void onResponse(Call<JsonResponseItemDetail> call, Response<JsonResponseItemDetail> response) {
+            public void onResponse(Call<JsonResponseItemDetail> call, final Response<JsonResponseItemDetail> response) {
                 if(response.isSuccessful())
                 {
                     if(response.body().isIs_upvoted())
                         upVote.setEnabled(false);
                     if(response.body().isIs_downvoted())
                         downVote.setEnabled(false);
+                    if(response.body().isIs_owner()){
+                        editbutton.setVisibility(View.VISIBLE);
+                        deletebutton.setVisibility(View.VISIBLE);
+                    }
                     voteCount.setText(Integer.toString(response.body().getUpvote_count()-response.body().getDownvote_count()));
                     //Log.d("RESPONSE", Integer.toString(response.body().getUpvote_count()));
                     String[] datestr = response.body().getEvent_date().toString().split("\\s+");
@@ -136,8 +171,30 @@ public class ItemDetailView extends AppCompatActivity {
                         tag.append(tags.getName().toString());
                         tag.append(",");
                     }
+                    /*int counter = 0;
+                    Integer ind_img = null;
+                    for(Media m:response.body().getMedia()){
+                        if(m.getType().equals("image"))
+                            ind_img = counter;
+                        counter += 1;
+                    }
+
+
+                    if(ind_img!=null)*/
                     if(response.body().getMedia().size()>0)
                         Picasso.with(getApplicationContext()).load(ApiClient.BASE_URL+response.body().getMedia().get(0).getImage()).into(image);
+
+                    if(response.body().getVideo()!=null) {
+                        videobutton.setVisibility(View.VISIBLE);
+                        videobutton.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View v) {
+                                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(response.body().getVideo().video_url)));
+                                Log.i("Video", "Video Playing....");
+                            }
+                        });
+                    }
+
                     layout.setVisibility(View.VISIBLE);
                 }
             }
@@ -171,6 +228,69 @@ public class ItemDetailView extends AppCompatActivity {
 
             }
         });
+        deleteVote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendPostDeleteVote();
+            }
+        });
+    }
+
+    public void deletePost(int id){
+        Retrofit retrofit = ApiClient.getApiClient();
+        final SharedPreferences sharedPref = getSharedPreferences("TOKENSHARED", Context.MODE_PRIVATE);
+        final String  token = sharedPref.getString("TOKEN", null);
+        ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+        Call<JsonResponseDeletePost> call = apiInterface.deletePost(id,"Token " + token);
+        call.enqueue(new Callback<JsonResponseDeletePost>() {
+            @Override
+            public void onResponse(Call<JsonResponseDeletePost> call, Response<JsonResponseDeletePost> response) {
+                    finish();
+                    startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
+            }
+
+            @Override
+            public void onFailure(Call<JsonResponseDeletePost> call, Throwable t) {
+                finish();
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
+            }
+        });
+    }
+    public void sendPostDeleteVote(){
+        Intent intent = getIntent();
+        final int heritageId = intent.getIntExtra("heritageId", -1);
+        Retrofit retrofit = ApiClient.getApiClient();
+        final SharedPreferences sharedPref = getSharedPreferences("TOKENSHARED", Context.MODE_PRIVATE);
+        final String  token = sharedPref.getString("TOKEN", null);
+        ApiInterface apiInterface = retrofit.create(ApiInterface.class);
+        Call<JsonResponseDeleteVote> call = apiInterface.deleteVote(new DeleteVoteBody(heritageId),"Token " + token);
+        call.enqueue(new Callback<JsonResponseDeleteVote>() {
+            @Override
+            public void onResponse(Call<JsonResponseDeleteVote> call, Response<JsonResponseDeleteVote> response) {
+
+                if (response.isSuccessful()) {
+                    Toast.makeText(getApplicationContext(), "SUCCESSFUL DELETE VOTE", Toast.LENGTH_SHORT).show();
+                    voteCount.setText(Integer.toString(response.body().getUpvote_count()-response.body().getDownvote_count()));
+                    upVote.setEnabled(true);
+                    downVote.setEnabled(true);
+
+                }else if(response.code() == 404){
+                    Toast.makeText(getApplicationContext(), "Firstly, please vote !!" , Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "Sorry for inconvince server is down" + response.code(), Toast.LENGTH_SHORT).show();
+                    Log.d("response", response.raw().body().toString());
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<JsonResponseDeleteVote> call, Throwable t) {
+                Toast.makeText(getApplicationContext(), "ERROR while posting", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     public void sendPostUpVote(){
@@ -188,13 +308,10 @@ public class ItemDetailView extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "SUCCESSFUL UPVOTE", Toast.LENGTH_SHORT).show();
                     voteCount.setText(Integer.toString(response.body().getUpvote_count()-response.body().getDownvote_count()));
+                    deleteVote.setEnabled(true);
                     upVote.setEnabled(false);
                     downVote.setEnabled(true);
-                    /*Intent e = new Intent(getApplicationContext(),
-                            ItemDetailView.class);
-                    e.putExtra("heritageId", heritageId);
-                    finish();
-                    startActivity(e);*/
+
                 } else {
                     Toast.makeText(getApplicationContext(), "Sorry for inconvince server is down" + response.code(), Toast.LENGTH_SHORT).show();
                     Log.d("response", response.raw().body().toString());
@@ -210,7 +327,7 @@ public class ItemDetailView extends AppCompatActivity {
 
     }
 
-    private void getCommentList(){
+    public void getCommentList(){
         Retrofit retrofit = ApiClient.getApiClient();
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
 
@@ -263,13 +380,10 @@ public class ItemDetailView extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     Toast.makeText(getApplicationContext(), "SUCCESSFUL DOWNVOTE", Toast.LENGTH_SHORT).show();
                     voteCount.setText(Integer.toString(response.body().getUpvote_count()-response.body().getDownvote_count()));
+                    deleteVote.setEnabled(true);
                     downVote.setEnabled(false);
                     upVote.setEnabled(true);
-                    /*Intent e = new Intent(getApplicationContext(),
-                            ItemDetailView.class);
-                    e.putExtra("heritageId", heritageId);
-                    finish();
-                    startActivity(e);*/
+
                 } else {
                     Toast.makeText(getApplicationContext(), "Sorry for inconvince server is down" + response.code(), Toast.LENGTH_SHORT).show();
                     Log.d("response", response.raw().body().toString());

@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/input_title"
+            <EditText android:id="@+id/edit_input_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords"
@@ -28,20 +28,20 @@
         </android.support.design.widget.TextInputLayout>
 
         <EditText
-            android:id="@+id/date"
+            android:id="@+id/edit_date"
             android:clickable="true"
             android:editable="false"
             android:hint="date"
             android:layout_height="wrap_content"
             android:layout_width="match_parent" />
 
-            <EditText android:id="@+id/input_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Description"
-                android:lines="5"
-                android:maxLines="30"
-                android:gravity="top"/>
+        <EditText android:id="@+id/edit_input_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Description"
+            android:lines="5"
+            android:maxLines="30"
+            android:gravity="top"/>
 
         <!-- Password Label -->
         <android.support.design.widget.TextInputLayout
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/input_location"
+            <EditText android:id="@+id/edit_input_location"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords"
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp">
-            <EditText android:id="@+id/tags"
+            <EditText android:id="@+id/edit_tags"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textCapWords"
@@ -70,15 +70,15 @@
         </android.support.design.widget.TextInputLayout>
 
         <EditText
-            android:id="@+id/video_url"
+            android:id="@+id/edit_video_url"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textCapWords"
             android:hint="Video url"
-        />
+            />
 
         <Button
-            android:id="@+id/uploadImage"
+            android:id="@+id/edit_uploadImage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -86,13 +86,13 @@
 
         <!-- Signup Button -->
         <android.support.v7.widget.AppCompatButton
-            android:id="@+id/btn_create_item"
+            android:id="@+id/edit_btn_create_item"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
             android:layout_marginBottom="24dp"
             android:padding="12dp"
-            android:text="Create Item"/>
+            android:text="Edit Item"/>
 
     </LinearLayout>
 </ScrollView>

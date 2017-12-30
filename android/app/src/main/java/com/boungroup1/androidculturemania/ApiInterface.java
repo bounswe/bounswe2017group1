@@ -6,6 +6,7 @@ import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.HTTP;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.Multipart;
@@ -69,6 +70,22 @@ public interface ApiInterface {
 
     @Multipart
     @POST("/api/medias")
-    Call<JsonResponseImage> uploadImage(@Header("Authorization") String authorization, @Part MultipartBody.Part image , @Part("type") String type, @Part("heritage") int heritage, @Part("creation_date") String creation_date, @Part("update_date") String update_date);
+    Call<JsonResponseMedia> uploadImage(@Header("Authorization") String authorization, @Part MultipartBody.Part image, @Part("type") String type, @Part("heritage") int heritage, @Part("creation_date") String creation_date, @Part("update_date") String update_date);
+
+    @Headers( "Content-Type: application/json" )
+    @POST("/api/videos")
+    Call<String> uploadVideo(@Body VideoBody video, @Header("Authorization") String  auth);
+
+    @Headers( "Content-Type: application/json" )
+    @HTTP(method = "DELETE", path = "/api/votes", hasBody = true)
+    Call<JsonResponseDeleteVote> deleteVote(@Body DeleteVoteBody vote,@Header("Authorization") String  auth);
+
+    @Headers( "Content-Type: application/json" )
+    @HTTP(method = "DELETE", path = "/api/items/{id}", hasBody = false)
+    Call<JsonResponseDeletePost> deletePost(@Path("id") int id, @Header("Authorization") String  auth);
+
+    @Headers( "Content-Type: application/json" )
+    @HTTP(method = "DELETE", path = "/api/comments/{id}", hasBody = false)
+    Call<JsonResponseDeleteComment> deleteComment(@Path("id") int id, @Header("Authorization") String  auth);
 
 }
