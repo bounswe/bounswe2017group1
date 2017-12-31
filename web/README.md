@@ -2,6 +2,9 @@
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+Amazon Web Server: http://18.196.2.56
+API Doc by Postman: https://documenter.getpostman.com/view/3445692/api/7Lq8gUf
+
 ## Backend Server
 
 ### Prerequisites
