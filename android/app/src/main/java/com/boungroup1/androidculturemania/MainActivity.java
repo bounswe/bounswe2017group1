@@ -38,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private int tabPosition = 0;
 
+    /**
+     * Interface class on starting stage
+     */
     @Override
     protected void onStart() {
         super.onStart();
@@ -52,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Interface class on creating stage
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -127,6 +134,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * @param menu action bar menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu,menu);
@@ -137,6 +148,10 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+    /**
+     * @param item items in the action bar
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -166,6 +181,10 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+    /**
+     * Repositioning the tabs after refreshing
+     */
     private void refreshHeritageList(){
         new Handler().post(new Runnable() {
             @Override
@@ -184,6 +203,9 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * @param heritageList Heritage List that is json response from api
+     */
     private void setHeritageRecyclerView(final ArrayList<JsonResponseHeritage> heritageList){
         final RecyclerView heritageRecyclerView = (RecyclerView) findViewById(R.id.heritage_recycler_view);
         final HeritageAdapter heritageAdapter = new HeritageAdapter(getApplicationContext(),heritageList);
@@ -211,6 +233,9 @@ public class MainActivity extends AppCompatActivity {
         }));
     }
 
+    /**
+     * Get heritage items' list from api according to the order of creation date
+     */
     private void getHeritageList(){
         Retrofit retrofit = ApiClient.getApiClient();
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
@@ -233,6 +258,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * Get user-based recommended heritage items' list from the api
+     */
     private void getRecommendedHeritageList(){
         final SharedPreferences sharedPref = getSharedPreferences("TOKENSHARED", Context.MODE_PRIVATE);
         final SharedPreferences.Editor editor = sharedPref.edit();
@@ -258,6 +287,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * Get newest heritage items' list from the api
+     */
     private void getNewHeritageList(){
         Retrofit retrofit = ApiClient.getApiClient();
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
@@ -280,6 +313,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * Get toppest heritage items' list from the api
+     */
     private void getTopHeritageList(){
         Retrofit retrofit = ApiClient.getApiClient();
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
@@ -302,6 +339,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * Get trending heritage items' list from the api
+     */
     private void getTrendingHeritageList(){
         Retrofit retrofit = ApiClient.getApiClient();
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
