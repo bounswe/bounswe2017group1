@@ -4,7 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by mustafa on 12/14/17.
+ * Response of the Delete Vote Request
  */
 
 public class JsonResponseDeleteVote {

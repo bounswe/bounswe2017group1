@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Created by user on 03/12/2017.
+ * Response of the Search Post Request
  */
 
 public class JsonResponseSearchHeritage {

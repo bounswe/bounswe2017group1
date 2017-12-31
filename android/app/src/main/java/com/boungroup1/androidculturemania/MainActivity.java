@@ -32,6 +32,9 @@ import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 
+/**
+ * Main activiy of CultureMania
+ */
 public class MainActivity extends AppCompatActivity {
 
     private TabLayout tabLayout;
@@ -57,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * Interface class on creating stage
-     * @param savedInstanceState
+     * @param savedInstanceState The savedInstanceState is a reference to a Bundle object that is passed into the onCreate method
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -150,7 +153,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * @param item items in the action bar
-     * @return
+     * @return selected item in the action bar
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

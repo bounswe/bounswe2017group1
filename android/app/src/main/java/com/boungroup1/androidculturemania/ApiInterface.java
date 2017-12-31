@@ -187,7 +187,7 @@ public interface ApiInterface {
 
     /**
      * Delete a comment
-     * @param id comment id that is waned to be deleted
+     * @param id comment id that is wanted to be deleted
      * @param auth authorization token
      * @return response of the deletion
      */
