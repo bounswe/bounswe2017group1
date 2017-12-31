@@ -1,0 +1,611 @@
+{
+	"variables": [],
+	"info": {
+		"name": "api",
+		"_postman_id": "d669816a-bb31-01fc-9117-6292b0dc9d74",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "user",
+			"description": "user routes",
+			"item": [
+				{
+					"name": "127.0.0.1:8000/api/users/signin",
+					"request": {
+						"url": "127.0.0.1:8000/api/users/signin",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"frknilisu\",\n\t\"email\": \"frkn@gmail.com\",\n\t\"password\": \"pass12345\"\n}"
+						},
+						"description": "authenticate user with username and password, return token"
+					},
+					"response": []
+				},
+				{
+					"name": "127.0.0.1:8000/api/users/signout",
+					"request": {
+						"url": "127.0.0.1:8000/api/users/signout",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token 4e37c79e74dd06ced25f5121aefb30e48950a53e",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "logout and delete user token from database"
+					},
+					"response": []
+				},
+				{
+					"name": "127.0.0.1:8000/api/users/login_req",
+					"request": {
+						"url": "127.0.0.1:8000/api/users/login_req",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token \t4e37c79e74dd06ced25f5121aefb30e48950a53e",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "check user is authenticated with token"
+					},
+					"response": []
+				},
+				{
+					"name": "127.0.0.1:8000/api/users/signup",
+					"request": {
+						"url": "127.0.0.1:8000/api/users/signup",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"frknilisu\",\n\t\"email\": \"frkn@gmail.com\",\n\t\"password\": \"pass12345\"\n}"
+						},
+						"description": "Create user and return"
+					},
+					"response": []
+				},
+				{
+					"name": "127.0.0.1:8000/api/users/",
+					"request": {
+						"url": "127.0.0.1:8000/api/users/",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"user\": {\n\t\t\"username\": \"test1\",\n\t\t\"email\": \"test1@gmail.com\",\n\t\t\"password\": \"pass12345\",\n\t\t\"profile\": {\n\t\t\t\"location\": \"Istanbul\",\n\t\t\t\"gender\": \"Male\"\n\t\t}\n\t}\n}"
+						},
+						"description": "register_api_view"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "item",
+			"description": "heritage item routes",
+			"item": [
+				{
+					"name": "127.0.0.1:8000/api/items/",
+					"request": {
+						"url": "127.0.0.1:8000/api/items/",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "get all heritage items"
+					},
+					"response": []
+				},
+				{
+					"name": "127.0.0.1:8000/api/items/",
+					"request": {
+						"url": "127.0.0.1:8000/api/items/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Token 5cc4aef5956b13d410d4b696bec4adb2fd506bd2",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"title\": \"Colosseum\",\n        \"description\": \"Located just east of the Roman Forum, the massive stone amphitheater known as the Colosseum was commissioned around A.D. 70-72 by Emperor Vespasian of the Flavian dynasty as a gift to the Roman people. In A.D. 80, Vespasian’s son Titus opened the Colosseum–officially known as the Flavian Amphitheater–with 100 days of games, including gladiatorial combats and wild animal fights. After four centuries of active use, the magnificent arena fell into neglect, and up until the 18th century it was used as a source of building materials. Though two-thirds of the original Colosseum has been destroyed over time, the amphitheater remains a popular tourist destination, as well as an iconic symbol of Rome and its long, tumultuous history.\",\n        \"tags\": [\n        \t{\n        \t\t\"name\": \"roma\"\n        \t},\n        \t{\n        \t\t\"name\": \"italy\"\n        \t},\n        \t{\n        \t\t\"name\": \"amphitheater\"\n        \t},\n        \t{\n        \t\t\"name\": \"gladiators\"\n        \t}\n        ],\n        \"location\": \"Roma\"\n}"
+						},
+						"description": "create new heritage item"
+					},
+					"response": []
+				},
+				{
+					"name": "127.0.0.1:8000/api/items/4",
+					"request": {
+						"url": "127.0.0.1:8000/api/items/4",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "get a heritage item by id"
+					},
+					"response": []
+				},
+				{
+					"name": "127.0.0.1:8000/api/items/4",
+					"request": {
+						"url": "127.0.0.1:8000/api/items/4",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Token ccf0c60c07a3cd7ad91b89718e37a78b08fd3243",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n        \"title\": \"test heritage title 4.2\",\n        \"description\": \"test heritage description 4.1\",\n        \"event_date\": \"2017-10-25T14:16:22Z\",\n        \"tags\": [\n        \t{\n        \t\t\"name\": \"tag1.1\",\n        \t\t\"category\": null\n        \t},\n        \t{\n        \t\t\"name\": \"tag2\",\n        \t\t\"category\": \"update1.1\"\n        \t},\n        \t{\n        \t\t\"name\": \"tag3\",\n        \t\t\"category\": \"update2\"\n        \t}\n        ],\n        \"location\": \"ay\"\n}"
+						},
+						"description": "update heritage item indicated by id"
+					},
+					"response": []
+				},
+				{
+					"name": "127.0.0.1:8000/api/items/4",
+					"request": {
+						"url": "127.0.0.1:8000/api/items/3",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token  ccf0c60c07a3cd7ad91b89718e37a78b08fd3243",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "delete heritage item indicated by id"
+					},
+					"response": []
+				},
+				{
+					"name": "127.0.0.1:8000/api/items/5/tags/",
+					"request": {
+						"url": "127.0.0.1:8000/api/items/5/tags/",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "get all tags of the heritage item indicated by id"
+					},
+					"response": []
+				},
+				{
+					"name": "127.0.0.1:8000/api/items/5/comments/",
+					"request": {
+						"url": "127.0.0.1:8000/api/items/5/comments/",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "get all comments of the heritage item indicated by id"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "comment",
+			"description": "",
+			"item": [
+				{
+					"name": "127.0.0.1:8000/api/comments/",
+					"request": {
+						"url": "127.0.0.1:8000/api/comments/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token \tbdd88882ac99a511bed21d7c894a41ce48d5ee10",
+								"description": "",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Token \tccf0c60c07a3cd7ad91b89718e37a78b08fd3243",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"text\": \"test comment 3\",\n\t\"heritage\": 5,\n\t\"parent_comment\": 2\n}"
+						},
+						"description": "create new comment"
+					},
+					"response": []
+				},
+				{
+					"name": "127.0.0.1:8000/api/comments/",
+					"request": {
+						"url": "127.0.0.1:8000/api/comments/",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "get all comments"
+					},
+					"response": []
+				},
+				{
+					"name": "127.0.0.1:8000/api/comments/4",
+					"request": {
+						"url": "127.0.0.1:8000/api/comments/4",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "get a comment by id"
+					},
+					"response": []
+				},
+				{
+					"name": "127.0.0.1:8000/api/comments/1",
+					"request": {
+						"url": "127.0.0.1:8000/api/comments/1",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token \tbdd88882ac99a511bed21d7c894a41ce48d5ee10",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Token \tccf0c60c07a3cd7ad91b89718e37a78b08fd3243",
+								"description": "",
+								"disabled": true
+							}
+						],
+						"body": {},
+						"description": "delete the comment indicated by id"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "vote",
+			"description": "vote routes",
+			"item": [
+				{
+					"name": "127.0.0.1:8000/api/votes/",
+					"request": {
+						"url": "127.0.0.1:8000/api/votes/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Token \tccf0c60c07a3cd7ad91b89718e37a78b08fd3243",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"value\": \"true\",\n\t\"heritage\": 2\n}"
+						},
+						"description": "create new vote"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "profile",
+			"description": "profile routes",
+			"item": [
+				{
+					"name": "127.0.0.1:8000/api/profiles/",
+					"request": {
+						"url": "127.0.0.1:8000/api/profiles/",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "get all user profiles"
+					},
+					"response": []
+				},
+				{
+					"name": "127.0.0.1:8000/api/profiles/2",
+					"request": {
+						"url": "127.0.0.1:8000/api/profiles/2",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "get the user profile by id"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "tag",
+			"description": "tag routes",
+			"item": [
+				{
+					"name": "127.0.0.1:8000/api/tags/",
+					"request": {
+						"url": "127.0.0.1:8000/api/tags/",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "get all tags"
+					},
+					"response": []
+				},
+				{
+					"name": "127.0.0.1:8000/api/tags/3/heritages",
+					"request": {
+						"url": "127.0.0.1:8000/api/tags/3/heritages",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "get all heritage items own the tag indicated by id"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "search",
+			"description": "search routes",
+			"item": [
+				{
+					"name": "127.0.0.1:8000/api/search/",
+					"request": {
+						"url": "127.0.0.1:8000/api/search/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"query\": \"food eat meal breakfast\"\n}"
+						},
+						"description": "basic search"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "recommendation",
+			"description": "user-based and heritage-based recommendations",
+			"item": [
+				{
+					"name": "127.0.0.1:8000/api/recommendation/user/",
+					"request": {
+						"url": "127.0.0.1:8000/api/recommendation/user/",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Token bc1381748ed993dd9a2f2e31d33a586e0a8009db",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "user-based recommendation"
+					},
+					"response": []
+				},
+				{
+					"name": "127.0.0.1:8000/api/recommendation/heritage/25",
+					"request": {
+						"url": "127.0.0.1:8000/api/recommendation/heritage/88",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "heritage-based recommendation"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "annotation",
+			"description": "",
+			"item": [
+				{
+					"name": "127.0.0.1:8000/api/annotation/heritage/88/comment/1",
+					"request": {
+						"url": "127.0.0.1:8000/api/annotation/heritage/88/comment/1",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token b82b6c7937fc6e66f96dc55f751ec064f89071a8",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"text\": \"test annotation from backend endpoint to aws\",\n\t\"coordinates\": [ 8, 15 ]\n}"
+						},
+						"description": "create annotation on comment"
+					},
+					"response": []
+				},
+				{
+					"name": "127.0.0.1:8000/apii/annotation/heritage/88/media/3",
+					"request": {
+						"url": "127.0.0.1:8000/apii/annotation/heritage/88/media/3",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Token b82b6c7937fc6e66f96dc55f751ec064f89071a8",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"text\": \"annotate to media\",\n\t\"coordinates\": [ 10, 10, 50, 50 ]\n}"
+						},
+						"description": "create annotation on media"
+					},
+					"response": []
+				},
+				{
+					"name": "127.0.0.1:8000/apii/annotation/heritage/88/",
+					"request": {
+						"url": "127.0.0.1:8000/apii/annotation/heritage/88/",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Token b82b6c7937fc6e66f96dc55f751ec064f89071a8",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"text\": \"annotate to description\",\n\t\"coordinates\": [ 5, 35 ]\n}"
+						},
+						"description": "create annotation on description"
+					},
+					"response": []
+				},
+				{
+					"name": "127.0.0.1:8000/apii/annotation/heritage/88/",
+					"request": {
+						"url": "127.0.0.1:8000/apii/annotation/heritage/88/",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token b82b6c7937fc6e66f96dc55f751ec064f89071a8",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "get annotations of a heritage item indicated by id"
+					},
+					"response": []
+				},
+				{
+					"name": "127.0.0.1:8000/api/annotation/",
+					"request": {
+						"url": "127.0.0.1:8000/api/annotation/",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Token b82b6c7937fc6e66f96dc55f751ec064f89071a8",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "get all annotations"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
