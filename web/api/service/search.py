@@ -90,3 +90,14 @@ def get_items_by_title(title):
 def get_items_by_creator(creator):
     items = Heritage.objects.filter(creator__user__username__istartswith=creator)
     print items
+
+
+def consecutive_subsequences(iterable):
+
+    ret = []
+    for length in range(len(iterable)):
+        for i in range(len(iterable) - length):
+            l = iterable[i: i+length+1]
+            ret.append(" ".join(l))
+
+    return ret

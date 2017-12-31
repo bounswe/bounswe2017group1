@@ -22,6 +22,15 @@ import datetime
 @api_view(['GET', 'POST'])
 @permission_classes((IsAuthenticatedOrReadOnly, ))
 def heritage_get_post(request):
+    """
+    Create a new heritage item
+    or
+    Get all heritage items
+
+    :param request: client request
+    :return: list of all heritage items
+    :return: the just created heritage item
+    """
     if request.method == 'GET':
 
         try:
@@ -56,6 +65,14 @@ def heritage_get_post(request):
 @api_view(['GET', 'PUT', 'DELETE'])
 @permission_classes((IsAuthenticatedOrReadOnly, ))
 def heritage_get_put_delete(request, heritage_id):
+    """
+    get, update or delete the indicated heritage item
+
+    :param request: client request
+    :param heritage_id: indicates the heritage item
+    :return: the indicated heritage item
+    :return: just status_code
+    """
     try:
         context = {}
         if request.user.username:
@@ -95,6 +112,13 @@ def heritage_get_put_delete(request, heritage_id):
 @api_view(['GET'])
 @permission_classes((AllowAny, ))
 def get_all_comments(request, heritage_id):
+    """
+    display all comments of the indicated heritage item
+
+    :param request: client request
+    :param heritage_id: indicates the heritage item
+    :return: list of all comments of the heritage item
+    """
     comments = Comment.objects.all().filter(heritage=heritage_id)
     head_comments = comments.filter(parent_comment=None)
     ordered_comment_ids = []
@@ -120,6 +144,13 @@ def get_all_comments(request, heritage_id):
 @api_view(['GET'])
 @permission_classes((AllowAny, ))
 def get_all_tags(request, heritage_id):
+    """
+    display all tags of the indicated heritage item
+
+    :param request: client request
+    :param heritage_id: indicates the heritage item
+    :return: list of all tags of the heritage item
+    """
     tags = Tag.objects.filter(heritage_id=heritage_id)
     serializer = TagSerializer(tags, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
@@ -127,6 +158,12 @@ def get_all_tags(request, heritage_id):
 @api_view(['GET'])
 @permission_classes((AllowAny, ))
 def get_new_heritages(request):
+    """
+    display the all heritage items sorted order by creation date (last created at the top)
+
+    :param request: client request
+    :return: list of all heritage items sorted order by creation date
+    """
     try:
         context = {}
         if request.user.username:
@@ -144,6 +181,12 @@ def get_new_heritages(request):
 @api_view(['GET'])
 @permission_classes((AllowAny, ))
 def get_top_heritages(request):
+    """
+    display the all heritage items sorted order by upvotes (most liked at the top)
+
+    :param request: client request
+    :return: list of all heritage items sorted order by upvotes
+    """
     try:
         context = {}
         if request.user.username:
@@ -169,6 +212,12 @@ def get_top_heritages(request):
 @api_view(['GET'])
 @permission_classes((AllowAny, ))
 def get_trending_heritages(request):
+    """
+    display the all heritage items sorted order by upvotes and filter by datetime in 7 days
+
+    :param request: client request
+    :return: list of all heritage items active in 7 days sorted order by upvotes
+    """
     try:
         now = datetime.datetime.utcnow()+datetime.timedelta(hours=3)
         context = {}
