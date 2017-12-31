@@ -3,6 +3,12 @@ import requests
 
 #This code uses Datamuse API
 def get_concepts_from_item(source):
+    """
+    use Datamuse API to get related words for given word
+
+    :param source: a word which related words are generated from
+    :return: list of related words
+    """
     source = source.lower()
     myList = []
     obj = requests.get('https://api.datamuse.com/words?ml='+source.replace(" ", "+")).json()
@@ -14,6 +20,12 @@ def get_concepts_from_item(source):
     return myList
 
 def get_concepts_from_list(source):
+    """
+    use Datamuse API to get related words for given list of words
+
+    :param source: list of words that contains words which related words are generated from
+    :return: list of related words
+    """
     myList = []
     for entry in source:
         entry = entry.lower()

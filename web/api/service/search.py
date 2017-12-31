@@ -17,6 +17,17 @@ TAG_COEF = 5
 RELATED_TAG_COEF = 1
 
 def calculate_scores(word, filters):
+    """
+    search given word in title, description, location and tags of heritage items
+    give a score for matching
+    calculate scores for all heritage items
+
+    filter the heritage items by location, creator and date given in filters
+
+    :param word: a word for basic search
+    :param filters: filter like location, creator and date for advanced search
+    :return: list of tuples that contain heritage item id and its match score for search
+    """
     scores = {}
 
     items = Heritage.objects.all()
@@ -70,6 +81,11 @@ def calculate_scores(word, filters):
 
 
 def get_items_by_location(location):
+    """
+    get heritage items which has given location
+
+    :param location: location string
+    """
     items = Heritage.objects.filter(location__istartswith=location)
     response_data = {}
 
@@ -78,22 +94,42 @@ def get_items_by_location(location):
 
 
 def get_items_by_tag(tag):
+    """
+    get heritage items which has given tag
+
+    :param tag: tag name
+    """
     items = Heritage.objects.filter(tags__name__icontains=tag)
     print items
 
 
 def get_items_by_title(title):
+    """
+    get heritage items which has given title
+
+    :param title: title string
+    """
     items = Heritage.objects.filter(title__icontains=title)
     print items
 
 
 def get_items_by_creator(creator):
+    """
+    get heritage items that created by given creator
+
+    :param creator: creator name
+    """
     items = Heritage.objects.filter(creator__user__username__istartswith=creator)
     print items
 
 
 def consecutive_subsequences(iterable):
+    """
+    combination of multiple words for looking exact match
 
+    :param iterable: list of words
+    :return: list of combinations of given words
+    """
     ret = []
     for length in range(len(iterable)):
         for i in range(len(iterable) - length):
