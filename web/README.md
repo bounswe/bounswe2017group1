@@ -19,20 +19,32 @@ python2.7
     * If you are using Windows (`$ venv\Scripts\activate`)
     * If you are using UNIX (`$ source venv/bin/activate`)
 6. Install necessary dependecies: `pip install -r requirements.txt`
+7. Setup your own database or import database dump.
 7. Run database migrations: `python manage.py migrate`
 8. Run server locally: `python manage.py runserver`
 9. If you get success message, server’s running, visit `http://127.0.0.1:8000/`
 ***
+
+### How to Setup Database
+1. Go to web service directory: `cd bounswe2017group1/web`
+2. Make migrations for api app: `python manage.py makemigrations api`
+3. Run migrate: `python manage.py migrate`
+4. Create admin user: `python manage.py createsuperuser`
 
 ### How to Use
 1. Switch to venv
     * If you are using Windows (`$ venv\Scripts\activate`)
     * If you are using UNIX (`$ source venv/bin/activate`)
 2. Install necessary dependecies: `pip install -r requirements.txt`
-3. Run database migrations: `python manage.py migrate`
-4. Run server locally: `python manage.py runserver`
-5. If you get success message, server’s running, visit `http://127.0.0.1:8000/`
+3. Setup your own database or import database dump.
+4. Run database migrations: `python manage.py migrate`
+5. Run server locally: `python manage.py runserver`
+6. If you get success message, server’s running, visit `http://127.0.0.1:8000/`
 ***
+
+### How to Test
+1. Install [Postman](https://www.getpostman.com) app
+2. Import [api collection](https://raw.githubusercontent.com/bounswe/bounswe2017group1/master/web/api.postman_collection.json) or use "Run in Postman" in [documentation](https://documenter.getpostman.com/view/3445692/api/7Lq8gUf)
 
 ## Frontend Server
 
@@ -41,7 +53,7 @@ node.js, npm
 
 ### How to Usage
 1. Go to frontend project folder: `cd bounswe2017group1/web/frontend`
-2. Install necessary dependecies: `npm install``
+2. Install necessary dependecies: `npm install`
 3. Run server locally: `npm start`
 4. If you get success message, server’s running, visit `http://127.0.0.1:3000/`
 ***
