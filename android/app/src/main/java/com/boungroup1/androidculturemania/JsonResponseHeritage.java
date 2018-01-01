@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- * Created by tahabayi on 15/11/2017.
+ * Response of the Heritage Item Get Request
  */
 
 public class JsonResponseHeritage {

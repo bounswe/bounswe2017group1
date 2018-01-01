@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Date;
 
 /**
- * Created by mustafa on 11/26/17.
+ * Response of the Vote Post Request
  */
 
 public class JsonResponseVote {

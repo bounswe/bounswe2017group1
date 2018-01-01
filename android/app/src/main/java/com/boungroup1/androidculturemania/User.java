@@ -3,7 +3,7 @@ package com.boungroup1.androidculturemania;
 import com.google.gson.annotations.SerializedName;
 
 /**
- * Created by user on 24/10/2017.
+ * Created by mehmetsefa on 24/10/2017.
  */
 
 public class User {

@@ -1,7 +1,7 @@
 package com.boungroup1.androidculturemania;
 
 /**
- * Created by user on 28/12/2017.
+ * Response of the Delete Post Request
  */
 
 public class JsonResponseDeletePost {

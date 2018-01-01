@@ -1,7 +1,7 @@
 package com.boungroup1.androidculturemania;
 
 /**
- * Created by user on 26/10/2017.
+ * Response of the Sign Out Get Request
  */
 
 public class JsonResponseSignOut {
