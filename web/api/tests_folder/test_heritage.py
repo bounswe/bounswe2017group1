@@ -74,10 +74,27 @@ class ItemTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
 
+    def test_heritage_get(self):
+        #get new items
+        response = self.client.get(self.url_heritage+ "new/",
+            content_type='application/json',
+            HTTP_AUTHORIZATION='Token ' + self.token)
 
+        self.assertEqual(response.status_code, 200)
 
+        #get trending items
+        response = self.client.get(self.url_heritage+ "trending/",
+            content_type='application/json',
+            HTTP_AUTHORIZATION='Token ' + self.token)
 
+        self.assertEqual(response.status_code, 200)
 
+        #get top items
+        response = self.client.get(self.url_heritage+ "top/",
+            content_type='application/json',
+            HTTP_AUTHORIZATION='Token ' + self.token)
+
+        self.assertEqual(response.status_code, 200)
 
 
 
