@@ -772,3 +772,174 @@ searches heritage items
          },
       ]
 ***
+
+
+
+## Annotation
+
+### /annotation/heritage/{item_id}/
+##### POST
+create annotation on the description of the heritage item
+
+  **Request**
+  
+      {
+	    "text": String, (Required),
+	    "coordinates": [ Integer, Integer ]
+      }
+
+
+  **Response**
+    
+    201 Created
+    
+    
+    
+    400 Bad Request
+      
+***
+
+
+### /annotation/heritage/{item_id}/
+##### GET
+get annotations of a heritage item indicated by id
+
+  **Response**
+    
+    200 OK
+      [
+        {
+          "annotatedAt": DateTimeString,
+          "body": String,
+          "@id": String,
+          "serializedAt": DateTimeString,
+          "target": String
+        },
+      ]
+      
+***
+
+
+## Annotation
+
+### /annotation/heritage/{item_id}/media/{media_id}
+##### POST
+create annotation on the media file of the heritage item
+
+  **Request**
+  
+      {
+	    "text": String, (Required),
+	    "coordinates": [ Integer, Integer, Integer, Integer ]
+      }
+
+
+  **Response**
+    
+    201 Created
+    
+    
+    
+    400 Bad Request
+      
+***
+
+
+
+## Annotation
+
+### /annotation/heritage/{item_id}/comment/{comment_id}
+##### POST
+create annotation on the comment of the heritage item
+
+  **Request**
+  
+      {
+	    "text": String, (Required),
+	    "coordinates": [ Integer, Integer ]
+      }
+
+
+  **Response**
+    
+    201 Created
+    
+    
+    
+    400 Bad Request
+      
+***
+
+
+### /annotation/
+##### GET
+get all annotations
+
+  **Response**
+    
+    200 OK
+      [
+        {
+          "annotatedAt": DateTimeString,
+          "body": String,
+          "@id": String,
+          "serializedAt": DateTimeString,
+          "target": String
+        },
+      ]
+      
+***
+
+
+## Video
+
+### /videos/
+##### POST
+create a video or change an old video of the heritage item
+
+  **Request**
+  
+      {
+        "video_url": String,
+        "heritage" : Int(heritage id)
+      }
+
+
+  **Response**
+    
+    201 Created
+    
+    
+    
+    400 Bad Request
+      
+***
+
+
+### /videos/<video id>
+##### GET
+get the video with the given id 
+
+ps: there should be no need to use this GET function since video object is also returned in the heritage serializer in the "video" field
+
+  **Response**
+    
+    200 OK
+      
+      {
+          "id" : Int,
+          "video_url": String,
+          "creation_date": DateTimeString,
+          "update_date": DateTimeString,
+          "heritage": Int(Heritage id)
+      }
+      
+***
+##### DELETE
+delete the video with the given id
+
+  **Response**
+    
+    204 NO CONTENT (Successfully Deleted)
+    
+    412 Precondition Failed

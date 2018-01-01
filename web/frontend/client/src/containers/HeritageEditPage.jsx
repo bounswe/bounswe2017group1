@@ -36,7 +36,8 @@ class HeritageEditPage extends React.Component {
       },
       location: '',
       pictures: [],
-      locationOK: false,
+      video:'',
+      locationOK: true,
       redirect: false
     };
 
@@ -47,6 +48,7 @@ class HeritageEditPage extends React.Component {
     this.onLocationSelect = this.onLocationSelect.bind(this);
     this.getTags = this.getTags.bind(this);
     this.onTagChange = this.onTagChange.bind(this);
+    this.onVideoChange = this.onVideoChange.bind(this);
   }
 
   componentDidMount() {
@@ -70,7 +72,9 @@ class HeritageEditPage extends React.Component {
                 };
             });
             res.tags = tags;
-            this.setState({heritage: res});
+            this.setState({heritage: res,
+              video: res.video === null ? '' : res.video.video_url 
+            });
           });
   
         } else {
@@ -99,7 +103,7 @@ class HeritageEditPage extends React.Component {
     heritage.location = location;
     this.setState({
       heritage,
-      locationOK: false
+      locationOK: true
     });
   }
   getTags(input) {
@@ -122,6 +126,11 @@ class HeritageEditPage extends React.Component {
     // prevent default action. in this case, action is the form submission event
     event.preventDefault();
 
+    if(!this.state.locationOK) {
+      alert('Please select location from dropdown menu');
+      return;
+    }
+
     // create a string for an HTTP body message
     const title = this.state.heritage.title;
     const description = this.state.heritage.description;
@@ -142,8 +151,30 @@ class HeritageEditPage extends React.Component {
       },
       credentials: "same-origin"
     }).then(response=>{
+        console.log('respok : ', response.ok)
+        console.log('video : ',this.state.video)
         if(response.ok) {
-            this.setState({redirect: true});
+          if (this.state.video !== '') {
+            const video_url = this.state.video;
+            const heritage = this.props.match.params.heritageId;
+            const videoFormData = {video_url, heritage};
+            console.log(videoFormData);
+            fetch(baseUrl+'/api/videos', {
+              method: 'POST',
+              headers: {
+                "Access-Control-Allow-Origin" : "*",
+                "Content-Type": "application/json",
+                "authorization": "token "+Auth.getToken()
+              },
+              credentials: "same-origin",
+              body: JSON.stringify(videoFormData),
+            }).then(resp=> {
+              if(resp.ok) {
+                this.setState({redirect: true});
+              }
+            });
+          }
+          this.setState({redirect: true});
         }
     })
     
@@ -160,6 +191,13 @@ class HeritageEditPage extends React.Component {
     heritage[field] = event.target.value;
     this.setState({
       heritage
+    });
+  }
+
+  onVideoChange(event){
+    var video = event.target.value;
+    this.setState({
+      video
     });
   }
 
@@ -191,7 +229,7 @@ class HeritageEditPage extends React.Component {
 
       if(redirect){
         
-        return (<Redirect to='/' push/>)
+        return (<Redirect to={'/item/'+this.props.match.params.heritageId} push/>)
       }
     return (
       <div>
@@ -210,6 +248,8 @@ class HeritageEditPage extends React.Component {
           getTags={this.getTags}
           onTagChange={this.onTagChange}
           isEdit={false}
+          video={this.state.video}
+          onVideoChange={this.onVideoChange}
         />
       </div>
     );

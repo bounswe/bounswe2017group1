@@ -1,3 +1,7 @@
+"""
+    This controller handles the routing for login and registration system
+"""
+
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from rest_framework import status
@@ -14,7 +18,11 @@ from api.model.profile import Profile
 @permission_classes((AllowAny,))
 def signup(request):
     """
-    Create user and return
+    register the user
+
+    :param request: client request
+    :return: the user's data and profile
+    :rtype: JSONObject
     """
     mutable = request.POST._mutable
     request.POST._mutable = True  # make the request mutable so that I can add extra fields
@@ -44,7 +52,11 @@ def signup(request):
 @permission_classes((IsAuthenticated,))
 def add_or_change_image(request):
     """
-    Edit profile and image
+    edit the profile image of the user
+
+    :param request: client request
+    :return: profile of the user
+    :rtype: JSONObject
     """
     profile = Profile.objects.filter(username=request.user.username).first()
     serializer = ProfileSerializer(instance=profile)
@@ -59,7 +71,11 @@ def add_or_change_image(request):
 @permission_classes((AllowAny,))
 def signin(request):
     """
-    authenticate user with email and password, return token
+    authenticate user with email and password
+
+    :param request: client request
+    :return: Authorization Token
+    :rtype: JSONObject
     """
     if 'username' in request.data and 'password' in request.data:
 
@@ -81,7 +97,10 @@ def signin(request):
 @permission_classes((IsAuthenticated,))
 def signout(request):
     """
-    delete user token from database
+    delete the user token from database
+
+    :param request: client request
+    :return: only status_code
     """
     UserService.deleteToken(request.user)
     return Response(status=status.HTTP_200_OK)
@@ -92,6 +111,10 @@ def signout(request):
 def users(request):
     """
     retrieve all users
+
+    :param request: client request
+    :return: list of all users
+    :rtype: JSONArray
     """
     try:
         serializer = UserSerializer(User.objects.all(), many=True)
@@ -103,6 +126,12 @@ def users(request):
 @api_view(['GET', 'POST'])
 @permission_classes((IsAuthenticated,))
 def login_required(req):
+    """
+    test permission class and token
+
+    :param req: client request
+    :return: the requester username
+    """
     data = {
         "username": req.user.username
     }

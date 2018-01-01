@@ -5,7 +5,7 @@ import Auth from '../../modules/Auth.js'
 class TopBar extends React.Component {
   render(){
     return(
-      <nav className="navbar navbar-expand-lg navbar-dark bar-blue fixed-top">
+      <nav className="navbar navbar-expand-lg navbar-expand-sm navbar-expand-md navbar-dark bar-blue fixed-top">
         <a className="navbar-brand" href="/" style={{paddingTop: 0}}>
           <img style={{width: '48px', height: '48px'}} src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Unesco_Cultural_Heritage_logo.svg/2000px-Unesco_Cultural_Heritage_logo.svg.png"/>
         </a>

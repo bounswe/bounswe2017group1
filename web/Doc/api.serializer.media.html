@@ -1,0 +1,270 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module api.serializer.media</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="api.html"><font color="#ffffff">api</font></a>.<a href="api.serializer.html"><font color="#ffffff">serializer</font></a>.media</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/hakansirin/projects/bounswe2017group1/web/api/serializer/media.py">/Users/hakansirin/projects/bounswe2017group1/web/api/serializer/media.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="rest_framework.serializers.html">rest_framework.serializers</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="rest_framework.serializers.html#ModelSerializer">rest_framework.serializers.ModelSerializer</a>(<a href="rest_framework.serializers.html#Serializer">rest_framework.serializers.Serializer</a>)
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="api.serializer.media.html#MediaSerializer">MediaSerializer</a>
+</font></dt></dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="MediaSerializer">class <strong>MediaSerializer</strong></a>(<a href="rest_framework.serializers.html#ModelSerializer">rest_framework.serializers.ModelSerializer</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>Serializer&nbsp;class&nbsp;to&nbsp;generate&nbsp;new&nbsp;items&nbsp;of&nbsp;Media&nbsp;Model&nbsp;and&nbsp;also&nbsp;serialize&nbsp;existing&nbsp;items<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="api.serializer.media.html#MediaSerializer">MediaSerializer</a></dd>
+<dd><a href="rest_framework.serializers.html#ModelSerializer">rest_framework.serializers.ModelSerializer</a></dd>
+<dd><a href="rest_framework.serializers.html#Serializer">rest_framework.serializers.Serializer</a></dd>
+<dd><a href="rest_framework.serializers.html#BaseSerializer">rest_framework.serializers.BaseSerializer</a></dd>
+<dd><a href="rest_framework.fields.html#Field">rest_framework.fields.Field</a></dd>
+<dd><a href="__builtin__.html#object">__builtin__.object</a></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>Meta</strong> = &lt;class api.serializer.media.Meta&gt;</dl>
+
+<hr>
+Methods inherited from <a href="rest_framework.serializers.html#ModelSerializer">rest_framework.serializers.ModelSerializer</a>:<br>
+<dl><dt><a name="MediaSerializer-build_field"><strong>build_field</strong></a>(self, field_name, info, model_class, nested_depth)</dt><dd><tt>Return&nbsp;a&nbsp;two&nbsp;tuple&nbsp;of&nbsp;(cls,&nbsp;kwargs)&nbsp;to&nbsp;build&nbsp;a&nbsp;serializer&nbsp;field&nbsp;with.</tt></dd></dl>
+
+<dl><dt><a name="MediaSerializer-build_nested_field"><strong>build_nested_field</strong></a>(self, field_name, relation_info, nested_depth)</dt><dd><tt>Create&nbsp;nested&nbsp;fields&nbsp;for&nbsp;forward&nbsp;and&nbsp;reverse&nbsp;relationships.</tt></dd></dl>
+
+<dl><dt><a name="MediaSerializer-build_property_field"><strong>build_property_field</strong></a>(self, field_name, model_class)</dt><dd><tt>Create&nbsp;a&nbsp;read&nbsp;only&nbsp;field&nbsp;for&nbsp;model&nbsp;methods&nbsp;and&nbsp;properties.</tt></dd></dl>
+
+<dl><dt><a name="MediaSerializer-build_relational_field"><strong>build_relational_field</strong></a>(self, field_name, relation_info)</dt><dd><tt>Create&nbsp;fields&nbsp;for&nbsp;forward&nbsp;and&nbsp;reverse&nbsp;relationships.</tt></dd></dl>
+
+<dl><dt><a name="MediaSerializer-build_standard_field"><strong>build_standard_field</strong></a>(self, field_name, model_field)</dt><dd><tt>Create&nbsp;regular&nbsp;model&nbsp;fields.</tt></dd></dl>
+
+<dl><dt><a name="MediaSerializer-build_unknown_field"><strong>build_unknown_field</strong></a>(self, field_name, model_class)</dt><dd><tt>Raise&nbsp;an&nbsp;error&nbsp;on&nbsp;any&nbsp;unknown&nbsp;fields.</tt></dd></dl>
+
+<dl><dt><a name="MediaSerializer-build_url_field"><strong>build_url_field</strong></a>(self, field_name, model_class)</dt><dd><tt>Create&nbsp;a&nbsp;field&nbsp;representing&nbsp;the&nbsp;object's&nbsp;own&nbsp;URL.</tt></dd></dl>
+
+<dl><dt><a name="MediaSerializer-create"><strong>create</strong></a>(self, validated_data)</dt><dd><tt>We&nbsp;have&nbsp;a&nbsp;bit&nbsp;of&nbsp;extra&nbsp;checking&nbsp;around&nbsp;this&nbsp;in&nbsp;order&nbsp;to&nbsp;provide<br>
+descriptive&nbsp;messages&nbsp;when&nbsp;something&nbsp;goes&nbsp;wrong,&nbsp;but&nbsp;this&nbsp;method&nbsp;is<br>
+essentially&nbsp;just:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;ExampleModel.objects.<a href="#MediaSerializer-create">create</a>(**validated_data)<br>
+&nbsp;<br>
+If&nbsp;there&nbsp;are&nbsp;many&nbsp;to&nbsp;many&nbsp;fields&nbsp;present&nbsp;on&nbsp;the&nbsp;instance&nbsp;then&nbsp;they<br>
+cannot&nbsp;be&nbsp;set&nbsp;until&nbsp;the&nbsp;model&nbsp;is&nbsp;instantiated,&nbsp;in&nbsp;which&nbsp;case&nbsp;the<br>
+implementation&nbsp;is&nbsp;like&nbsp;so:<br>
+&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;example_relationship&nbsp;=&nbsp;validated_data.pop('example_relationship')<br>
+&nbsp;&nbsp;&nbsp;&nbsp;instance&nbsp;=&nbsp;ExampleModel.objects.<a href="#MediaSerializer-create">create</a>(**validated_data)<br>
+&nbsp;&nbsp;&nbsp;&nbsp;instance.example_relationship&nbsp;=&nbsp;example_relationship<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;instance<br>
+&nbsp;<br>
+The&nbsp;default&nbsp;implementation&nbsp;also&nbsp;does&nbsp;not&nbsp;handle&nbsp;nested&nbsp;relationships.<br>
+If&nbsp;you&nbsp;want&nbsp;to&nbsp;support&nbsp;writable&nbsp;nested&nbsp;relationships&nbsp;you'll&nbsp;need<br>
+to&nbsp;write&nbsp;an&nbsp;explicit&nbsp;`.<a href="#MediaSerializer-create">create</a>()`&nbsp;method.</tt></dd></dl>
+
+<dl><dt><a name="MediaSerializer-get_default_field_names"><strong>get_default_field_names</strong></a>(self, declared_fields, model_info)</dt><dd><tt>Return&nbsp;the&nbsp;default&nbsp;list&nbsp;of&nbsp;field&nbsp;names&nbsp;that&nbsp;will&nbsp;be&nbsp;used&nbsp;if&nbsp;the<br>
+`Meta.fields`&nbsp;option&nbsp;is&nbsp;not&nbsp;specified.</tt></dd></dl>
+
+<dl><dt><a name="MediaSerializer-get_extra_kwargs"><strong>get_extra_kwargs</strong></a>(self)</dt><dd><tt>Return&nbsp;a&nbsp;dictionary&nbsp;mapping&nbsp;field&nbsp;names&nbsp;to&nbsp;a&nbsp;dictionary&nbsp;of<br>
+additional&nbsp;keyword&nbsp;arguments.</tt></dd></dl>
+
+<dl><dt><a name="MediaSerializer-get_field_names"><strong>get_field_names</strong></a>(self, declared_fields, info)</dt><dd><tt>Returns&nbsp;the&nbsp;list&nbsp;of&nbsp;all&nbsp;field&nbsp;names&nbsp;that&nbsp;should&nbsp;be&nbsp;created&nbsp;when<br>
+instantiating&nbsp;this&nbsp;serializer&nbsp;class.&nbsp;This&nbsp;is&nbsp;based&nbsp;on&nbsp;the&nbsp;default<br>
+set&nbsp;of&nbsp;fields,&nbsp;but&nbsp;also&nbsp;takes&nbsp;into&nbsp;account&nbsp;the&nbsp;`Meta.fields`&nbsp;or<br>
+`Meta.exclude`&nbsp;options&nbsp;if&nbsp;they&nbsp;have&nbsp;been&nbsp;specified.</tt></dd></dl>
+
+<dl><dt><a name="MediaSerializer-get_fields"><strong>get_fields</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;dict&nbsp;of&nbsp;field&nbsp;names&nbsp;-&gt;&nbsp;field&nbsp;instances&nbsp;that&nbsp;should&nbsp;be<br>
+used&nbsp;for&nbsp;`self.<strong>fields</strong>`&nbsp;when&nbsp;instantiating&nbsp;the&nbsp;serializer.</tt></dd></dl>
+
+<dl><dt><a name="MediaSerializer-get_unique_for_date_validators"><strong>get_unique_for_date_validators</strong></a>(self)</dt><dd><tt>Determine&nbsp;a&nbsp;default&nbsp;set&nbsp;of&nbsp;validators&nbsp;for&nbsp;the&nbsp;following&nbsp;constraints:<br>
+&nbsp;<br>
+*&nbsp;unique_for_date<br>
+*&nbsp;unique_for_month<br>
+*&nbsp;unique_for_year</tt></dd></dl>
+
+<dl><dt><a name="MediaSerializer-get_unique_together_validators"><strong>get_unique_together_validators</strong></a>(self)</dt><dd><tt>Determine&nbsp;a&nbsp;default&nbsp;set&nbsp;of&nbsp;validators&nbsp;for&nbsp;any&nbsp;unique_together&nbsp;constraints.</tt></dd></dl>
+
+<dl><dt><a name="MediaSerializer-get_uniqueness_extra_kwargs"><strong>get_uniqueness_extra_kwargs</strong></a>(self, field_names, declared_fields, extra_kwargs)</dt><dd><tt>Return&nbsp;any&nbsp;additional&nbsp;field&nbsp;options&nbsp;that&nbsp;need&nbsp;to&nbsp;be&nbsp;included&nbsp;as&nbsp;a<br>
+result&nbsp;of&nbsp;uniqueness&nbsp;constraints&nbsp;on&nbsp;the&nbsp;model.&nbsp;This&nbsp;is&nbsp;returned&nbsp;as<br>
+a&nbsp;two-tuple&nbsp;of:<br>
+&nbsp;<br>
+('dict&nbsp;of&nbsp;updated&nbsp;extra&nbsp;kwargs',&nbsp;'mapping&nbsp;of&nbsp;hidden&nbsp;fields')</tt></dd></dl>
+
+<dl><dt><a name="MediaSerializer-get_validators"><strong>get_validators</strong></a>(self)</dt><dd><tt>Determine&nbsp;the&nbsp;set&nbsp;of&nbsp;validators&nbsp;to&nbsp;use&nbsp;when&nbsp;instantiating&nbsp;serializer.</tt></dd></dl>
+
+<dl><dt><a name="MediaSerializer-include_extra_kwargs"><strong>include_extra_kwargs</strong></a>(self, kwargs, extra_kwargs)</dt><dd><tt>Include&nbsp;any&nbsp;'extra_kwargs'&nbsp;that&nbsp;have&nbsp;been&nbsp;included&nbsp;for&nbsp;this&nbsp;field,<br>
+possibly&nbsp;removing&nbsp;any&nbsp;incompatible&nbsp;existing&nbsp;keyword&nbsp;arguments.</tt></dd></dl>
+
+<dl><dt><a name="MediaSerializer-update"><strong>update</strong></a>(self, instance, validated_data)</dt></dl>
+
+<hr>
+Data and other attributes inherited from <a href="rest_framework.serializers.html#ModelSerializer">rest_framework.serializers.ModelSerializer</a>:<br>
+<dl><dt><strong>serializer_choice_field</strong> = &lt;class 'rest_framework.fields.ChoiceField'&gt;</dl>
+
+<dl><dt><strong>serializer_field_mapping</strong> = {&lt;class 'django.db.models.fields.Field'&gt;: &lt;class 'rest_framework.fields.ModelField'&gt;, &lt;class 'django.db.models.fields.AutoField'&gt;: &lt;class 'rest_framework.fields.IntegerField'&gt;, &lt;class 'django.db.models.fields.BooleanField'&gt;: &lt;class 'rest_framework.fields.BooleanField'&gt;, &lt;class 'django.db.models.fields.CharField'&gt;: &lt;class 'rest_framework.fields.CharField'&gt;, &lt;class 'django.db.models.fields.CommaSeparatedIntegerField'&gt;: &lt;class 'rest_framework.fields.CharField'&gt;, &lt;class 'django.db.models.fields.DateField'&gt;: &lt;class 'rest_framework.fields.DateField'&gt;, &lt;class 'django.db.models.fields.DateTimeField'&gt;: &lt;class 'rest_framework.fields.DateTimeField'&gt;, &lt;class 'django.db.models.fields.DecimalField'&gt;: &lt;class 'rest_framework.fields.DecimalField'&gt;, &lt;class 'django.db.models.fields.DurationField'&gt;: &lt;class 'rest_framework.fields.DurationField'&gt;, &lt;class 'django.db.models.fields.EmailField'&gt;: &lt;class 'rest_framework.fields.EmailField'&gt;, ...}</dl>
+
+<dl><dt><strong>serializer_related_field</strong> = &lt;class 'rest_framework.relations.PrimaryKeyRelatedField'&gt;</dl>
+
+<dl><dt><strong>serializer_related_to_field</strong> = &lt;class 'rest_framework.relations.SlugRelatedField'&gt;<dd><tt>A&nbsp;read-write&nbsp;field&nbsp;that&nbsp;represents&nbsp;the&nbsp;target&nbsp;of&nbsp;the&nbsp;relationship<br>
+by&nbsp;a&nbsp;unique&nbsp;'slug'&nbsp;attribute.</tt></dl>
+
+<dl><dt><strong>serializer_url_field</strong> = &lt;class 'rest_framework.relations.HyperlinkedIdentityField'&gt;<dd><tt>A&nbsp;read-only&nbsp;field&nbsp;that&nbsp;represents&nbsp;the&nbsp;identity&nbsp;URL&nbsp;for&nbsp;an&nbsp;object,&nbsp;itself.<br>
+&nbsp;<br>
+This&nbsp;is&nbsp;in&nbsp;contrast&nbsp;to&nbsp;`HyperlinkedRelatedField`&nbsp;which&nbsp;represents&nbsp;the<br>
+URL&nbsp;of&nbsp;relationships&nbsp;to&nbsp;other&nbsp;objects.</tt></dl>
+
+<dl><dt><strong>url_field_name</strong> = None</dl>
+
+<hr>
+Methods inherited from <a href="rest_framework.serializers.html#Serializer">rest_framework.serializers.Serializer</a>:<br>
+<dl><dt><a name="MediaSerializer-__getitem__"><strong>__getitem__</strong></a>(self, key)</dt></dl>
+
+<dl><dt><a name="MediaSerializer-__iter__"><strong>__iter__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MediaSerializer-__repr__"><strong>__repr__</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MediaSerializer-get_initial"><strong>get_initial</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="MediaSerializer-get_value"><strong>get_value</strong></a>(self, dictionary)</dt></dl>
+
+<dl><dt><a name="MediaSerializer-run_validation"><strong>run_validation</strong></a>(self, data<font color="#909090">=&lt;class rest_framework.fields.empty&gt;</font>)</dt><dd><tt>We&nbsp;override&nbsp;the&nbsp;default&nbsp;`run_validation`,&nbsp;because&nbsp;the&nbsp;validation<br>
+performed&nbsp;by&nbsp;validators&nbsp;and&nbsp;the&nbsp;`.<a href="#MediaSerializer-validate">validate</a>()`&nbsp;method&nbsp;should<br>
+be&nbsp;coerced&nbsp;into&nbsp;an&nbsp;error&nbsp;dictionary&nbsp;with&nbsp;a&nbsp;'non_fields_error'&nbsp;key.</tt></dd></dl>
+
+<dl><dt><a name="MediaSerializer-to_internal_value"><strong>to_internal_value</strong></a>(self, data)</dt><dd><tt>Dict&nbsp;of&nbsp;native&nbsp;values&nbsp;&lt;-&nbsp;Dict&nbsp;of&nbsp;primitive&nbsp;datatypes.</tt></dd></dl>
+
+<dl><dt><a name="MediaSerializer-to_representation"><strong>to_representation</strong></a>(self, instance)</dt><dd><tt>Object&nbsp;instance&nbsp;-&gt;&nbsp;Dict&nbsp;of&nbsp;primitive&nbsp;datatypes.</tt></dd></dl>
+
+<dl><dt><a name="MediaSerializer-validate"><strong>validate</strong></a>(self, attrs)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="rest_framework.serializers.html#Serializer">rest_framework.serializers.Serializer</a>:<br>
+<dl><dt><strong>data</strong></dt>
+</dl>
+<dl><dt><strong>errors</strong></dt>
+</dl>
+<dl><dt><strong>fields</strong></dt>
+<dd><tt>A&nbsp;dictionary&nbsp;of&nbsp;{field_name:&nbsp;field_instance}.</tt></dd>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="rest_framework.serializers.html#Serializer">rest_framework.serializers.Serializer</a>:<br>
+<dl><dt><strong>default_error_messages</strong> = {u'invalid': u'Invalid data. Expected a dictionary, but got {datatype}.'}</dl>
+
+<hr>
+Methods inherited from <a href="rest_framework.serializers.html#BaseSerializer">rest_framework.serializers.BaseSerializer</a>:<br>
+<dl><dt><a name="MediaSerializer-__init__"><strong>__init__</strong></a>(self, instance<font color="#909090">=None</font>, data<font color="#909090">=&lt;class rest_framework.fields.empty&gt;</font>, **kwargs)</dt></dl>
+
+<dl><dt><a name="MediaSerializer-is_valid"><strong>is_valid</strong></a>(self, raise_exception<font color="#909090">=False</font>)</dt></dl>
+
+<dl><dt><a name="MediaSerializer-save"><strong>save</strong></a>(self, **kwargs)</dt></dl>
+
+<hr>
+Class methods inherited from <a href="rest_framework.serializers.html#BaseSerializer">rest_framework.serializers.BaseSerializer</a>:<br>
+<dl><dt><a name="MediaSerializer-many_init"><strong>many_init</strong></a>(cls, *args, **kwargs)<font color="#909090"><font face="helvetica, arial"> from <a href="rest_framework.serializers.html#SerializerMetaclass">rest_framework.serializers.SerializerMetaclass</a></font></font></dt><dd><tt>This&nbsp;method&nbsp;implements&nbsp;the&nbsp;creation&nbsp;of&nbsp;a&nbsp;`ListSerializer`&nbsp;parent<br>
+class&nbsp;when&nbsp;`many=True`&nbsp;is&nbsp;used.&nbsp;You&nbsp;can&nbsp;customize&nbsp;it&nbsp;if&nbsp;you&nbsp;need&nbsp;to<br>
+control&nbsp;which&nbsp;keyword&nbsp;arguments&nbsp;are&nbsp;passed&nbsp;to&nbsp;the&nbsp;parent,&nbsp;and<br>
+which&nbsp;are&nbsp;passed&nbsp;to&nbsp;the&nbsp;child.<br>
+&nbsp;<br>
+Note&nbsp;that&nbsp;we're&nbsp;over-cautious&nbsp;in&nbsp;passing&nbsp;most&nbsp;arguments&nbsp;to&nbsp;both&nbsp;parent<br>
+and&nbsp;child&nbsp;classes&nbsp;in&nbsp;order&nbsp;to&nbsp;try&nbsp;to&nbsp;cover&nbsp;the&nbsp;general&nbsp;case.&nbsp;If&nbsp;you're<br>
+overriding&nbsp;this&nbsp;method&nbsp;you'll&nbsp;probably&nbsp;want&nbsp;something&nbsp;much&nbsp;simpler,&nbsp;eg:<br>
+&nbsp;<br>
+@classmethod<br>
+def&nbsp;<a href="#MediaSerializer-many_init">many_init</a>(cls,&nbsp;*args,&nbsp;**kwargs):<br>
+&nbsp;&nbsp;&nbsp;&nbsp;kwargs['child']&nbsp;=&nbsp;cls()<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;CustomListSerializer(*args,&nbsp;**kwargs)</tt></dd></dl>
+
+<hr>
+Static methods inherited from <a href="rest_framework.serializers.html#BaseSerializer">rest_framework.serializers.BaseSerializer</a>:<br>
+<dl><dt><a name="MediaSerializer-__new__"><strong>__new__</strong></a>(cls, *args, **kwargs)</dt></dl>
+
+<hr>
+Data descriptors inherited from <a href="rest_framework.serializers.html#BaseSerializer">rest_framework.serializers.BaseSerializer</a>:<br>
+<dl><dt><strong>validated_data</strong></dt>
+</dl>
+<hr>
+Methods inherited from <a href="rest_framework.fields.html#Field">rest_framework.fields.Field</a>:<br>
+<dl><dt><a name="MediaSerializer-__deepcopy__"><strong>__deepcopy__</strong></a>(self, memo)</dt><dd><tt>When&nbsp;cloning&nbsp;fields&nbsp;we&nbsp;instantiate&nbsp;using&nbsp;the&nbsp;arguments&nbsp;it&nbsp;was<br>
+originally&nbsp;created&nbsp;with,&nbsp;rather&nbsp;than&nbsp;copying&nbsp;the&nbsp;complete&nbsp;state.</tt></dd></dl>
+
+<dl><dt><a name="MediaSerializer-bind"><strong>bind</strong></a>(self, field_name, parent)</dt><dd><tt>Initializes&nbsp;the&nbsp;field&nbsp;name&nbsp;and&nbsp;parent&nbsp;for&nbsp;the&nbsp;field&nbsp;instance.<br>
+Called&nbsp;when&nbsp;a&nbsp;field&nbsp;is&nbsp;added&nbsp;to&nbsp;the&nbsp;parent&nbsp;serializer&nbsp;instance.</tt></dd></dl>
+
+<dl><dt><a name="MediaSerializer-fail"><strong>fail</strong></a>(self, key, **kwargs)</dt><dd><tt>A&nbsp;helper&nbsp;method&nbsp;that&nbsp;simply&nbsp;raises&nbsp;a&nbsp;validation&nbsp;error.</tt></dd></dl>
+
+<dl><dt><a name="MediaSerializer-get_attribute"><strong>get_attribute</strong></a>(self, instance)</dt><dd><tt>Given&nbsp;the&nbsp;*outgoing*&nbsp;object&nbsp;instance,&nbsp;return&nbsp;the&nbsp;primitive&nbsp;value<br>
+that&nbsp;should&nbsp;be&nbsp;used&nbsp;for&nbsp;this&nbsp;field.</tt></dd></dl>
+
+<dl><dt><a name="MediaSerializer-get_default"><strong>get_default</strong></a>(self)</dt><dd><tt>Return&nbsp;the&nbsp;default&nbsp;value&nbsp;to&nbsp;use&nbsp;when&nbsp;validating&nbsp;data&nbsp;if&nbsp;no&nbsp;input<br>
+is&nbsp;provided&nbsp;for&nbsp;this&nbsp;field.<br>
+&nbsp;<br>
+If&nbsp;a&nbsp;default&nbsp;has&nbsp;not&nbsp;been&nbsp;set&nbsp;for&nbsp;this&nbsp;field&nbsp;then&nbsp;this&nbsp;will&nbsp;simply<br>
+raise&nbsp;`SkipField`,&nbsp;indicating&nbsp;that&nbsp;no&nbsp;value&nbsp;should&nbsp;be&nbsp;set&nbsp;in&nbsp;the<br>
+validated&nbsp;data&nbsp;for&nbsp;this&nbsp;field.</tt></dd></dl>
+
+<dl><dt><a name="MediaSerializer-run_validators"><strong>run_validators</strong></a>(self, value)</dt><dd><tt>Test&nbsp;the&nbsp;given&nbsp;value&nbsp;against&nbsp;all&nbsp;the&nbsp;validators&nbsp;on&nbsp;the&nbsp;field,<br>
+and&nbsp;either&nbsp;raise&nbsp;a&nbsp;`ValidationError`&nbsp;or&nbsp;simply&nbsp;return.</tt></dd></dl>
+
+<dl><dt><a name="MediaSerializer-validate_empty_values"><strong>validate_empty_values</strong></a>(self, data)</dt><dd><tt>Validate&nbsp;empty&nbsp;values,&nbsp;and&nbsp;either:<br>
+&nbsp;<br>
+*&nbsp;Raise&nbsp;`ValidationError`,&nbsp;indicating&nbsp;invalid&nbsp;data.<br>
+*&nbsp;Raise&nbsp;`SkipField`,&nbsp;indicating&nbsp;that&nbsp;the&nbsp;field&nbsp;should&nbsp;be&nbsp;ignored.<br>
+*&nbsp;Return&nbsp;(True,&nbsp;data),&nbsp;indicating&nbsp;an&nbsp;empty&nbsp;value&nbsp;that&nbsp;should&nbsp;be<br>
+&nbsp;&nbsp;returned&nbsp;without&nbsp;any&nbsp;further&nbsp;validation&nbsp;being&nbsp;applied.<br>
+*&nbsp;Return&nbsp;(False,&nbsp;data),&nbsp;indicating&nbsp;a&nbsp;non-empty&nbsp;value,&nbsp;that&nbsp;should<br>
+&nbsp;&nbsp;have&nbsp;validation&nbsp;applied&nbsp;as&nbsp;normal.</tt></dd></dl>
+
+<hr>
+Data descriptors inherited from <a href="rest_framework.fields.html#Field">rest_framework.fields.Field</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>context</strong></dt>
+<dd><tt>Returns&nbsp;the&nbsp;context&nbsp;as&nbsp;passed&nbsp;to&nbsp;the&nbsp;root&nbsp;serializer&nbsp;on&nbsp;initialization.</tt></dd>
+</dl>
+<dl><dt><strong>root</strong></dt>
+<dd><tt>Returns&nbsp;the&nbsp;top-level&nbsp;serializer&nbsp;for&nbsp;this&nbsp;field.</tt></dd>
+</dl>
+<dl><dt><strong>validators</strong></dt>
+</dl>
+<hr>
+Data and other attributes inherited from <a href="rest_framework.fields.html#Field">rest_framework.fields.Field</a>:<br>
+<dl><dt><strong>default_empty_html</strong> = &lt;class rest_framework.fields.empty&gt;</dl>
+
+<dl><dt><strong>default_validators</strong> = []</dl>
+
+<dl><dt><strong>initial</strong> = None</dl>
+
+</td></tr></table></td></tr></table>
+</body></html>
