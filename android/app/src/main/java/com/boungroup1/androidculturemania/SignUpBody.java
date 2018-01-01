@@ -1,7 +1,7 @@
 package com.boungroup1.androidculturemania;
 
 /**
- * Created by user on 24/10/2017.
+ * Created by mehmetsefa on 24/10/2017.
  */
 
 public class SignUpBody {

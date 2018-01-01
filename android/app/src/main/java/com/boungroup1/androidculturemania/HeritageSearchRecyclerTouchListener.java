@@ -7,11 +7,14 @@ import android.view.MotionEvent;
 import android.view.View;
 
 /**
- * Created by user on 03/12/2017.
+ * Created by mehmetsefa on 03/12/2017.
+ * Touch Listener for search list
  */
 
 public class HeritageSearchRecyclerTouchListener implements RecyclerView.OnItemTouchListener {
-
+    /**
+     * ClickListener Interface
+     */
     public interface ClickListener {
         void onClick(View view, int position);
         void onLongClick(View view, int position);
@@ -20,6 +23,12 @@ public class HeritageSearchRecyclerTouchListener implements RecyclerView.OnItemT
     private GestureDetector gestureDetector;
     private HeritageSearchRecyclerTouchListener.ClickListener clickListener;
 
+    /**
+     * constructor for recycler view
+     * @param context activity context
+     * @param recyclerView recycler view
+     * @param clickListener listener of click
+     */
     public HeritageSearchRecyclerTouchListener(Context context, final RecyclerView recyclerView, final HeritageSearchRecyclerTouchListener.ClickListener clickListener) {
         this.clickListener = clickListener;
         gestureDetector = new GestureDetector(context, new GestureDetector.SimpleOnGestureListener() {
@@ -38,6 +47,12 @@ public class HeritageSearchRecyclerTouchListener implements RecyclerView.OnItemT
         });
     }
 
+    /**
+     * touch event interceptor
+     * @param rv recycler view
+     * @param e motion event
+     * @return false
+     */
     @Override
     public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
         View child = rv.findChildViewUnder(e.getX(), e.getY());

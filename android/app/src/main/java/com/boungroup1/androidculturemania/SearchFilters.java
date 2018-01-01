@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.Date;
 
 /**
- * Created by user on 03/12/2017.
+ * Created by mehmetsefa on 03/12/2017.
  */
 
 public class SearchFilters {

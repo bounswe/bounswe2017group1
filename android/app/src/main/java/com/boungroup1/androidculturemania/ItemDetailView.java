@@ -37,7 +37,7 @@ import retrofit2.Retrofit;
 
 /**
  * Detail activity of CultureMania
- * Created by sefa on 22/11/2017.
+ * Created by mehmetsefa on 22/11/2017.
  */
 
 public class ItemDetailView extends AppCompatActivity {

@@ -41,7 +41,7 @@ import retrofit2.Retrofit;
 //import static com.boungroup1.androidculturemania.R.id.username;
 
 /**
- * Created by user on 15/11/2017.
+ * Created by mehmetsefa on 15/11/2017.
  */
 
 public class ItemCreateActivity extends AppCompatActivity{
@@ -124,7 +124,13 @@ public class ItemCreateActivity extends AppCompatActivity{
 
     }
 
-
+    /**
+     * Sends Heritage Item Information to the API, to create heritage item
+     * @param title title of the item
+     * @param description description of the item
+     * @param location location of the item
+     * @param tag tag of the item
+     */
     public void sendPost(final String title, final String description, final String location, final String tag){
         Retrofit retrofit = ApiClient.getApiClient();
         final SharedPreferences sharedPref = getSharedPreferences("TOKENSHARED", Context.MODE_PRIVATE);
@@ -200,6 +206,10 @@ public class ItemCreateActivity extends AppCompatActivity{
             imageUri = resultData.getData();
     }
 
+    /**
+     * uploads image to the sytem
+     * @param heritageId heritage id of the image
+     */
     private void uploadImage(int heritageId){
         if(imageUri==null)
             return;
@@ -230,6 +240,10 @@ public class ItemCreateActivity extends AppCompatActivity{
 
     }
 
+    /**
+     * upload video link to the system
+     * @param heritageId heritage id
+     */
     private void uploadVideo(int heritageId){
         if(videoUrl.equals(""))
             return;

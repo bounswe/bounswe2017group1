@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- * Created by user on 15/11/2017.
+ * Created by mehmetsefa on 15/11/2017.
  */
 
 public class TagResponse {
