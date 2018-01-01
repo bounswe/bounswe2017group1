@@ -1,0 +1,70 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module api.service.search</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="api.html"><font color="#ffffff">api</font></a>.<a href="api.service.html"><font color="#ffffff">service</font></a>.search</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/hakansirin/projects/bounswe2017group1/web/api/service/search.py">/Users/hakansirin/projects/bounswe2017group1/web/api/service/search.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="datetime.html">datetime</a><br>
+<a href="api.service.heritage.html">api.service.heritage</a><br>
+</td><td width="25%" valign=top><a href="operator.html">operator</a><br>
+<a href="re.html">re</a><br>
+</td><td width="25%" valign=top><a href="rest_framework.status.html">rest_framework.status</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-calculate_scores"><strong>calculate_scores</strong></a>(word, filters)</dt><dd><tt>search&nbsp;given&nbsp;word&nbsp;in&nbsp;title,&nbsp;description,&nbsp;location&nbsp;and&nbsp;tags&nbsp;of&nbsp;heritage&nbsp;items<br>
+give&nbsp;a&nbsp;score&nbsp;for&nbsp;matching<br>
+calculate&nbsp;scores&nbsp;for&nbsp;all&nbsp;heritage&nbsp;items<br>
+&nbsp;<br>
+filter&nbsp;the&nbsp;heritage&nbsp;items&nbsp;by&nbsp;location,&nbsp;creator&nbsp;and&nbsp;date&nbsp;given&nbsp;in&nbsp;filters<br>
+&nbsp;<br>
+:param&nbsp;word:&nbsp;a&nbsp;word&nbsp;for&nbsp;basic&nbsp;search<br>
+:param&nbsp;filters:&nbsp;filter&nbsp;like&nbsp;location,&nbsp;creator&nbsp;and&nbsp;date&nbsp;for&nbsp;advanced&nbsp;search<br>
+:return:&nbsp;list&nbsp;of&nbsp;tuples&nbsp;that&nbsp;contain&nbsp;heritage&nbsp;item&nbsp;id&nbsp;and&nbsp;its&nbsp;match&nbsp;score&nbsp;for&nbsp;search</tt></dd></dl>
+ <dl><dt><a name="-consecutive_subsequences"><strong>consecutive_subsequences</strong></a>(iterable)</dt><dd><tt>combination&nbsp;of&nbsp;multiple&nbsp;words&nbsp;for&nbsp;looking&nbsp;exact&nbsp;match<br>
+&nbsp;<br>
+:param&nbsp;iterable:&nbsp;list&nbsp;of&nbsp;words<br>
+:return:&nbsp;list&nbsp;of&nbsp;combinations&nbsp;of&nbsp;given&nbsp;words</tt></dd></dl>
+ <dl><dt><a name="-get_items_by_creator"><strong>get_items_by_creator</strong></a>(creator)</dt><dd><tt>get&nbsp;heritage&nbsp;items&nbsp;that&nbsp;created&nbsp;by&nbsp;given&nbsp;creator<br>
+&nbsp;<br>
+:param&nbsp;creator:&nbsp;creator&nbsp;name</tt></dd></dl>
+ <dl><dt><a name="-get_items_by_location"><strong>get_items_by_location</strong></a>(location)</dt><dd><tt>get&nbsp;heritage&nbsp;items&nbsp;which&nbsp;has&nbsp;given&nbsp;location<br>
+&nbsp;<br>
+:param&nbsp;location:&nbsp;location&nbsp;string</tt></dd></dl>
+ <dl><dt><a name="-get_items_by_tag"><strong>get_items_by_tag</strong></a>(tag)</dt><dd><tt>get&nbsp;heritage&nbsp;items&nbsp;which&nbsp;has&nbsp;given&nbsp;tag<br>
+&nbsp;<br>
+:param&nbsp;tag:&nbsp;tag&nbsp;name</tt></dd></dl>
+ <dl><dt><a name="-get_items_by_title"><strong>get_items_by_title</strong></a>(title)</dt><dd><tt>get&nbsp;heritage&nbsp;items&nbsp;which&nbsp;has&nbsp;given&nbsp;title<br>
+&nbsp;<br>
+:param&nbsp;title:&nbsp;title&nbsp;string</tt></dd></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>DESC_COEF</strong> = 3<br>
+<strong>LOC_COEF</strong> = 3<br>
+<strong>RELATED_TAG_COEF</strong> = 1<br>
+<strong>TAG_COEF</strong> = 5<br>
+<strong>TITLE_COEF</strong> = 5</td></tr></table>
+</body></html>
