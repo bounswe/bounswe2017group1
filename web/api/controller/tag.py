@@ -1,3 +1,7 @@
+"""
+    This controller handles the routing for tag of heritage items
+"""
+
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -10,30 +14,16 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, AllowAny
 
 
-@api_view(['POST'])
-@permission_classes((IsAuthenticated,))
-def add_tag_to_existed_heritage_item(request):
-    """
-    CURRENTLY NOT WORKING,
-    is_tag_exist: whether tag is exist in DB or not.
-    is_tag_exist = Tag.objects.filter(tag_name=request.data['name']).exists()
-
-    if is_tag_exist:
-        #fcerfvdf
-    else:
-        serializer = TagSerializer(data=request.data)
-
-    if serializer.is_valid():
-        serializer.save()
-        return Response(serializer.data, status=status.HTTP_201_CREATED)
-    else:
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-    """
-
-
 @api_view(['GET'])
 @permission_classes((AllowAny, ))
 def list_all_tags(request):
+    """
+    get all tags
+
+    :param request: client request
+    :return: list of all tags
+    :rtype: JSONArray
+    """
     try:
         serializer = TagSerializer(Tag.objects.all(), many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
@@ -44,6 +34,14 @@ def list_all_tags(request):
 @api_view(['GET'])
 @permission_classes((AllowAny, ))
 def get_all_heritage_items_own_this_tag(request, tag_id):
+    """
+    get all heritage items which has the indicated tag
+
+    :param request: client request
+    :param tag_id: indicates the tag
+    :return: list of all heritage items which has the indicated tag
+    :rtype: JSONArray
+    """
     try:
         heritage = Heritage.objects.get(tags__id=tag_id)
         serializer = HeritageSerializer(heritage)

@@ -1,0 +1,61 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module web.settings</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="web.html"><font color="#ffffff">web</font></a>.settings</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/hakansirin/projects/bounswe2017group1/web/web/settings.py">/Users/hakansirin/projects/bounswe2017group1/web/web/settings.py</a></font></td></tr></table>
+    <p><tt>Django&nbsp;settings&nbsp;for&nbsp;web&nbsp;project.<br>
+&nbsp;<br>
+Generated&nbsp;by&nbsp;'django-admin&nbsp;startproject'&nbsp;using&nbsp;Django&nbsp;1.11.5.<br>
+&nbsp;<br>
+For&nbsp;more&nbsp;information&nbsp;on&nbsp;this&nbsp;file,&nbsp;see<br>
+https://docs.djangoproject.com/en/1.11/topics/settings/<br>
+&nbsp;<br>
+For&nbsp;the&nbsp;full&nbsp;list&nbsp;of&nbsp;settings&nbsp;and&nbsp;their&nbsp;values,&nbsp;see<br>
+https://docs.djangoproject.com/en/1.11/ref/settings/</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="os.html">os</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>ALLOWED_HOSTS</strong> = ['127.0.0.1', 'ec2-18-196-2-56.eu-central-1.compute.amazonaws.com', 'localhost']<br>
+<strong>AUTH_PASSWORD_VALIDATORS</strong> = [{'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator'}, {'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator'}, {'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator'}, {'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator'}]<br>
+<strong>BASE_DIR</strong> = '/Users/hakansirin/projects/bounswe2017group1/web'<br>
+<strong>CORS_ALLOW_HEADERS</strong> = ('accept', 'accept-encoding', 'authorization', 'content-type', 'dnt', 'origin', 'user-agent', 'x-csrftoken', 'x-requested-with', 'access-control-allow-origin')<br>
+<strong>CORS_ORIGIN_ALLOW_ALL</strong> = True<br>
+<strong>DATABASES</strong> = {'default': {'ENGINE': 'django.db.backends.sqlite3', 'NAME': '/Users/hakansirin/projects/bounswe2017group1/web/db.sqlite3'}}<br>
+<strong>DEBUG</strong> = True<br>
+<strong>DEFAULT_CHARSET</strong> = 'utf-8'<br>
+<strong>INSTALLED_APPS</strong> = ['django.contrib.admin', 'django.contrib.auth', 'django.contrib.contenttypes', 'django.contrib.sessions', 'django.contrib.messages', 'django.contrib.staticfiles', 'api.apps.ApiConfig', 'rest_framework', 'rest_framework_docs', 'rest_framework.authtoken', 'web', 'corsheaders', 'django.contrib.admindocs']<br>
+<strong>LANGUAGE_CODE</strong> = 'en-us'<br>
+<strong>MEDIA_ROOT</strong> = '/Users/hakansirin/projects/bounswe2017group1/web/media'<br>
+<strong>MEDIA_URL</strong> = '/media/'<br>
+<strong>MIDDLEWARE</strong> = ['django.middleware.security.SecurityMiddleware', 'django.contrib.sessions.middleware.SessionMiddleware', 'corsheaders.middleware.CorsMiddleware', 'django.middleware.common.CommonMiddleware', 'django.contrib.auth.middleware.AuthenticationMiddleware', 'django.contrib.messages.middleware.MessageMiddleware', 'django.middleware.clickjacking.XFrameOptionsMiddleware']<br>
+<strong>REST_FRAMEWORK</strong> = {'DEFAULT_AUTHENTICATION_CLASSES': ('rest_framework.authentication.TokenAuthentication',), 'DEFAULT_PARSER_CLASSES': ('rest_framework.parsers.JSONParser',), 'DEFAULT_PERMISSION_CLASSES': ('rest_framework.permissions.AllowAny', 'rest_framework.permissions.IsAuthenticated', 'rest_framework.permissions.IsAuthenticatedOrReadOnly')}<br>
+<strong>ROOT_URLCONF</strong> = 'web.urls'<br>
+<strong>SECRET_KEY</strong> = '*rnnt#as@m2+i@l3&amp;fvw84byw!-=domsp6r^fpdl)ya@2olz5n'<br>
+<strong>STATICFILES_FINDERS</strong> = ('django.contrib.staticfiles.finders.FileSystemFinder', 'django.contrib.staticfiles.finders.AppDirectoriesFinder')<br>
+<strong>STATIC_URL</strong> = '/app/'<br>
+<strong>TEMPLATES</strong> = [{'APP_DIRS': True, 'BACKEND': 'django.template.backends.django.DjangoTemplates', 'DIRS': ['/Users/hakansirin/projects/bounswe2017group1/web/templates'], 'OPTIONS': {'context_processors': ['django.template.context_processors.debug', 'django.template.context_processors.request', 'django.contrib.auth.context_processors.auth', 'django.contrib.messages.context_processors.messages']}}]<br>
+<strong>TIME_ZONE</strong> = 'Europe/Istanbul'<br>
+<strong>USE_I18N</strong> = True<br>
+<strong>USE_L10N</strong> = True<br>
+<strong>USE_TZ</strong> = True<br>
+<strong>WSGI_APPLICATION</strong> = 'web.wsgi.application'</td></tr></table>
+</body></html>

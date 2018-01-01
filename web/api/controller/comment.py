@@ -1,5 +1,5 @@
 """
-    This controller handles the routing for heritage items
+    This controller handles the routing for comments of heritage items
 """
 
 from rest_framework import status
@@ -16,7 +16,15 @@ from api.service import permission
 @api_view(['GET', 'POST'])
 @permission_classes((IsAuthenticatedOrReadOnly, ))
 def comment_get_post(request):
+    """
+    Create a comment
+    or
+    Get all comments of the user
 
+    :param request: client request
+    :return: list of all comments of the authenticated user
+    :return: the just created comment by the authenticated user
+    """
     if request.method == 'GET':
         try:
             context = {}
@@ -45,6 +53,14 @@ def comment_get_post(request):
 @api_view(['GET', 'DELETE'])
 @permission_classes((IsAuthenticatedOrReadOnly, ))
 def comment_get_put_delete(request, comment_id):
+    """
+    get, update or delete the indicated comment
+
+    :param request: client request
+    :param comment_id: indicates the comment
+    :return: the indicated comment
+    :return: just status_code
+    """
     try:
         comment = Comment.objects.get(id=comment_id)
         context = {}

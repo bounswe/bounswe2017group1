@@ -1,3 +1,7 @@
+"""
+    This controller handles the routing for search heritage items
+"""
+
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, AllowAny
@@ -6,24 +10,23 @@ from rest_framework.response import Response
 from api.models import Heritage
 from api.serializer.heritage import HeritageSerializer
 from api.service import heritage
-from api.service.search import calculate_scores
+from api.service.search import calculate_scores, consecutive_subsequences
 from api.service.helper import get_concepts_from_list
 import operator
-
-def consecutive_subsequences(iterable):
-
-    ret = []
-    for length in range(len(iterable)):
-        for i in range(len(iterable) - length):
-            l = iterable[i: i+length+1]
-            ret.append(" ".join(l))
-
-    return ret
 
 
 @api_view(['POST'])
 @permission_classes((AllowAny, ))
 def search(request):
+    """
+    basic search => for given one or more words
+    advanced search => extra filters like location, creator or date
+    search heritage items for given words and filters
+
+    :param request: client request
+    :return: list of heritage items
+    :rtype: JSONArray
+    """
     query_words = request.data['query'].split(' ')
     filters = request.data.get('filters', None)
     query_combinations = consecutive_subsequences(query_words)

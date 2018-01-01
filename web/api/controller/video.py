@@ -1,6 +1,7 @@
 """
     This controller handles the routing for media items
 """
+
 from rest_framework import status
 from rest_framework.decorators import api_view, parser_classes,authentication_classes, permission_classes
 from rest_framework.permissions import IsAuthenticated, AllowAny, IsAuthenticatedOrReadOnly
@@ -16,6 +17,12 @@ from api.serializer.video import VideoSerializer
 @api_view(['POST'])
 @permission_classes((IsAuthenticated,))
 def video_post(request):
+    """
+    Create new video item
+    :param request: client request
+    :return: just created video item
+    :rtype: JSONObject
+    """
     video = None
     if(request.data["heritage"]):
         video = Video.objects.filter(heritage = request.data["heritage"]).first()
@@ -30,6 +37,15 @@ def video_post(request):
 @api_view(['GET', 'DELETE'])
 @permission_classes((IsAuthenticatedOrReadOnly,))
 def video_get_delete(request, pk):
+    """
+    get or delete the indicated video
+
+    :param request: client request
+    :param pk: indicates the video item
+    :return: the indicated video item
+    :return: only status_code
+    :rtype: JSONObject
+    """
     try:
         video = Video.objects.get(id=pk)
         heritage = video.heritage

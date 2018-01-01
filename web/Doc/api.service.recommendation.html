@@ -1,0 +1,59 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module api.service.recommendation</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="api.html"><font color="#ffffff">api</font></a>.<a href="api.service.html"><font color="#ffffff">service</font></a>.recommendation</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/hakansirin/projects/bounswe2017group1/web/api/service/recommendation.py">/Users/hakansirin/projects/bounswe2017group1/web/api/service/recommendation.py</a></font></td></tr></table>
+    <p></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="api.service.heritage.html">api.service.heritage</a><br>
+</td><td width="25%" valign=top><a href="operator.html">operator</a><br>
+</td><td width="25%" valign=top><a href="re.html">re</a><br>
+</td><td width="25%" valign=top><a href="rest_framework.status.html">rest_framework.status</a><br>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-alternative_recommendation_for_heritage"><strong>alternative_recommendation_for_heritage</strong></a>(heritage_obj)</dt><dd><tt>Look&nbsp;5&nbsp;match&nbsp;for&nbsp;getting&nbsp;recommended&nbsp;items<br>
+&nbsp;<br>
+find&nbsp;heritage&nbsp;items&nbsp;that:<br>
+1.&nbsp;their&nbsp;tags&nbsp;match&nbsp;with&nbsp;the&nbsp;given&nbsp;heritage&nbsp;item's&nbsp;tags&nbsp;(tag&nbsp;-&nbsp;tag&nbsp;match)<br>
+2.&nbsp;their&nbsp;tag&nbsp;related_list&nbsp;match&nbsp;with&nbsp;the&nbsp;given&nbsp;heritage&nbsp;item's&nbsp;tags&nbsp;(tag&nbsp;-&nbsp;related_list&nbsp;match)<br>
+3.&nbsp;their&nbsp;tags&nbsp;match&nbsp;with&nbsp;the&nbsp;given&nbsp;heritage&nbsp;item's&nbsp;tag&nbsp;related_list&nbsp;(related_list&nbsp;-&nbsp;tag&nbsp;match)<br>
+4.&nbsp;their&nbsp;tag&nbsp;related_list&nbsp;match&nbsp;with&nbsp;the&nbsp;given&nbsp;heritage&nbsp;item's&nbsp;tag&nbsp;related_list&nbsp;(related_list&nbsp;-&nbsp;related_list&nbsp;match)<br>
+5.&nbsp;their&nbsp;locations&nbsp;match&nbsp;with&nbsp;the&nbsp;given&nbsp;heritage&nbsp;item's&nbsp;locations&nbsp;(location&nbsp;-location&nbsp;match)<br>
+&nbsp;<br>
+&nbsp;<br>
+:param&nbsp;heritage_obj:&nbsp;given&nbsp;heritage&nbsp;item&nbsp;which&nbsp;look&nbsp;for&nbsp;recommendation<br>
+:return:&nbsp;list&nbsp;of&nbsp;tuples&nbsp;that&nbsp;contain&nbsp;recommended&nbsp;item_id&nbsp;and&nbsp;its&nbsp;match&nbsp;score</tt></dd></dl>
+ <dl><dt><a name="-get_recommendation_for_heritage"><strong>get_recommendation_for_heritage</strong></a>(heritage_obj)</dt></dl>
+ <dl><dt><a name="-matchScore"><strong>matchScore</strong></a>(list1, list2, coef)</dt></dl>
+ <dl><dt><a name="-mergeNListsWithoutDuplicate"><strong>mergeNListsWithoutDuplicate</strong></a>(listOfList, N)</dt></dl>
+</td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#55aa55">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Data</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#55aa55"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><strong>LOCATION_LOCATION_COEF</strong> = 4<br>
+<strong>RELATED_RELATED_COEF</strong> = 1<br>
+<strong>RELATED_TAG_COEF</strong> = 2<br>
+<strong>TAG_RELATED_COEF</strong> = 2<br>
+<strong>TAG_TAG_COEF</strong> = 4</td></tr></table>
+</body></html>
