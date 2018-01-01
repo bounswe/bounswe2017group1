@@ -36,7 +36,8 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 /**
- * Created by user on 22/11/2017.
+ * Detail activity of CultureMania
+ * Created by mehmetsefa on 22/11/2017.
  */
 
 public class ItemDetailView extends AppCompatActivity {
@@ -45,6 +46,10 @@ public class ItemDetailView extends AppCompatActivity {
     ImageButton downVote;
     ImageButton deleteVote;
     int heritageId;
+
+    /**
+     * @param savedInstanceState The savedInstanceState is a reference to a Bundle object that is passed into the onCreate method
+     */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,7 +91,7 @@ public class ItemDetailView extends AppCompatActivity {
         editbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), ItemEditActivity.class);
+                Intent intent = new Intent(getApplicationContext(), ItemCreateActivity.class);
                 intent.putExtra("heritageId",heritageId);
                 intent.putExtra("description", ""+description.getText() );
                 intent.putExtra("title", title.getText() );
@@ -236,6 +241,10 @@ public class ItemDetailView extends AppCompatActivity {
         });
     }
 
+    /**
+     * Delete the heritage item with heritage item's id
+     * @param id Heritage item's id number
+     */
     public void deletePost(int id){
         Retrofit retrofit = ApiClient.getApiClient();
         final SharedPreferences sharedPref = getSharedPreferences("TOKENSHARED", Context.MODE_PRIVATE);
@@ -257,6 +266,10 @@ public class ItemDetailView extends AppCompatActivity {
             }
         });
     }
+
+    /**
+     * Delete the upvote or downvote for the heritage item
+     */
     public void sendPostDeleteVote(){
         Intent intent = getIntent();
         final int heritageId = intent.getIntExtra("heritageId", -1);
@@ -293,6 +306,9 @@ public class ItemDetailView extends AppCompatActivity {
 
     }
 
+    /**
+     * Send a upvote request to api and upvote the heritage item
+     */
     public void sendPostUpVote(){
         Intent intent = getIntent();
         final int heritageId = intent.getIntExtra("heritageId", -1);
@@ -327,6 +343,9 @@ public class ItemDetailView extends AppCompatActivity {
 
     }
 
+    /**
+     * Get comment list from api
+     */
     public void getCommentList(){
         Retrofit retrofit = ApiClient.getApiClient();
         ApiInterface apiInterface = retrofit.create(ApiInterface.class);
@@ -354,6 +373,10 @@ public class ItemDetailView extends AppCompatActivity {
         });
     }
 
+    /**
+     * Set comment list in recycler view with heritage list
+     * @param heritageList Heritage List that is json response from api
+     */
     private void setCommentRecyclerView(final ArrayList<JsonResponseComment> heritageList){
         final RecyclerView heritageRecyclerView = (RecyclerView) findViewById(R.id.comment_recycler_view);
         final CommentAdapter heritageAdapter = new CommentAdapter(getApplicationContext(),heritageList);
@@ -365,6 +388,9 @@ public class ItemDetailView extends AppCompatActivity {
         heritageAdapter.notifyDataSetChanged();
     }
 
+    /**
+     * Send a downvote request to api and downvote the heritage item
+     */
     public void sendPostDownVote(){
         Intent intent = getIntent();
         final int heritageId = intent.getIntExtra("heritageId", -1);
@@ -398,12 +424,20 @@ public class ItemDetailView extends AppCompatActivity {
         });
     }
 
+    /**
+     * Back button for backing to parent
+     */
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         finish();
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
     }
+
+    /**
+     * @param item items in the action bar
+     * @return selected item in the action bar
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

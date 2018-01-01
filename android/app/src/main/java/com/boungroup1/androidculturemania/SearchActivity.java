@@ -23,7 +23,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 /**
- * Created by user on 03/12/2017.
+ * Created by mehmetsefa on 03/12/2017.
  */
 
 public class SearchActivity extends AppCompatActivity {

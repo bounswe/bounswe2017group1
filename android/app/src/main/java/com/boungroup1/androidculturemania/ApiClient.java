@@ -6,13 +6,18 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- * Created by user on 24/10/2017.
+ * Created by mehmetsefa on 24/10/2017.
+ * API client for creating Retrofit instance and returning the api client
  */
 
 public class ApiClient {
     public static final String BASE_URL = "http://ec2-18-196-2-56.eu-central-1.compute.amazonaws.com:3000";
     public static Retrofit retrofit = null;
 
+    /**
+     * handles preparing retrofit client
+     * @return retrofit client instance
+     */
     public static Retrofit getApiClient(){
         if (retrofit == null){
             HttpLoggingInterceptor logging = new HttpLoggingInterceptor();

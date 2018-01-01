@@ -33,13 +33,19 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.MyViewHo
     private Context mContext;
 
 
-
+    /**
+     * View Holder class for recyclerview
+     */
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         private TextView text, creator_username ;
         private CircleImageView comment_avatar;
         private Button comment_delete;
 
+        /**
+         * constructer for class
+         * @param view parent view
+         */
         public MyViewHolder(View view) {
             super(view);
             mContext = view.getContext();
@@ -51,12 +57,22 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.MyViewHo
         }
     }
 
-
+    /**
+     * constructor
+     * @param context activity context
+     * @param heritageList heritage list to be listed
+     */
     public CommentAdapter(Context context,ArrayList<JsonResponseComment> heritageList) {
         this.mContext = context;
         this.heritageList = heritageList;
     }
 
+    /**
+     * interface method
+     * @param parent parent view
+     * @param viewType parent view type
+     * @return custom view
+     */
     @Override
     public CommentAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
@@ -65,7 +81,11 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.MyViewHo
         return new CommentAdapter.MyViewHolder(itemView);
     }
 
-
+    /**
+     * method to run while binding
+     * @param holder custom view holder
+     * @param position position of the item
+     */
     @Override
     public void onBindViewHolder(CommentAdapter.MyViewHolder holder, int position) {
 
@@ -90,6 +110,10 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.MyViewHo
         holder.creator_username.setText("By " + heritageItem.getCreator_username());
     }
 
+    /**
+     * delete comment function
+     * @param id id of the comment
+     */
     private void deleteComment(int id){
         Retrofit retrofit = ApiClient.getApiClient();
         final SharedPreferences sharedPref = mContext.getSharedPreferences("TOKENSHARED", Context.MODE_PRIVATE);
@@ -112,7 +136,10 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.MyViewHo
     }
 
 
-
+    /**
+     * get the size of the list
+     * @return size of the list
+     */
     @Override
     public int getItemCount() {
         return heritageList.size();

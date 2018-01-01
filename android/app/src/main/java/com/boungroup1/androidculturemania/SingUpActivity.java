@@ -19,7 +19,7 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 
 /**
- * Created by user on 24/10/2017.
+ * Created by mehmetsefa on 24/10/2017.
  */
 
 public class SingUpActivity extends AppCompatActivity {
