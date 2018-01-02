@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 """Pretty-print JSON response from STDIN."""
 
 import sys

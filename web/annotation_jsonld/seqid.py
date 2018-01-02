@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 """Sequential ID support with MongoDB."""
 
 __author__ = 'Sampo Pyysalo'
