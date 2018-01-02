@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 
 """Sequential ID support with MongoDB."""
 

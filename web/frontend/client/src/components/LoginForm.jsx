@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 import { Card, CardText } from 'material-ui/Card';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
-
+/**
+* Login form for logining registered users
+*/
 const LoginForm = ({
   onSubmit,
   onChange,
@@ -50,10 +52,25 @@ const LoginForm = ({
 );
 
 LoginForm.propTypes = {
+  /**
+  * Submit function for the login form
+  */
   onSubmit: PropTypes.func.isRequired,
+  /**
+  * onChange function for form elements
+  */
   onChange: PropTypes.func.isRequired,
+  /**
+  * errors from http requests
+  */
   errors: PropTypes.object.isRequired,
+  /**
+  * success message from http requests
+  */
   successMessage: PropTypes.string.isRequired,
+  /**
+  * user information to login
+  */
   user: PropTypes.object.isRequired
 };
 

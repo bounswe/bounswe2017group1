@@ -21,6 +21,9 @@ var Upvote = require('react-upvote');
 
 
 var baseUrl = appConstants.baseUrl;
+/**
+  * Heritage show page rendering class
+  */
 class HeritagePage extends React.Component {
 
 

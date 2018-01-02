@@ -7,7 +7,9 @@ import TextField from 'material-ui/TextField';
 import DropDownMenu from 'material-ui/DropDownMenu';
 import MenuItem from 'material-ui/MenuItem';
 
-
+/**
+  * Sign up form for signing up unregistered users
+  */
 const SignUpForm = ({
   onSubmit,
   onChange,
@@ -93,9 +95,21 @@ const SignUpForm = ({
 );
 
 SignUpForm.propTypes = {
+  /**
+  * Submit function for the login form
+  */
   onSubmit: PropTypes.func.isRequired,
+  /**
+  * onChange function for form elements
+  */
   onChange: PropTypes.func.isRequired,
+  /**
+  * errors from http requests
+  */
   errors: PropTypes.object.isRequired,
+  /**
+  * user information to register
+  */
   user: PropTypes.object.isRequired
 };
 

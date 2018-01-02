@@ -2,7 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types'
 import { Card, CardTitle, CardText } from 'material-ui/Card';
 
-
+/**
+* Dashboard element for authentication control
+*/
 const Dashboard = ({ secretData }) => (
   <Card className="container">
     <CardTitle
@@ -15,6 +17,9 @@ const Dashboard = ({ secretData }) => (
 );
 
 Dashboard.propTypes = {
+  /**
+  * container for all the tabs on the main page
+  */
   secretData: PropTypes.string.isRequired
 };
 

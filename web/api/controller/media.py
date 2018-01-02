@@ -1,5 +1,5 @@
 """
-    This controller handles the routing for heritage items
+    This controller handles the routing for media files of heritage items
 """
 from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework import status
@@ -17,6 +17,12 @@ from api.serializer.media import MediaSerializer
 @permission_classes((IsAuthenticated,))
 @parser_classes((MultiPartParser, FormParser,))
 def media_post(request):
+    """
+    Create a new media
+
+    :param request: client request
+    :return: just created media
+    """
     serializer = MediaSerializer(data=request.data)
     if serializer.is_valid():
         serializer.save()
@@ -28,6 +34,14 @@ def media_post(request):
 @api_view(['GET', 'DELETE'])
 @permission_classes((IsAuthenticated,))
 def media_get_delete(request, pk):
+    """
+    get or delete the indicated media
+
+    :param request: client request
+    :param pk: indicates the media
+    :return: the indicated media
+    :return: only status_code
+    """
     try:
         media = Media.objects.get(id=pk)
         heritage = media.heritage
@@ -46,6 +60,13 @@ def media_get_delete(request, pk):
 @api_view(['DELETE'])
 @permission_classes((AllowAny, ))
 def media_backdoor_delete(request, pk):
+    """
+    delete the indicated media by developer
+
+    :param request: developer request
+    :param pk: indicates the media
+    :return: only status_code
+    """
     try:
         media = Media.objects.get(id=pk)
     except Exception:

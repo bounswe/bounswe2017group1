@@ -1,3 +1,7 @@
+"""
+    This controller handles the routing for votes of heritage items
+"""
+
 from rest_framework import status
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -13,6 +17,16 @@ from django.views.decorators.csrf import csrf_exempt
 @api_view(['POST','DELETE'])
 @permission_classes((IsAuthenticated,))
 def vote_post_delete(request):
+    """
+    make an upvote or downvote
+    or
+    get back the vote
+
+    :param request: client request
+    :return: the created or deleted vote
+    :return: only status_code
+    :rtype: JSONObject
+    """
     username = request.user.username
     request.data['voter'] = Profile.objects.filter(username=username).first().pk
     old_vote = Vote.objects.filter(voter=request.data['voter'],

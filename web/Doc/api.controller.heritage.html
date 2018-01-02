@@ -1,0 +1,67 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module api.controller.heritage</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="api.html"><font color="#ffffff">api</font></a>.<a href="api.controller.html"><font color="#ffffff">controller</font></a>.heritage</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/hakansirin/projects/bounswe2017group1/web/api/controller/heritage.py">/Users/hakansirin/projects/bounswe2017group1/web/api/controller/heritage.py</a></font></td></tr></table>
+    <p><tt>This&nbsp;controller&nbsp;handles&nbsp;the&nbsp;routing&nbsp;for&nbsp;heritage&nbsp;items</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="datetime.html">datetime</a><br>
+</td><td width="25%" valign=top><a href="api.service.permission.html">api.service.permission</a><br>
+</td><td width="25%" valign=top><a href="rest_framework.status.html">rest_framework.status</a><br>
+</td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-get_all_comments"><strong>get_all_comments</strong></a>(*args, **kwargs)</dt><dd><tt>display&nbsp;all&nbsp;comments&nbsp;of&nbsp;the&nbsp;indicated&nbsp;heritage&nbsp;item<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;client&nbsp;request<br>
+:param&nbsp;heritage_id:&nbsp;indicates&nbsp;the&nbsp;heritage&nbsp;item<br>
+:return:&nbsp;list&nbsp;of&nbsp;all&nbsp;comments&nbsp;of&nbsp;the&nbsp;heritage&nbsp;item</tt></dd></dl>
+ <dl><dt><a name="-get_all_tags"><strong>get_all_tags</strong></a>(*args, **kwargs)</dt><dd><tt>display&nbsp;all&nbsp;tags&nbsp;of&nbsp;the&nbsp;indicated&nbsp;heritage&nbsp;item<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;client&nbsp;request<br>
+:param&nbsp;heritage_id:&nbsp;indicates&nbsp;the&nbsp;heritage&nbsp;item<br>
+:return:&nbsp;list&nbsp;of&nbsp;all&nbsp;tags&nbsp;of&nbsp;the&nbsp;heritage&nbsp;item</tt></dd></dl>
+ <dl><dt><a name="-get_new_heritages"><strong>get_new_heritages</strong></a>(*args, **kwargs)</dt><dd><tt>display&nbsp;the&nbsp;all&nbsp;heritage&nbsp;items&nbsp;sorted&nbsp;order&nbsp;by&nbsp;creation&nbsp;date&nbsp;(last&nbsp;created&nbsp;at&nbsp;the&nbsp;top)<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;client&nbsp;request<br>
+:return:&nbsp;list&nbsp;of&nbsp;all&nbsp;heritage&nbsp;items&nbsp;sorted&nbsp;order&nbsp;by&nbsp;creation&nbsp;date</tt></dd></dl>
+ <dl><dt><a name="-get_top_heritages"><strong>get_top_heritages</strong></a>(*args, **kwargs)</dt><dd><tt>display&nbsp;the&nbsp;all&nbsp;heritage&nbsp;items&nbsp;sorted&nbsp;order&nbsp;by&nbsp;upvotes&nbsp;(most&nbsp;liked&nbsp;at&nbsp;the&nbsp;top)<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;client&nbsp;request<br>
+:return:&nbsp;list&nbsp;of&nbsp;all&nbsp;heritage&nbsp;items&nbsp;sorted&nbsp;order&nbsp;by&nbsp;upvotes</tt></dd></dl>
+ <dl><dt><a name="-get_trending_heritages"><strong>get_trending_heritages</strong></a>(*args, **kwargs)</dt><dd><tt>display&nbsp;the&nbsp;all&nbsp;heritage&nbsp;items&nbsp;sorted&nbsp;order&nbsp;by&nbsp;upvotes&nbsp;and&nbsp;filter&nbsp;by&nbsp;datetime&nbsp;in&nbsp;7&nbsp;days<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;client&nbsp;request<br>
+:return:&nbsp;list&nbsp;of&nbsp;all&nbsp;heritage&nbsp;items&nbsp;active&nbsp;in&nbsp;7&nbsp;days&nbsp;sorted&nbsp;order&nbsp;by&nbsp;upvotes</tt></dd></dl>
+ <dl><dt><a name="-heritage_get_post"><strong>heritage_get_post</strong></a>(*args, **kwargs)</dt><dd><tt>Create&nbsp;a&nbsp;new&nbsp;heritage&nbsp;item<br>
+or<br>
+Get&nbsp;all&nbsp;heritage&nbsp;items<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;client&nbsp;request<br>
+:return:&nbsp;list&nbsp;of&nbsp;all&nbsp;heritage&nbsp;items<br>
+:return:&nbsp;the&nbsp;just&nbsp;created&nbsp;heritage&nbsp;item</tt></dd></dl>
+ <dl><dt><a name="-heritage_get_put_delete"><strong>heritage_get_put_delete</strong></a>(*args, **kwargs)</dt><dd><tt>get,&nbsp;update&nbsp;or&nbsp;delete&nbsp;the&nbsp;indicated&nbsp;heritage&nbsp;item<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;client&nbsp;request<br>
+:param&nbsp;heritage_id:&nbsp;indicates&nbsp;the&nbsp;heritage&nbsp;item<br>
+:return:&nbsp;the&nbsp;indicated&nbsp;heritage&nbsp;item<br>
+:return:&nbsp;just&nbsp;status_code</tt></dd></dl>
+</td></tr></table>
+</body></html>

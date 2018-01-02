@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import Auth from '../../modules/Auth.js'
-
+/**
+  * hard coded header/topbar element with authorization control
+  */
 class TopBar extends React.Component {
   render(){
     return(

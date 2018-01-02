@@ -1,7 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
+/**
+  * Upvote/downvote element in heritage item
+  */
 const Vote = ({
     voteStatus,
     onUpVote,

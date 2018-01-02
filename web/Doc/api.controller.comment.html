@@ -1,0 +1,47 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module api.controller.comment</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="api.html"><font color="#ffffff">api</font></a>.<a href="api.controller.html"><font color="#ffffff">controller</font></a>.comment</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/hakansirin/projects/bounswe2017group1/web/api/controller/comment.py">/Users/hakansirin/projects/bounswe2017group1/web/api/controller/comment.py</a></font></td></tr></table>
+    <p><tt>This&nbsp;controller&nbsp;handles&nbsp;the&nbsp;routing&nbsp;for&nbsp;comments&nbsp;of&nbsp;heritage&nbsp;items</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="api.service.permission.html">api.service.permission</a><br>
+</td><td width="25%" valign=top><a href="rest_framework.status.html">rest_framework.status</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-comment_bacdoor_delete"><strong>comment_bacdoor_delete</strong></a>(*args, **kwargs)</dt><dd><tt>#&nbsp;We&nbsp;could&nbsp;just&nbsp;do&nbsp;view_func.csrf_exempt&nbsp;=&nbsp;True,&nbsp;but&nbsp;decorators<br>
+#&nbsp;are&nbsp;nicer&nbsp;if&nbsp;they&nbsp;don't&nbsp;have&nbsp;side-effects,&nbsp;so&nbsp;we&nbsp;return&nbsp;a&nbsp;new<br>
+#&nbsp;function.</tt></dd></dl>
+ <dl><dt><a name="-comment_get_post"><strong>comment_get_post</strong></a>(*args, **kwargs)</dt><dd><tt>Create&nbsp;a&nbsp;comment<br>
+or<br>
+Get&nbsp;all&nbsp;comments&nbsp;of&nbsp;the&nbsp;user<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;client&nbsp;request<br>
+:return:&nbsp;list&nbsp;of&nbsp;all&nbsp;comments&nbsp;of&nbsp;the&nbsp;authenticated&nbsp;user<br>
+:return:&nbsp;the&nbsp;just&nbsp;created&nbsp;comment&nbsp;by&nbsp;the&nbsp;authenticated&nbsp;user</tt></dd></dl>
+ <dl><dt><a name="-comment_get_put_delete"><strong>comment_get_put_delete</strong></a>(*args, **kwargs)</dt><dd><tt>get,&nbsp;update&nbsp;or&nbsp;delete&nbsp;the&nbsp;indicated&nbsp;comment<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;client&nbsp;request<br>
+:param&nbsp;comment_id:&nbsp;indicates&nbsp;the&nbsp;comment<br>
+:return:&nbsp;the&nbsp;indicated&nbsp;comment<br>
+:return:&nbsp;just&nbsp;status_code</tt></dd></dl>
+</td></tr></table>
+</body></html>

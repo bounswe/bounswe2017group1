@@ -1,0 +1,59 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module api.controller.user</title>
+<meta charset="utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="api.html"><font color="#ffffff">api</font></a>.<a href="api.controller.html"><font color="#ffffff">controller</font></a>.user</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/Users/hakansirin/projects/bounswe2017group1/web/api/controller/user.py">/Users/hakansirin/projects/bounswe2017group1/web/api/controller/user.py</a></font></td></tr></table>
+    <p><tt>This&nbsp;controller&nbsp;handles&nbsp;the&nbsp;routing&nbsp;for&nbsp;login&nbsp;and&nbsp;registration&nbsp;system</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="api.service.user.html">api.service.user</a><br>
+</td><td width="25%" valign=top><a href="rest_framework.status.html">rest_framework.status</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-add_or_change_image"><strong>add_or_change_image</strong></a>(*args, **kwargs)</dt><dd><tt>edit&nbsp;the&nbsp;profile&nbsp;image&nbsp;of&nbsp;the&nbsp;user<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;client&nbsp;request<br>
+:return:&nbsp;profile&nbsp;of&nbsp;the&nbsp;user<br>
+:rtype:&nbsp;JSONObject</tt></dd></dl>
+ <dl><dt><a name="-login_required"><strong>login_required</strong></a>(*args, **kwargs)</dt><dd><tt>test&nbsp;permission&nbsp;class&nbsp;and&nbsp;token<br>
+&nbsp;<br>
+:param&nbsp;req:&nbsp;client&nbsp;request<br>
+:return:&nbsp;the&nbsp;requester&nbsp;username</tt></dd></dl>
+ <dl><dt><a name="-signin"><strong>signin</strong></a>(*args, **kwargs)</dt><dd><tt>authenticate&nbsp;user&nbsp;with&nbsp;email&nbsp;and&nbsp;password<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;client&nbsp;request<br>
+:return:&nbsp;Authorization&nbsp;Token<br>
+:rtype:&nbsp;JSONObject</tt></dd></dl>
+ <dl><dt><a name="-signout"><strong>signout</strong></a>(*args, **kwargs)</dt><dd><tt>delete&nbsp;the&nbsp;user&nbsp;token&nbsp;from&nbsp;database<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;client&nbsp;request<br>
+:return:&nbsp;only&nbsp;status_code</tt></dd></dl>
+ <dl><dt><a name="-signup"><strong>signup</strong></a>(*args, **kwargs)</dt><dd><tt>register&nbsp;the&nbsp;user<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;client&nbsp;request<br>
+:return:&nbsp;the&nbsp;user's&nbsp;data&nbsp;and&nbsp;profile<br>
+:rtype:&nbsp;JSONObject</tt></dd></dl>
+ <dl><dt><a name="-users"><strong>users</strong></a>(*args, **kwargs)</dt><dd><tt>retrieve&nbsp;all&nbsp;users<br>
+&nbsp;<br>
+:param&nbsp;request:&nbsp;client&nbsp;request<br>
+:return:&nbsp;list&nbsp;of&nbsp;all&nbsp;users<br>
+:rtype:&nbsp;JSONArray</tt></dd></dl>
+</td></tr></table>
+</body></html>

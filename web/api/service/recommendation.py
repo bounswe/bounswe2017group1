@@ -66,6 +66,7 @@ def mergeNListsWithoutDuplicate(listOfList, N):
 
 
 def matchScore(list1, list2, coef):
+
     matches = set(list1).intersection(list2)
     return (matches, len(matches)*coef)
 
@@ -77,6 +78,21 @@ RELATED_RELATED_COEF = 1
 LOCATION_LOCATION_COEF = 4
 
 def alternative_recommendation_for_heritage(heritage_obj):
+    """
+    Look 5 match for getting recommended items
+
+    find heritage items that:
+    1. their tags match with the given heritage item's tags (tag - tag match)
+    2. their tag related_list match with the given heritage item's tags (tag - related_list match)
+    3. their tags match with the given heritage item's tag related_list (related_list - tag match)
+    4. their tag related_list match with the given heritage item's tag related_list (related_list - related_list match)
+    5. their locations match with the given heritage item's locations (location -location match)
+
+
+    :param heritage_obj: given heritage item which look for recommendation
+    :return: list of tuples that contain recommended item_id and its match score
+    """
+
     toMerge = []
 
     """

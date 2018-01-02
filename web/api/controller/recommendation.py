@@ -1,3 +1,7 @@
+"""
+    This controller handles the routing for recommendations for heritage items or users
+"""
+
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, AllowAny
@@ -16,7 +20,13 @@ import operator
 @api_view(['GET'])
 @permission_classes((IsAuthenticated, ))
 def user_based(request):
+    """
+    get recommendations for the authenticated user
 
+    :param request: client request
+    :return: list of recommended heritage items
+    :rtype: JSONArray
+    """
     user_upvoted_heritages = []
     user_commented_heritages = []
 
@@ -72,7 +82,14 @@ def user_based(request):
 @api_view(['GET'])
 @permission_classes((IsAuthenticatedOrReadOnly, ))
 def heritage_based(request, item_id):
+    """
+    get recommendations for the heritage item
 
+    :param request: client request
+    :param item_id: indicates the heritage item
+    :return: list of recommended heritage items
+    :rtype: JSONArray
+    """
     the_heritage = Heritage.objects.get(id=item_id)
     recommended_items = recommendation.get_recommendation_for_heritage(the_heritage)
 
@@ -110,6 +127,13 @@ def heritage_based(request, item_id):
 @api_view(['GET'])
 @permission_classes((IsAuthenticated, ))
 def user_based_alternative(request):
+    """
+    get recommendations for the authenticated user
+
+    :param request: client request
+    :return: list of recommended heritage items
+    :rtype: JSONArray
+    """
 
     user_upvoted_heritages = []
     user_commented_heritages = []
@@ -177,6 +201,14 @@ def user_based_alternative(request):
 @api_view(['GET'])
 @permission_classes((IsAuthenticatedOrReadOnly, ))
 def heritage_based_alternative(request, item_id):
+    """
+    get recommendations for the heritage item
+
+    :param request: client request
+    :param item_id: indicates the heritage item
+    :return: list of recommended heritage items
+    :rtype: JSONArray
+    """
 
     the_heritage = Heritage.objects.get(id=item_id)
     sorted_res = recommendation.alternative_recommendation_for_heritage(the_heritage)

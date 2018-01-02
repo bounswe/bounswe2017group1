@@ -4,7 +4,9 @@ import DashboardPage from './DashboardPage.jsx'
 import HomePage from '../components/HomePage.jsx'
 
 
-
+/**
+  * Home page rendering class
+  */
 class HomeDash extends React.Component {
 
   constructor(props, context){

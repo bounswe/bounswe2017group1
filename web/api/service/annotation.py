@@ -3,6 +3,14 @@ import sys
 
 
 def create_annotation(body, target):
+    """
+    create an annotation with given body and target
+    to do this, make request to annotation server
+
+    :param body: text of annotation
+    :param target: indicates which item and its field make annotation on and annotation coordinates
+    :return: status_code of response
+    """
 
     data = {
         "@context": "http://www.w3.org/ns/oa.jsonld",
@@ -18,11 +26,23 @@ def create_annotation(body, target):
 
 
 def pretty(data):
+    """
+    make the response pretty
+
+    :param data: json data
+    """
+
     doc = json.loads(data)
     print(json.dumps(doc, sort_keys=True, indent=2, separators=(',', ': ')))
 
 
 def get_all_annotations():
+    """
+    get all annotations
+    to do this, make request to annotation server
+
+    :return: list of all annotations
+    """
 
     header = {"Content-Type": "application/ld+json"}
 
@@ -31,6 +51,12 @@ def get_all_annotations():
     return json.loads(r.text)
 
 def get_annotations_of_item_id(item_id):
+    """
+    get all annotations of the indicated heritage item
+
+    :param item_id: indicates the heritage item
+    :return: list of all annotations of the indicated heritage item
+    """
 
     annotations_of_item = {}
     pattern = "heritage/"+item_id

@@ -10,7 +10,9 @@ import routes from '../routes.js'
 import Auth from '../../modules/Auth.js'
 import RouteWithSubRoutes from '../RouteWithSubRoutes.jsx'
 
-
+/**
+* Base object for all frontend elements
+*/
 const Base = () => (
 
     <Router>
@@ -22,12 +24,5 @@ const Base = () => (
     </Router>
 
 )
-
-
-
-
-
-
-
 
 export default Base;
