@@ -5,11 +5,20 @@ from django.db import models
 from heritage import Heritage
 
 def user_directory_path(instance, filename):
+    '''
+
+    :param instance: Media
+    :param filename: previous path
+    :return: updated media path
+    '''
     # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
     return 'Images/{0}/{1}'.format(instance.heritage.id, filename)
 
 
 class Media(models.Model):
+    '''
+    Media model to store images connected to Heritage items
+    '''
     type = models.CharField(max_length=10)
     heritage = models.ForeignKey(Heritage, related_name='medias', on_delete=models.CASCADE)
     #TODO add Images/<item_id>/imagename

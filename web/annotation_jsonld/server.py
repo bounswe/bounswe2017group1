@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 """RESTful Open Annotation server based on Eve.
 
 The RESTful Open Annotation API is primarily implemented using two

@@ -5,11 +5,20 @@ from django.db import models
 
 
 def user_directory_path(instance, filename):
+    """
+    path to store profile images
+    :param instance: Profile
+    :param filename: previous photo path
+    :return: updated photo path
+    """
     # file will be uploaded to MEDIA_ROOT/user_<id>/<filename>
     return 'Images/ProfilePhotos/{0}/{1}'.format(instance.username, filename)
 
 
 class Profile(models.Model):
+    '''
+    Model to store user data in CultureMania App
+    '''
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     username = models.CharField(max_length=50, unique=True)
     location = models.CharField(max_length=50, blank=True)

@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 """Open Annotation JSON-LD support functions."""
 
 __author__ = 'Sampo Pyysalo'

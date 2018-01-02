@@ -11,6 +11,9 @@ import datetime
 import re
 
 class Heritage(models.Model):
+    '''
+    Main item to store heritages items in CultureMania App
+    '''
     title = models.CharField(max_length=100)
     description = models.TextField()
     creator = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True)
@@ -25,6 +28,10 @@ class Heritage(models.Model):
 
 
     def getLocationAsList(self):
+        '''
+
+        :return: parsed location
+        '''
         location_words = []
         if self.location:
             pattern = re.compile("^\s+|\s*,\s*|\s+$")
@@ -34,6 +41,9 @@ class Heritage(models.Model):
 
 @receiver(post_save, sender=Heritage)
 def my_handler(sender, instance, **kwargs):
+    '''
+    handles event_year field accordingly to the DB changes
+    '''
     if instance.event_year == None:
         instance.event_year = instance.event_date.year
 

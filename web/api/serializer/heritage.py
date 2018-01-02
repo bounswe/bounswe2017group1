@@ -10,6 +10,9 @@ from api.service import heritage, helper
 from api.model.media import Media
 
 class HeritageSerializer(serializers.ModelSerializer):
+    '''
+    Serializer class to generate new items of Heritage Model and also serialize and edit existing ones
+    '''
     # votes = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
     upvote_count = serializers.SerializerMethodField()
     downvote_count = serializers.SerializerMethodField()
@@ -29,6 +32,11 @@ class HeritageSerializer(serializers.ModelSerializer):
     # When creating heritage item, you need to add tags.
     # When adding "tags", this function is needed.
     def create(self, validated_data):
+        '''
+        Creates heritage item
+        :param validated_data: Model validated data
+        :return: new Heritage item
+        '''
         tags_data = validated_data.pop('tags')
         heritage  = Heritage.objects.create(**validated_data)
         for tag_data in tags_data:
@@ -47,7 +55,12 @@ class HeritageSerializer(serializers.ModelSerializer):
         return heritage
 
     def update(self, instance, validated_data):
-        """Performs an update on a Heritage Item"""
+        '''
+        perform an update on given heritage item
+        :param instance: heritage item to be updated
+        :param validated_data: model validated date
+        :return: updated heritage item
+        '''
 
         # Passwords should not be handled with `setattr`, unlike other fields.
         # Django provides a function that handles hashing and
@@ -94,14 +107,29 @@ class HeritageSerializer(serializers.ModelSerializer):
         return instance
 
     def get_upvote_count(self, obj):
+        '''
+        get the number of upvotes on the given heritage item
+        :param obj: Heritage item
+        :return: upvote_count
+        '''
         votes = obj.votes.all()
         return votes.filter(value=True).count()
 
     def get_downvote_count(self, obj):
+        '''
+           get the number of downvotes on the given heritage item
+           :param obj: Heritage item
+           :return: downvote_count
+           '''
         votes = obj.votes.all()
         return votes.filter(value=False).count()
 
     def get_is_upvoted(self, obj):
+        '''
+        get whether if the given heritage item is upvoted by the client
+        :param obj: Heritage item
+        :return: is_upvated
+        '''
         if 'requester_profile_id' in self.context:
             requester_id = self.context['requester_profile_id']
             if obj.votes.filter(voter = requester_id, heritage = obj.id, value = True).first():
@@ -109,6 +137,11 @@ class HeritageSerializer(serializers.ModelSerializer):
         return False
 
     def get_is_downvoted(self, obj):
+        '''
+             get whether if the given heritage item is downvoted by the client
+             :param obj: Heritage item
+             :return: is_downvated
+             '''
         if 'requester_profile_id' in self.context:
             requester_id = self.context['requester_profile_id']
             if obj.votes.filter(voter = requester_id, heritage = obj.id, value = False).first():
@@ -116,6 +149,11 @@ class HeritageSerializer(serializers.ModelSerializer):
         return False
 
     def get_is_owner(self, obj):
+        '''
+        get whether if the heritage item is owned by the client
+        :param obj: Heritage item
+        :return: is_owner
+        '''
         if 'requester_profile_id' in self.context:
             requester_id = self.context['requester_profile_id']
             if requester_id == obj.creator.pk:
@@ -123,9 +161,20 @@ class HeritageSerializer(serializers.ModelSerializer):
         return False
 
     def get_creator_username(self,obj):
+        '''
+        get the username of the heritage item`s owner'
+        :param obj: Heritage item
+        :return: creator_username
+        '''
         return obj.creator.username
 
     def get_creator_image_path(self,obj):
+        '''
+        get the image_path of the heritage item`s creator'
+        :param obj: Heritage item
+        :return: creator_image_path
+        '''
+
         gender = obj.creator.gender.lower()
         if gender.startswith('m'):
             return '/media/avatars/m' + str(obj.creator.pk%8 + 1) + '.png'

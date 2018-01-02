@@ -1,3 +1,4 @@
+
 from __future__ import unicode_literals
 
 from django.db import models
@@ -7,6 +8,9 @@ from heritage import Heritage
 
 
 class Comment(models.Model):
+    '''
+    Comment model to store comment data in heritage items
+    '''
     text = models.TextField(max_length=200)
     heritage = models.ForeignKey(Heritage)
     creator = models.ForeignKey(Profile)
@@ -16,6 +20,10 @@ class Comment(models.Model):
 
 
     def __str__(self):
+        '''
+
+        :return: self.text
+        '''
         return self.text
 
 

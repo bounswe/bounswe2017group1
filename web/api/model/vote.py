@@ -6,6 +6,9 @@ from heritage import Heritage
 
 
 class Vote(models.Model):
+    '''
+    Model to store user reaction to Heritage Item posts
+    '''
     value = models.BooleanField()
     voter = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name="votes")
     heritage = models.ForeignKey(Heritage, on_delete=models.CASCADE, related_name="votes")
