@@ -7,6 +7,9 @@ import TopBar from '../components/TopBar.jsx'
 import appConstants from '../../modules/appConstants.js'
 
 var baseUrl = appConstants.baseUrl;
+/**
+  * Signup page rendering class
+  */
 class SignUpPage extends React.Component {
 
   /**

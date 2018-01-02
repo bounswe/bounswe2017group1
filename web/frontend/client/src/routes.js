@@ -11,7 +11,9 @@ import HeritagePage from './containers/HeritagePage.jsx';
 import HeritageAddPage from './containers/HeritageAddPage.jsx';
 import HeritageEditPage from './containers/HeritageEditPage.jsx';
 
-
+/**
+  * Routing for all frontend pages
+  */
 const routes = [
     {
         path: '/',

@@ -13,6 +13,9 @@ import CircularProgress from 'material-ui/CircularProgress';
 //import Dialog from 'react-bootstrap-dialog'
 
 var baseUrl = appConstants.baseUrl;
+/**
+* Home page with tabs of heritage items
+*/
 const HomePage = React.createClass({
 	getInitialState: function () {
 		return {

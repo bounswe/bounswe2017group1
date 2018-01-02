@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+/**
+  * Annotation event listener class
+  */
 class Rector extends React.Component {
 
   constructor(props) {
@@ -108,10 +110,25 @@ class Rector extends React.Component {
 }
 
 Rector.defaultProps = {
+  /**
+  * default width
+  */
 	width: 320,
+  /**
+  * default height
+  */
 	height: 200,
+  /**
+  * default color of the stroke (edges and lines etc.)
+  */
 	strokeStyle: '#F00',
+  /**
+  * default size of a line
+  */
 	lineWidth: 1,
+  /**
+  * default selected area(nothing)
+  */
 	onSelected: () => {},
 };
 	

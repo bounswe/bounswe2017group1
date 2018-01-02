@@ -3,6 +3,9 @@ import Auth from '../../modules/Auth.js';
 import Dashboard from '../components/Dashboard.jsx';
 import { withRouter } from 'react-router-dom'
 import TopBar from '../components/TopBar.jsx'
+/**
+  * Dashboard page rendering class
+  */
 class DashboardPage extends React.Component {
 
   /**
@@ -52,5 +55,4 @@ class DashboardPage extends React.Component {
   }
 
 }
-
 export default DashboardPage;

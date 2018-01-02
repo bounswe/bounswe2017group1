@@ -9,6 +9,9 @@ import 'whatwg-fetch'
 import appConstants from '../../modules/appConstants.js'
 
 var baseUrl = appConstants.baseUrl;
+/**
+  * Login page rendering class
+  */
 class LoginPage extends React.Component {
 
   /**

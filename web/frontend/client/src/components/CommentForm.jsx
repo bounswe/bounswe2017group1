@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import { Form, FormGroup, Col, FieldGroup, FormControl, Button, PageHeader  } from 'react-bootstrap'
 
 
-
+/**
+* Comment form for creating new comments
+*/
 const CommentForm = ({
   onSubmit,
   onChange,
@@ -23,8 +25,17 @@ const CommentForm = ({
 );
 
 CommentForm.propTypes ={
+  /**
+  * Submit function for the comment form
+  */
 	onSubmit: PropTypes.func.isRequired,
+  /**
+  * onChange function for form elements
+  */
 	onChange: PropTypes.func.isRequired,
+  /**
+  * comment element type text
+  */
 	comment: PropTypes.object.isRequired
 };
 

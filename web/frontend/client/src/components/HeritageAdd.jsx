@@ -7,9 +7,10 @@ import TextField from 'material-ui/TextField';
 import { Form, FormGroup, Col, FieldGroup, FormControl, Button, PageHeader  } from 'react-bootstrap'
 import PlacesAutocomplete from 'react-places-autocomplete';
 import Select from 'react-select'
-
 const AsyncComponent = Select.Async;
-
+/**
+* Heritage form for creating new heritage items
+*/
 const HeritageForm = ({
   onSubmit,
   onChange,
@@ -125,13 +126,33 @@ const HeritageForm = ({
 
 
 HeritageForm.propTypes = {
+  /**
+  * Submit function for the heritage form
+  */
   onSubmit: PropTypes.func.isRequired,
+  /**
+  * onChange function for form elements
+  */
   onChange: PropTypes.func.isRequired,
+  /**
+  * errors from http requests
+  */
   errors: PropTypes.object.isRequired,
+  /**
+  * success message from http requests
+  */
   successMessage: PropTypes.string.isRequired,
+  /**
+  * heritage item to create
+  */
   heritage: PropTypes.object.isRequired,
+  /**
+  * location of the heritage item as coordinates
+  */
   locationInputProps: PropTypes.object.isRequired,
+  /**
+  * location handler function
+  */
   handleLocationSelect: PropTypes.func.isRequired
 };
-
 export default HeritageForm;
