@@ -1,3 +1,4 @@
+
 """Pretty-print JSON response from STDIN."""
 
 import sys

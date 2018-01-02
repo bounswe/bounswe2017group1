@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 /**
   * Annotation event listener class
   */
+
 class Rector extends React.Component {
 
   constructor(props) {
@@ -129,6 +130,7 @@ Rector.defaultProps = {
   /**
   * default selected area(nothing)
   */
+
 	onSelected: () => {},
 };
 	

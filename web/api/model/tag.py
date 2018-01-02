@@ -24,6 +24,7 @@ class Tag(models.Model):
         gets related_list
         :return: related list string as a list
         '''
+
         if self.related_list:
             tt = self.related_list.split(' ')
             if tt[len(tt)-1] == '':

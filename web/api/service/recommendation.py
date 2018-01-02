@@ -92,6 +92,7 @@ def alternative_recommendation_for_heritage(heritage_obj):
     :param heritage_obj: given heritage item which look for recommendation
     :return: list of tuples that contain recommended item_id and its match score
     """
+
     toMerge = []
 
     """

@@ -32,6 +32,7 @@ class Heritage(models.Model):
 
         :return: parsed location
         '''
+
         location_words = []
         if self.location:
             pattern = re.compile("^\s+|\s*,\s*|\s+$")
@@ -44,6 +45,7 @@ def my_handler(sender, instance, **kwargs):
     '''
     handles event_year field accordingly to the DB changes
     '''
+
     if instance.event_year == None:
         instance.event_year = instance.event_date.year
 

@@ -1,5 +1,3 @@
-
-
 import requests, json
 import sys
 
@@ -13,6 +11,7 @@ def create_annotation(body, target):
     :param target: indicates which item and its field make annotation on and annotation coordinates
     :return: status_code of response
     """
+
     data = {
         "@context": "http://www.w3.org/ns/oa.jsonld",
         "@type": "oa:Annotation",
@@ -32,6 +31,7 @@ def pretty(data):
 
     :param data: json data
     """
+
     doc = json.loads(data)
     print(json.dumps(doc, sort_keys=True, indent=2, separators=(',', ': ')))
 
@@ -43,6 +43,7 @@ def get_all_annotations():
 
     :return: list of all annotations
     """
+
     header = {"Content-Type": "application/ld+json"}
 
     r = requests.get("http://127.0.0.1:8000/annotations/", headers=header)
@@ -56,6 +57,7 @@ def get_annotations_of_item_id(item_id):
     :param item_id: indicates the heritage item
     :return: list of all annotations of the indicated heritage item
     """
+
     annotations_of_item = {}
     pattern = "heritage/"+item_id
     all_annotations = get_all_annotations()

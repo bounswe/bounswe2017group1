@@ -2,7 +2,6 @@
     This controller handles the routing for annotations of heritage items
 """
 
-
 from rest_framework import status
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.permissions import IsAuthenticated, IsAuthenticatedOrReadOnly, AllowAny
@@ -20,6 +19,7 @@ def create_annotation_on_media(request, item_id, media_id):
     :param media_id: indicates the media file of the heritage item
     :return: Response only status_code
     """
+
     body = request.data.get('text', None)
     fragment_selector = ','.join(map(str, request.data['coordinates']))
     target = "heritage/" + item_id + "/media/" + media_id
@@ -41,6 +41,7 @@ def create_annotation_on_comment(request, item_id, comment_id):
     :param comment_id: indicates the comment of the heritage item
     :return: Response only status_code
     """
+
     body = request.data.get('text', None)
     fragment_selector = ','.join(map(str, request.data['coordinates']))
     target = "heritage/" + item_id + "/comment/" + comment_id
@@ -65,6 +66,8 @@ def create_on_description_or_get(request, item_id):
     :return: Response only status_code
     :rtype: JSONArray
     """
+
+
     if request.method == 'POST':
 
         body = request.data.get('text', None)
@@ -93,6 +96,7 @@ def get_all(request):
     :return: Response list of all annotations
     :rtype: JSONArray
     """
+
     all_anno = get_all_annotations()
     response = all_anno['@graph']
     return Response(response, status=status.HTTP_200_OK)

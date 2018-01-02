@@ -46,6 +46,7 @@ def video_get_delete(request, pk):
     :return: only status_code
     :rtype: JSONObject
     """
+
     try:
         video = Video.objects.get(id=pk)
         heritage = video.heritage

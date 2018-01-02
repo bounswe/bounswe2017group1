@@ -134,6 +134,7 @@ def user_based_alternative(request):
     :return: list of recommended heritage items
     :rtype: JSONArray
     """
+
     user_upvoted_heritages = []
     user_commented_heritages = []
 
@@ -208,6 +209,7 @@ def heritage_based_alternative(request, item_id):
     :return: list of recommended heritage items
     :rtype: JSONArray
     """
+
     the_heritage = Heritage.objects.get(id=item_id)
     sorted_res = recommendation.alternative_recommendation_for_heritage(the_heritage)
     sorted_keys = [x[0] for x in sorted_res]
