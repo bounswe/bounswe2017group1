@@ -1,6 +1,6 @@
 certifi==2017.7.27.1
 chardet==3.0.4
-Django==1.11.5
+django>=1.11.18
 djangorestframework==3.7.1
 django-debug-toolbar==1.8
 django-environ==0.4.4
