@@ -18,7 +18,7 @@
     "classnames": "^2.2.5",
     "clean-webpack-plugin": "0.1.17",
     "cors": "2.8.4",
-    "css-loader": "0.28.7",
+    "css-loader": "6.7.2",
     "express": "^4.15.2",
     "formidable": "^1.1.1",
     "html-webpack-plugin": "2.30.1",
